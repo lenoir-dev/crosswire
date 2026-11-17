@@ -30,3 +30,22 @@ Public field cohorts are development data, never holdout; no private holdout cas
 8. Keep live-PR, mutation and mined-history metrics separate. Holdout manifests and
    diagnostics stay outside the workspace in the Q1-private location; only a canonical
    manifest hash and aggregate holdout results may be published after the split is frozen.
+
+## Architect approval and Amendment M1 (Opus 5.5, 2026-11-17)
+
+APPROVED for the v0.4 pilot with the following additions (they apply before any label is collected):
+
+1. **Two metrics, not one.** *Detection* matches on (supported type, use-site file, symbol, same
+   use-site occurrence — line shifts allowed, a different call expression is not a match).
+   *Attribution* additionally requires the culprit set to be oracle-confirmed. Detection
+   precision/recall are the v1.0 gates; attribution accuracy is reported alongside
+   (share of detection TPs whose culprits are exactly right).
+2. **Oracle confirmation of culprits.** For a prediction on branch `X` with culprits `S`
+   (|S| ≤ 3): the oracle must fail on `T + X + S` and pass on `T + X + (S \ {s})` for every
+   `s ∈ S` (minimality), all integrations textually clean. Target-reference findings use
+   `T + S`. If any trial is not oracle-eligible, attribution is *unlabelled* for that case.
+3. **CW002 reason categories** (missing / unknown keyword / too many positional / positional-only)
+   are not required to match the oracle's message category for detection; mismatches are
+   counted and listed as a diagnostic-quality metric.
+4. Every prediction or diagnostic excluded as *unlabelled* is listed with its reason; the share
+   of unlabelled cases is published next to each metric.

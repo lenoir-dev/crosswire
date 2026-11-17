@@ -114,3 +114,23 @@ Opus 5.5 — architecture, contracts, roadmap, independent reviews, acceptance, 
 release readiness. Terra — implementation. Sol — tests, corpus, independent measurement.
 To keep measurement honest, **Sol owns the corpus and the holdout split; Terra never sees the
 holdout** (§ QUALITY.md). Each stage starts with a written design review by Terra and Sol.
+
+## 7. Amendment V10 — LanguageAdapter principles (after Terra's review)
+
+- The core owns Git, integration, caching, culprit search, planning and reporting; adapters own
+  everything language-specific. Shared identities are language-neutral
+  (`language`, `module`, `qualname`, `kind`, `visibility`, `span`).
+- **Call compatibility is decided by the adapter** (`adapter.check_call(use, old, new) -> Verdict`
+  with `valid | broken(reason) | unknown(reason)`); no single Python-shaped signature model is
+  forced onto Java overload sets, Go method sets or PHP optional params.
+- Python semantics (guarded bindings, migrations, import rules) must not leak into the core.
+  The v0.5 refactor must keep all Python outputs byte-identical (goldens) and versions both the
+  adapter API and the cache schema.
+- Each adapter ships conformance fixtures (shared scenario templates rendered per language),
+  polyglot same-name tests, and declares its unsupported contexts; those surface as coverage gaps.
+- Extras pin tree-sitter runtime and grammar versions with published compatible bounds; CI tests a
+  core-only install and each extra on Python 3.11–3.14 and the supported OS/architectures.
+- Per-language pitfalls listed in `docs/design/vision-review-terra.md` (Go build tags/go.mod
+  replaces/internal packages; TS tsconfig paths/package exports/type-only imports; Java
+  overloads/classpath; PHP PSR-4/aliases/dynamic includes) are mandatory inputs to each
+  language's design doc.

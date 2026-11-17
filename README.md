@@ -13,7 +13,7 @@ requires Python 3.11+ and Git 2.38+; runtime dependencies are limited to the Pyt
 
 ```sh
 uv sync
-uv run crosswire check [--repo PATH] [--base REF] [--src DIR]... [--format text|json|github] [--no-textual] BRANCH BRANCH [BRANCH...]
+uv run crosswire check [--repo PATH] [--base REF | --target REF] [--src DIR]... [--format text|json|github|sarif] [--no-textual] [--no-cache] BRANCH BRANCH [BRANCH...]
 ```
 
 The default source roots are `src` followed by the repository root when `src/` exists at the
@@ -33,6 +33,34 @@ Git's merge-tree operation may write objects, but does not change refs, HEAD, th
 | CW003 | warning | Different definitions of the same name added in both branches. |
 | CW004 | error | Colliding Django migration numbers or literal Alembic `down_revision` values. |
 | CW005 | error | Textual Git merge conflicts; disable with `--no-textual`. |
+
+## Target and caching
+
+Use `--target main` to summarize each branch against its merge base with the target. Pairwise
+reports still show each pair's merge base. Without `--target`, each pair uses its own merge base;
+`--target` and `--base` cannot be combined. Semantic checks skip pairs without overlapping
+changes or references; textual conflict checks still run for every pair.
+
+Summaries are cached under the shared Git directory at `crosswire/cache/v1/`; use `--no-cache`
+to disable cache reads and writes. Cache files are disposable. `--format sarif` emits SARIF 2.1.0
+for code-scanning tools; findings retain their branch labels in result properties.
+
+### Composite action
+
+After checking out with full history, use the repository containing `action.yml` as a composite
+action. Configure `contents: read` and `pull-requests: read`; leave `branches` empty to fetch open
+PR heads (including forks), or provide whitespace-separated refs. For example, when the action is
+in the checked-out repository:
+
+```yaml
+- uses: actions/checkout@v4
+  with:
+    fetch-depth: 0
+- uses: ./
+  with:
+    target: main
+    format: github
+```
 
 ## JSON output
 

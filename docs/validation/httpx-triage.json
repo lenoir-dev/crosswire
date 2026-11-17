@@ -1,0 +1,100 @@
+[
+  {
+    "a": "refs/remotes/pr/3835",
+    "b": "refs/remotes/pr/3733",
+    "finding": 1,
+    "native_git_exit": 1,
+    "native_git_fields": [
+      "11f546af02ac5e4efa254ba9e6fd3871e684f6a2",
+      "CHANGELOG.md",
+      ""
+    ],
+    "path": "CHANGELOG.md",
+    "rule": "CW005",
+    "verdict": "TP"
+  },
+  {
+    "a": "refs/remotes/pr/3837",
+    "b": "refs/remotes/pr/3733",
+    "finding": 2,
+    "native_git_exit": 1,
+    "native_git_fields": [
+      "d70018c19f84cba88f37da78abe799123173d084",
+      "CHANGELOG.md",
+      ""
+    ],
+    "path": "CHANGELOG.md",
+    "rule": "CW005",
+    "verdict": "TP"
+  },
+  {
+    "a": "refs/remotes/pr/3838",
+    "b": "refs/remotes/pr/3733",
+    "finding": 3,
+    "native_git_exit": 1,
+    "native_git_fields": [
+      "041b538ed87b7935183400e93f9f3f42ffdce9cc",
+      "CHANGELOG.md",
+      ""
+    ],
+    "path": "CHANGELOG.md",
+    "rule": "CW005",
+    "verdict": "TP"
+  },
+  {
+    "a": "refs/remotes/pr/3766",
+    "b": "refs/remotes/pr/3760",
+    "finding": 4,
+    "native_git_exit": 1,
+    "native_git_fields": [
+      "8c228e910f18c0796a2a328c0fe578b4c42cc689",
+      "httpx/_client.py",
+      ""
+    ],
+    "path": "httpx/_client.py",
+    "rule": "CW005",
+    "verdict": "TP"
+  },
+  {
+    "a": "refs/remotes/pr/3767",
+    "b": "refs/remotes/pr/3696",
+    "finding": 5,
+    "native_git_exit": 1,
+    "native_git_fields": [
+      "cc7dec940d1793820788d4faed4ee3d250be13e7",
+      "httpx/_models.py",
+      ""
+    ],
+    "path": "httpx/_models.py",
+    "rule": "CW005",
+    "verdict": "TP"
+  },
+  {
+    "a": "refs/remotes/pr/3760",
+    "b": "refs/remotes/pr/3757",
+    "finding": 6,
+    "native_git_exit": 1,
+    "native_git_fields": [
+      "f64daa085be94d4cfcf95dda73377a6427f33146",
+      "tests/client/test_client.py",
+      ""
+    ],
+    "path": "tests/client/test_client.py",
+    "rule": "CW005",
+    "verdict": "TP"
+  },
+  {
+    "a": "refs/remotes/pr/3835",
+    "b": "refs/remotes/pr/3775",
+    "finding": 7,
+    "native_git_exit": 1,
+    "native_git_fields": [
+      "9607e179647c477b17e61852303dead7214dd9f8",
+      "tests/conftest.py",
+      ""
+    ],
+    "path": "tests/conftest.py",
+    "rule": "CW005",
+    "verdict": "TP"
+  }
+]

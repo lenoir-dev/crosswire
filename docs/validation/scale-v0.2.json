@@ -1,0 +1,81 @@
+{
+  "branches": 30,
+  "cases": {
+    "prefilter_cache_cold": {
+      "median_seconds": 5.845829875001073,
+      "samples": [
+        {
+          "seconds": 5.845829875001073,
+          "semantic_rule_calls": 24,
+          "summaries": 30
+        }
+      ]
+    },
+    "prefilter_cache_warm": {
+      "median_seconds": 5.892020290999426,
+      "samples": [
+        {
+          "seconds": 5.842224375001024,
+          "semantic_rule_calls": 24,
+          "summaries": 30
+        },
+        {
+          "seconds": 5.892020290999426,
+          "semantic_rule_calls": 24,
+          "summaries": 30
+        },
+        {
+          "seconds": 5.9078847500004485,
+          "semantic_rule_calls": 24,
+          "summaries": 30
+        }
+      ]
+    },
+    "prefilter_no_cache": {
+      "median_seconds": 5.901681250001275,
+      "samples": [
+        {
+          "seconds": 5.938538624999637,
+          "semantic_rule_calls": 24,
+          "summaries": 30
+        },
+        {
+          "seconds": 5.880694333000065,
+          "semantic_rule_calls": 24,
+          "summaries": 30
+        },
+        {
+          "seconds": 5.901681250001275,
+          "semantic_rule_calls": 24,
+          "summaries": 30
+        }
+      ]
+    },
+    "unfiltered_no_cache": {
+      "median_seconds": 5.706528750000871,
+      "samples": [
+        {
+          "seconds": 5.706528750000871,
+          "semantic_rule_calls": 1740,
+          "summaries": 30
+        },
+        {
+          "seconds": 5.657832749999216,
+          "semantic_rule_calls": 1740,
+          "summaries": 30
+        },
+        {
+          "seconds": 5.834777124999164,
+          "semantic_rule_calls": 1740,
+          "summaries": 30
+        }
+      ]
+    }
+  },
+  "finding_count": 3,
+  "method": "separate subprocesses; cold has no prior cache; warm reuses disk; no-cache disables disk; unfiltered wraps BranchSummary construction to force shared interaction fields",
+  "pairs": 435,
+  "python": "3.11.17 (main, Oct  9 2026, 15:10:32) [Clang 22.1.3 ]",
+  "readonly_verified": true,
+  "textual_enabled": false
+}

@@ -1,6 +1,11 @@
 import pytest
 
 from .helpers import RepoBuilder
+from .golden_support import finish_recording
+
+
+def pytest_sessionfinish(session, exitstatus):
+    finish_recording()
 
 
 @pytest.fixture

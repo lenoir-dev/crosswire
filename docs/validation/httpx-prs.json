@@ -1,0 +1,106 @@
+{
+  "repository": "encode/httpx",
+  "selection": "20 most recently updated open PRs; GitHub connector search, 2026-11-17",
+  "prs": [
+    {
+      "number": 3838,
+      "title": "Fix dead documentation links",
+      "url": "https://github.com/encode/httpx/pull/3838"
+    },
+    {
+      "number": 3837,
+      "title": "Fix tests for chardet 6.0 and pytest 9.1",
+      "url": "https://github.com/encode/httpx/pull/3837"
+    },
+    {
+      "number": 3835,
+      "title": "Prevent tests from hanging indefinitely",
+      "url": "https://github.com/encode/httpx/pull/3835"
+    },
+    {
+      "number": 3777,
+      "title": "Add real async iterator for ByteStreams",
+      "url": "https://github.com/encode/httpx/pull/3777"
+    },
+    {
+      "number": 3733,
+      "title": "Use weakref for bound stream _response.",
+      "url": "https://github.com/encode/httpx/pull/3733"
+    },
+    {
+      "number": 3778,
+      "title": "Refactor `map_httpcore_exceptions` to not be a context manager",
+      "url": "https://github.com/encode/httpx/pull/3778"
+    },
+    {
+      "number": 3771,
+      "title": "Fix `unquote` IndexError on empty string input",
+      "url": "https://github.com/encode/httpx/pull/3771"
+    },
+    {
+      "number": 3775,
+      "title": "Do not hang forever if test server fails to start",
+      "url": "https://github.com/encode/httpx/pull/3775"
+    },
+    {
+      "number": 3766,
+      "title": "Fix base_url query parameters corrupted during URL merging",
+      "url": "https://github.com/encode/httpx/pull/3766"
+    },
+    {
+      "number": 3741,
+      "title": "Fix no_proxy to support IPV6 CIDR format",
+      "url": "https://github.com/encode/httpx/pull/3741"
+    },
+    {
+      "number": 3697,
+      "title": "bugfix for zstd decompressobj reuse",
+      "url": "https://github.com/encode/httpx/pull/3697"
+    },
+    {
+      "number": 3767,
+      "title": "Include header name in encoding error message",
+      "url": "https://github.com/encode/httpx/pull/3767"
+    },
+    {
+      "number": 3758,
+      "title": "Fix: Improve error message for invalid data parameter with AsyncClient",
+      "url": "https://github.com/encode/httpx/pull/3758"
+    },
+    {
+      "number": 3774,
+      "title": "docs: fix two broken examples in transports.md",
+      "url": "https://github.com/encode/httpx/pull/3774"
+    },
+    {
+      "number": 3760,
+      "title": "Fix: Prevent query parameter corruption in base_url",
+      "url": "https://github.com/encode/httpx/pull/3760"
+    },
+    {
+      "number": 3757,
+      "title": "Fix MockTransport not setting elapsed property",
+      "url": "https://github.com/encode/httpx/pull/3757"
+    },
+    {
+      "number": 3769,
+      "title": "Ensure mounted transports are closed even if main transport raises",
+      "url": "https://github.com/encode/httpx/pull/3769"
+    },
+    {
+      "number": 3785,
+      "title": "Bump cryptography from 45.0.7 to 46.0.6",
+      "url": "https://github.com/encode/httpx/pull/3785"
+    },
+    {
+      "number": 3718,
+      "title": "create_ssl_context: Don't skip ctx.load_cert_chain calls",
+      "url": "https://github.com/encode/httpx/pull/3718"
+    },
+    {
+      "number": 3696,
+      "title": "Include header name in encoding error messages",
+      "url": "https://github.com/encode/httpx/pull/3696"
+    }
+  ]
+}

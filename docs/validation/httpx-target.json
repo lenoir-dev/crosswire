@@ -1,0 +1,1234 @@
+{
+  "command": [
+    "${HOME}/.paradev/worktrees/blackOut-fa821389/lenoir-dev/github-opus-5-5-d15e3f5c/.venv/bin/python",
+    "-m",
+    "crosswire",
+    "check",
+    "--repo",
+    "/tmp/crosswire-field-httpx",
+    "--format",
+    "json",
+    "--target",
+    "origin/master",
+    "refs/remotes/pr/3838",
+    "refs/remotes/pr/3837",
+    "refs/remotes/pr/3835",
+    "refs/remotes/pr/3777",
+    "refs/remotes/pr/3733",
+    "refs/remotes/pr/3778",
+    "refs/remotes/pr/3771",
+    "refs/remotes/pr/3775",
+    "refs/remotes/pr/3766",
+    "refs/remotes/pr/3741",
+    "refs/remotes/pr/3697",
+    "refs/remotes/pr/3767",
+    "refs/remotes/pr/3758",
+    "refs/remotes/pr/3774",
+    "refs/remotes/pr/3760",
+    "refs/remotes/pr/3757",
+    "refs/remotes/pr/3769",
+    "refs/remotes/pr/3785",
+    "refs/remotes/pr/3718",
+    "refs/remotes/pr/3696"
+  ],
+  "mode": "target",
+  "prs": [
+    {
+      "number": 3838,
+      "ref": "refs/remotes/pr/3838",
+      "sha": "76c401cd8d8dd3358113151942569058d88b5a87",
+      "title": "Fix dead documentation links",
+      "url": "https://github.com/encode/httpx/pull/3838"
+    },
+    {
+      "number": 3837,
+      "ref": "refs/remotes/pr/3837",
+      "sha": "440dd004c98d8717c397645f8270dd3d1fc08976",
+      "title": "Fix tests for chardet 6.0 and pytest 9.1",
+      "url": "https://github.com/encode/httpx/pull/3837"
+    },
+    {
+      "number": 3835,
+      "ref": "refs/remotes/pr/3835",
+      "sha": "8fda64fbd023ab60b1b7d208c0d833023243b312",
+      "title": "Prevent tests from hanging indefinitely",
+      "url": "https://github.com/encode/httpx/pull/3835"
+    },
+    {
+      "number": 3777,
+      "ref": "refs/remotes/pr/3777",
+      "sha": "357b42fdefa4ac1f0fec37776828618176e9e7c9",
+      "title": "Add real async iterator for ByteStreams",
+      "url": "https://github.com/encode/httpx/pull/3777"
+    },
+    {
+      "number": 3733,
+      "ref": "refs/remotes/pr/3733",
+      "sha": "d4d1959a6953ced4eca59bc7a35691e7561ec73c",
+      "title": "Use weakref for bound stream _response.",
+      "url": "https://github.com/encode/httpx/pull/3733"
+    },
+    {
+      "number": 3778,
+      "ref": "refs/remotes/pr/3778",
+      "sha": "09fc81a33c51f090002e340173f231d403c11ac5",
+      "title": "Refactor `map_httpcore_exceptions` to not be a context manager",
+      "url": "https://github.com/encode/httpx/pull/3778"
+    },
+    {
+      "number": 3771,
+      "ref": "refs/remotes/pr/3771",
+      "sha": "55ead904eff7376ccbc7f23e93be19117c642441",
+      "title": "Fix `unquote` IndexError on empty string input",
+      "url": "https://github.com/encode/httpx/pull/3771"
+    },
+    {
+      "number": 3775,
+      "ref": "refs/remotes/pr/3775",
+      "sha": "8a959d830e8631f84401aeb5fd2e0ffa9bbfe3d7",
+      "title": "Do not hang forever if test server fails to start",
+      "url": "https://github.com/encode/httpx/pull/3775"
+    },
+    {
+      "number": 3766,
+      "ref": "refs/remotes/pr/3766",
+      "sha": "18927fa8e80fcf650d2c47cfe370a7d92c18bd83",
+      "title": "Fix base_url query parameters corrupted during URL merging",
+      "url": "https://github.com/encode/httpx/pull/3766"
+    },
+    {
+      "number": 3741,
+      "ref": "refs/remotes/pr/3741",
+      "sha": "83d203a86d955b7695613df6378b56f9003112ce",
+      "title": "Fix no_proxy to support IPV6 CIDR format",
+      "url": "https://github.com/encode/httpx/pull/3741"
+    },
+    {
+      "number": 3697,
+      "ref": "refs/remotes/pr/3697",
+      "sha": "fba12be30aa6e545c9ec2bbeb4c87e31961360fd",
+      "title": "bugfix for zstd decompressobj reuse",
+      "url": "https://github.com/encode/httpx/pull/3697"
+    },
+    {
+      "number": 3767,
+      "ref": "refs/remotes/pr/3767",
+      "sha": "a23676eecf94b8025b2a817a71358f8e8311fd40",
+      "title": "Include header name in encoding error message",
+      "url": "https://github.com/encode/httpx/pull/3767"
+    },
+    {
+      "number": 3758,
+      "ref": "refs/remotes/pr/3758",
+      "sha": "843346fc98e062a7b0be0835cd055d9d11d2b175",
+      "title": "Fix: Improve error message for invalid data parameter with AsyncClient",
+      "url": "https://github.com/encode/httpx/pull/3758"
+    },
+    {
+      "number": 3774,
+      "ref": "refs/remotes/pr/3774",
+      "sha": "631e9fefa2e602c7d38f74ae4a4138f67f14fd38",
+      "title": "docs: fix two broken examples in transports.md",
+      "url": "https://github.com/encode/httpx/pull/3774"
+    },
+    {
+      "number": 3760,
+      "ref": "refs/remotes/pr/3760",
+      "sha": "b2adc529e7c3ccb75965a29a35bb339198c0baff",
+      "title": "Fix: Prevent query parameter corruption in base_url",
+      "url": "https://github.com/encode/httpx/pull/3760"
+    },
+    {
+      "number": 3757,
+      "ref": "refs/remotes/pr/3757",
+      "sha": "324e16aab8289b3af001a2217ccfd54d0350e7fb",
+      "title": "Fix MockTransport not setting elapsed property",
+      "url": "https://github.com/encode/httpx/pull/3757"
+    },
+    {
+      "number": 3769,
+      "ref": "refs/remotes/pr/3769",
+      "sha": "ff7190eda0ab308f1d884b228e17b32e6fdac756",
+      "title": "Ensure mounted transports are closed even if main transport raises",
+      "url": "https://github.com/encode/httpx/pull/3769"
+    },
+    {
+      "number": 3785,
+      "ref": "refs/remotes/pr/3785",
+      "sha": "54857a13dfd2d868fc52a54b0eaa4a97487f97d2",
+      "title": "Bump cryptography from 45.0.7 to 46.0.6",
+      "url": "https://github.com/encode/httpx/pull/3785"
+    },
+    {
+      "number": 3718,
+      "ref": "refs/remotes/pr/3718",
+      "sha": "c95292e19df788f91a191d604cb785c2f84c3bb5",
+      "title": "create_ssl_context: Don't skip ctx.load_cert_chain calls",
+      "url": "https://github.com/encode/httpx/pull/3718"
+    },
+    {
+      "number": 3696,
+      "ref": "refs/remotes/pr/3696",
+      "sha": "ed923cea1b8902cacf97b098a2adff8c51601488",
+      "title": "Include header name in encoding error messages",
+      "url": "https://github.com/encode/httpx/pull/3696"
+    }
+  ],
+  "readonly_verified": true,
+  "report": {
+    "findings": [
+      {
+        "branch": "refs/remotes/pr/3733",
+        "line": 1,
+        "message": "textual conflict with refs/remotes/pr/3835",
+        "other_branch": "refs/remotes/pr/3835",
+        "path": "CHANGELOG.md",
+        "rule": "CW005",
+        "severity": "error",
+        "symbol": null
+      },
+      {
+        "branch": "refs/remotes/pr/3733",
+        "line": 1,
+        "message": "textual conflict with refs/remotes/pr/3837",
+        "other_branch": "refs/remotes/pr/3837",
+        "path": "CHANGELOG.md",
+        "rule": "CW005",
+        "severity": "error",
+        "symbol": null
+      },
+      {
+        "branch": "refs/remotes/pr/3733",
+        "line": 1,
+        "message": "textual conflict with refs/remotes/pr/3838",
+        "other_branch": "refs/remotes/pr/3838",
+        "path": "CHANGELOG.md",
+        "rule": "CW005",
+        "severity": "error",
+        "symbol": null
+      },
+      {
+        "branch": "refs/remotes/pr/3760",
+        "line": 1,
+        "message": "textual conflict with refs/remotes/pr/3766",
+        "other_branch": "refs/remotes/pr/3766",
+        "path": "httpx/_client.py",
+        "rule": "CW005",
+        "severity": "error",
+        "symbol": null
+      },
+      {
+        "branch": "refs/remotes/pr/3696",
+        "line": 1,
+        "message": "textual conflict with refs/remotes/pr/3767",
+        "other_branch": "refs/remotes/pr/3767",
+        "path": "httpx/_models.py",
+        "rule": "CW005",
+        "severity": "error",
+        "symbol": null
+      },
+      {
+        "branch": "refs/remotes/pr/3757",
+        "line": 1,
+        "message": "textual conflict with refs/remotes/pr/3760",
+        "other_branch": "refs/remotes/pr/3760",
+        "path": "tests/client/test_client.py",
+        "rule": "CW005",
+        "severity": "error",
+        "symbol": null
+      },
+      {
+        "branch": "refs/remotes/pr/3775",
+        "line": 1,
+        "message": "textual conflict with refs/remotes/pr/3835",
+        "other_branch": "refs/remotes/pr/3835",
+        "path": "tests/conftest.py",
+        "rule": "CW005",
+        "severity": "error",
+        "symbol": null
+      }
+    ],
+    "pairs": [
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3837",
+        "base": "7cff5f79bc78649bbcd3fd9aa7a74c86e0f63016"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3835",
+        "base": "08cf535b34a242829883baab36ea7af08a35e2a8"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3777",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3733",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3778",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3771",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3775",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3766",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3741",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3697",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3767",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3758",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3774",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3760",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3757",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3769",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3785",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3718",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3838",
+        "b": "refs/remotes/pr/3696",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3835",
+        "base": "08cf535b34a242829883baab36ea7af08a35e2a8"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3777",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3733",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3778",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3771",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3775",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3766",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3741",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3697",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3767",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3758",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3774",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3760",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3757",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3769",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3785",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3718",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3837",
+        "b": "refs/remotes/pr/3696",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3777",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3733",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3778",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3771",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3775",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3766",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3741",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3697",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3767",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3758",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3774",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3760",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3757",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3769",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3785",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3718",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3835",
+        "b": "refs/remotes/pr/3696",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3733",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3778",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3771",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3775",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3766",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3741",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3697",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3767",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3758",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3774",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3760",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3757",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3769",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3785",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3718",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3696",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3778",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3771",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3775",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3766",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3741",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3697",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3767",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3758",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3774",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3760",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3757",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3769",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3785",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3718",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3696",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3778",
+        "b": "refs/remotes/pr/3771",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3778",
+        "b": "refs/remotes/pr/3775",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3778",
+        "b": "refs/remotes/pr/3766",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3778",
+        "b": "refs/remotes/pr/3741",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3778",
+        "b": "refs/remotes/pr/3697",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3778",
+        "b": "refs/remotes/pr/3767",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3778",
+        "b": "refs/remotes/pr/3758",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3778",
+        "b": "refs/remotes/pr/3774",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3778",
+        "b": "refs/remotes/pr/3760",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3778",
+        "b": "refs/remotes/pr/3757",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3778",
+        "b": "refs/remotes/pr/3769",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3778",
+        "b": "refs/remotes/pr/3785",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3778",
+        "b": "refs/remotes/pr/3718",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3778",
+        "b": "refs/remotes/pr/3696",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3771",
+        "b": "refs/remotes/pr/3775",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3771",
+        "b": "refs/remotes/pr/3766",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3771",
+        "b": "refs/remotes/pr/3741",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3771",
+        "b": "refs/remotes/pr/3697",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3771",
+        "b": "refs/remotes/pr/3767",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3771",
+        "b": "refs/remotes/pr/3758",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3771",
+        "b": "refs/remotes/pr/3774",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3771",
+        "b": "refs/remotes/pr/3760",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3771",
+        "b": "refs/remotes/pr/3757",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3771",
+        "b": "refs/remotes/pr/3769",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3771",
+        "b": "refs/remotes/pr/3785",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3771",
+        "b": "refs/remotes/pr/3718",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3771",
+        "b": "refs/remotes/pr/3696",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3775",
+        "b": "refs/remotes/pr/3766",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3775",
+        "b": "refs/remotes/pr/3741",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3775",
+        "b": "refs/remotes/pr/3697",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3775",
+        "b": "refs/remotes/pr/3767",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3775",
+        "b": "refs/remotes/pr/3758",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3775",
+        "b": "refs/remotes/pr/3774",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3775",
+        "b": "refs/remotes/pr/3760",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3775",
+        "b": "refs/remotes/pr/3757",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3775",
+        "b": "refs/remotes/pr/3769",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3775",
+        "b": "refs/remotes/pr/3785",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3775",
+        "b": "refs/remotes/pr/3718",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3775",
+        "b": "refs/remotes/pr/3696",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3766",
+        "b": "refs/remotes/pr/3741",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3766",
+        "b": "refs/remotes/pr/3697",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3766",
+        "b": "refs/remotes/pr/3767",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3766",
+        "b": "refs/remotes/pr/3758",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3766",
+        "b": "refs/remotes/pr/3774",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3766",
+        "b": "refs/remotes/pr/3760",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3766",
+        "b": "refs/remotes/pr/3757",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3766",
+        "b": "refs/remotes/pr/3769",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3766",
+        "b": "refs/remotes/pr/3785",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3766",
+        "b": "refs/remotes/pr/3718",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3766",
+        "b": "refs/remotes/pr/3696",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3741",
+        "b": "refs/remotes/pr/3697",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3741",
+        "b": "refs/remotes/pr/3767",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3741",
+        "b": "refs/remotes/pr/3758",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3741",
+        "b": "refs/remotes/pr/3774",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3741",
+        "b": "refs/remotes/pr/3760",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3741",
+        "b": "refs/remotes/pr/3757",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3741",
+        "b": "refs/remotes/pr/3769",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3741",
+        "b": "refs/remotes/pr/3785",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3741",
+        "b": "refs/remotes/pr/3718",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3741",
+        "b": "refs/remotes/pr/3696",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3697",
+        "b": "refs/remotes/pr/3767",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3697",
+        "b": "refs/remotes/pr/3758",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3697",
+        "b": "refs/remotes/pr/3774",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3697",
+        "b": "refs/remotes/pr/3760",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3697",
+        "b": "refs/remotes/pr/3757",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3697",
+        "b": "refs/remotes/pr/3769",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3697",
+        "b": "refs/remotes/pr/3785",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3697",
+        "b": "refs/remotes/pr/3718",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3697",
+        "b": "refs/remotes/pr/3696",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3767",
+        "b": "refs/remotes/pr/3758",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3767",
+        "b": "refs/remotes/pr/3774",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3767",
+        "b": "refs/remotes/pr/3760",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3767",
+        "b": "refs/remotes/pr/3757",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3767",
+        "b": "refs/remotes/pr/3769",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3767",
+        "b": "refs/remotes/pr/3785",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3767",
+        "b": "refs/remotes/pr/3718",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3767",
+        "b": "refs/remotes/pr/3696",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3758",
+        "b": "refs/remotes/pr/3774",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3758",
+        "b": "refs/remotes/pr/3760",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3758",
+        "b": "refs/remotes/pr/3757",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3758",
+        "b": "refs/remotes/pr/3769",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3758",
+        "b": "refs/remotes/pr/3785",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3758",
+        "b": "refs/remotes/pr/3718",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3758",
+        "b": "refs/remotes/pr/3696",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3774",
+        "b": "refs/remotes/pr/3760",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3774",
+        "b": "refs/remotes/pr/3757",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3774",
+        "b": "refs/remotes/pr/3769",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3774",
+        "b": "refs/remotes/pr/3785",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3774",
+        "b": "refs/remotes/pr/3718",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3774",
+        "b": "refs/remotes/pr/3696",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3760",
+        "b": "refs/remotes/pr/3757",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3760",
+        "b": "refs/remotes/pr/3769",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3760",
+        "b": "refs/remotes/pr/3785",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3760",
+        "b": "refs/remotes/pr/3718",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3760",
+        "b": "refs/remotes/pr/3696",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3757",
+        "b": "refs/remotes/pr/3769",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3757",
+        "b": "refs/remotes/pr/3785",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3757",
+        "b": "refs/remotes/pr/3718",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3757",
+        "b": "refs/remotes/pr/3696",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3769",
+        "b": "refs/remotes/pr/3785",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3769",
+        "b": "refs/remotes/pr/3718",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3769",
+        "b": "refs/remotes/pr/3696",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3785",
+        "b": "refs/remotes/pr/3718",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3785",
+        "b": "refs/remotes/pr/3696",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3718",
+        "b": "refs/remotes/pr/3696",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      }
+    ],
+    "summary": {
+      "errors": 7,
+      "warnings": 0
+    },
+    "tool": "crosswire",
+    "version": 1
+  },
+  "repository": "encode/httpx",
+  "returncode": 1,
+  "seconds": 5.171378291999645,
+  "source_sha256": {
+    "src/crosswire/__init__.py": "667d4a15b970b851e20d17510224670c14646cfb6d5a1e388ca6b9cc6da8bf41",
+    "src/crosswire/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/crosswire/cache.py": "6d2cbe2520e225b65a9939dc3e545b746f02baf340555dc6b3e38be99e0a4024",
+    "src/crosswire/cli.py": "6289d90204025845050b5d12f737e71fc73873449013a1674bc101f17f6bae15",
+    "src/crosswire/diffing.py": "edd4630c0325a00137914c6d7c4a0585481c0347f3525b4124d01bb1e72b2b8a",
+    "src/crosswire/engine.py": "d630a450eab4a7e91355984d94e34e623ce696f23a04d0678373d0eb607933be",
+    "src/crosswire/git.py": "bc769a54ba4022ec7c165147dc866521688e8d24e3614af2f85b038bc788db5c",
+    "src/crosswire/model.py": "2d85f86dc4735f4c5714bc49c751c74b4475650febad53e562326ac7f497a44f",
+    "src/crosswire/python_analyzer.py": "1eaf0c5d3d3866d02ea042516aa30b05cd2ce25177aae65e43a93b52213d832a",
+    "src/crosswire/report.py": "e6adc5e050b47cc3e6d3d3c03cd7571f269e7b964d59de9ae2aeb99e1ed1be21",
+    "src/crosswire/rules/__init__.py": "8ebf4507b15cddbd42fafe6a709f0d0f28475e215868089aae7d951cf7590869",
+    "src/crosswire/rules/cw001.py": "fe7f2b602a94c334f2ff593d2ac095e7c49bbfd3b99603d7727d1d904823b59e",
+    "src/crosswire/rules/cw002.py": "a9908ea5a10fef953843cd20ae3956110df1f0e013ba65224eca1af612c6fda1",
+    "src/crosswire/rules/cw003.py": "4b94945a296858a79cf95f507d21f0748644fd3f3f88fc3321018a0bcc23f7b5",
+    "src/crosswire/rules/cw004.py": "5dfb449d8f2fbb48210aa679d356c2c761f7833b5702779027208bddbc750a9f",
+    "src/crosswire/rules/cw005.py": "4a284597f196b256a2f62c5878d7e33c8cf9fe1ab0014719830142315f9893fb"
+  },
+  "stderr": "",
+  "target": "origin/master",
+  "target_sha": "7cff5f79bc78649bbcd3fd9aa7a74c86e0f63016"
+}

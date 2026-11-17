@@ -1,0 +1,69 @@
+name: Crosswire
+branding:
+  icon: git-merge
+  color: blue
+description: Check parallel branches for semantic merge conflicts
+inputs:
+  target:
+    description: Target branch or commit
+    default: main
+  branches:
+    description: Whitespace-separated branch names; empty discovers open pull requests
+    default: ''
+  format:
+    description: Output format (text, json, github, or sarif)
+    default: github
+runs:
+  using: composite
+  steps:
+    - name: Install crosswire
+      shell: bash
+      run: python -m pip install "$GITHUB_ACTION_PATH"
+    - name: Check branches
+      shell: bash
+      env:
+        INPUT_TARGET: ${{ inputs.target }}
+        INPUT_BRANCHES: ${{ inputs.branches }}
+        INPUT_FORMAT: ${{ inputs.format }}
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        set -euo pipefail
+        git fetch --no-tags origin '+refs/heads/*:refs/remotes/origin/*'
+        target="$INPUT_TARGET"
+        if ! git rev-parse --verify --quiet "${target}^{commit}" >/dev/null; then
+          if git rev-parse --verify --quiet "refs/remotes/origin/${target}^{commit}" >/dev/null; then
+            target="refs/remotes/origin/$target"
+          fi
+        fi
+        refs=()
+        if [[ -n "$INPUT_BRANCHES" ]]; then
+          while IFS= read -r ref; do
+            [[ -n "$ref" ]] || continue
+            if ! git rev-parse --verify --quiet "${ref}^{commit}" >/dev/null && git rev-parse --verify --quiet "refs/remotes/origin/${ref}^{commit}" >/dev/null; then
+              ref="refs/remotes/origin/$ref"
+            fi
+            refs+=("$ref")
+          done < <(printf '%s\n' "$INPUT_BRANCHES" | tr '[:space:], ' '\n')
+        else
+          gh pr list --limit 1000 --json number,headRefName --jq '.[].number' > "$RUNNER_TEMP/crosswire-prs"
+          while IFS= read -r number; do
+            [[ -n "$number" ]] || continue
+            ref="refs/crosswire/pr/$number"
+            git fetch --no-tags origin "+refs/pull/$number/head:$ref"
+            refs+=("$ref")
+          done < "$RUNNER_TEMP/crosswire-prs"
+        fi
+        unique=()
+        declare -A seen=()
+        for ref in "${refs[@]}"; do
+          sha=$(git rev-parse --verify "${ref}^{commit}")
+          if [[ -z "${seen[$sha]+x}" ]]; then
+            seen[$sha]=1
+            unique+=("$ref")
+          fi
+        done
+        if (( ${#unique[@]} < 2 )); then
+          echo 'Fewer than two distinct branches; skipping.'
+          exit 0
+        fi
+        crosswire check --target "$target" --format "$INPUT_FORMAT" "${unique[@]}"

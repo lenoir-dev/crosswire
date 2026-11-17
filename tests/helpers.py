@@ -116,18 +116,35 @@ class RepoBuilder:
 
     def analyze(self, branches=("a", "b"), **kwargs):
         from crosswire.engine import analyze
+        from .golden_support import capture_report, enabled_for_case
 
         with self.unchanged():
-            return analyze(self.path, list(branches), **kwargs)
+            report = analyze(self.path, list(branches), **kwargs)
+        capture_report(report)
+        if enabled_for_case():
+            args = ["--format", "json"]
+            if kwargs.get("base") is not None:
+                args.extend(["--base", kwargs["base"]])
+            if kwargs.get("textual") is False:
+                args.append("--no-textual")
+            for root in kwargs.get("src") or []:
+                args.extend(["--src", root])
+            self.check(*args, branches=branches)
+        return report
 
     def cli(self, *args: str, cwd: Path | None = None):
         env = dict(self.env)
-        env["PYTHONPATH"] = str(PROJECT_ROOT / "src") + os.pathsep + env.get("PYTHONPATH", "")
+        source = os.environ.get("CROSSWIRE_GOLDEN_SOURCE", str(PROJECT_ROOT / "src"))
+        env["PYTHONPATH"] = source + os.pathsep + env.get("PYTHONPATH", "")
         with self.unchanged():
-            return subprocess.run(
+            result = subprocess.run(
                 [sys.executable, "-m", "crosswire", *args],
                 cwd=cwd or self.path.parent, env=env, capture_output=True, text=True,
             )
+        if result.returncode in (0, 1) and args and args[0] == "check":
+            from .golden_support import capture
+            capture("cli", {"returncode": result.returncode, "stdout": result.stdout, "stderr": result.stderr})
+        return result
 
     def check(self, *args: str, branches=("a", "b"), cwd: Path | None = None):
         return self.cli("check", "--repo", str(self.path), *args, *branches, cwd=cwd)

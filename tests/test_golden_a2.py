@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 
 from .golden_t12 import coalesce_case
+from .golden_v04 import project_case
 
 
 GOLDEN = Path(__file__).parent / "golden"
@@ -69,7 +70,8 @@ def test_a2_preserves_all_non_cw005_v01_outputs_exactly():
     updated = json.loads((GOLDEN / "v01.json").read_text())["cases"]
     assert updated.keys() == original.keys()
     for key, value in original.items():
+        projected = project_case(key, updated[key])
         if "CW005" not in json.dumps(value):
-            assert updated[key] == coalesce_case(key, value), f"Change outside A2/T12: {key}"
+            assert projected == coalesce_case(key, value), f"Change outside A2/T12/v0.4 metadata: {key}"
         else:
-            assert updated[key] == coalesce_case(key, canonical_case(key, value, original)), f"Change outside A2/T12: {key}"
+            assert projected == coalesce_case(key, canonical_case(key, value, original)), f"Change outside A2/T12/v0.4 metadata: {key}"

@@ -1,0 +1,20 @@
+[
+  {
+    "accepted_before_development_revision": 6,
+    "phase": "r1",
+    "rejected_or_superseded_positive_attempts": 77,
+    "used_for_final_report": false
+  },
+  {
+    "accepted_before_development_revision": 17,
+    "phase": "r2",
+    "rejected_or_superseded_positive_attempts": 10,
+    "used_for_final_report": false
+  },
+  {
+    "accepted_before_development_revision": 24,
+    "phase": "r3",
+    "rejected_or_superseded_positive_attempts": 8,
+    "used_for_final_report": true
+  }
+]

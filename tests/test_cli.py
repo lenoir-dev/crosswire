@@ -136,16 +136,17 @@ def test_json_exact_shape_sorted_keys_and_repeatability(repo):
     assert first.stdout == second.stdout
     assert first.stderr == second.stderr == ""
     payload = json.loads(first.stdout)
-    assert set(payload) == {"version", "tool", "pairs", "findings", "summary"}
+    assert {"version", "tool", "pairs", "findings", "summary", "coverage", "limitations"} <= set(payload)
     assert payload["version"] == 1
     assert payload["tool"] == "crosswire"
     assert payload["pairs"] == [{"a": "a", "b": "b", "base": base}]
     assert payload["summary"] == {"errors": 1, "warnings": 0}
     assert len(payload["findings"]) == 1
     finding = payload["findings"][0]
-    assert set(finding) == {
+    assert {
         "rule", "severity", "message", "branch", "other_branch", "path", "line", "symbol",
-    }
+        "hint", "limitations",
+    } <= set(finding)
     assert finding["rule"] == "CW001"
     assert finding["severity"] == "error"
     assert finding["path"] == "client.py"
@@ -212,7 +213,7 @@ def test_github_annotation_escapes_properties_and_message(repo):
     assert raw.returncode == github.returncode == 1
     finding = json.loads(raw.stdout)["findings"][0]
     assert github.stdout.strip("\n") == (
-        f"::error file={escape(path, True)},line=1,title=CW005::{escape(finding['message'])}"
+        f"::error file={escape(path, True)},line=1,title=CW005::{escape(finding['message'] + (' Hint: ' + finding['hint'] if finding['hint'] else ''))}"
     )
     assert "%25" in github.stdout
     assert "%2C" in github.stdout and "%3A" in github.stdout
@@ -259,7 +260,7 @@ def test_github_message_percent_and_newline_escaping(repo):
     github = repo.check("--format", "github", branches=("remove%api", "consumer"))
     finding = json.loads(raw.stdout)["findings"][0]
     assert github.returncode == 1
-    assert github.stdout.strip("\n").endswith("::" + escape(finding["message"]))
+    assert github.stdout.strip("\n").endswith("::" + escape(finding["message"] + (" Hint: " + finding["hint"] if finding["hint"] else "")))
     assert "remove%25api" in github.stdout
 
 

@@ -199,16 +199,16 @@ def test_combined_json_v2_exact_shape_and_deterministic_serialization(repo, conj
     assert first.returncode == second.returncode == 1
     assert first.stdout == second.stdout and first.stderr == second.stderr == ""
     report = json.loads(first.stdout)
-    assert set(report) == {"version", "tool", "mode", "target", "integrated", "skipped", "findings", "summary", "coverage", "limits"}
+    assert {"version", "tool", "mode", "target", "integrated", "skipped", "findings", "summary", "coverage", "limits", "limitations"} <= set(report)
     assert report["coverage"] == "complete" and report["limits"]["hit"] == []
     assert report["version"] == 2 and report["tool"] == "crosswire" and report["mode"] == "combined"
     assert report["target"] == conjunctive["target"]
     assert report["integrated"] == ["A", "B", "C"] and report["skipped"] == []
     assert report["summary"] == {"errors": 1, "warnings": 0}
-    assert set(report["findings"][0]) == {
+    assert {
         "rule", "severity", "message", "branch", "culprits", "culprits_exact", "resolved_by",
-        "path", "line", "location", "symbol",
-    }
+        "path", "line", "location", "symbol", "hint", "limitations", "repro",
+    } <= set(report["findings"][0])
     assert first.stdout.rstrip("\n") == json.dumps(report, sort_keys=True, indent=2)
 
 

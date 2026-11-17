@@ -1,0 +1,666 @@
+{
+  "cases": [
+    {
+      "checker_commands": {
+        "A": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_SUPPLEMENT}/pallets--itsdangerous/base64_decode/.crosswire-eval-pyright.json"
+        ],
+        "B": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_SUPPLEMENT}/pallets--itsdangerous/base64_decode/.crosswire-eval-pyright.json"
+        ],
+        "integrated": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_SUPPLEMENT}/pallets--itsdangerous/base64_decode/.crosswire-eval-pyright.json"
+        ],
+        "target": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_SUPPLEMENT}/pallets--itsdangerous/base64_decode/.crosswire-eval-pyright.json"
+        ]
+      },
+      "id": "pallets--itsdangerous-024",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "patch_A_sha256": "663153fdf9459e2c819c36a79d2596e6f6ab0b427c80d76edd873a02184b47cc",
+      "patch_B_sha256": "820ae7c5a8c86fc2a336e8f86a42b180a5f35c70396c018f1ce3f18e810176fb",
+      "selection": "independent seeded 10% audit sample",
+      "upstream_sha": "672971d66a2ef9f85151e53283113f33d642dabd"
+    },
+    {
+      "checker_commands": {
+        "A": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pallets--itsdangerous/attempt-003-unrelated/.crosswire-eval-pyright.json"
+        ],
+        "B": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pallets--itsdangerous/attempt-003-unrelated/.crosswire-eval-pyright.json"
+        ],
+        "integrated": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pallets--itsdangerous/attempt-003-unrelated/.crosswire-eval-pyright.json"
+        ],
+        "target": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pallets--itsdangerous/attempt-003-unrelated/.crosswire-eval-pyright.json"
+        ]
+      },
+      "id": "pallets--itsdangerous-010",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "patch_A_sha256": "cb761434477b34ef75d3601d9982bf81ea25a550cb07dee6ff7d4e95cbdca7e2",
+      "patch_B_sha256": "6c19dbbf90b4ad8e3aac0fb5382849280a9e2e078a44d8330ab8440739ca6cb9",
+      "selection": "independent seeded 10% audit sample",
+      "upstream_sha": "672971d66a2ef9f85151e53283113f33d642dabd"
+    },
+    {
+      "checker_commands": {
+        "A": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/python-trio--sniffio/attempt-001/.crosswire-eval-pyright.json"
+        ],
+        "B": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/python-trio--sniffio/attempt-001/.crosswire-eval-pyright.json"
+        ],
+        "integrated": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/python-trio--sniffio/attempt-001/.crosswire-eval-pyright.json"
+        ],
+        "target": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/python-trio--sniffio/attempt-001/.crosswire-eval-pyright.json"
+        ]
+      },
+      "id": "python-trio--sniffio-000",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "patch_A_sha256": "3d4683290c5a9381886af294f183440dab9d81cf8915da15ac43db39383a9063",
+      "patch_B_sha256": "2990a91311ff74c03773ff6507f234ec98c9de3a493350d2591364bea2f487cf",
+      "selection": "independent seeded 10% audit sample",
+      "upstream_sha": "6996e05d9b9debe32f42f709c8041e744f850478"
+    },
+    {
+      "checker_commands": {
+        "A": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_COMPATIBLE_FINAL}/python-hyper--hyperframe-016/.crosswire-eval-pyright.json"
+        ],
+        "B": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_COMPATIBLE_FINAL}/python-hyper--hyperframe-016/.crosswire-eval-pyright.json"
+        ],
+        "integrated": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_COMPATIBLE_FINAL}/python-hyper--hyperframe-016/.crosswire-eval-pyright.json"
+        ],
+        "target": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_COMPATIBLE_FINAL}/python-hyper--hyperframe-016/.crosswire-eval-pyright.json"
+        ]
+      },
+      "id": "python-hyper--hyperframe-017",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "patch_A_sha256": "191f16870e71b3bb33557b14ba369cd5d3e897c99b1fa86aacaa470afc2f5089",
+      "patch_B_sha256": "b5674547116bb108bd5c718b4332595c02b93d73dd85b5045b9482fc3c963369",
+      "selection": "independent seeded 10% audit sample",
+      "upstream_sha": "632e309bf6d76d6a3cd04e3cbc0b006eddbf7056"
+    },
+    {
+      "checker_commands": {
+        "A": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pallets-eco--blinker/attempt-001-unrelated/.crosswire-eval-pyright.json"
+        ],
+        "B": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pallets-eco--blinker/attempt-001-unrelated/.crosswire-eval-pyright.json"
+        ],
+        "integrated": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pallets-eco--blinker/attempt-001-unrelated/.crosswire-eval-pyright.json"
+        ],
+        "target": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pallets-eco--blinker/attempt-001-unrelated/.crosswire-eval-pyright.json"
+        ]
+      },
+      "id": "pallets-eco--blinker-002",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "patch_A_sha256": "98c8b9719d23bc4f9f8c47705218b66e561e4fc34d9360be3fe00a9c41b6bd6a",
+      "patch_B_sha256": "1c508f6e847f879f73cfcc0954eeb08719f243327e395b1e9ac0752231f98b88",
+      "selection": "independent seeded 10% audit sample",
+      "upstream_sha": "c3364059663df1ddce32799d6b1922af89a345f6"
+    },
+    {
+      "checker_commands": {
+        "A": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_SUPPLEMENT}/python-trio--sniffio/current_async_library/.crosswire-eval-pyright.json"
+        ],
+        "B": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_SUPPLEMENT}/python-trio--sniffio/current_async_library/.crosswire-eval-pyright.json"
+        ],
+        "integrated": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_SUPPLEMENT}/python-trio--sniffio/current_async_library/.crosswire-eval-pyright.json"
+        ],
+        "target": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_SUPPLEMENT}/python-trio--sniffio/current_async_library/.crosswire-eval-pyright.json"
+        ]
+      },
+      "id": "python-trio--sniffio-008",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "patch_A_sha256": "3d4683290c5a9381886af294f183440dab9d81cf8915da15ac43db39383a9063",
+      "patch_B_sha256": "8891b9624c3746e8e292978bae76c490ddc97bc44b69807cea0e5c440aec0579",
+      "selection": "independent seeded 10% audit sample",
+      "upstream_sha": "6996e05d9b9debe32f42f709c8041e744f850478"
+    },
+    {
+      "checker_commands": {
+        "A": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_COMPATIBLE_FINAL}/pallets--itsdangerous-004/.crosswire-eval-pyright.json"
+        ],
+        "B": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_COMPATIBLE_FINAL}/pallets--itsdangerous-004/.crosswire-eval-pyright.json"
+        ],
+        "integrated": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_COMPATIBLE_FINAL}/pallets--itsdangerous-004/.crosswire-eval-pyright.json"
+        ],
+        "target": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_COMPATIBLE_FINAL}/pallets--itsdangerous-004/.crosswire-eval-pyright.json"
+        ]
+      },
+      "id": "pallets--itsdangerous-005",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "patch_A_sha256": "13b79919a02f799b6e84c47657bbe2ecf5333109041141350d1db3d4e542e7c5",
+      "patch_B_sha256": "b0c41cd20643011df05be5b6d86602c0368829ed7a0a8871e7064e746167df45",
+      "selection": "independent seeded 10% audit sample",
+      "upstream_sha": "672971d66a2ef9f85151e53283113f33d642dabd"
+    },
+    {
+      "checker_commands": {
+        "A": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/python-hyper--hyperframe/attempt-006-unrelated/.crosswire-eval-pyright.json"
+        ],
+        "B": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/python-hyper--hyperframe/attempt-006-unrelated/.crosswire-eval-pyright.json"
+        ],
+        "integrated": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/python-hyper--hyperframe/attempt-006-unrelated/.crosswire-eval-pyright.json"
+        ],
+        "target": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/python-hyper--hyperframe/attempt-006-unrelated/.crosswire-eval-pyright.json"
+        ]
+      },
+      "id": "python-hyper--hyperframe-018",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "patch_A_sha256": "f8cb1aac93f5ea910dc77eb6a102b34ee7bacceb8b1381b3433d7f6a74a21e86",
+      "patch_B_sha256": "b5674547116bb108bd5c718b4332595c02b93d73dd85b5045b9482fc3c963369",
+      "selection": "independent seeded 10% audit sample",
+      "upstream_sha": "632e309bf6d76d6a3cd04e3cbc0b006eddbf7056"
+    },
+    {
+      "checker_commands": {
+        "A": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_COMPATIBLE_FINAL}/pallets--itsdangerous-020/.crosswire-eval-pyright.json"
+        ],
+        "B": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_COMPATIBLE_FINAL}/pallets--itsdangerous-020/.crosswire-eval-pyright.json"
+        ],
+        "integrated": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_COMPATIBLE_FINAL}/pallets--itsdangerous-020/.crosswire-eval-pyright.json"
+        ],
+        "target": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_COMPATIBLE_FINAL}/pallets--itsdangerous-020/.crosswire-eval-pyright.json"
+        ]
+      },
+      "id": "pallets--itsdangerous-021",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "patch_A_sha256": "fa482a906f26927e7788c1eeb2a06f986be0e231d95cec0b353d0e883b3e4ee5",
+      "patch_B_sha256": "7ef700e4f5add63b14000f57ce84da5d049ceceabaa9061144e7ed16b03d91c4",
+      "selection": "independent seeded 10% audit sample",
+      "upstream_sha": "672971d66a2ef9f85151e53283113f33d642dabd"
+    },
+    {
+      "checker_commands": {
+        "A": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/python-hyper--hyperframe/attempt-005-coordinated/.crosswire-eval-pyright.json"
+        ],
+        "B": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/python-hyper--hyperframe/attempt-005-coordinated/.crosswire-eval-pyright.json"
+        ],
+        "integrated": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/python-hyper--hyperframe/attempt-005-coordinated/.crosswire-eval-pyright.json"
+        ],
+        "target": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/python-hyper--hyperframe/attempt-005-coordinated/.crosswire-eval-pyright.json"
+        ]
+      },
+      "id": "python-hyper--hyperframe-015",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "patch_A_sha256": "fb177d7293ab01ab710d253a7f0ed818f7fb4f7cb6cc2d57e2fbc6232782ef05",
+      "patch_B_sha256": "8dd446fec8c8713251320f5b828c9e12bf5115b059983b539b5cd0b4f4b0d355",
+      "selection": "independent seeded 10% audit sample",
+      "upstream_sha": "632e309bf6d76d6a3cd04e3cbc0b006eddbf7056"
+    },
+    {
+      "checker_commands": {
+        "A": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/python-hyper--hyperframe/attempt-006/.crosswire-eval-pyright.json"
+        ],
+        "B": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/python-hyper--hyperframe/attempt-006/.crosswire-eval-pyright.json"
+        ],
+        "integrated": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/python-hyper--hyperframe/attempt-006/.crosswire-eval-pyright.json"
+        ],
+        "target": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/python-hyper--hyperframe/attempt-006/.crosswire-eval-pyright.json"
+        ]
+      },
+      "id": "python-hyper--hyperframe-016",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "patch_A_sha256": "9fdf0e32f7a5eab63a763f0cf2615c1140115313548fb15db7eaf9579c84bcfb",
+      "patch_B_sha256": "b5674547116bb108bd5c718b4332595c02b93d73dd85b5045b9482fc3c963369",
+      "selection": "all FPs",
+      "upstream_sha": "632e309bf6d76d6a3cd04e3cbc0b006eddbf7056"
+    },
+    {
+      "checker_commands": {
+        "A": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pallets--itsdangerous/attempt-006/.crosswire-eval-pyright.json"
+        ],
+        "B": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pallets--itsdangerous/attempt-006/.crosswire-eval-pyright.json"
+        ],
+        "integrated": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pallets--itsdangerous/attempt-006/.crosswire-eval-pyright.json"
+        ],
+        "target": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pallets--itsdangerous/attempt-006/.crosswire-eval-pyright.json"
+        ]
+      },
+      "id": "pallets--itsdangerous-020",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "patch_A_sha256": "499c439452b0d22a1f802b25ff3b0e9c8eac650d21a33bfb77465fc17c9ea323",
+      "patch_B_sha256": "7ef700e4f5add63b14000f57ce84da5d049ceceabaa9061144e7ed16b03d91c4",
+      "selection": "all FPs",
+      "upstream_sha": "672971d66a2ef9f85151e53283113f33d642dabd"
+    },
+    {
+      "checker_commands": {
+        "A": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pallets-eco--blinker/attempt-006/.crosswire-eval-pyright.json"
+        ],
+        "B": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pallets-eco--blinker/attempt-006/.crosswire-eval-pyright.json"
+        ],
+        "integrated": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pallets-eco--blinker/attempt-006/.crosswire-eval-pyright.json"
+        ],
+        "target": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pallets-eco--blinker/attempt-006/.crosswire-eval-pyright.json"
+        ]
+      },
+      "id": "pallets-eco--blinker-020",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "patch_A_sha256": "fc881ba40a4e08ab8557973c9854b022cc58f0a7a3542dc93c1c890dad37932c",
+      "patch_B_sha256": "b76a75ed1435d1c795787643d323e3653e3689f9e18b2396eb48fc268d1d696e",
+      "selection": "all FPs",
+      "upstream_sha": "c3364059663df1ddce32799d6b1922af89a345f6"
+    },
+    {
+      "checker_commands": {
+        "A": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pypa--trove-classifiers/attempt-006/.crosswire-eval-pyright.json"
+        ],
+        "B": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pypa--trove-classifiers/attempt-006/.crosswire-eval-pyright.json"
+        ],
+        "integrated": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pypa--trove-classifiers/attempt-006/.crosswire-eval-pyright.json"
+        ],
+        "target": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_V04_DEVELOPMENT_R3}/pypa--trove-classifiers/attempt-006/.crosswire-eval-pyright.json"
+        ]
+      },
+      "id": "pypa--trove-classifiers-008",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "patch_A_sha256": "4303a527852e5b70136131393d263a75e12b9615dd98327831831d9c89f09641",
+      "patch_B_sha256": "84c4bdc91a0f9d33ef4dbb2bbbbe43812747597545dd9caa44fdb73f5f89a3ec",
+      "selection": "all FPs",
+      "upstream_sha": "bc832553ebe6114e7682f09bc59bda6552da37cd"
+    }
+  ],
+  "includes_all_development_FPs": true,
+  "random_sample_size": 10,
+  "seed": 17042026,
+  "status": "prepared for architect audit; not claimed audited by Sol"
+}

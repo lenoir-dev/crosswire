@@ -1,0 +1,15 @@
+{
+  "node": {
+    "version": "v26.13.1",
+    "sha256": "08bfa72a56edb0dc8e04460f79bc5b51bd7948e6d26a4a55370a31d347a0e97b"
+  },
+  "python": {
+    "version": "Python 3.14.8",
+    "sha256": "e401ac7a95cda75dee34a0cfe1e4faf0a6df1a501cf67887f177fb78cd4eb60a"
+  },
+  "pyright": {
+    "version": "pyright 1.1.407",
+    "sha256": "1b15ea8073afa71d3a215bc72267f21a9dad76c24286a9ad8a0d69d3f76b76bf",
+    "npm_tree_sha256": "2e0f74b7a4949f754e57c47fa6e049c1a1e5a57190d77024dde8daab31d03ab3"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "change": "Exclude test functions and coordinate original production consumers in branch A, verified by full oracle; add module moves and positional-only changes within frozen PY-2/PY-4. This is development iteration, not a holdout retest.",
+  "families": [
+    "remove_attribute",
+    "required_keyword",
+    "unknown_keyword",
+    "too_many_positional",
+    "required_posonly",
+    "module_move"
+  ],
+  "generator_sha256": "7642abcc05a477bfcde1c4951742628c6638615b76f352d845cab9a1e7c3e875",
+  "scope": "public development only; private manifest and existing holdout labels unchanged",
+  "seed": 17042026
+}

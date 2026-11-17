@@ -1,0 +1,52 @@
+[
+  {
+    "eligible": true,
+    "path": "${CACHE_CROSSWIRE_V04_DEV_SOURCES}/python-trio--sniffio",
+    "repository": "python-trio/sniffio",
+    "roots": [
+      "sniffio"
+    ],
+    "seconds": 0.547760333000042,
+    "sha": "6996e05d9b9debe32f42f709c8041e744f850478"
+  },
+  {
+    "eligible": true,
+    "path": "${CACHE_CROSSWIRE_V04_DEV_SOURCES}/python-hyper--hyperframe",
+    "repository": "python-hyper/hyperframe",
+    "roots": [
+      "src/hyperframe"
+    ],
+    "seconds": 0.4509968329984986,
+    "sha": "632e309bf6d76d6a3cd04e3cbc0b006eddbf7056"
+  },
+  {
+    "eligible": true,
+    "path": "${CACHE_CROSSWIRE_V04_DEV_SOURCES}/pallets--itsdangerous",
+    "repository": "pallets/itsdangerous",
+    "roots": [
+      "src/itsdangerous"
+    ],
+    "seconds": 0.44110654199903365,
+    "sha": "672971d66a2ef9f85151e53283113f33d642dabd"
+  },
+  {
+    "eligible": true,
+    "path": "${CACHE_CROSSWIRE_V04_DEV_SOURCES}/pallets-eco--blinker",
+    "repository": "pallets-eco/blinker",
+    "roots": [
+      "src/blinker"
+    ],
+    "seconds": 0.35997712499738554,
+    "sha": "c3364059663df1ddce32799d6b1922af89a345f6"
+  },
+  {
+    "eligible": true,
+    "path": "${CACHE_CROSSWIRE_V04_DEV_SOURCES}/pypa--trove-classifiers",
+    "repository": "pypa/trove-classifiers",
+    "roots": [
+      "src/trove_classifiers"
+    ],
+    "seconds": 0.3504492920001212,
+    "sha": "bc832553ebe6114e7682f09bc59bda6552da37cd"
+  }
+]

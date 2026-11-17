@@ -1,0 +1,656 @@
+{
+  "rows": [
+    {
+      "actual": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "evidence": {
+        "A": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "B": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "integrated": {
+          "diagnostics": [
+            {
+              "file": "${CACHE_CROSSWIRE_V04_PUBLIC_AUDIT_7CTHIJFX}/integrated/crosswire_eval_use.py",
+              "message": "\"base64_decode\" is not a known attribute of module \"itsdangerous\"",
+              "range": {
+                "end": {
+                  "character": 24,
+                  "line": 4
+                },
+                "start": {
+                  "character": 11,
+                  "line": 4
+                }
+              },
+              "rule": "reportAttributeAccessIssue",
+              "severity": "error"
+            }
+          ],
+          "reason": null,
+          "status": "fail"
+        },
+        "target": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        }
+      },
+      "expected": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "id": "pallets--itsdangerous-024",
+      "statuses_match": true
+    },
+    {
+      "actual": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "evidence": {
+        "A": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "B": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "integrated": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "target": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        }
+      },
+      "expected": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "id": "pallets--itsdangerous-010",
+      "statuses_match": true
+    },
+    {
+      "actual": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "evidence": {
+        "A": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "B": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "integrated": {
+          "diagnostics": [
+            {
+              "file": "${CACHE_CROSSWIRE_V04_PUBLIC_AUDIT_WB_FOT27}/integrated/crosswire_eval_use.py",
+              "message": "\"current_async_library\" is not a known attribute of module \"sniffio._impl\"",
+              "range": {
+                "end": {
+                  "character": 32,
+                  "line": 4
+                },
+                "start": {
+                  "character": 11,
+                  "line": 4
+                }
+              },
+              "rule": "reportAttributeAccessIssue",
+              "severity": "error"
+            }
+          ],
+          "reason": null,
+          "status": "fail"
+        },
+        "target": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        }
+      },
+      "expected": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "id": "python-trio--sniffio-000",
+      "statuses_match": true
+    },
+    {
+      "actual": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "evidence": {
+        "A": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "B": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "integrated": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "target": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        }
+      },
+      "expected": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "id": "python-hyper--hyperframe-017",
+      "statuses_match": true
+    },
+    {
+      "actual": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "evidence": {
+        "A": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "B": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "integrated": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "target": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        }
+      },
+      "expected": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "id": "pallets-eco--blinker-002",
+      "statuses_match": true
+    },
+    {
+      "actual": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "evidence": {
+        "A": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "B": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "integrated": {
+          "diagnostics": [
+            {
+              "file": "${CACHE_CROSSWIRE_V04_PUBLIC_AUDIT_B34M9LGO}/integrated/crosswire_eval_use.py",
+              "message": "\"current_async_library\" is not a known attribute of module \"sniffio\"",
+              "range": {
+                "end": {
+                  "character": 32,
+                  "line": 4
+                },
+                "start": {
+                  "character": 11,
+                  "line": 4
+                }
+              },
+              "rule": "reportAttributeAccessIssue",
+              "severity": "error"
+            }
+          ],
+          "reason": null,
+          "status": "fail"
+        },
+        "target": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        }
+      },
+      "expected": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "id": "python-trio--sniffio-008",
+      "statuses_match": true
+    },
+    {
+      "actual": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "evidence": {
+        "A": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "B": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "integrated": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "target": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        }
+      },
+      "expected": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "id": "pallets--itsdangerous-005",
+      "statuses_match": true
+    },
+    {
+      "actual": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "evidence": {
+        "A": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "B": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "integrated": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "target": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        }
+      },
+      "expected": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "id": "python-hyper--hyperframe-018",
+      "statuses_match": true
+    },
+    {
+      "actual": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "evidence": {
+        "A": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "B": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "integrated": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "target": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        }
+      },
+      "expected": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "id": "pallets--itsdangerous-021",
+      "statuses_match": true
+    },
+    {
+      "actual": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "evidence": {
+        "A": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "B": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "integrated": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "target": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        }
+      },
+      "expected": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "id": "python-hyper--hyperframe-015",
+      "statuses_match": true
+    },
+    {
+      "actual": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "evidence": {
+        "A": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "B": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "integrated": {
+          "diagnostics": [
+            {
+              "file": "${CACHE_CROSSWIRE_V04_PUBLIC_AUDIT_GN7R0WHW}/integrated/crosswire_eval_use.py",
+              "message": "Import \"hyperframe.frame\" could not be resolved",
+              "range": {
+                "end": {
+                  "character": 23,
+                  "line": 1
+                },
+                "start": {
+                  "character": 7,
+                  "line": 1
+                }
+              },
+              "rule": "reportMissingImports",
+              "severity": "error"
+            }
+          ],
+          "reason": null,
+          "status": "fail"
+        },
+        "target": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        }
+      },
+      "expected": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "id": "python-hyper--hyperframe-016",
+      "statuses_match": true
+    },
+    {
+      "actual": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "evidence": {
+        "A": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "B": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "integrated": {
+          "diagnostics": [
+            {
+              "file": "${CACHE_CROSSWIRE_V04_PUBLIC_AUDIT_4GNE0_78}/integrated/crosswire_eval_use.py",
+              "message": "Import \"itsdangerous.signer\" could not be resolved",
+              "range": {
+                "end": {
+                  "character": 26,
+                  "line": 1
+                },
+                "start": {
+                  "character": 7,
+                  "line": 1
+                }
+              },
+              "rule": "reportMissingImports",
+              "severity": "error"
+            }
+          ],
+          "reason": null,
+          "status": "fail"
+        },
+        "target": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        }
+      },
+      "expected": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "id": "pallets--itsdangerous-020",
+      "statuses_match": true
+    },
+    {
+      "actual": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "evidence": {
+        "A": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "B": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "integrated": {
+          "diagnostics": [
+            {
+              "file": "${CACHE_CROSSWIRE_V04_PUBLIC_AUDIT_UASCEKW7}/integrated/crosswire_eval_use.py",
+              "message": "Import \"blinker._utilities\" could not be resolved",
+              "range": {
+                "end": {
+                  "character": 25,
+                  "line": 1
+                },
+                "start": {
+                  "character": 7,
+                  "line": 1
+                }
+              },
+              "rule": "reportMissingImports",
+              "severity": "error"
+            }
+          ],
+          "reason": null,
+          "status": "fail"
+        },
+        "target": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        }
+      },
+      "expected": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "id": "pallets-eco--blinker-020",
+      "statuses_match": true
+    },
+    {
+      "actual": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "evidence": {
+        "A": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "B": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        },
+        "integrated": {
+          "diagnostics": [
+            {
+              "file": "${CACHE_CROSSWIRE_V04_PUBLIC_AUDIT_4CRZNBBP}/integrated/crosswire_eval_use.py",
+              "message": "Import \"trove_classifiers.__main__\" could not be resolved",
+              "range": {
+                "end": {
+                  "character": 33,
+                  "line": 1
+                },
+                "start": {
+                  "character": 7,
+                  "line": 1
+                }
+              },
+              "rule": "reportMissingImports",
+              "severity": "error"
+            }
+          ],
+          "reason": null,
+          "status": "fail"
+        },
+        "target": {
+          "diagnostics": [],
+          "reason": null,
+          "status": "pass"
+        }
+      },
+      "expected": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "id": "pypa--trove-classifiers-008",
+      "statuses_match": true
+    }
+  ],
+  "status": "Sol reproducibility check; independent architect audit still required"
+}

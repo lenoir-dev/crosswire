@@ -1,0 +1,633 @@
+{
+  "repositories": [
+    {
+      "command": [
+        "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+        "-m",
+        "crosswire",
+        "check",
+        "--repo",
+        "${CACHE_CROSSWIRE_FIELD_HTTPX}",
+        "--target",
+        "origin/master",
+        "--format",
+        "json",
+        "refs/remotes/eval-pr/3841",
+        "refs/remotes/eval-pr/3838",
+        "refs/remotes/eval-pr/3837",
+        "refs/remotes/eval-pr/3835",
+        "refs/remotes/eval-pr/3785",
+        "refs/remotes/eval-pr/3778",
+        "refs/remotes/eval-pr/3776",
+        "refs/remotes/eval-pr/3775"
+      ],
+      "heads": {
+        "refs/remotes/eval-pr/3775": "8a959d830e8631f84401aeb5fd2e0ffa9bbfe3d7",
+        "refs/remotes/eval-pr/3776": "70c704071724bead53f1bf002cdcb0f2b8f6aea9",
+        "refs/remotes/eval-pr/3778": "09fc81a33c51f090002e340173f231d403c11ac5",
+        "refs/remotes/eval-pr/3785": "54857a13dfd2d868fc52a54b0eaa4a97487f97d2",
+        "refs/remotes/eval-pr/3835": "8fda64fbd023ab60b1b7d208c0d833023243b312",
+        "refs/remotes/eval-pr/3837": "440dd004c98d8717c397645f8270dd3d1fc08976",
+        "refs/remotes/eval-pr/3838": "76c401cd8d8dd3358113151942569058d88b5a87",
+        "refs/remotes/eval-pr/3841": "5ed1225de5cf1fa6624c3b72f7cd177ae41aacce"
+      },
+      "pairs": 28,
+      "potential_noise_per_100_pairs": 0.0,
+      "prs": [
+        {
+          "headRefOid": "5ed1225de5cf1fa6624c3b72f7cd177ae41aacce",
+          "number": 3841,
+          "title": "Add support for Python 3.15"
+        },
+        {
+          "headRefOid": "76c401cd8d8dd3358113151942569058d88b5a87",
+          "number": 3838,
+          "title": "Fix dead documentation links"
+        },
+        {
+          "headRefOid": "440dd004c98d8717c397645f8270dd3d1fc08976",
+          "number": 3837,
+          "title": "Fix tests for chardet 6.0 and pytest 9.1"
+        },
+        {
+          "headRefOid": "8fda64fbd023ab60b1b7d208c0d833023243b312",
+          "number": 3835,
+          "title": "Prevent tests from hanging indefinitely"
+        },
+        {
+          "headRefOid": "54857a13dfd2d868fc52a54b0eaa4a97487f97d2",
+          "number": 3785,
+          "title": "Bump cryptography from 45.0.7 to 46.0.6"
+        },
+        {
+          "headRefOid": "09fc81a33c51f090002e340173f231d403c11ac5",
+          "number": 3778,
+          "title": "Refactor `map_httpcore_exceptions` to not be a context manager"
+        },
+        {
+          "headRefOid": "70c704071724bead53f1bf002cdcb0f2b8f6aea9",
+          "number": 3776,
+          "title": "Quiesce warnings from `grep` in sync-version"
+        },
+        {
+          "headRefOid": "8a959d830e8631f84401aeb5fd2e0ffa9bbfe3d7",
+          "number": 3775,
+          "title": "Do not hang forever if test server fails to start"
+        }
+      ],
+      "readonly_verified": true,
+      "report": {
+        "findings": [
+          {
+            "branch": "refs/remotes/eval-pr/3835",
+            "line": 1,
+            "message": "textual conflict with refs/remotes/eval-pr/3775",
+            "other_branch": "refs/remotes/eval-pr/3775",
+            "path": "tests/conftest.py",
+            "rule": "CW005",
+            "severity": "error",
+            "symbol": null
+          }
+        ],
+        "pairs": [
+          {
+            "a": "refs/remotes/eval-pr/3841",
+            "b": "refs/remotes/eval-pr/3838",
+            "base": "7cff5f79bc78649bbcd3fd9aa7a74c86e0f63016"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3841",
+            "b": "refs/remotes/eval-pr/3837",
+            "base": "7cff5f79bc78649bbcd3fd9aa7a74c86e0f63016"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3841",
+            "b": "refs/remotes/eval-pr/3835",
+            "base": "08cf535b34a242829883baab36ea7af08a35e2a8"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3841",
+            "b": "refs/remotes/eval-pr/3785",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3841",
+            "b": "refs/remotes/eval-pr/3778",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3841",
+            "b": "refs/remotes/eval-pr/3776",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3841",
+            "b": "refs/remotes/eval-pr/3775",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3838",
+            "b": "refs/remotes/eval-pr/3837",
+            "base": "7cff5f79bc78649bbcd3fd9aa7a74c86e0f63016"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3838",
+            "b": "refs/remotes/eval-pr/3835",
+            "base": "08cf535b34a242829883baab36ea7af08a35e2a8"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3838",
+            "b": "refs/remotes/eval-pr/3785",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3838",
+            "b": "refs/remotes/eval-pr/3778",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3838",
+            "b": "refs/remotes/eval-pr/3776",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3838",
+            "b": "refs/remotes/eval-pr/3775",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3837",
+            "b": "refs/remotes/eval-pr/3835",
+            "base": "08cf535b34a242829883baab36ea7af08a35e2a8"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3837",
+            "b": "refs/remotes/eval-pr/3785",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3837",
+            "b": "refs/remotes/eval-pr/3778",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3837",
+            "b": "refs/remotes/eval-pr/3776",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3837",
+            "b": "refs/remotes/eval-pr/3775",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3835",
+            "b": "refs/remotes/eval-pr/3785",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3835",
+            "b": "refs/remotes/eval-pr/3778",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3835",
+            "b": "refs/remotes/eval-pr/3776",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3835",
+            "b": "refs/remotes/eval-pr/3775",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3785",
+            "b": "refs/remotes/eval-pr/3778",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3785",
+            "b": "refs/remotes/eval-pr/3776",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3785",
+            "b": "refs/remotes/eval-pr/3775",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3778",
+            "b": "refs/remotes/eval-pr/3776",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3778",
+            "b": "refs/remotes/eval-pr/3775",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          },
+          {
+            "a": "refs/remotes/eval-pr/3776",
+            "b": "refs/remotes/eval-pr/3775",
+            "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+          }
+        ],
+        "summary": {
+          "errors": 1,
+          "warnings": 0
+        },
+        "tool": "crosswire",
+        "version": 1
+      },
+      "repository": "encode/httpx",
+      "seconds": 0.9278712080013065,
+      "semantic_predictions": 0,
+      "target": "7cff5f79bc78649bbcd3fd9aa7a74c86e0f63016",
+      "unlabelled": []
+    },
+    {
+      "command": [
+        "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+        "-m",
+        "crosswire",
+        "check",
+        "--repo",
+        "${CACHE_CROSSWIRE_V03_DJANGO}",
+        "--target",
+        "origin/main",
+        "--format",
+        "json",
+        "refs/remotes/eval-pr/22300",
+        "refs/remotes/eval-pr/22297",
+        "refs/remotes/eval-pr/22296",
+        "refs/remotes/eval-pr/22295",
+        "refs/remotes/eval-pr/22294",
+        "refs/remotes/eval-pr/22292",
+        "refs/remotes/eval-pr/22291",
+        "refs/remotes/eval-pr/22289"
+      ],
+      "heads": {
+        "refs/remotes/eval-pr/22289": "0fd6ce3ef09d7b294ded32f67393838dece4be48",
+        "refs/remotes/eval-pr/22291": "afa2d7f4f3609b2f455a05e04b8be8c1626973f9",
+        "refs/remotes/eval-pr/22292": "0a302af6c5d0d4733f2bd640997ff4778f72c1ca",
+        "refs/remotes/eval-pr/22294": "068854ea6872ce36105166026660c3521b585d5f",
+        "refs/remotes/eval-pr/22295": "c07de8e8000dc50da7c0780e6f0a730407768c17",
+        "refs/remotes/eval-pr/22296": "efd0c54eeedf8daecfe677d6a692aa4fbce7b138",
+        "refs/remotes/eval-pr/22297": "c400a159b20fd8dfcde8e502f778bcb6269f780a",
+        "refs/remotes/eval-pr/22300": "c2c1b02454cb679f4ba4e8b9587f8fe25c2df502"
+      },
+      "pairs": 28,
+      "potential_noise_per_100_pairs": 0.0,
+      "prs": [
+        {
+          "headRefOid": "c2c1b02454cb679f4ba4e8b9587f8fe25c2df502",
+          "number": 22300,
+          "title": "Fixed #33682 -- Added example of matching order_by() and distinct() on a relation."
+        },
+        {
+          "headRefOid": "c400a159b20fd8dfcde8e502f778bcb6269f780a",
+          "number": 22297,
+          "title": "Refs #33689 -- Documented admin color variables and theme overrides."
+        },
+        {
+          "headRefOid": "efd0c54eeedf8daecfe677d6a692aa4fbce7b138",
+          "number": 22296,
+          "title": "Fixed #37505 -- Fixed crash when combining querysets with Meta.ordering referencing related fields."
+        },
+        {
+          "headRefOid": "c07de8e8000dc50da7c0780e6f0a730407768c17",
+          "number": 22295,
+          "title": "Fixed #35418 -- Avoid class-cell conflict in LazyObject."
+        },
+        {
+          "headRefOid": "068854ea6872ce36105166026660c3521b585d5f",
+          "number": 22294,
+          "title": "Fixed #37499 -- Clarified QuerySet.contains() error for unset primary keys"
+        },
+        {
+          "headRefOid": "0a302af6c5d0d4733f2bd640997ff4778f72c1ca",
+          "number": 22292,
+          "title": "Fixed #37413 -- Required multipart delimiters to start a line."
+        },
+        {
+          "headRefOid": "afa2d7f4f3609b2f455a05e04b8be8c1626973f9",
+          "number": 22291,
+          "title": "Fixed #37490 -- Documented standalone ORM with Django"
+        },
+        {
+          "headRefOid": "0fd6ce3ef09d7b294ded32f67393838dece4be48",
+          "number": 22289,
+          "title": "Fixed #37417 -- Prevented OverflowError in date-based generic views a\u2026"
+        }
+      ],
+      "readonly_verified": true,
+      "report": {
+        "findings": [
+          {
+            "branch": "refs/remotes/eval-pr/22297",
+            "line": 1,
+            "message": "textual conflict with refs/remotes/eval-pr/22296",
+            "other_branch": "refs/remotes/eval-pr/22296",
+            "path": "docs/releases/6.1.4.txt",
+            "rule": "CW005",
+            "severity": "error",
+            "symbol": null
+          },
+          {
+            "branch": "refs/remotes/eval-pr/22300",
+            "line": 1,
+            "message": "textual conflict with refs/remotes/eval-pr/22296",
+            "other_branch": "refs/remotes/eval-pr/22296",
+            "path": "docs/releases/6.1.4.txt",
+            "rule": "CW005",
+            "severity": "error",
+            "symbol": null
+          },
+          {
+            "branch": "refs/remotes/eval-pr/22300",
+            "line": 1,
+            "message": "textual conflict with refs/remotes/eval-pr/22292",
+            "other_branch": "refs/remotes/eval-pr/22292",
+            "path": "docs/releases/6.2.txt",
+            "rule": "CW005",
+            "severity": "error",
+            "symbol": null
+          }
+        ],
+        "pairs": [
+          {
+            "a": "refs/remotes/eval-pr/22300",
+            "b": "refs/remotes/eval-pr/22297",
+            "base": "d3954c981368eb4439be63f2f165d400f33bcd70"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22300",
+            "b": "refs/remotes/eval-pr/22296",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22300",
+            "b": "refs/remotes/eval-pr/22295",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22300",
+            "b": "refs/remotes/eval-pr/22294",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22300",
+            "b": "refs/remotes/eval-pr/22292",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22300",
+            "b": "refs/remotes/eval-pr/22291",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22300",
+            "b": "refs/remotes/eval-pr/22289",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22297",
+            "b": "refs/remotes/eval-pr/22296",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22297",
+            "b": "refs/remotes/eval-pr/22295",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22297",
+            "b": "refs/remotes/eval-pr/22294",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22297",
+            "b": "refs/remotes/eval-pr/22292",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22297",
+            "b": "refs/remotes/eval-pr/22291",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22297",
+            "b": "refs/remotes/eval-pr/22289",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22296",
+            "b": "refs/remotes/eval-pr/22295",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22296",
+            "b": "refs/remotes/eval-pr/22294",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22296",
+            "b": "refs/remotes/eval-pr/22292",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22296",
+            "b": "refs/remotes/eval-pr/22291",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22296",
+            "b": "refs/remotes/eval-pr/22289",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22295",
+            "b": "refs/remotes/eval-pr/22294",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22295",
+            "b": "refs/remotes/eval-pr/22292",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22295",
+            "b": "refs/remotes/eval-pr/22291",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22295",
+            "b": "refs/remotes/eval-pr/22289",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22294",
+            "b": "refs/remotes/eval-pr/22292",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22294",
+            "b": "refs/remotes/eval-pr/22291",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22294",
+            "b": "refs/remotes/eval-pr/22289",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22292",
+            "b": "refs/remotes/eval-pr/22291",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22292",
+            "b": "refs/remotes/eval-pr/22289",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          },
+          {
+            "a": "refs/remotes/eval-pr/22291",
+            "b": "refs/remotes/eval-pr/22289",
+            "base": "f24f38c6b2825f15628c07bf2892f1664eed9361"
+          }
+        ],
+        "summary": {
+          "errors": 3,
+          "warnings": 0
+        },
+        "tool": "crosswire",
+        "version": 1
+      },
+      "repository": "django/django",
+      "seconds": 1.2596190830008709,
+      "semantic_predictions": 0,
+      "target": "102c3c327d4974a58883b47a68f8d85da0be3648",
+      "unlabelled": []
+    },
+    {
+      "command": [
+        "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+        "-m",
+        "crosswire",
+        "check",
+        "--repo",
+        "${CACHE_CROSSWIRE_V03_FLASK}",
+        "--target",
+        "origin/main",
+        "--format",
+        "json",
+        "refs/remotes/eval-pr/5918",
+        "refs/remotes/eval-pr/5665",
+        "refs/remotes/eval-pr/5660"
+      ],
+      "heads": {
+        "refs/remotes/eval-pr/5660": "028160e49f9d07f0244bcb149f74fd1946950941",
+        "refs/remotes/eval-pr/5665": "eb8cfa9bf80902fa39379155df5843d58969b67e",
+        "refs/remotes/eval-pr/5918": "a82e942870b6472bb40017349cca772c242eb1ad"
+      },
+      "pairs": 3,
+      "potential_noise_per_100_pairs": 0.0,
+      "prs": [
+        {
+          "headRefOid": "a82e942870b6472bb40017349cca772c242eb1ad",
+          "number": 5918,
+          "title": "automatic options as separate route"
+        },
+        {
+          "headRefOid": "eb8cfa9bf80902fa39379155df5843d58969b67e",
+          "number": 5665,
+          "title": "Workflow"
+        },
+        {
+          "headRefOid": "028160e49f9d07f0244bcb149f74fd1946950941",
+          "number": 5660,
+          "title": "Move parts of the session code to sansio"
+        }
+      ],
+      "readonly_verified": true,
+      "report": {
+        "findings": [
+          {
+            "branch": "refs/remotes/eval-pr/5918",
+            "line": 1,
+            "message": "textual conflict with refs/remotes/eval-pr/5665",
+            "other_branch": "refs/remotes/eval-pr/5665",
+            "path": ".github/workflows/tests.yaml",
+            "rule": "CW005",
+            "severity": "error",
+            "symbol": null
+          },
+          {
+            "branch": "refs/remotes/eval-pr/5918",
+            "line": 1,
+            "message": "textual conflict with refs/remotes/eval-pr/5660",
+            "other_branch": "refs/remotes/eval-pr/5660",
+            "path": "src/flask/sessions.py",
+            "rule": "CW005",
+            "severity": "error",
+            "symbol": null
+          }
+        ],
+        "pairs": [
+          {
+            "a": "refs/remotes/eval-pr/5918",
+            "b": "refs/remotes/eval-pr/5665",
+            "base": "f61172b8dd3f962d33f25c50b2f5405e90ceffa5"
+          },
+          {
+            "a": "refs/remotes/eval-pr/5918",
+            "b": "refs/remotes/eval-pr/5660",
+            "base": "6b054f8f3876ff4c31580b014d344c4cf491059d"
+          },
+          {
+            "a": "refs/remotes/eval-pr/5665",
+            "b": "refs/remotes/eval-pr/5660",
+            "base": "6b054f8f3876ff4c31580b014d344c4cf491059d"
+          }
+        ],
+        "summary": {
+          "errors": 2,
+          "warnings": 0
+        },
+        "tool": "crosswire",
+        "version": 1
+      },
+      "repository": "pallets/flask",
+      "seconds": 0.4716450829982932,
+      "semantic_predictions": 0,
+      "target": "49943b5a94413a530761350f04e896f76e8d620e",
+      "unlabelled": []
+    }
+  ],
+  "source_sha256": {
+    "src/crosswire/__init__.py": "af8c4016284e7fbd96f530fe969322ea7b564932933f64a5cca3f5cad92345b2",
+    "src/crosswire/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/crosswire/cache.py": "e2153abeda862df972fe65c209ec48ac419c1dcdce798775276b8926f2d40a50",
+    "src/crosswire/cli.py": "decad3e097d41c553e28043b00175615373e910ace1e46168e58ea7cfe5bb617",
+    "src/crosswire/combined.py": "46dce2b4b5950ee84f7671fd34fbc551115a28128bccfac74072ef835485884a",
+    "src/crosswire/combined_report.py": "cade8c37c7392894bb9c20eedc7b6c62d2ee8eb089bff507a10f6cfb6d8fe769",
+    "src/crosswire/diffing.py": "edd4630c0325a00137914c6d7c4a0585481c0347f3525b4124d01bb1e72b2b8a",
+    "src/crosswire/engine.py": "cccc0449e5b9193bd46adbe1da54df25e8ab456566288caec05fc2565e1899e7",
+    "src/crosswire/findings.py": "8479dbd27c5b88cce5a012f76008fdb66765ce068dabd3c7ba6b949b88625c43",
+    "src/crosswire/git.py": "bd9d1527220a711a631c58cd388a016fcebde8f7c0fa1ca636a475b1c547b254",
+    "src/crosswire/integrate.py": "48720c2aea09d4d33ca8b8f8a2bf9c3e652ce0ed4eed09464b3ae1a2c28e628c",
+    "src/crosswire/model.py": "2d85f86dc4735f4c5714bc49c751c74b4475650febad53e562326ac7f497a44f",
+    "src/crosswire/plan_report.py": "afd73711a51553e4ee38354192cffafc94774eaf4c26d76cf63efaa563d5327b",
+    "src/crosswire/planner.py": "902093265f1430dfc07a9f5ba84850f3aae5162ddd0602121d94cbcce6685ae2",
+    "src/crosswire/python_analyzer.py": "02437e97ecd741574411bb0185e542f4bfa4d93e3f6a4ef382af547dc8ec7ebe",
+    "src/crosswire/report.py": "e6adc5e050b47cc3e6d3d3c03cd7571f269e7b964d59de9ae2aeb99e1ed1be21",
+    "src/crosswire/rules/__init__.py": "8ebf4507b15cddbd42fafe6a709f0d0f28475e215868089aae7d951cf7590869",
+    "src/crosswire/rules/cw001.py": "fe7f2b602a94c334f2ff593d2ac095e7c49bbfd3b99603d7727d1d904823b59e",
+    "src/crosswire/rules/cw002.py": "a9908ea5a10fef953843cd20ae3956110df1f0e013ba65224eca1af612c6fda1",
+    "src/crosswire/rules/cw003.py": "4b94945a296858a79cf95f507d21f0748644fd3f3f88fc3321018a0bcc23f7b5",
+    "src/crosswire/rules/cw004.py": "5dfb449d8f2fbb48210aa679d356c2c761f7833b5702779027208bddbc750a9f",
+    "src/crosswire/rules/cw005.py": "4ce73561e819233770b21d6cfb86054ce6f20ef1dfeabd2587ecc8f4c733b04f",
+    "src/crosswire/state.py": "bb46d08d18d4ad1353ef07ca07c1c059aee2a7b3ff2912684b0908487955be6a"
+  },
+  "source_stable": true,
+  "stratum": "live PRs, never holdout"
+}

@@ -1,0 +1,90 @@
+{
+  "version": 2,
+  "frozen_before_labels": true,
+  "python": "3.14",
+  "pyright": "1.1.407",
+  "jsonschema": "4.25.1",
+  "seed": 17042026,
+  "bootstrap_seed": 9042026,
+  "bootstrap_replicates": 2000,
+  "split": "R2: old holdout retired exposed; v2 >=4 previously unexposed repositories; no v0.4 measurement",
+  "development_mutations": [
+    "remove_attribute",
+    "rename_attribute",
+    "required_positional",
+    "required_keyword",
+    "unknown_keyword",
+    "too_many_positional",
+    "required_posonly",
+    "module_move",
+    "remove_reexport",
+    "from_import",
+    "class_remove",
+    "init_required",
+    "conjunctive"
+  ],
+  "controls_per_positive": 3,
+  "reserved_families": "Private generator variants; identities, parameters, reserved historical windows and case membership stay private",
+  "supported_types": [
+    "PY-1",
+    "PY-2",
+    "PY-3",
+    "PY-4",
+    "PY-5"
+  ],
+  "unmeasured_types": [
+    "PY-6",
+    "CW003"
+  ],
+  "oracle": {
+    "typeCheckingMode": "basic",
+    "pythonVersion": "3.14",
+    "pythonPlatform": "Darwin",
+    "reportMissingImports": "error",
+    "reportAttributeAccessIssue": "error",
+    "reportCallIssue": "error"
+  },
+  "prevalence": "Constructed mutation mix and live PR noise reported separately",
+  "attribution": "oracle fails with predicted minimal set and passes each proper single-removal subset; otherwise unlabelled",
+  "matching": "M1+M2: emitted rule/symbol derives prediction type; PY-2 module+file; all attributable diagnostics; detector failure=FN",
+  "amendment": "PLAN v0.4 R2 / matching M2",
+  "amended_at": "2026-11-17T18:22:40.553165+00:00",
+  "hard_negatives": [
+    "optional_parameter",
+    "star_export",
+    "dynamic_export",
+    "package_ification",
+    "submodule_reexport",
+    "same_name_other_module"
+  ],
+  "oracle_scope": "production roots plus all test/tests directories; identical configuration at all states",
+  "holdout_measurement": "forbidden in v0.4; v0.5 checkpoint requires separate authorization",
+  "generator_revisions": {
+    "r1-r3": {
+      "status": "historical, superseded; original generator hashes unavailable; do not claim R2 eligibility"
+    },
+    "r4": {
+      "eval/corpus.py": "80b6c13f73cf8d00aedf7f7c9cb34c3c61715e3f9706b3ea083c1bd5c5cd9dfa",
+      "eval/families.py": "bc90e09e502da912d1732906bbe2bdb9032bce17714b5089528670f79a3898b4",
+      "oracle_snapshot": "generation before additional root-level test discovery; scope parity checked before sealing"
+    },
+    "r5": {
+      "timestamp": "2026-11-17T18:26:07.928130+00:00",
+      "reason": "oracle-only control eligibility: preserve imported name when coordinating reexports; avoid textual overlap for three-branch controls",
+      "sha256": "b5fb58409e6ca839f1126c0c5354376a4d7d9e81645b598f0476f678acd6a68b",
+      "oracle_sha256": "595704c2cfa5bf895a58eb0d9ac729216ac6b6c938f73ba3e1ccf7628a5fea0e",
+      "scope_note": "all discovered test directories and root-level test modules; matching fingerprints are cross-interpreter stable",
+      "corpus_sha256": "4109360132c7209dc84f7d9c1f2e4eb7f06d1b842ee200627a7d4ca645f55d75",
+      "patch_serialization": "preserve Git diff final newline; replay verified on public 3-branch case"
+    },
+    "r6": {
+      "timestamp": "2026-11-17T18:52:22.794606+00:00",
+      "sha256": "27e2d3fc502b67ca4013249a997172057aa2962c42e6127dc5e6ab8771973c6a",
+      "reason": "Pre-commit construct-validity audit: baseline must contain the init reexport and the unrelated same-name declaration before A removes them; oracle-only, no detector measurement"
+    }
+  },
+  "dependency_hashes": "docs/validation/v04-oracle-requirements.lock",
+  "toolchain_artifacts": "eval/toolchain.json",
+  "cluster_gate": "not estimable below 5 eligible repositories; stricter of Wilson and clustered lower95 otherwise",
+  "supplemental_stratum": "upstream API oracle scaffolds; not upstream declaration mutations or natural incidents"
+}

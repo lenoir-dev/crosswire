@@ -1,0 +1,22 @@
+{
+  "revision": "R2; published only after v2 seal",
+  "candidate_identities": "private",
+  "screening": {
+    "offline-screening": {
+      "screened": 21,
+      "oracle_green": 0
+    },
+    "connector-screening": {
+      "screened": 12,
+      "oracle_green": 4
+    }
+  },
+  "new_sealed_repositories": 4,
+  "new_sealed_positives_by_rule": {
+    "CW001": 20,
+    "CW002": 20,
+    "CW006": 20
+  },
+  "controls": 180,
+  "status": "sealed, not measured; no holdout measurement in v0.4"
+}

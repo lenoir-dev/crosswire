@@ -314,7 +314,9 @@ def test_sarif_shape_matches_json_findings_and_is_deterministic(repo, scenario):
         location = result["locations"][0]["physicalLocation"]
         assert location["artifactLocation"]["uri"] == finding["path"]
         assert location["region"]["startLine"] == finding["line"]
-        assert result["properties"] == {key: finding[key] for key in ("branch", "other_branch", "symbol")}
+        assert {key: result["properties"][key] for key in ("branch", "other_branch", "symbol")} == {key: finding[key] for key in ("branch", "other_branch", "symbol")}
+        assert result["properties"]["hint"] == finding["hint"]
+        assert result["properties"]["limitations"] == finding["limitations"]
 
 
 def test_sarif_empty_results_and_warning_level(repo):

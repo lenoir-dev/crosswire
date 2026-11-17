@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 
 from .golden_t12 import coalesce_case
+from .golden_v04 import project_case
 
 
 def test_t12_only_actually_merged_golden_cases_change():
@@ -15,9 +16,9 @@ def test_t12_only_actually_merged_golden_cases_change():
     changed = []
     for key, before in original.items():
         expected = coalesce_case(key, before)
-        assert current[key] == expected, f"Unapproved golden change outside T12: {key}"
+        assert project_case(key, current[key]) == expected, f"Unapproved golden change outside T12/additive metadata: {key}"
         if expected != before:
             changed.append(key)
         else:
-            assert current[key] == before
+            assert project_case(key, current[key]) == before
     assert len(changed) == 9

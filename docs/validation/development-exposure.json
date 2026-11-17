@@ -1,14 +1,38 @@
 {
+  "holdout_cases_disclosed": false,
   "policy": "Repositories with implementation-visible evaluation cases stay development data and must not become repository-level holdout sources.",
   "repositories": [
     {
-      "repository": "encode/httpx",
-      "reason": "Public v0.2 PR snapshots, findings and triage were shared with implementation."
+      "reason": "Public v0.2 PR snapshots, findings and triage were shared with implementation.",
+      "repository": "encode/httpx"
     },
     {
-      "repository": "django/django",
-      "reason": "Public v0.3 exploratory PR selection and checker results are implementation-visible development data."
+      "reason": "Public v0.3 exploratory PR selection and checker results are implementation-visible development data.",
+      "repository": "django/django"
+    },
+    {
+      "reason": "Public v0.4 development examples or live PR screening; must never be used as repository-level holdout source.",
+      "repository": "python-trio/sniffio"
+    },
+    {
+      "reason": "Public v0.4 development examples or live PR screening; must never be used as repository-level holdout source.",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "reason": "Public v0.4 development examples or live PR screening; must never be used as repository-level holdout source.",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "reason": "Public v0.4 development examples or live PR screening; must never be used as repository-level holdout source.",
+      "repository": "pallets-eco/blinker"
+    },
+    {
+      "reason": "Public v0.4 development examples or live PR screening; must never be used as repository-level holdout source.",
+      "repository": "pypa/trove-classifiers"
+    },
+    {
+      "reason": "Public v0.4 development examples or live PR screening; must never be used as repository-level holdout source.",
+      "repository": "pallets/flask"
     }
-  ],
-  "holdout_cases_disclosed": false
+  ]
 }

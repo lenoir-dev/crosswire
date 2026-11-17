@@ -34,6 +34,8 @@ def enabled_for_case():
 def capture(kind, payload):
     if not enabled_for_case():
         return
+    # Snapshot storage is JSON; tuples introduced by frozen dataclasses become arrays.
+    payload = json.loads(json.dumps(payload))
     counter = (case_name(), kind)
     index = COUNTS.get(counter, 0)
     COUNTS[counter] = index + 1

@@ -1,0 +1,48 @@
+{
+  "phase": "pre-freeze; final jobs still gated",
+  "source_sha256": {
+    "src/crosswire/planner.py": "28ea5af812e942edf2e338fdb230b000a35f31fbc42d7fa0c2d1b253e71eb896",
+    "src/crosswire/findings.py": "8479dbd27c5b88cce5a012f76008fdb66765ce068dabd3c7ba6b949b88625c43",
+    "src/crosswire/git.py": "faaee699548d839fe274384f8ad145a0a2a510ff68d3beedc7b27da4885afc3a",
+    "src/crosswire/parsing.py": "8ab2b4ff92b1552024d41d98e498eeb967b757338d85ad6c4f52ced28361cf6b",
+    "src/crosswire/diagnostics.py": "3c227505304618645de8ffbb854c70a13bc9ec5aee14247a6a438b73d5dcab8c",
+    "src/crosswire/cache.py": "006639115ca74e48bc7f797762d3c4e11caa8f5121349577dab6ca5548fc1f27",
+    "src/crosswire/__init__.py": "e364931a8afff672985ee99f795e6d8b20ff33c55d71d757ec211ec6689b3c19",
+    "src/crosswire/coverage.py": "2055f09665d217c7167791e826a0fd094f5e6b1aba7338b9ad39b309c7e41abf",
+    "src/crosswire/integrate.py": "48720c2aea09d4d33ca8b8f8a2bf9c3e652ce0ed4eed09464b3ae1a2c28e628c",
+    "src/crosswire/model.py": "f4926180aa277a03b87d7b4640bb0c1882c646c234dbb5bb54b242a376db4b1b",
+    "src/crosswire/engine.py": "23e7c8f77e60fb58179956bd207df09203afd99d256ed6acc30f26be4260714e",
+    "src/crosswire/cli.py": "818bb3cfcf6df531d6d1ad6274bbb1a5317f6ebdd552a41039448c3ebef17403",
+    "src/crosswire/plan_report.py": "db1c83c1ee97bc93966b6b495d60dcad9f0aceddb0e633b975337b66394a6aa4",
+    "src/crosswire/combined_report.py": "deead0d4ded878cb7458d71438bb28c3dc9aaad96289aeeabaf67ddb2d84d56d",
+    "src/crosswire/python_analyzer.py": "ddb9a7121cd58fd06da93991b3770d38f00ae6f9fa627ecf98477708591ac227",
+    "src/crosswire/diffing.py": "edd4630c0325a00137914c6d7c4a0585481c0347f3525b4124d01bb1e72b2b8a",
+    "src/crosswire/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/crosswire/report.py": "2397a210bde3f47b74704560f145275957157e964992113ccf54046c8894f54f",
+    "src/crosswire/combined.py": "645e8efb016483d4c8b69c49188d21e977810aa1fcfd2f8a9fd704f8d9910210",
+    "src/crosswire/state.py": "202ee820942fc7e85e0c18f48de20fff2c7232e1616ec58f7b5db1ddfd816c7a",
+    "src/crosswire/schemas/report-v2.schema.json": "0c4d0477da8d18feccd0409d59b8693f7633379d26969bb1cef524cbb0770d03",
+    "src/crosswire/schemas/report-v1.schema.json": "897488f3c330a7ebff13d629b9c5c8c7880a3e80ab0edf86278ee9c6ecc96b6a",
+    "src/crosswire/schemas/plan-v2.schema.json": "211af24ef4aa0043d9c7af68d3254b1015a0e4c81e1cd25349d9db3163b929fb",
+    "src/crosswire/rules/cw001.py": "fe7f2b602a94c334f2ff593d2ac095e7c49bbfd3b99603d7727d1d904823b59e",
+    "src/crosswire/rules/cw005.py": "4ce73561e819233770b21d6cfb86054ce6f20ef1dfeabd2587ecc8f4c733b04f",
+    "src/crosswire/rules/cw004.py": "5a7f84e4f0948e34eb55842e1b7201ea07c5d6321f66d85b49649829bf833628",
+    "src/crosswire/rules/__init__.py": "8ebf4507b15cddbd42fafe6a709f0d0f28475e215868089aae7d951cf7590869",
+    "src/crosswire/rules/cw003.py": "4b94945a296858a79cf95f507d21f0748644fd3f3f88fc3321018a0bcc23f7b5",
+    "src/crosswire/rules/cw002.py": "7c29a1195b8a13b9c12831eae409630be2e8bba2ac0a9463c142c1bba2c1bea0"
+  },
+  "checks": [
+    {
+      "command": "uv run --group eval pytest -q tests/test_eval.py tests/test_eval_r2.py tests/test_vega_v03.py tests/test_v04.py tests/test_golden_v04.py",
+      "result": "112 passed in 45.45s"
+    },
+    {
+      "command": "python -m eval.run_holdout --verify-only",
+      "result": "r6 seal verified; no detector measurement"
+    },
+    {
+      "command": "python -m eval.replay r2-public-0040 --source-cache LOCAL_UPSTREAM --destination NEW_DIRECTORY",
+      "result": "offline pinned-upstream baseline plus A/B/C patch replay passed"
+    }
+  ]
+}

@@ -1,0 +1,470 @@
+[
+  {
+    "base": "95190ad58001f2ce3327ecd600380887b63dd8a7",
+    "label": "control",
+    "merge": "6996e05d9b9debe32f42f709c8041e744f850478",
+    "oracles": {
+      "integrated": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_R__MH887}/integrated/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "parent1": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_R__MH887}/parent1/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "parent2": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_R__MH887}/parent2/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "target": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_R__MH887}/target/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      }
+    },
+    "parents": [
+      "95190ad58001f2ce3327ecd600380887b63dd8a7",
+      "a8c1af2e6f34a98ea4bb39c4835e78090d329846"
+    ],
+    "repository": "python-trio/sniffio",
+    "textually_clean": true
+  },
+  {
+    "base": "8cdc281592bacffd96dc5abd53a19e122149c16c",
+    "label": "control",
+    "merge": "a1cc1692f5be32645f65ebeb33e6a138180359e0",
+    "oracles": {
+      "integrated": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_2LOF2JO0}/integrated/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "parent1": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_2LOF2JO0}/parent1/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "parent2": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_2LOF2JO0}/parent2/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "target": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_2LOF2JO0}/target/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      }
+    },
+    "parents": [
+      "8cdc281592bacffd96dc5abd53a19e122149c16c",
+      "b94149a63dd9c9937762cb8780741f14404e215c"
+    ],
+    "repository": "python-trio/sniffio",
+    "textually_clean": true
+  },
+  {
+    "base": "b78f7eb63259c1af395cd0c994adadf8daf5539f",
+    "label": "control",
+    "merge": "49e21299ad7dcdaa4f0ebdb4657fc63e6917f1d5",
+    "oracles": {
+      "integrated": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_ZNASOBXI}/integrated/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "parent1": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_ZNASOBXI}/parent1/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "parent2": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_ZNASOBXI}/parent2/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "target": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_ZNASOBXI}/target/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      }
+    },
+    "parents": [
+      "b78f7eb63259c1af395cd0c994adadf8daf5539f",
+      "435f94d4d45c93f9ac7b306dc666965c75bc746f"
+    ],
+    "repository": "python-hyper/hyperframe",
+    "textually_clean": true
+  },
+  {
+    "base": "e5dde4e75c443d285103029cc9056e61db8d906c",
+    "label": "control",
+    "merge": "b78f7eb63259c1af395cd0c994adadf8daf5539f",
+    "oracles": {
+      "integrated": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_F9U1GFOB}/integrated/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "parent1": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_F9U1GFOB}/parent1/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "parent2": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_F9U1GFOB}/parent2/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "target": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_F9U1GFOB}/target/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      }
+    },
+    "parents": [
+      "e5dde4e75c443d285103029cc9056e61db8d906c",
+      "ae87d4712b9af19cd2184765f3d938305eb07f48"
+    ],
+    "repository": "python-hyper/hyperframe",
+    "textually_clean": true
+  },
+  {
+    "base": "c15f434e2fe0c8fc1d6fe8f0df0ea384c8b335ac",
+    "label": "unlabelled",
+    "merge": "3ddb1ce418712d02f674a171b3f13ab20f6839a7",
+    "oracles": {},
+    "parents": [
+      "060bb1cb68dfd90375be57d6ebec79a0a7b4de6d",
+      "11e882bb4a74d571bed0e3f6b4e004eeb2daa970"
+    ],
+    "reason": "textual conflict",
+    "repository": "pallets/itsdangerous",
+    "textually_clean": false
+  },
+  {
+    "base": "7f4dcf83a07bb3d53f4e0e65ef1b43327b4cca90",
+    "label": "control",
+    "merge": "060bb1cb68dfd90375be57d6ebec79a0a7b4de6d",
+    "oracles": {
+      "integrated": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_GBX1N27A}/integrated/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "parent1": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_GBX1N27A}/parent1/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "parent2": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_GBX1N27A}/parent2/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "target": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_GBX1N27A}/target/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      }
+    },
+    "parents": [
+      "2f69e841d2a979c616a55b226e444694f5d9c962",
+      "096c8d42545d3b68ea21a4f890fb2b2d8979c0bd"
+    ],
+    "repository": "pallets/itsdangerous",
+    "textually_clean": true
+  },
+  {
+    "base": "dcce3e97743494433025e0b68f742f3582b6ba6a",
+    "label": "control",
+    "merge": "16e4bd70a19353d9d7cf47e4df7de54936296377",
+    "oracles": {
+      "integrated": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_6RESZHF6}/integrated/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "parent1": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_6RESZHF6}/parent1/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "parent2": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_6RESZHF6}/parent2/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "target": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_6RESZHF6}/target/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      }
+    },
+    "parents": [
+      "dcce3e97743494433025e0b68f742f3582b6ba6a",
+      "42561fdf065032f5c39aea04d8c3fb4db93f73f3"
+    ],
+    "repository": "pallets-eco/blinker",
+    "textually_clean": true
+  },
+  {
+    "base": "82305185358d8ce21619ec0f324688a14a89c23b",
+    "label": "control",
+    "merge": "dcce3e97743494433025e0b68f742f3582b6ba6a",
+    "oracles": {
+      "integrated": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_QK8NG62X}/integrated/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "parent1": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_QK8NG62X}/parent1/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "parent2": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_QK8NG62X}/parent2/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      },
+      "target": {
+        "command": [
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/pyright",
+          "--outputjson",
+          "--pythonpath",
+          "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+          "--project",
+          "${CACHE_CROSSWIRE_MINED_QK8NG62X}/target/.crosswire-eval-pyright.json"
+        ],
+        "diagnostics": [],
+        "reason": null,
+        "status": "pass"
+      }
+    },
+    "parents": [
+      "82305185358d8ce21619ec0f324688a14a89c23b",
+      "efa95eaa080b0d4a8dcfc46ad1f387ea1ddebd97"
+    ],
+    "repository": "pallets-eco/blinker",
+    "textually_clean": true
+  }
+]

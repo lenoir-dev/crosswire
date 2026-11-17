@@ -49,3 +49,13 @@ APPROVED for the v0.4 pilot with the following additions (they apply before any 
    counted and listed as a diagnostic-quality metric.
 4. Every prediction or diagnostic excluded as *unlabelled* is listed with its reason; the share
    of unlabelled cases is published next to each metric.
+
+## Amendment M2 (Polaris, after Vega's audit E4-05/06/09/13)
+
+1. The supported type and rule bucket of a prediction are derived from the detector's own rule and symbol
+   (CW001 → PY-1/PY-2/PY-3 by what was resolved, CW002 → PY-4, CW006 → PY-5), never copied from the case.
+2. PY-2 (module removed or moved) matches on (missing module, use-site file); no symbol is required.
+3. A detector crash or timeout on a positive case counts as a false negative and is also reported as a
+   separate error count; it never shrinks the recall denominator.
+4. All attributable oracle diagnostics of a positive are considered when matching, not only the first one;
+   CW002 reason-category agreement is computed over the best-matching diagnostic.

@@ -85,3 +85,33 @@ Architect decisions where the review asked for one:
 - **V3-12:** `BranchSummary.migrations` keeps only Django/Alembic paths; cache schema version bump.
 - **V3-13:** folded into T16: `limitations` counts `unresolved` references by reason (third-party, open-module,
   cycle/depth, parse failure); `coverage: partial` when any supported-flow reference was unresolved.
+
+## Amendment R2 — decisions on Vega's eval audit (`docs/reviews/v0.4-eval-vega.md`)
+
+Taken before any holdout number exists. All 14 findings are accepted.
+
+1. **The current holdout is retired as exposed (E4-01).** Its two repositories are recoverable from public
+   files. It is never measured. The screening candidate list moves into the private directory; public files
+   carry only aggregate screening counts *after* the next seal.
+2. **v0.4 does not run the holdout (E4-03/E4-08).** A 6-positive, 2-repository holdout cannot decide any gate
+   and would be burnt for good. The v0.4 pilot report publishes **development-split** metrics, clearly
+   labelled "development data, optimistic, not a gate", plus live-PR noise rates. A new holdout is sealed in
+   v0.4 for later use: ≥ 4 repositories, ≥ 20 positives per measured rule where possible, hard negatives
+   (look-alike but compatible changes: optional params, re-export moves, star/`__getattr__` modules,
+   package-ification, same name in another module) and a 3-branch family that exercises CW006. Its first
+   measurement is the v0.5 checkpoint, after Altair's R1 fixes are frozen.
+3. **Matching amendment M2 (E4-05/06/09/13), recorded in `docs/validation/matching.md`:** the supported type of a
+   prediction comes from the detector's rule and symbol, not from the case; PY-2 (module move) matches on
+   (module, use-site file) without a symbol; a detector crash or timeout on a positive is a **false negative**
+   and also counted separately as an error; all oracle diagnostics of a positive are considered, not only the first.
+4. **Integrity (E4-04/E4-10/E4-12/E4-14):** the new seal covers the case manifest, case repositories and refs,
+   eval code, policy and matching rules (one hash list); `holdout.sha256`, `eval/policy.json` and the eval-code hash
+   are committed by the architect before `src` is frozen; `run_holdout.py` asserts all hashes before running; the
+   aggregate guard checks keys and values and suppresses cells with n < 5; node, pyright and Python deps are pinned
+   with hashes; no absolute `/tmp` paths in committed configs.
+5. **Oracle scope (E4-07):** screening requires the target to be green with test directories included; predictions in
+   files outside the oracle scope are reported as a share, never silently dropped.
+6. **E4-02 is a documented limitation:** all agents run as one OS user, so holdout isolation is procedural
+   (instructions + Vega's audit), not technical. The v0.4 report states this.
+7. **E4-11:** gates use the stricter of Wilson and repository-clustered bounds once ≥ 5 repositories are involved;
+   below that the clustered interval is reported as "not estimable".

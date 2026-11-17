@@ -68,3 +68,4 @@ audit by Claude models, so systematic blind spots are less likely to be shared.
 - 2026-11-17: names adopted (owner's suggestion): Polaris (architect), Altair (implementer),
   Deneb (tests/measurement), Vega (review/audit).
 - 2026-11-17: the owner joins the charter as Regulus.
+- 2026-11-17: Regulus awarded every team member a virtual pastry for day one (v0.1 → v0.4 in progress). 🍰

@@ -1,6 +1,6 @@
 # crosswire v0.4 — plan: trustworthy numbers (Python pilot) and diagnostics
 
-Status: DRAFT (architect). Becomes frozen after v0.3b is accepted and Terra/Sol have reviewed it.
+Status: APPROVED (architect, after v0.3.1). Review notes from Terra and Sol are folded in as amendments; contracts above are binding.
 User value: a user can read *measured* precision/recall for Python, see why every finding happened,
 how to fix it and how to reproduce it in isolation.
 

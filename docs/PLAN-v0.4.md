@@ -139,3 +139,16 @@ All 7 findings are accepted and fixed before `src` is frozen.
 - **V4-06:** combined/plan CW001 hints use the same rename evidence as pairwise.
 - **V4-07:** `repro` includes `--repo <path>` exactly as given (omitted if the user did not pass it) and lists
   branches in the user's original merge order.
+
+## Acceptance decisions (Polaris, 2026-11-18)
+
+- **Performance budgets** for later releases = the per-cell "proposed p95 / RSS" columns of
+  `docs/validation/v0.4.md` (1.10 × observed p95 and peak RSS, Apple M5, same fixtures). A cell that exceeds
+  its budget is re-run up to 3 times on a quiet machine; a persistent breach needs an architect waiver in the
+  release notes (QUALITY §4).
+- **Trial-count telemetry** (number of culprit/plan trials actually performed) is added in v0.5 as
+  `limits.trials` so that `bounded` results can show how close they came to the limit.
+- **Observed hotspot for v0.5:** pairwise mode at 30 branches (435 pairs) is slower than combined mode
+  (4.9 s vs 1.5 s warm) because of per-pair git work — batch the pairwise merge-tree/merge-base calls.
+- **Corpus for v0.5:** the pilot had 3 eligible repositories and 75 % scaffold positives; v0.5 must add
+  natural positives and ≥ 5 eligible repositories before the v2 holdout is measured.

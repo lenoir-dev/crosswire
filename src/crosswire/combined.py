@@ -1,6 +1,5 @@
 """Analyze the integrated state of an ordered set of branches."""
 
-import ast
 import itertools
 from dataclasses import dataclass
 from collections import Counter
@@ -10,7 +9,7 @@ from .cache import SummaryCache
 from .engine import PairContext, _Analysis
 from .findings import consolidate
 from .integrate import integrate
-from .python_analyzer import extract_references, module_name_for_path
+from .python_analyzer import cached_references, module_name_for_path, valid_syntax
 from .rules import cw001, cw002, cw003, cw004
 from .state import StateIndex
 
@@ -51,9 +50,7 @@ def _broken(ref, tip, final, final_index):
         for path in final.files:
             source = git.read_file(final_index.repo, final_index.commit, path)
             if source is not None:
-                try:
-                    ast.parse(source, filename=path)
-                except SyntaxError:
+                if not valid_syntax(source):
                     return None
         # A module that existed at the reference's tip and was removed is in-repo.
         if any(git.read_file(final_index.repo, final_index.commit, p) is None for p in tip.files):
@@ -78,7 +75,7 @@ def _location(repo, commit, ref, roots):
     if module is None:
         return None
     try:
-        found = extract_references(source, module, ref.path,
+        found = cached_references(source, module, ref.path,
                                    ref.path.endswith('/__init__.py') or ref.path == '__init__.py')
     except SyntaxError:
         return None
@@ -232,14 +229,14 @@ def analyze_combined(repo, branches, target, src=None, cache=True, min_branches=
         module = module_name_for_path(path, roots)
         if module is None or git.read_file(repo, target_sha, path) is None:
             continue
-        old = analysis.parse(target_sha, path, module, roots)
-        new = analysis.parse(merged.commit, path, module, roots)
+        old = analysis.references(target_sha, path, module)
+        new = analysis.references(merged.commit, path, module)
         if old is None or new is None:
             continue
         def ref_key(ref):
             return ref.path, ref.module, ref.name, ref.call
-        remaining = Counter(ref_key(ref) for ref in old[1])
-        for ref in sorted(new[1], key=lambda item: item.line):
+        remaining = Counter(ref_key(ref) for ref in old)
+        for ref in sorted(new, key=lambda item: item.line):
             key = ref_key(ref)
             if not remaining[key]:
                 continue

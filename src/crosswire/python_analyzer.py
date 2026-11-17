@@ -1,5 +1,6 @@
 import ast
 from pathlib import PurePosixPath
+from functools import lru_cache
 from dataclasses import replace
 from .model import CallShape, Param, Reference, Symbol
 
@@ -82,9 +83,10 @@ def _import_names(node):
     return []
 
 
-def extract_symbols(source, module, path):
+def extract_symbols(source, module, path, *, tree=None):
     """Extract symbols."""
-    tree = ast.parse(source, filename=path)
+    if tree is None:
+        tree = ast.parse(source, filename=path)
     out = {}
     counts = {}
 
@@ -280,3 +282,29 @@ def extract_references(source, module, path, is_package):
                     result.append(Reference(path, node.lineno, *t, None))
     Visitor().visit(tree)
     return result
+
+
+@lru_cache(maxsize=8192)
+def _reference_data(source, module, path, is_package):
+    try:
+        return tuple(extract_references(source, module, path, is_package))
+    except SyntaxError:
+        return None
+
+
+def cached_references(source, module, path, is_package):
+    """Extract references once per source content and resolution context."""
+    result = _reference_data(source, module, path, is_package)
+    if result is None:
+        raise SyntaxError('cannot parse source')
+    return result
+
+
+@lru_cache(maxsize=8192)
+def valid_syntax(source):
+    """Return whether a source blob can be parsed."""
+    try:
+        ast.parse(source)
+        return True
+    except SyntaxError:
+        return False

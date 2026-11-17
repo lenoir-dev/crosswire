@@ -1,6 +1,9 @@
 """Conservative symbol resolution against a Git commit."""
 
 import ast
+import hashlib
+import threading
+from collections import OrderedDict
 from dataclasses import dataclass
 from pathlib import PurePosixPath
 from typing import Literal
@@ -21,6 +24,63 @@ class Resolution:
     files: tuple[str, ...]
 
 
+_data_cache = OrderedDict()
+_data_lock = threading.RLock()
+
+
+def _module_data(source, module, path):
+    """Share compact bindings by content hash and module resolution context."""
+    key = (hashlib.sha256(source.encode('utf-8')).digest(), module, path)
+    with _data_lock:
+        if key in _data_cache:
+            _data_cache.move_to_end(key)
+            return _data_cache[key]
+        result = _build_module_data(source, module, path)
+        _data_cache[key] = result
+        if len(_data_cache) > 8192:
+            _data_cache.popitem(last=False)
+        return result
+
+
+def _build_module_data(source, module, path):
+    """Build compact bindings and symbols for one blob."""
+    try:
+        tree = ast.parse(source, filename=path)
+        symbols = extract_symbols(source, module, path, tree=tree)
+    except SyntaxError:
+        return None
+    bindings = {}
+    def binding(name):
+        return bindings.setdefault(name, ([], []))
+    for node in _module_statements(tree.body):
+        if isinstance(node, ast.Import):
+            for name in _import_names(node):
+                binding(name)[0].append(None)
+        elif isinstance(node, ast.ImportFrom):
+            for alias in node.names:
+                if alias.name == '*':
+                    continue
+                name = alias.asname or alias.name
+                if node.level:
+                    package = module.split('.') if path.endswith('/__init__.py') or path == '__init__.py' else module.split('.')[:-1]
+                    if node.level > len(package):
+                        binding(name)[1].append(None)
+                        continue
+                    prefix = package[:len(package)-node.level+1]
+                    target = '.'.join(prefix + ([node.module] if node.module else []))
+                else:
+                    target = node.module or ''
+                binding(name)[1].append((target, alias.name) if target else None)
+        elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+            binding(node.name)[0].append(symbols.get(node.name))
+        elif isinstance(node, (ast.Assign, ast.AnnAssign)):
+            targets = node.targets if isinstance(node, ast.Assign) else [node.target]
+            names = {n.id for target in targets for n in ast.walk(target) if isinstance(n, ast.Name)}
+            for name in names:
+                binding(name)[0].append(None)
+    return symbols, bindings
+
+
 class StateIndex:
     """Resolve Python module bindings in a single commit."""
 
@@ -29,6 +89,7 @@ class StateIndex:
         self.commit = commit
         self.roots = tuple(roots)
         self._modules = {}
+        self._resolutions = {}
 
     def _module(self, module):
         if module in self._modules:
@@ -48,7 +109,10 @@ class StateIndex:
 
     def resolve(self, module: str, name: str) -> Resolution:
         """Resolve one binding, returning unknown for unresolvable external modules."""
-        return self._resolve(module, name, frozenset(), 0)
+        key = (module, name)
+        if key not in self._resolutions:
+            self._resolutions[key] = self._resolve(module, name, frozenset(), 0)
+        return self._resolutions[key]
 
     def _resolve(self, module, name, seen, depth):
         key = (module, name)
@@ -58,39 +122,13 @@ class StateIndex:
         if item is None:
             return Resolution('unknown', None, ())
         path, source = item
-        try:
-            tree = ast.parse(source, filename=path)
-            symbols = extract_symbols(source, module, path)
-        except SyntaxError:
+        data = _module_data(source, module, path)
+        if data is None:
             return Resolution('unknown', None, (path,))
+        symbols, bindings = data
         if name not in symbols:
             return Resolution('broken', None, (path,))
-        concrete = []
-        imports = []
-        for node in _module_statements(tree.body):
-            if isinstance(node, (ast.Import, ast.ImportFrom)) and name in _import_names(node):
-                if isinstance(node, ast.Import):
-                    concrete.append(None)
-                else:
-                    for alias in node.names:
-                        if alias.name == '*' or (alias.asname or alias.name) != name:
-                            continue
-                        if node.level:
-                            package = module.split('.') if path.endswith('/__init__.py') or path == '__init__.py' else module.split('.')[:-1]
-                            if node.level > len(package):
-                                imports.append(None)
-                                continue
-                            prefix = package[:len(package)-node.level+1]
-                            target = '.'.join(prefix + ([node.module] if node.module else []))
-                        else:
-                            target = node.module or ''
-                        imports.append((target, alias.name) if target else None)
-            elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)) and node.name == name:
-                concrete.append(symbols.get(name))
-            elif isinstance(node, (ast.Assign, ast.AnnAssign)):
-                targets = node.targets if isinstance(node, ast.Assign) else [node.target]
-                if any(isinstance(n, ast.Name) and n.id == name for t in targets for n in ast.walk(t)):
-                    concrete.append(None)
+        concrete, imports = bindings.get(name, ((), ()))
         if concrete:
             symbol = concrete[-1]
             if symbol is not None and (symbol.kind not in ('function', 'class') or symbol.params is None):

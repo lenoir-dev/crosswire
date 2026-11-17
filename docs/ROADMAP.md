@@ -10,7 +10,7 @@ solid analysis of ≥ 5 branches; measured quality per `docs/QUALITY.md`).
 | v0.1 | Pairwise detector, rules CW001–CW005 | ✅ accepted (`562deeb`, 187 tests) |
 | v0.2 | Harden pairwise: per-branch summaries, `--target`, cache, SARIF, GitHub Action | ✅ accepted (`75ff9d9`, 218 tests; 20 httpx PRs: 7 TP / 0 FP, all textual) |
 | v0.3a | N-way: virtual integration, `check --combined`, CW006 with minimal culprit sets | ✅ accepted (`ed3c095`, 257 tests) |
-| v0.3b | Safe merge order for many Python branches: `plan`, target refs, precision fixes, batched git I/O | ✅ accepted (288 tests; warm 30-branch run 4.5 s → 0.64 s). Known issue: `--combined` on Django-size repos > 180 s → v0.3.1 |
+| v0.3b | Safe merge order for many Python branches: `plan`, target refs, precision fixes, batched git I/O | ✅ accepted (288 tests; warm 30-branch run 4.5 s → 0.64 s). v0.3.1: Django 5 heads cold `--combined` > 180 s → 8.5 s |
 | v0.4 | Trustworthy numbers: evaluation harness, labelled Python corpus + holdout, perf baseline 5/10/30, remediation hints, JSON Schema, quickstart | planned |
 | v0.5 | Second language with the same guarantees: `LanguageAdapter` core refactor + Go | planned |
 | v0.6 | TypeScript / JavaScript adapter | planned |

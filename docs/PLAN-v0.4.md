@@ -36,3 +36,19 @@ precision is below the gate, v0.5 starts with fixing root causes, not with Go.
 
 All tests green on 3.11/3.14; schemas validate every golden; pilot report delivered with honest
 numbers (no gate is required to pass in the pilot — the pilot exists to find out); budgets recorded.
+
+## Inputs from the v0.3 acceptance (architect, 17:30)
+
+1. **Oracle eligibility first.** Django's target fails pinned pyright with 28,353 errors, so it is
+   ineligible as a labelled-corpus repository. S12 must screen candidates by "target passes the
+   pinned oracle configuration" *before* building scenarios; prefer typed, pyright-clean
+   projects (e.g. httpx, rich, attrs, pydantic-core's Python layer, black, mypy-typed libraries).
+   Untyped giants (Django) remain valuable for **performance and live-PR FP screening** only.
+2. **Live PRs produce almost no semantic findings** (httpx + Django: 0 non-CW005 predictions over
+   25+ refactoring heads). This is expected for a conservative tool and confirms that precision
+   must come from the mutation stratum; live-PR runs measure noise (FP rate per 100 PR pairs).
+3. **T20 plan-reason precision:** a step must not cite "placed before X" when X is blocked
+   against the target itself (conflict with `T`, independent of order). Reasons cite a deferred
+   branch only if placing the step actually changes that branch's outcome.
+4. **Performance reference** for S14 budgets: Django 2,943 .py files, 5 heads, cold `--no-cache`:
+   combined 8.5 s, plan 8.7 s (v0.3.1, M5).

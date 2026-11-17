@@ -7,7 +7,7 @@ from . import git
 from .cache import SummaryCache
 from .findings import consolidate
 from .diffing import added_references, api_changes
-from .python_analyzer import module_name_for_path, extract_symbols, extract_references, definition_dumps
+from .python_analyzer import module_name_for_path, extract_symbols, cached_references, definition_dumps
 from .model import BranchSummary, Report
 from .rules import cw001, cw002, cw003, cw004, cw005
 
@@ -54,7 +54,7 @@ class _Analysis:
                         source,
                         module,
                         path),
-                    extract_references(
+                    cached_references(
                         source,
                         module,
                         path,
@@ -72,6 +72,21 @@ class _Analysis:
                 self.warned.add((path, sha))
             return None
         return value
+
+    def references(self, sha, path, module):
+        """Get cached references without extracting symbols or AST dumps."""
+        source = git.read_file(self.repo, sha, path)
+        if source is None:
+            return ()
+        try:
+            return cached_references(source, module, path,
+                                     path.endswith('/__init__.py') or path == '__init__.py')
+        except SyntaxError:
+            self.parse_failures += 1
+            if (path, sha) not in self.warned:
+                print(f'crosswire: warning: cannot parse {path}@{sha[:7]}', file=sys.stderr)
+                self.warned.add((path, sha))
+            return None
 
     def side(self, label, sha, base, roots):
         """Side."""

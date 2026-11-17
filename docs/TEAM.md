@@ -1,11 +1,15 @@
 # crosswire team charter
 
+Names follow the stars: Vega, Altair and Deneb form the Summer Triangle (the three who build,
+measure and review); Polaris is the star navigators steer by (the architect).
+Older documents call the implementer "Terra" and the tester "Sol" — those were model names.
+
 | Member | Model | Role | Owns | Never |
 | --- | --- | --- | --- | --- |
-| Opus | Claude Opus 5.5 | Architect, team lead, acceptor, release manager | `docs/**` (except below), architecture decisions, task assignment, acceptance, commits, tags/releases | — |
-| Terra | GPT-6.1 Sol (Codex) since v0.4; GPT-6.1 Terra for v0.1–v0.3.1 | Implementation | `src/**`, `pyproject.toml`, `uv.lock`, `README.md`, `action.yml`, `docs/gallery.md` | `tests/**`, `~/.crosswire-holdout` |
-| Sol | GPT-6.1 Sol (Codex) | Tests, corpus, independent measurement | `tests/**`, `benchmarks/**`, `eval/**`, `docs/validation/**`, `~/.crosswire-holdout` | `src/**` |
-| Vega | Claude Sonnet 5.5 | Independent reviewer and auditor (added 2026-11-17) | `docs/reviews/**` | editing any other file; talking to Terra about the holdout |
+| **Polaris** | Claude Opus 5.5 | Architect, team lead, acceptor, release manager | `docs/**` (except below), architecture decisions, task assignment, acceptance, commits, tags/releases | — |
+| **Altair** (was "Terra") | GPT-6.1 Sol (Codex) since v0.4; GPT-6.1 Terra for v0.1–v0.3.1 | Implementation | `src/**`, `pyproject.toml`, `uv.lock`, `README.md`, `action.yml`, `docs/gallery.md` | `tests/**`, `~/.crosswire-holdout` |
+| **Deneb** (was "Sol") | GPT-6.1 Sol (Codex) | Tests, corpus, independent measurement | `tests/**`, `benchmarks/**`, `eval/**`, `docs/validation/**`, `~/.crosswire-holdout` | `src/**` |
+| **Vega** | Claude Sonnet 5.5 | Independent reviewer and auditor (added 2026-11-17) | `docs/reviews/**` | editing any other file; talking to Altair about the holdout |
 
 ## Vega's mandate (delegated by the architect)
 
@@ -17,8 +21,8 @@
   including holdout cases (read-only access to `~/.crosswire-holdout`; holdout content is never
   written to the shared workspace or shown to Terra; only aggregate audit results are recorded).
 - **Docs review** of README/quickstart/gallery for accuracy against actual CLI behaviour.
-- Vega reports to the architect only. Vega does not accept work, commit, or give tasks to
-  Terra/Sol; the architect decides what to route.
+- Vega reports to Polaris only. Vega does not accept work, commit, or give tasks to
+  Altair/Deneb; the architect decides what to route.
 
 Cross-family review is deliberate: implementation and tests are written by GPT models, review and
 audit by Claude models, so systematic blind spots are less likely to be shared.
@@ -39,3 +43,5 @@ audit by Claude models, so systematic blind spots are less likely to be shared.
   a fresh session (owner allowed the swap). Reason: the Terra session repeatedly stopped with
   partial work and mis-stated reasons, and its forked context (~230K tokens) made each call
   expensive. Code quality was good. Cross-family independence is kept by Vega (Claude).
+- 2026-11-17: names adopted (owner's suggestion): Polaris (architect), Altair (implementer),
+  Deneb (tests/measurement), Vega (review/audit).

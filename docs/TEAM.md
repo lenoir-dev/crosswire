@@ -36,6 +36,25 @@ audit by Claude models, so systematic blind spots are less likely to be shared.
   `~/.crosswire-orchestration/switch_codex_account.sh <account> <workspace> <terminal>:<model>...`,
   which re-attaches the same Codex sessions on the other account.
 
+## Process rules (lessons of 2026-11-17)
+
+1. **Fresh session per milestone.** A worker session lives for one milestone. At its end the worker
+   writes a resume checkpoint (`docs/validation/<milestone>-resume.md` for Deneb, the envelope's
+   handoff for Altair); the next milestone starts in a new session from the plan + checkpoint.
+   Long forked sessions carried ~230K tokens of context into every call and burned a 5-hour
+   window in under an hour.
+2. **Budget claims are verified.** Before acting on "out of budget", the architect checks `/status`;
+   workers report `reason: budget` only below 10 %.
+3. **Golden changes are expected, not blockers.** When a plan adds fields, the implementer finishes
+   and lists affected goldens; the tester re-records them. Nobody rolls back finished work to keep
+   snapshot tests green.
+4. **Independent review before measurement.** Vega reviews code and the measurement apparatus before
+   any holdout number is produced; accepted findings become a plan amendment (e.g. R1).
+5. **Routine decisions while the architect is away** are taken by the worker from the frozen plans
+   and logged in `docs/validation/decisions-log.md` (Deneb) or the envelope (Altair) for later review.
+6. **Shell-safe messages.** Messages to workers are sent from a file (`--text "$(cat file)"`):
+   backticks inside double quotes are executed by the shell.
+
 ## Changelog
 
 - 2026-11-17: Vega joins as independent reviewer/auditor (owner approved).

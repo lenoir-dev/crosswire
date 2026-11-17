@@ -3,7 +3,7 @@
 | Member | Model | Role | Owns | Never |
 | --- | --- | --- | --- | --- |
 | Opus | Claude Opus 5.5 | Architect, team lead, acceptor, release manager | `docs/**` (except below), architecture decisions, task assignment, acceptance, commits, tags/releases | — |
-| Terra | GPT-6.1 Terra (Codex) | Implementation | `src/**`, `pyproject.toml`, `uv.lock`, `README.md`, `action.yml`, `docs/gallery.md` | `tests/**`, `~/.crosswire-holdout` |
+| Terra | GPT-6.1 Sol (Codex) since v0.4; GPT-6.1 Terra for v0.1–v0.3.1 | Implementation | `src/**`, `pyproject.toml`, `uv.lock`, `README.md`, `action.yml`, `docs/gallery.md` | `tests/**`, `~/.crosswire-holdout` |
 | Sol | GPT-6.1 Sol (Codex) | Tests, corpus, independent measurement | `tests/**`, `benchmarks/**`, `eval/**`, `docs/validation/**`, `~/.crosswire-holdout` | `src/**` |
 | Vega | Claude Sonnet 5.5 | Independent reviewer and auditor (added 2026-11-17) | `docs/reviews/**` | editing any other file; talking to Terra about the holdout |
 
@@ -31,3 +31,11 @@ audit by Claude models, so systematic blind spots are less likely to be shared.
   5-hour window is exhausted, the architect switches with
   `~/.crosswire-orchestration/switch_codex_account.sh <account> <workspace> <terminal>:<model>...`,
   which re-attaches the same Codex sessions on the other account.
+
+## Changelog
+
+- 2026-11-17: Vega joins as independent reviewer/auditor (owner approved).
+- 2026-11-17: the implementer role switches from the GPT-6.1 Terra model to the GPT-6.1 Sol model in
+  a fresh session (owner allowed the swap). Reason: the Terra session repeatedly stopped with
+  partial work and mis-stated reasons, and its forked context (~230K tokens) made each call
+  expensive. Code quality was good. Cross-family independence is kept by Vega (Claude).

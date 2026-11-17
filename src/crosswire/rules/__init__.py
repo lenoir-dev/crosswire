@@ -1,0 +1,1 @@
+"""Conservative pairwise conflict rules."""

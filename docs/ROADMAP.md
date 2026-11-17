@@ -2,14 +2,22 @@
 
 Architect / acceptor: Opus 5.5 · Implementation: GPT-6.1 Terra · Tests & verification: GPT-6.1 Sol
 
-| Version | Theme | Status |
+Target: **v1.0** as defined in `docs/VISION-v1.md` (≥ 5 languages: Python, TS/JS, Go, Java, PHP;
+solid analysis of ≥ 5 branches; measured quality per `docs/QUALITY.md`).
+
+| Version | User value | Status |
 | --- | --- | --- |
 | v0.1 | Pairwise detector, rules CW001–CW005 | ✅ accepted (`562deeb`, 187 tests) |
-| v0.2 | Harden pairwise + groundwork for N-way (per-branch summaries, target ref, cache, SARIF, GitHub Action) | ✅ accepted (218 tests, field run on 20 httpx PRs: 7 TP / 0 FP) |
-| v0.3a | N-way: virtual integration, `check --combined`, CW006 with minimal culprit sets | ✅ accepted (257 tests; conjunctive break caught, pairwise misses it) |
-| v0.3b | `crosswire plan` merge order, target-reference re-check, stacked branches, batched git I/O | next — waits for the Codex limit reset |
-| v0.4 | Agent-native: intent claims before code exists, orchestrator hook / MCP server | idea |
-| v0.5 | More languages (TypeScript/JS, Go) behind optional extras | idea |
+| v0.2 | Harden pairwise: per-branch summaries, `--target`, cache, SARIF, GitHub Action | ✅ accepted (`75ff9d9`, 218 tests; 20 httpx PRs: 7 TP / 0 FP, all textual) |
+| v0.3a | N-way: virtual integration, `check --combined`, CW006 with minimal culprit sets | ✅ accepted (`ed3c095`, 257 tests) |
+| v0.3b | Safe merge order for many Python branches: `plan`, target refs, precision fixes, batched git I/O | 🔄 next (`docs/PLAN-v0.3b.md`) |
+| v0.4 | Trustworthy numbers: evaluation harness, labelled Python corpus + holdout, perf baseline 5/10/30, remediation hints, JSON Schema, quickstart | planned |
+| v0.5 | Second language with the same guarantees: `LanguageAdapter` core refactor + Go | planned |
+| v0.6 | TypeScript / JavaScript adapter | planned |
+| v0.7 | Java adapter | planned |
+| v0.8 | PHP adapter | planned |
+| v0.9 | Beta: planner alternatives, bounded-combinatorics hardening, full quality and perf report, independent field validation, external feedback (owner approval) | planned |
+| v1.0 | Stable: every mandatory criterion of VISION-v1 §4 met | goal |
 
 ## Why pairwise is not enough for 3+ branches
 
@@ -46,21 +54,15 @@ refactoring PRs.
 | S6 scale benchmark | Sol | synthetic repo with 30 branches; wall time with/without cache and prefilter |
 | A2-accept | Opus | review, independent run, commit |
 
-## v0.3 — N-way (next)
+## v0.3 — N-way
 
-See `docs/design/nway.md`. Headline features: `crosswire check --combined` (analyse the virtual
-merge of the whole set), new rule **CW006 combined-break** with a *minimal culprit set*,
-`resolved_by` annotations on pairwise findings that a third branch fixes, and
-`crosswire plan` — a merge order / batches in which every intermediate state is clean.
+Design: `docs/design/nway.md` (D1–D8). v0.3a delivered `check --combined`; v0.3b delivers `plan`.
 
-## v0.4 — agent-native (later)
+## Post-1.0 (optional, see VISION-v1 §4)
 
-- **Intent claims:** before an agent writes code, the orchestrator registers the symbols it plans
-  to change (`crosswire claim --branch X billing.charge`); crosswire warns when two live claims
-  collide or when a claim breaks references added on other branches — conflicts are caught
-  *before* any work is wasted.
-- `crosswire serve --mcp` so coding agents can query "is it safe to change `billing.charge`?".
-- Paradev / CI integration recipe: re-check all live agent branches on every push.
+Intent claims before code exists and an MCP server for agents (deferred by decision V8),
+OpenAPI/Protobuf contracts, C++ via `compile_commands.json`, PR-comment bot, LSP, monorepo
+build graphs.
 
 ## v0.3b — backlog from the v0.3a acceptance (architect)
 

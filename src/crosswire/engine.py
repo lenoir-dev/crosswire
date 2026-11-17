@@ -1,3 +1,4 @@
+from .parsing import PARSE_ERRORS
 import hashlib
 import itertools
 import sys
@@ -6,10 +7,14 @@ from pathlib import Path
 from . import git
 from .cache import SummaryCache
 from .findings import consolidate
+from .diagnostics import hint, migration_hint, finding_limitations
+from .integrate import integrate
+from .coverage import inspect
 from .diffing import added_references, api_changes
 from .python_analyzer import module_name_for_path, extract_symbols, cached_references, definition_dumps
 from .model import BranchSummary, Report
 from .rules import cw001, cw002, cw003, cw004, cw005
+from .state import StateIndex
 
 
 @dataclass
@@ -35,10 +40,64 @@ class _Analysis:
         self.cache = {}
         self.warned = set()
         self.parse_failures = 0
+        self.module_cache = {}
+        self.indexes = {}
+        self.changed_paths = set()
+        self.changed = {}
+        self.consulted = {}
+        self.observed = {}
+        self.candidates = {}
+
+    def index(self, sha, roots, *, track=True):
+        """Share state indexes and a run-sized blob cache without LRU eviction."""
+        key = (sha, tuple(roots))
+        if not track:
+            return StateIndex(self.repo, sha, roots, self.module_cache)
+        if key not in self.indexes:
+            consulted = self.consulted.setdefault(key, set())
+            self.indexes[key] = StateIndex(self.repo, sha, roots, self.module_cache, consulted)
+        return self.indexes[key]
+
+    def observe(self, sha, roots, ref):
+        """Record a user-state reference evaluated by the semantic analysis."""
+        self.observed.setdefault((sha, tuple(roots)), set()).add(ref)
+
+    def track_summary(self, summary):
+        """Restore coverage scope even when a summary came from disk cache."""
+        paths = self.changed.setdefault((summary.tip, summary.roots), set())
+        for change in summary.changes:
+            paths.add(change.path)
+            self.changed_paths.add(change.path)
+            if change.old_path:
+                paths.add(change.old_path)
+                self.changed_paths.add(change.old_path)
+        for ref in summary.references:
+            self.observe(summary.tip, summary.roots, ref)
+
+    def track_state(self, sha, summaries):
+        """Include changed files in a requested integrated state, never trial states."""
+        for summary in summaries:
+            paths = self.changed.setdefault((sha, summary.roots), set())
+            for change in summary.changes:
+                paths.add(change.path)
+                if change.old_path:
+                    paths.add(change.old_path)
+
+    def warn_parse(self, path, sha):
+        """Warn once for a file in a revision, shared with coverage collection."""
+        entry = git.tree_entries(str(self.repo), sha).get(path)
+        identity = (path, entry[1] if entry else sha)
+        if identity not in self.warned:
+            print(f'crosswire: warning: cannot parse {path}@{sha[:7]}', file=sys.stderr)
+            self.warned.add(identity)
 
     def parse(self, sha, path, module, roots):
         """Parse."""
-        source = git.read_file(self.repo, sha, path)
+        try:
+            source = git.read_file(self.repo, sha, path)
+        except git.SkippedBlob:
+            self.parse_failures += 1
+            return None
         if source is None:
             return {}, [], {}
         key = (
@@ -60,37 +119,37 @@ class _Analysis:
                         path,
                         path.endswith('/__init__.py') or path == '__init__.py'),
                     definition_dumps(source))
-            except SyntaxError:
+            except PARSE_ERRORS:
                 self.cache[key] = None
         value = self.cache[key]
         if value is None:
             self.parse_failures += 1
-            if (path, sha) not in self.warned:
-                print(
-                    f'crosswire: warning: cannot parse {path}@{sha[:7]}',
-                    file=sys.stderr)
-                self.warned.add((path, sha))
+            self.warn_parse(path, sha)
             return None
         return value
 
-    def references(self, sha, path, module):
+    def references(self, sha, path, module, *, quiet=False):
         """Get cached references without extracting symbols or AST dumps."""
-        source = git.read_file(self.repo, sha, path)
+        try:
+            source = git.read_file(self.repo, sha, path)
+        except git.SkippedBlob:
+            self.parse_failures += 1
+            return None
         if source is None:
             return ()
         try:
             return cached_references(source, module, path,
                                      path.endswith('/__init__.py') or path == '__init__.py')
-        except SyntaxError:
+        except PARSE_ERRORS:
             self.parse_failures += 1
-            if (path, sha) not in self.warned:
-                print(f'crosswire: warning: cannot parse {path}@{sha[:7]}', file=sys.stderr)
-                self.warned.add((path, sha))
+            if not quiet:
+                self.warn_parse(path, sha)
             return None
 
     def side(self, label, sha, base, roots):
         """Side."""
         changes = git.changed_files(self.repo, base, sha)
+        tip_index = self.index(sha, roots)
         api, refs, defs, dumps, modules, migrations, redefined = {}, [], {}, {}, {}, {}, set()
         for c in changes:
             oldpath = c.old_path if c.status == 'R' else c.path
@@ -118,7 +177,10 @@ class _Analysis:
             newsyms, newrefs, newdumps = new_result
             renamed_refs = oldrefs
             if oldmod and (c.status in ('D', 'R') or oldmod != newmod):
-                api.setdefault(oldmod, []).extend(api_changes(oldsyms, {}))
+                replacement = tip_index._module(oldmod)
+                replacement_result = self.parse(sha, replacement[0], oldmod, roots) if replacement else ({}, [], {})
+                if replacement_result is not None:
+                    api.setdefault(oldmod, []).extend(api_changes(oldsyms, replacement_result[0]))
                 oldsyms, oldrefs = {}, []
             if newmod:
                 if c.status != 'D':
@@ -139,10 +201,17 @@ class _Analysis:
                 if additions:
                     defs.setdefault(newmod, {}).update(additions)
                 dumps[newmod] = newdumps
-            if c.status == 'A' and c.path.endswith('.py'):
-                source = git.read_file(self.repo, sha, c.path)
+            if c.status == 'A' and c.path.endswith('.py') and (cw004._DJANGO.match(c.path) or 'versions' in c.path.split('/')[:-1]):
+                try:
+                    source = git.read_file(self.repo, sha, c.path)
+                except git.SkippedBlob:
+                    source = None
                 if source is not None:
                     migrations[c.path] = source
+        api = {module: [change for change in items
+                        if change.kind != 'removed' or (not tip_index.is_open(module)
+                            and tip_index.resolve(module, change.qualname).status != 'valid')]
+               for module, items in api.items()}
         return BranchSummary(
             label, sha, base, tuple(roots), tuple(changes),
             {module: tuple(items)
@@ -218,6 +287,7 @@ def analyze(repo, branches, base=None, src=None, textual=True, target=None, cach
                     if disk_cache and analysis.parse_failures == failures_before:
                         disk_cache.put(summary)
                 summaries[key] = summary
+                analysis.track_summary(summary)
             return summaries[key]
 
         left = get_summary(a, asha)
@@ -232,18 +302,18 @@ def analyze(repo, branches, base=None, src=None, textual=True, target=None, cach
             textual,
             conflicts,
             analysis)
-        interacts = (
-            left.touched_modules & right.referenced_modules
-            or right.touched_modules & left.referenced_modules
-            or left.definitions.keys() & right.definitions.keys()
-            or (left.migrations and right.migrations)
-        )
-        if interacts:
+        if interacts(left, right):
             for rule in (cw001, cw002, cw003, cw004):
-                findings.extend(rule.check(ctx))
+                results = rule.check(ctx)
+                if rule is cw004 and results:
+                    merged = integrate(repo, asha, [(b, bsha)])
+                    if not merged.skipped:
+                        results = [replace(f, hint=hint(f) or migration_hint(repo, merged.commit, f)) for f in results]
+                findings.extend(results)
         findings.extend(cw005.check(ctx))
     ordered = sorted(
-        consolidate(findings),
+        (replace(f, hint=f.hint or hint(f), limitations=finding_limitations(f))
+         for f in consolidate(findings)),
         key=lambda f: (
             f.path,
             f.line,
@@ -252,4 +322,13 @@ def analyze(repo, branches, base=None, src=None, textual=True, target=None, cach
             f.other_branch,
             f.symbol or '',
             f.message))
-    return Report(pairs, ordered)
+    limitations = inspect(repo, shas, src, analysis)
+    return Report(pairs, ordered, 'partial' if limitations else 'complete', limitations)
+
+
+def interacts(left, right):
+    """Return whether two branch summaries can interact semantically."""
+    return bool(left.touched_modules & right.referenced_modules
+                or right.touched_modules & left.referenced_modules
+                or left.definitions.keys() & right.definitions.keys()
+                or (left.migrations and right.migrations))

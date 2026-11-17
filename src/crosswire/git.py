@@ -14,6 +14,12 @@ class GitError(Exception):
     pass
 
 
+class SkippedBlob(Exception):
+    """A source blob exceeds supported size or contains binary data."""
+    def __init__(self, reason):
+        self.reason = reason
+
+
 @dataclass(frozen=True, slots=True)
 class FileChange:
     status: Literal['A', 'M', 'D', 'R']
@@ -37,8 +43,11 @@ def _run(repo, *args, allowed=(0,)):
 
 def repo_root(path):
     """Repo root."""
-    return Path(os.fsdecode(
-        _run(path, 'rev-parse', '--show-toplevel').stdout.rstrip(b'\n')))
+    bare = _run(path, 'rev-parse', '--is-bare-repository').stdout.strip() == b'true'
+    if bare:
+        return Path(path).resolve()
+    return Path(os.fsdecode(_run(path, 'rev-parse', '--show-toplevel').stdout.rstrip(b'\n')))
+
 
 
 def common_dir(repo):
@@ -57,6 +66,9 @@ def git_version(repo):
     version = tuple(int(v or 0) for v in m.groups())
     if version < (2, 38, 0):
         raise GitError('Git 2.38 or newer is required')
+    shallow = _run(repo, 'rev-parse', '--is-shallow-repository').stdout.strip()
+    if shallow == b'true':
+        raise GitError('shallow repository: fetch full history before analysis')
     return version
 
 
@@ -65,6 +77,9 @@ def resolve(repo, ref):
     result = _run(repo, 'rev-parse', '--verify', '--end-of-options',
                   f'{ref}^{{commit}}', allowed=(0, 1, 128))
     if result.returncode:
+        head = _run(repo, 'rev-parse', '--verify', 'HEAD^{commit}', allowed=(0, 1, 128))
+        if head.returncode:
+            raise GitError('unborn or empty repository: no HEAD commit')
         raise GitError(f'unknown revision: {ref}')
     return result.stdout.decode().strip()
 
@@ -137,7 +152,7 @@ class _BlobBatch:
         env = os.environ.copy()
         env.update(GIT_OPTIONAL_LOCKS='0', LC_ALL='C')
         try:
-            self.process = subprocess.Popen(['git', 'cat-file', '--batch', '-z'], cwd=repo,
+            self.process = subprocess.Popen(['git', 'cat-file', '--batch-command', '-z'], cwd=repo,
                                             stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                             stderr=subprocess.DEVNULL, env=env)
         except OSError as exc:
@@ -145,24 +160,37 @@ class _BlobBatch:
         self.lock = threading.Lock()
 
     def read(self, rev, path):
-        request = os.fsencode(f'{rev}:{path}')
+        request = os.fsencode(f'{rev}:{path}' if path is not None else rev)
         if b'\0' in request:
             raise GitError('NUL in Git object path')
         with self.lock:
             try:
-                self.process.stdin.write(request + b'\0')
+                self.process.stdin.write(b'info ' + request + b'\0')
                 self.process.stdin.flush()
                 header = self.process.stdout.readline()
                 match = re.fullmatch(rb'[0-9a-fA-F]{40,64} ([a-z]+) ([0-9]+)\n', header)
                 if match:
                     kind, size = match.group(1), int(match.group(2))
+                    if kind != b'blob':
+                        return None
+                    if size > 2_000_000:
+                        raise SkippedBlob('oversize')
+                    self.process.stdin.write(b'contents ' + request + b'\0')
+                    self.process.stdin.flush()
+                    if self.process.stdout.readline() != header:
+                        raise GitError('inconsistent git cat-file header')
                     content = self.process.stdout.read(size)
                     end = self.process.stdout.read(1)
                     if len(content) != size or end != b'\n':
                         raise GitError('truncated git cat-file response')
                     if kind != b'blob':
                         raise GitError(f'not a blob: {path}')
-                    return content.decode('utf-8', 'replace')
+                    if b'\0' in content:
+                        raise SkippedBlob('binary')
+                    try:
+                        return content.decode('utf-8', 'strict')
+                    except UnicodeDecodeError as exc:
+                        raise SkippedBlob('non-utf8') from exc
                 expected = request + b' missing\n'
                 if expected.startswith(header) and header:
                     rest = self.process.stdout.read(len(expected) - len(header))
@@ -185,6 +213,18 @@ class _BlobBatch:
 _batches = OrderedDict()
 _batches_lock = threading.Lock()
 _MAX_BATCHES = 16
+
+
+@lru_cache(maxsize=256)
+def tree_entries(repo, rev):
+    """Return tracked paths with modes and object IDs from an immutable tree."""
+    entries = {}
+    for entry in _run(repo, 'ls-tree', '-r', '-z', rev).stdout.split(b'\0'):
+        if entry:
+            metadata, _, path = entry.partition(b'\t')
+            mode, _, oid = metadata.decode('ascii').split()
+            entries[os.fsdecode(path)] = (mode, oid)
+    return entries
 
 
 def _read_batch(repo, rev, path):
@@ -213,15 +253,45 @@ def _close_batches():
 atexit.register(_close_batches)
 
 
-@lru_cache(maxsize=16384)
-def _read_file_sha(repo, rev, path):
-    return _read_batch(repo, rev, path)
+@lru_cache(maxsize=32768)
+def _read_object(repo, oid):
+    try:
+        return _read_batch(repo, oid, None)
+    except SkippedBlob as exc:
+        return exc
+
+
+def read_blob(repo, oid):
+    """Read a known blob ID without expanding its containing tree."""
+    value = _read_object(str(repo), oid)
+    if isinstance(value, SkippedBlob):
+        raise value
+    return value
+
+
+def entries_for_paths(repo, rev, paths):
+    """Read tree metadata only for the selected analysis paths."""
+    if not paths:
+        return {}
+    entries = {}
+    for entry in _run(repo, 'ls-tree', '-r', '-z', rev, '--', *sorted(paths)).stdout.split(b'\0'):
+        if entry:
+            metadata, _, path = entry.partition(b'\t')
+            mode, _, oid = metadata.decode('ascii').split()
+            entries[os.fsdecode(path)] = (mode, oid)
+    return entries
 
 
 def read_file(repo, rev, path):
-    """Read a Git blob with a shared batch process; missing paths return None."""
+    """Read a bounded UTF-8 blob, sharing identical objects across Git states."""
     if re.fullmatch(r'(?:[0-9a-fA-F]{40}|[0-9a-fA-F]{64})', rev):
-        return _read_file_sha(str(repo), rev, path)
+        entry = tree_entries(str(repo), rev).get(path)
+        if entry is None or entry[0] == '160000':
+            return None
+        value = _read_object(str(repo), entry[1])
+        if isinstance(value, SkippedBlob):
+            raise value
+        return value
     return _read_batch(repo, rev, path)
 
 
@@ -265,3 +335,22 @@ def merge_tree_conflicts(repo, a, b):
     if p.returncode == 0:
         return []
     return sorted({os.fsdecode(x) for x in parts[1:] if x})
+
+
+def ancestor_relations(repo, commits):
+    """Find ancestry between all selected commits with one history traversal."""
+    if not commits:
+        return set()
+    bits = {sha: 1 << i for i, sha in enumerate(dict.fromkeys(commits))}
+    masks = {}
+    relations = set()
+    result = _run(repo, 'rev-list', '--topo-order', '--reverse', '--parents', *bits)
+    for line in result.stdout.decode('ascii').splitlines():
+        sha, *parents = line.split()
+        inherited = 0
+        for parent in parents:
+            inherited |= masks.get(parent, 0)
+        if sha in bits:
+            relations.update((ancestor, sha) for ancestor, bit in bits.items() if inherited & bit)
+        masks[sha] = inherited | bits.get(sha, 0)
+    return relations

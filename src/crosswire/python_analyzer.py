@@ -1,3 +1,4 @@
+from .parsing import PARSE_ERRORS
 import ast
 from pathlib import PurePosixPath
 from functools import lru_cache
@@ -81,6 +82,39 @@ def _import_names(node):
     if isinstance(node, ast.Import):
         return [a.asname or a.name.split('.')[0] for a in node.names]
     return []
+
+
+def open_module(tree):
+    """Detect module scopes whose missing exports cannot be proved absent."""
+    pending = list(tree.body)
+    while pending:
+        node = pending.pop()
+        if isinstance(node, (ast.Import, ast.ImportFrom)):
+            if '__getattr__' in _import_names(node):
+                return True
+            if isinstance(node, ast.ImportFrom) and any(alias.name == '*' for alias in node.names):
+                return True
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+            if node.name == '__getattr__':
+                return True
+            continue
+        if isinstance(node, ast.Lambda):
+            continue
+        if isinstance(node, ast.Name) and isinstance(node.ctx, ast.Store) and node.id == '__getattr__':
+            return True
+        if isinstance(node, ast.Call) and isinstance(node.func, ast.Name):
+            if node.func.id in ('exec', 'eval', 'globals', 'locals'):
+                return True
+            if node.func.id == 'vars' and not node.args and not node.keywords:
+                return True
+        if isinstance(node, ast.Subscript) and isinstance(node.value, ast.Attribute):
+            if (isinstance(node.value.value, ast.Name)
+                    and node.value.value.id == 'sys' and node.value.attr == 'modules'
+                    and isinstance(node.slice, ast.Name) and node.slice.id == '__name__'):
+                return True
+        pending.extend(ast.iter_child_nodes(node))
+
+    return False
 
 
 def extract_symbols(source, module, path, *, tree=None):
@@ -288,7 +322,7 @@ def extract_references(source, module, path, is_package):
 def _reference_data(source, module, path, is_package):
     try:
         return tuple(extract_references(source, module, path, is_package))
-    except SyntaxError:
+    except PARSE_ERRORS:
         return None
 
 
@@ -306,5 +340,5 @@ def valid_syntax(source):
     try:
         ast.parse(source)
         return True
-    except SyntaxError:
+    except PARSE_ERRORS:
         return False

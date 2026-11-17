@@ -1,3 +1,4 @@
+from ..parsing import PARSE_ERRORS
 import ast
 import re
 from ..model import Finding
@@ -12,7 +13,7 @@ def revisions(path, source):
         return set()
     try:
         tree = ast.parse(source)
-    except SyntaxError:
+    except PARSE_ERRORS:
         return set()
     value = None
     for node in tree.body:
@@ -25,7 +26,7 @@ def revisions(path, source):
         return set()
     try:
         value = ast.literal_eval(value)
-    except (ValueError, TypeError):
+    except (ValueError, TypeError, RecursionError, MemoryError):
         return set()
     if isinstance(value, str):
         return {value} - {''}

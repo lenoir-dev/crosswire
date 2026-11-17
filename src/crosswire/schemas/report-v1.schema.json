@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "crosswire report v1",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "tool": {
+      "const": "crosswire"
+    },
+    "coverage": {
+      "enum": [
+        "complete",
+        "bounded",
+        "partial"
+      ],
+      "default": "complete",
+      "description": "Optional additive field; absent in older reports, defaults to \"complete\"."
+    },
+    "limitations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 5
+          }
+        },
+        "required": [
+          "count",
+          "examples"
+        ]
+      },
+      "default": {},
+      "description": "Optional additive field; absent in older reports, defaults to {}."
+    },
+    "pairs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "a": {
+            "type": "string"
+          },
+          "b": {
+            "type": "string"
+          },
+          "base": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "a",
+          "b",
+          "base"
+        ]
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "warnings": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "errors",
+        "warnings"
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "tool",
+    "pairs",
+    "findings",
+    "summary"
+  ],
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "properties": {
+        "rule": {
+          "enum": [
+            "CW001",
+            "CW002",
+            "CW003",
+            "CW004",
+            "CW005",
+            "CW006"
+          ]
+        },
+        "severity": {
+          "enum": [
+            "error",
+            "warning"
+          ]
+        },
+        "message": {
+          "type": "string"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "symbol": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hint": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null,
+          "description": "Optional additive field; absent in older reports, defaults to null."
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Optional additive field; absent in older reports, defaults to []."
+        },
+        "other_branch": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "rule",
+        "severity",
+        "message",
+        "branch",
+        "path",
+        "line",
+        "symbol",
+        "other_branch"
+      ]
+    }
+  }
+}

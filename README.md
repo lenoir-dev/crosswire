@@ -2,6 +2,45 @@
 
 Find likely semantic conflicts between Python changes on parallel Git branches before merging.
 
+## Quickstart (about two minutes)
+
+From this checkout, with [uv](https://docs.astral.sh/uv/), Python 3.11+ and Git 2.38+ installed:
+
+```sh
+uv tool install .
+demo_dir=$(mktemp -d)
+cd "$demo_dir"
+git init -q -b main
+git config user.name Demo
+git config user.email demo@example.invalid
+printf 'def charge(amount): return amount\n' > billing.py
+git add . && git commit -qm base
+git switch -qc rename-charge
+printf 'def create_charge(amount): return amount\n' > billing.py
+git add . && git commit -qm rename
+git switch -qc add-refunds main
+printf 'import billing\nbilling.charge(10)\n' > refunds.py
+git add . && git commit -qm caller
+crosswire check --target main rename-charge add-refunds
+```
+
+The last command exits **1**, reporting CW001 at `refunds.py:2` and suggesting
+`billing.create_charge`. Git can merge these branches textually; the new caller would
+still refer to a removed function. `uv tool update-shell` adds the tool directory to PATH if your shell cannot find `crosswire`
+(restart the shell afterward).
+
+On the same demo:
+
+```sh
+crosswire check --target main --combined rename-charge add-refunds
+crosswire plan --target main rename-charge add-refunds
+```
+
+Pairwise mode compares branch pairs. Combined mode checks the virtual integrated state,
+including callers already on the target, and can explain repairs supplied by a third branch.
+`plan` finds a safe order or an atomic group and lists branches it cannot place. These commands
+leave refs, HEAD, the index and worktree unchanged; Git writes disposable virtual objects.
+
 ## Why
 
 A clean Git merge only means the edits do not conflict textually. One branch can remove a
@@ -68,9 +107,13 @@ Use `--format json` for machine-readable output. For example (the SHA is illustr
 
 ```json
 {
+  "coverage": "complete",
+  "limitations": {},
   "findings": [
     {
       "branch": "add-refunds",
+      "hint": "use `billing.create_charge`",
+      "limitations": [],
       "line": 4,
       "message": "`billing.charge` is used here but was removed in rename-charge (renamed to `billing.create_charge`?)",
       "other_branch": "rename-charge",
@@ -190,3 +233,45 @@ recommend merging a small group together when only the combined state is safe. A
 branch includes its findings and a hint when one is available. Use `--format json` for
 steps, blockers, containment and coverage. Bounded coverage means some combinations were
 not checked and must not be assumed safe.
+
+## Diagnostics and stable JSON
+
+`--format json` uses version **1** for pairwise checks and **2** for combined checks and plans.
+Every finding has `hint` (a string or null) and `limitations` (a list of strings).
+N-way findings also have `repro`: a shell-quoted command with the exact target and all supplied
+`--src` roots when an exact minimal culprit set is known, otherwise null. It preserves the
+original integration order and includes `--repo` exactly as supplied. Absolute repository paths
+work from any directory; relative paths retain the original working-directory assumption. A target-caused failure names the target in `culprits` and may reproduce with only
+one branch. Hints are evidence-based: keyword advice requires a keyword-capable parameter,
+and Django renumbering considers the merged migration directory.
+
+All report formats expose `coverage` and report limitations. `complete` means no known gaps in
+the supported static analysis; `partial` means an in-scope site was skipped or could not be resolved;
+`bounded` means a search bound was hit. Coverage considers changed files, consulted modules and
+relevant target callers. Unsupported constructs count only in changed files; unchanged unrelated
+code is outside this scope. Stdlib and third-party imports are out of scope and do not make coverage
+partial. When both apply, coverage is `bounded` and the limitations
+still describe skipped sites. Each category counts distinct `(path, line, construct)` sites across
+the requested states, with at most five deterministic examples. Internal culprit and planner
+trials do not inflate those counts. Coverage never changes the exit code: 0 for no errors,
+1 for error findings (or blocked plan branches), 2 for usage, Git or internal errors.
+
+JSON versions stay at 1 and 2 as optional fields are added. Consumers should accept unknown keys;
+new fields are optional in the schemas with defaults (`hint`/`repro`: null, finding `limitations`:
+`[]`, report `limitations`: `{}`, `coverage`: `complete` for older reports). The offline Draft
+2020-12 schemas ship in both the wheel and source distribution:
+
+```sh
+crosswire schema --version 1
+crosswire schema --version 2
+crosswire schema --version 2 --mode plan
+```
+
+Finding limitations identify uncertainties such as an inexact culprit set or a location from a
+branch tip. UTF-8 is decoded strictly; a literal U+FFFD in valid UTF-8 is ordinary source text.
+
+Python source blobs larger than 2 MB (2,000,000 bytes), binary or non-UTF-8 sources, parse failures, submodules,
+unsupported dynamic constructs and unresolved references appear in limitations. Submodules are
+never initialized. Bare repositories and detached HEADs work when the requested refs exist.
+Unborn repositories and shallow clones produce an actionable error; fetch full history first
+(`git fetch --unshallow` for a shallow clone).

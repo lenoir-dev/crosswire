@@ -1,6 +1,7 @@
 """Render merge plans."""
 
 import json
+from .coverage import text_lines
 
 
 def json_report(report):
@@ -19,13 +20,19 @@ def text(report, target):
         lines.append('Blocked:')
         for entry in report['blocked']:
             if entry['findings']:
-                finding = entry['findings'][0]
-                line = f"  {entry['branch']}: {finding['path']}:{finding['line']} {finding['rule']} {finding['message']}"
-                if entry.get('hint'):
-                    line += f" — {entry['hint']}"
-                lines.append(line)
+                for finding in entry['findings']:
+                    line = f"  {entry['branch']}: {finding['path']}:{finding['line']} {finding['rule']} {finding['message']}"
+                    advice = finding.get('hint') or entry.get('hint')
+                    if finding['rule'] == 'CW005' and entry.get('hint'):
+                        advice = entry['hint']
+                    if advice:
+                        line += f" — {advice}"
+                    if finding.get('repro'):
+                        line += f" Reproduce: {finding['repro']}"
+                    for limitation in finding.get('limitations', ()):
+                        line += f" Limitation: {limitation}"
+                    lines.append(line)
             else:
                 lines.append(f"  {entry['branch']}: {entry.get('hint', 'blocked by ordering constraints')}")
-    if report['coverage'] == 'bounded':
-        lines.append(f"Coverage: bounded ({', '.join(report['limits']['hit'])}) — unchecked combinations are not proven safe.")
+    lines.extend(text_lines(report['coverage'], report.get('limitations'), report.get('limits')))
     return '\n'.join(lines)

@@ -66,12 +66,16 @@ class Finding:
     path: str
     line: int
     symbol: str | None
+    hint: str | None = None
+    limitations: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
 class Report:
     base_by_pair: dict[tuple[str, str], str]
     findings: list[Finding]
+    coverage: str = 'complete'
+    limitations: dict | None = None
 
 
 @dataclass(frozen=True, slots=True)

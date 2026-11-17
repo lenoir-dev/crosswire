@@ -1,0 +1,274 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "crosswire plan v2",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": 2
+    },
+    "tool": {
+      "const": "crosswire"
+    },
+    "coverage": {
+      "enum": [
+        "complete",
+        "bounded",
+        "partial"
+      ],
+      "default": "complete",
+      "description": "Optional additive field; absent in older reports, defaults to \"complete\"."
+    },
+    "limitations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 5
+          }
+        },
+        "required": [
+          "count",
+          "examples"
+        ]
+      },
+      "default": {},
+      "description": "Optional additive field; absent in older reports, defaults to {}."
+    },
+    "mode": {
+      "const": "plan"
+    },
+    "target": {
+      "type": "string"
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "max_candidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_group": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "group_search_max_remaining": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hit": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "max_candidates",
+        "max_group",
+        "group_search_max_remaining",
+        "hit"
+      ]
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "branches": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "together": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "branches",
+          "together",
+          "reason"
+        ]
+      }
+    },
+    "blocked": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "branch": {
+            "type": "string"
+          },
+          "findings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/finding"
+            }
+          },
+          "hint": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "branch",
+          "findings"
+        ]
+      }
+    },
+    "contained_in": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "placed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blocked": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "placed",
+        "blocked"
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "tool",
+    "mode",
+    "target",
+    "steps",
+    "blocked",
+    "contained_in",
+    "summary",
+    "limits"
+  ],
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "properties": {
+        "rule": {
+          "enum": [
+            "CW001",
+            "CW002",
+            "CW003",
+            "CW004",
+            "CW005",
+            "CW006"
+          ]
+        },
+        "severity": {
+          "enum": [
+            "error",
+            "warning"
+          ]
+        },
+        "message": {
+          "type": "string"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "symbol": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hint": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null,
+          "description": "Optional additive field; absent in older reports, defaults to null."
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Optional additive field; absent in older reports, defaults to []."
+        },
+        "culprits": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "culprits_exact": {
+          "type": "boolean"
+        },
+        "resolved_by": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "location": {
+          "enum": [
+            "branch",
+            "integrated"
+          ]
+        },
+        "repro": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null,
+          "description": "Optional additive field; absent in older reports, defaults to null."
+        }
+      },
+      "required": [
+        "rule",
+        "severity",
+        "message",
+        "branch",
+        "path",
+        "line",
+        "symbol",
+        "culprits",
+        "culprits_exact",
+        "resolved_by",
+        "location"
+      ]
+    }
+  }
+}

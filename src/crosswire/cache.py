@@ -8,6 +8,8 @@ from dataclasses import asdict, replace
 from pathlib import Path
 
 from . import __version__
+
+_CACHE_SCHEMA = 3
 from .git import FileChange
 from .model import ApiChange, BranchSummary, CallShape, Param, Reference, Symbol
 
@@ -42,6 +44,7 @@ def _json_value(value):
 
 def _encode(summary):
     return _json_value({
+        'schema_version': _CACHE_SCHEMA,
         'label': summary.label,
         'tip': summary.tip,
         'base': summary.base,
@@ -81,13 +84,15 @@ class SummaryCache:
         self.directory = Path(directory) / 'crosswire' / 'cache' / 'v1'
 
     def _path(self, base, tip, roots):
-        key = json.dumps([__version__, base, tip, list(roots)], separators=(',', ':'))
+        key = json.dumps([_CACHE_SCHEMA, __version__, base, tip, list(roots)], separators=(',', ':'))
         return self.directory / (hashlib.sha256(key.encode()).hexdigest() + '.json')
 
     def get(self, label, base, tip, roots):
         """Load a valid entry, returning None for absent or damaged entries."""
         try:
             data = json.loads(self._path(base, tip, roots).read_text(encoding='utf-8'))
+            if data.get('schema_version') != _CACHE_SCHEMA:
+                return None
             summary = _decode(data)
             if (summary.base, summary.tip, summary.roots) != (base, tip, tuple(roots)):
                 return None

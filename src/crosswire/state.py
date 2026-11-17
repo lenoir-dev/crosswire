@@ -1,16 +1,15 @@
 """Conservative symbol resolution against a Git commit."""
 
+from .parsing import PARSE_ERRORS
 import ast
-import hashlib
-import threading
-from collections import OrderedDict
+import sys
 from dataclasses import dataclass
 from pathlib import PurePosixPath
 from typing import Literal
 
 from . import git
 from .model import Symbol
-from .python_analyzer import extract_symbols, _module_statements, _import_names
+from .python_analyzer import extract_symbols, _module_statements, _import_names, open_module
 
 Status = Literal['valid', 'broken', 'unknown']
 
@@ -22,24 +21,21 @@ class Resolution:
     status: Status
     symbol: Symbol | None
     files: tuple[str, ...]
+    reason: str | None = None
 
 
-_data_cache = OrderedDict()
-_data_lock = threading.RLock()
-
-
-def _module_data(source, module, path):
-    """Share compact bindings by content hash and module resolution context."""
-    key = (hashlib.sha256(source.encode('utf-8')).digest(), module, path)
-    with _data_lock:
-        if key in _data_cache:
-            _data_cache.move_to_end(key)
-            return _data_cache[key]
+def _module_data(source, module, path, cache=None, blob=None):
+    """Share bindings by blob and module context for the lifetime of one run."""
+    key = (blob if blob is not None else source, module, path)
+    if cache is not None and key in cache:
+        return cache[key]
+    try:
         result = _build_module_data(source, module, path)
-        _data_cache[key] = result
-        if len(_data_cache) > 8192:
-            _data_cache.popitem(last=False)
-        return result
+    except PARSE_ERRORS:
+        result = None
+    if cache is not None:
+        cache[key] = result
+    return result
 
 
 def _build_module_data(source, module, path):
@@ -47,7 +43,7 @@ def _build_module_data(source, module, path):
     try:
         tree = ast.parse(source, filename=path)
         symbols = extract_symbols(source, module, path, tree=tree)
-    except SyntaxError:
+    except PARSE_ERRORS:
         return None
     bindings = {}
     def binding(name):
@@ -78,16 +74,18 @@ def _build_module_data(source, module, path):
             names = {n.id for target in targets for n in ast.walk(target) if isinstance(n, ast.Name)}
             for name in names:
                 binding(name)[0].append(None)
-    return symbols, bindings
+    return symbols, bindings, open_module(tree)
 
 
 class StateIndex:
     """Resolve Python module bindings in a single commit."""
 
-    def __init__(self, repo, commit, roots):
+    def __init__(self, repo, commit, roots, data_cache=None, consulted=None):
         self.repo = repo
         self.commit = commit
         self.roots = tuple(roots)
+        self.data_cache = data_cache if data_cache is not None else {}
+        self.consulted = consulted
         self._modules = {}
         self._resolutions = {}
 
@@ -100,12 +98,25 @@ class StateIndex:
         for root in self.roots:
             for rel in (suffix + '.py', suffix + '/__init__.py'):
                 path = str(PurePosixPath(root) / rel) if root not in ('', '.') else rel
-                source = git.read_file(self.repo, self.commit, path)
+                try:
+                    source = git.read_file(self.repo, self.commit, path)
+                except git.SkippedBlob:
+                    if self.consulted is not None:
+                        self.consulted.add(path)
+                    self._modules[module] = (path, None)
+                    return path, None
                 if source is not None:
+                    if self.consulted is not None:
+                        self.consulted.add(path)
                     self._modules[module] = (path, source)
                     return path, source
         self._modules[module] = None
         return None
+
+    def _data(self, source, module, path):
+        entry = git.tree_entries(str(self.repo), self.commit).get(path)
+        blob = entry[1] if entry else None
+        return _module_data(source, module, path, self.data_cache, blob)
 
     def resolve(self, module: str, name: str) -> Resolution:
         """Resolve one binding, returning unknown for unresolvable external modules."""
@@ -117,16 +128,27 @@ class StateIndex:
     def _resolve(self, module, name, seen, depth):
         key = (module, name)
         if key in seen or depth > 5:
-            return Resolution('unknown', None, ())
+            return Resolution('unknown', None, (), 'cycle/depth')
         item = self._module(module)
         if item is None:
-            return Resolution('unknown', None, ())
+            return Resolution('unknown', None, (),
+                              'stdlib' if module.split('.')[0] in sys.stdlib_module_names else 'third-party')
         path, source = item
-        data = _module_data(source, module, path)
+        if source is None:
+            return Resolution('unknown', None, (path,), 'skipped-blob')
+        data = self._data(source, module, path)
         if data is None:
-            return Resolution('unknown', None, (path,))
-        symbols, bindings = data
+            return Resolution('unknown', None, (path,), 'parse-failure')
+        symbols, bindings, is_open = data
         if name not in symbols:
+            if path.endswith('/__init__.py') or path == '__init__.py':
+                submodule = self._module(f'{module}.{name}')
+                if submodule is not None:
+                    if submodule[1] is None:
+                        return Resolution('unknown', None, (path, submodule[0]), 'skipped-blob')
+                    return Resolution('valid', None, (path, submodule[0]))
+            if is_open:
+                return Resolution('unknown', None, (path,), 'open-module')
             return Resolution('broken', None, (path,))
         concrete, imports = bindings.get(name, ((), ()))
         if concrete:
@@ -136,14 +158,34 @@ class StateIndex:
             return Resolution('valid', symbol, (path,))
         files = [path]
         statuses = []
+        reasons = []
         for target in imports:
             if target is None:
                 statuses.append('unknown')
+                reasons.append('unsupported-import')
+                continue
+            submodule = self._module('.'.join(target))
+            if submodule is not None:
+                files.append(submodule[0])
+                if submodule[1] is not None:
+                    return Resolution('valid', None, tuple(dict.fromkeys(files)))
+                statuses.append('unknown')
+                reasons.append('skipped-blob')
                 continue
             result = self._resolve(*target, seen | {key}, depth + 1)
             files.extend(result.files)
             statuses.append(result.status)
+            reasons.append(result.reason)
             if result.status == 'valid':
                 return Resolution('valid', result.symbol, tuple(dict.fromkeys(files)))
         status = 'unknown' if 'unknown' in statuses else 'broken'
-        return Resolution(status, None, tuple(dict.fromkeys(files)))
+        reason = next((reason for reason in reasons if reason), None)
+        return Resolution(status, None, tuple(dict.fromkeys(files)), reason)
+
+    def is_open(self, module):
+        """Return whether a module has exports that static analysis cannot close."""
+        item = self._module(module)
+        if item is None or item[1] is None:
+            return False
+        data = self._data(item[1], module, item[0])
+        return data is not None and data[2]

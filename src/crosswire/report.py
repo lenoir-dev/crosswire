@@ -1,16 +1,19 @@
 import json
 from dataclasses import asdict
+from .coverage import text_lines
 
 
 def text(report):
     """Text."""
     pairs = len(report.base_by_pair)
     if not report.findings:
-        return f'No semantic conflicts found across {pairs} pair(s).'
-    lines = [f'{f.path}:{f.line}: {f.severity.upper()} {f.rule} [{f.branch} × {f.other_branch}] {f.message}' for f in report.findings]
+        return '\n'.join([f'No semantic conflicts found across {pairs} pair(s).', *text_lines(report.coverage, report.limitations)])
+    lines = [f'{f.path}:{f.line}: {f.severity.upper()} {f.rule} [{f.branch} × {f.other_branch}] {f.message}' + (f' Hint: {f.hint}' if f.hint else '')
+             + ''.join(f' Limitation: {item}' for item in f.limitations) for f in report.findings]
     errors = sum(f.severity == 'error' for f in report.findings)
     lines.append(
         f'{errors} error(s), {len(report.findings)-errors} warning(s) across {pairs} pair(s)')
+    lines.extend(text_lines(report.coverage, report.limitations))
     return '\n'.join(lines)
 
 
@@ -18,7 +21,7 @@ def json_report(report):
     """Json report."""
     errors = sum(f.severity == 'error' for f in report.findings)
     obj = {
-        'version': 1, 'tool': 'crosswire', 'pairs': [
+        'version': 1, 'tool': 'crosswire', 'coverage': report.coverage, 'limitations': report.limitations or {}, 'pairs': [
             {
                 'a': a, 'b': b, 'base': base} for (
                 a, b), base in report.base_by_pair.items()], 'findings': [
@@ -40,9 +43,14 @@ def _escape(value, prop=False):
 
 
 def github(report):
-    """Github."""
-    return '\n'.join(
-        f'::{f.severity} file={_escape(f.path, True)},line={f.line},title={_escape(f.rule, True)}::{_escape(f.message)}' for f in report.findings)
+    """Render GitHub annotations."""
+    lines = []
+    for f in report.findings:
+        message = f.message + (f' Hint: {f.hint}' if f.hint else '')
+        message += ''.join(f' Limitation: {item}' for item in f.limitations)
+        lines.append(f'::{f.severity} file={_escape(f.path, True)},line={f.line},title={_escape(f.rule, True)}::{_escape(message)}')
+    lines.extend('::notice::' + _escape(line) for line in text_lines(report.coverage, report.limitations))
+    return '\n'.join(lines)
 
 
 def sarif(report):
@@ -68,13 +76,14 @@ def sarif(report):
             }}],
             'properties': {'branch': finding.branch,
                            'other_branch': finding.other_branch,
-                           'symbol': finding.symbol},
+                           'symbol': finding.symbol, 'hint': finding.hint, 'limitations': list(finding.limitations)},
         })
     payload = {
         '$schema': 'https://json.schemastore.org/sarif-2.1.0.json',
         'version': '2.1.0',
         'runs': [{'tool': {'driver': {'name': 'crosswire', 'rules': rules}},
-                  'results': results}],
+                  'results': results,
+                  'properties': {'coverage': report.coverage, 'limitations': report.limitations or {}}}],
     }
     return json.dumps(payload, sort_keys=True, indent=2, ensure_ascii=True)
 

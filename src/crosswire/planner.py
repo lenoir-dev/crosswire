@@ -1,10 +1,12 @@
 """Construct a bounded, deterministic merge plan from integrated states."""
 
 import itertools
-from dataclasses import asdict
+from dataclasses import asdict, replace
 
 from . import git
-from .combined import CombinedFinding, analyze_combined
+from .combined import AnalysisRun, CombinedFinding, analyze_combined
+from .diagnostics import hint, migration_hint, reproduction
+from .coverage import inspect
 from .rules.cw004 import _DJANGO, revisions
 
 
@@ -19,8 +21,14 @@ def _describe(finding):
     return f'{name} ({finding.rule}{causes})'
 
 
-def _migration_findings(repo, target, state, labels):
+def _migration_findings(repo, target, state, labels, summaries=None, ancestors=None):
     """Find collisions in the state involving at least one added migration."""
+    if summaries is None:
+        run = AnalysisRun(repo, labels, target, cache=False)
+        summaries = run.summaries
+        ancestors = run.ancestors
+    if ancestors is None:
+        ancestors = git.ancestor_relations(repo, [summaries[label].tip for label in labels])
     changes = git.changed_files(repo, target, state)
     added = {change.path for change in changes if change.status == 'A'}
     if not added:
@@ -28,60 +36,75 @@ def _migration_findings(repo, target, state, labels):
     files = [path for path in git.list_files(repo, state) if path.endswith('.py')]
     django = [(path, _DJANGO.match(path)) for path in files]
     django = [(path, match) for path, match in django if match]
-    alembic = [(path, revisions(path, git.read_file(repo, state, path) or ''))
-               for path in files if 'versions' in path.split('/')[:-1]]
+    alembic = []
+    for path in files:
+        if 'versions' in path.split('/')[:-1]:
+            try:
+                source = git.read_file(repo, state, path)
+            except git.SkippedBlob:
+                continue
+            alembic.append((path, revisions(path, source or '')))
+    owners = {}
+    for label in labels:
+        for path in summaries[label].migrations:
+            owners.setdefault(path, []).append(label)
+    for path, names in owners.items():
+        owners[path] = [name for name in names if not any(
+            (summaries[other].tip, summaries[name].tip) in ancestors for other in names)]
+
+    def attribution(a, b):
+        causes = set(owners.get(a, ())) | set(owners.get(b, ()))
+        owner = next((label for label in reversed(labels) if label in causes), '')
+        return owner, tuple(sorted(causes))
+
     findings = []
     for (a, am), (b, bm) in itertools.combinations(django, 2):
         if (a in added or b in added) and am.groups() == bm.groups():
             path = b if b in added else a
+            owner, causes = attribution(a, b)
             findings.append(CombinedFinding('CW004', 'error', f'migration number {am.group(2)} collides with {a if path == b else b}',
-                                            labels[-1] if labels else '', tuple(sorted(labels)), True, None,
+                                            owner, causes, True, None,
                                             path, 1, 'integrated', None))
     for (a, av), (b, bv) in itertools.combinations(alembic, 2):
         common = av & bv
         if common and (a in added or b in added):
             path = b if b in added else a
+            owner, causes = attribution(a, b)
             findings.append(CombinedFinding('CW004', 'error', f'Alembic revisions share down_revision {", ".join(sorted(common))}',
-                                            labels[-1] if labels else '', tuple(sorted(labels)), True, None,
+                                            owner, causes, True, None,
                                             path, 1, 'integrated', None))
     return findings
 
 
-def plan(repo, branches, target, src=None, cache=True):
+def plan(repo, branches, target, src=None, cache=True, repro_repo=None):
     """Choose safe individual branches or small atomic groups in user order."""
-    repo = git.repo_root(repo)
-    git.git_version(repo)
     if not target:
         raise git.GitError('plan requires --target')
     if not branches:
         raise git.GitError('at least one branch is required')
-    target_sha = git.resolve(repo, target)
-    shas = {label: git.resolve(repo, label) for label in branches}
-    if len(shas) != len(branches) or len(set(shas.values())) != len(shas):
-        raise git.GitError('branches must resolve to distinct commits')
+    run = AnalysisRun(repo, branches, target, src, cache)
+    repo = run.repo
+    target_sha = run.target_sha
+    shas = run.shas
     contained = {label: [] for label in branches}
     dependencies = {label: set() for label in branches}
     for a, b in itertools.permutations(branches, 2):
-        if git.is_ancestor(repo, shas[a], shas[b]):
+        if (shas[a], shas[b]) in run.ancestors:
             contained[a].append(b)
             dependencies[b].add(a)
     contained = {label: sorted(names) for label, names in contained.items()}
     states = {}
     hit = set()
+    final_limitations = {}
 
     def state(labels):
         key = tuple(labels)
         if key not in states:
-            report = analyze_combined(repo, list(labels), target, src, cache, min_branches=0)
-            extra = _migration_findings(repo, target_sha, report.commit, labels)
+            report = analyze_combined(repo, list(labels), target, src, cache, min_branches=0, collect_coverage=False, _run=run, repro_repo=repro_repo)
+            extra = _migration_findings(repo, target_sha, report.commit, labels, run.summaries, run.ancestors)
+            extra = [replace(f, hint=hint(f) or migration_hint(repo, report.commit, f),
+                             repro=reproduction(f, target, labels, src, repro_repo)) for f in extra]
             findings = [f for f in report.findings if f.rule != 'CW004'] + extra
-            # A stacked branch inherits its ancestors' use sites; attribute each
-            # shared finding to the earliest branch that introduced it.
-            identities = {(f.branch, f.rule, f.path, f.line, f.symbol, f.culprits)
-                          for f in findings}
-            findings = [f for f in findings if not any(
-                (ancestor, f.rule, f.path, f.line, f.symbol, f.culprits) in identities
-                for ancestor in dependencies.get(f.branch, ())) ]
             states[key] = report, findings
             hit.update(report.limits['hit'])
         return states[key]
@@ -170,15 +193,21 @@ def plan(repo, branches, target, src=None, cache=True):
         selected_first = min(remaining.index(label) for label in selected)
         earlier = [label for label in remaining[:selected_first] if label not in selected]
         for label in earlier:
+            if not legal((label,), after):
+                continue
+            prior_report, prior_findings = state(placed + [label])
+            later_report, later_findings = state(after + [label])
+            prior_errors = {_key(f) for f in prior_findings if f.severity == 'error'} - before
+            later_errors = {_key(f) for f in later_findings if f.severity == 'error'} - errors(after)
+            if not ((prior_errors - later_errors) or
+                    (label not in prior_report.integrated and label in later_report.integrated)):
+                continue
             findings = reasons.get(label, [])
-            if findings:
-                details.append(f'placed before {label}: {label} would break {_describe(findings[0])}')
+            resolved = [f for f in findings if _key(f) in prior_errors - later_errors]
+            if resolved:
+                details.append(f'placed before {label}: {label} would break {_describe(resolved[0])}')
             else:
-                missing = sorted(dependencies[label] - set(placed))
-                if missing:
-                    details.append(f"placed before {label}: {label} requires {', '.join(missing)} first")
-                else:
-                    details.append(f'placed before {label}: {label} cannot be integrated yet')
+                details.append(f'placed before {label}: {label} cannot be integrated yet')
         for label, previous in list(deferred_history.items()):
             if label in selected or label not in remaining or not legal((label,), after):
                 continue
@@ -198,8 +227,12 @@ def plan(repo, branches, target, src=None, cache=True):
         steps.append({'branches': list(selected), 'together': together, 'reason': reason})
         placed.extend(selected)
         remaining = [label for label in remaining if label not in selected]
+    final_report, _ = state(placed)
+    run.analysis.track_state(final_report.commit, [run.summaries[label] for label in final_report.integrated])
+    final_limitations = inspect(repo, [target_sha, *shas.values(), final_report.commit], src, run.analysis)
     limits = {'max_candidates': 6, 'max_group': 3, 'group_search_max_remaining': 8, 'hit': sorted(hit)}
     return {'version': 2, 'tool': 'crosswire', 'mode': 'plan', 'target': target_sha,
             'steps': steps, 'blocked': blocked, 'contained_in': contained,
             'summary': {'placed': len(placed), 'blocked': len(blocked)},
-            'coverage': 'bounded' if hit else 'complete', 'limits': limits}
+            'coverage': 'bounded' if hit else ('partial' if final_limitations else 'complete'),
+            'limitations': final_limitations, 'limits': limits}

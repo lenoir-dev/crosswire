@@ -40,6 +40,16 @@ def binding_error(call, params):
     return None
 
 
+def keyword_hint(reason, params):
+    """Advise a keyword only when the new signature accepts it."""
+    prefix = 'missing required argument: '
+    if reason.startswith(prefix):
+        name = reason[len(prefix):]
+        if any(p.name == name and p.kind in ('pos', 'kwonly') for p in params):
+            return f'pass `{name}=`'
+    return None
+
+
 def check(ctx):
     """Check."""
     out = []
@@ -64,5 +74,6 @@ def check(ctx):
                             cause.label,
                             ref.path,
                             ref.line,
-                            symbol))
+                            symbol,
+                            hint=keyword_hint(reason, change.new.params)))
     return out

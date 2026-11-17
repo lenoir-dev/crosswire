@@ -115,3 +115,27 @@ Taken before any holdout number exists. All 14 findings are accepted.
    (instructions + Vega's audit), not technical. The v0.4 report states this.
 7. **E4-11:** gates use the stricter of Wilson and repository-clustered bounds once ≥ 5 repositories are involved;
    below that the clustered interval is reported as "not estimable".
+
+## Amendment R3 — decisions on Vega's v0.4 review (`docs/reviews/v0.4-vega.md`)
+
+All 7 findings are accepted and fixed before `src` is frozen.
+
+- **V4-01/V4-02 — coverage means "what we needed and could not analyse".** Coverage is collected only over
+  the analysis scope: files changed by any analysed branch, files consulted during resolution, and T10
+  target-reference candidates — never the whole repository. Imports of stdlib modules
+  (`sys.stdlib_module_names`) and third-party packages are out of scope by definition and are **not** gaps;
+  they may be reported as an informational count, never as `partial`. Unsupported constructs count only in
+  changed files. `partial` = at least one in-scope reference or changed file could not be analysed for a
+  reason other than "external module". The module cache is keyed by blob and sized for the run (or unbounded
+  with a memory cap), so it cannot thrash. Budgets (M5, warm): pairwise within 20 % of v0.3.1 on Vega's 9k
+  scenario, combined ≤ 6 s, plan ≤ 15 s.
+- **V4-03:** decode with `errors="strict"` first; only real decode failures are "non-UTF-8". A literal
+  U+FFFD in valid UTF-8 is ordinary text.
+- **V4-04:** a module is *open* when `__getattr__` is bound at module level in any form (def, import,
+  assignment, tuple unpacking — e.g. `lazy_loader.attach`), or when module-level code calls `exec`, mutates
+  `globals()`/`vars()`/`locals()` or `sys.modules[__name__]`.
+- **V4-05:** per-finding `limitations` is populated (e.g. "culprits not exact (bound hit)", "location from
+  branch tip", "signature unknown for one side").
+- **V4-06:** combined/plan CW001 hints use the same rename evidence as pairwise.
+- **V4-07:** `repro` includes `--repo <path>` exactly as given (omitted if the user did not pass it) and lists
+  branches in the user's original merge order.

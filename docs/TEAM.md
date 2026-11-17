@@ -1,11 +1,14 @@
 # crosswire team charter
 
-Names follow the stars: Vega, Altair and Deneb form the Summer Triangle (the three who build,
-measure and review); Polaris is the star navigators steer by (the architect).
+Names follow the stars. **Regulus** — the "little king", brightest star of Leo and one of the four
+ancient royal stars — is the project's owner, who sets the goal. **Polaris**, the star navigators steer
+by, is the architect who holds the course. **Vega, Altair and Deneb** form the Summer Triangle: the
+three who build, measure and review.
 Older documents call the implementer "Terra" and the tester "Sol" — those were model names.
 
 | Member | Model | Role | Owns | Never |
 | --- | --- | --- | --- | --- |
+| **Regulus** | human (`regulus-dev`) | Project owner: sets the vision and the v1.0 bar, grants permissions, final say on direction | the product, the accounts (GitHub, PyPI, Codex), approvals for outward-facing actions | — |
 | **Polaris** | Claude Opus 5.5 | Architect, team lead, acceptor, release manager | `docs/**` (except below), architecture decisions, task assignment, acceptance, commits, tags/releases | — |
 | **Altair** (was "Terra") | GPT-6.1 Sol (Codex) since v0.4; GPT-6.1 Terra for v0.1–v0.3.1 | Implementation | `src/**`, `pyproject.toml`, `uv.lock`, `README.md`, `action.yml`, `docs/gallery.md` | `tests/**`, `~/.crosswire-holdout` |
 | **Deneb** (was "Sol") | GPT-6.1 Sol (Codex) | Tests, corpus, independent measurement | `tests/**`, `benchmarks/**`, `eval/**`, `docs/validation/**`, `~/.crosswire-holdout` | `src/**` |
@@ -64,3 +67,4 @@ audit by Claude models, so systematic blind spots are less likely to be shared.
   expensive. Code quality was good. Cross-family independence is kept by Vega (Claude).
 - 2026-11-17: names adopted (owner's suggestion): Polaris (architect), Altair (implementer),
   Deneb (tests/measurement), Vega (review/audit).
+- 2026-11-17: the owner joins the charter as Regulus.

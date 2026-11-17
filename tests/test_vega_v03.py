@@ -136,11 +136,11 @@ def test_v3_12_summary_stores_only_real_migrations(repo):
 
 
 def test_v3_13_unknown_references_are_visible_coverage_gaps(repo):
-    repo.pair({'m.py':DIRECT},{'a.txt':'safe\n'},{'use.py':'import absent_third_party\nabsent_third_party.call()\n'})
+    repo.pair({'m.py':DIRECT,'opaque.py':'def __getattr__(name): return 1\n'},{'a.txt':'safe\n'},{'use.py':'import opaque\nopaque.call()\n'})
     report,hits=output(repo)
     assert not [f for f in hits if f['severity']=='error']
     assert report['coverage']=='partial'
-    assert any('third-party' in key and value['count']>=1 for key,value in report['limitations'].items())
+    assert any('open-module' in key and value['count']>=1 for key,value in report['limitations'].items())
 
 
 @pytest.mark.parametrize('error',[SyntaxError,RecursionError,ValueError,MemoryError])

@@ -1,0 +1,1502 @@
+{
+  "isolation": "No concurrent Deneb tests/oracles/evaluation jobs; shared user desktop remains active. CPU observations are executable names, never arguments.",
+  "jobs": [
+    {
+      "command": "PYTHONPATH=src /tmp/crosswire-v04-eval/bin/python benchmarks/perf_matrix.py --repeat 5 --timeout 30 --output docs/validation/v04-perf-matrix.json",
+      "exit_code": 0,
+      "finished_utc": "2026-11-17T20:53:35.067044+00:00",
+      "observations": [
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 20.8,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 9.9,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 5.8,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 19.6,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 3.0,
+              "executable": "/Applications/Superset.app/Contents/MacOS/Superset",
+              "pid": 34864
+            },
+            {
+              "cpu_percent": 11.4,
+              "executable": "/opt/homebrew/bin/codex",
+              "pid": 23991
+            }
+          ],
+          "load_average": [
+            3.171875,
+            3.40234375,
+            2.7314453125
+          ],
+          "utc": "2026-11-17T20:40:16.517924+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 3.5,
+              "executable": "/usr/libexec/logd",
+              "pid": 100
+            },
+            {
+              "cpu_percent": 5.1,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 2.7,
+              "executable": "/usr/sbin/notifyd",
+              "pid": 167
+            },
+            {
+              "cpu_percent": 15.1,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 8.0,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.6,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 14.2,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 9.9,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 42644
+            }
+          ],
+          "load_average": [
+            2.8466796875,
+            3.29931640625,
+            2.716796875
+          ],
+          "utc": "2026-11-17T20:40:46.541943+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 3.4,
+              "executable": "/usr/libexec/logd",
+              "pid": 100
+            },
+            {
+              "cpu_percent": 5.2,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 2.9,
+              "executable": "/usr/sbin/notifyd",
+              "pid": 167
+            },
+            {
+              "cpu_percent": 15.9,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 7.6,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.2,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 13.8,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 10.6,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 46374
+            }
+          ],
+          "load_average": [
+            2.53955078125,
+            3.1748046875,
+            2.6904296875
+          ],
+          "utc": "2026-11-17T20:41:16.564747+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 3.2,
+              "executable": "/usr/libexec/logd",
+              "pid": 100
+            },
+            {
+              "cpu_percent": 5.3,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 2.8,
+              "executable": "/usr/sbin/notifyd",
+              "pid": 167
+            },
+            {
+              "cpu_percent": 15.9,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 8.0,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.2,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 13.1,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 9.3,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 50759
+            }
+          ],
+          "load_average": [
+            2.5322265625,
+            3.10986328125,
+            2.681640625
+          ],
+          "utc": "2026-11-17T20:41:46.589006+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 3.3,
+              "executable": "/usr/libexec/logd",
+              "pid": 100
+            },
+            {
+              "cpu_percent": 5.2,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 2.9,
+              "executable": "/usr/sbin/notifyd",
+              "pid": 167
+            },
+            {
+              "cpu_percent": 15.2,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 7.5,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.4,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 12.8,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 2.3,
+              "executable": "/Applications/Superset.app/Contents/MacOS/Superset",
+              "pid": 34864
+            },
+            {
+              "cpu_percent": 10.6,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 54741
+            }
+          ],
+          "load_average": [
+            2.04248046875,
+            2.9375,
+            2.63330078125
+          ],
+          "utc": "2026-11-17T20:42:16.613224+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 3.2,
+              "executable": "/usr/libexec/logd",
+              "pid": 100
+            },
+            {
+              "cpu_percent": 5.1,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 2.8,
+              "executable": "/usr/sbin/notifyd",
+              "pid": 167
+            },
+            {
+              "cpu_percent": 15.4,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 7.8,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.2,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 13.0,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 10.4,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 58854
+            }
+          ],
+          "load_average": [
+            2.39208984375,
+            2.94140625,
+            2.64501953125
+          ],
+          "utc": "2026-11-17T20:42:46.634640+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 18.3,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 9.2,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.4,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 17.4,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 2.7,
+              "executable": "/Applications/Superset.app/Contents/MacOS/Superset",
+              "pid": 34864
+            },
+            {
+              "cpu_percent": 60.5,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 38732
+            }
+          ],
+          "load_average": [
+            2.17236328125,
+            2.83447265625,
+            2.61572265625
+          ],
+          "utc": "2026-11-17T20:43:16.657151+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 2.9,
+              "executable": "/usr/libexec/logd",
+              "pid": 100
+            },
+            {
+              "cpu_percent": 4.4,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 2.2,
+              "executable": "/usr/sbin/notifyd",
+              "pid": 167
+            },
+            {
+              "cpu_percent": 16.5,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 8.1,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.6,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 15.2,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 7.3,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 38732
+            },
+            {
+              "cpu_percent": 17.4,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 64560
+            }
+          ],
+          "load_average": [
+            2.41064453125,
+            2.8193359375,
+            2.61572265625
+          ],
+          "utc": "2026-11-17T20:43:46.681244+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 3.0,
+              "executable": "/usr/libexec/logd",
+              "pid": 100
+            },
+            {
+              "cpu_percent": 4.8,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 2.7,
+              "executable": "/usr/sbin/notifyd",
+              "pid": 167
+            },
+            {
+              "cpu_percent": 16.4,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 8.4,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.6,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 13.3,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 12.4,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 67806
+            }
+          ],
+          "load_average": [
+            2.271484375,
+            2.7412109375,
+            2.59228515625
+          ],
+          "utc": "2026-11-17T20:44:16.704426+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 3.2,
+              "executable": "/usr/libexec/logd",
+              "pid": 100
+            },
+            {
+              "cpu_percent": 5.3,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 2.8,
+              "executable": "/usr/sbin/notifyd",
+              "pid": 167
+            },
+            {
+              "cpu_percent": 15.5,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 8.4,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.6,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 14.9,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 9.6,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 71435
+            }
+          ],
+          "load_average": [
+            2.36962890625,
+            2.716796875,
+            2.5869140625
+          ],
+          "utc": "2026-11-17T20:44:46.726834+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 3.2,
+              "executable": "/usr/libexec/logd",
+              "pid": 100
+            },
+            {
+              "cpu_percent": 5.2,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 2.8,
+              "executable": "/usr/sbin/notifyd",
+              "pid": 167
+            },
+            {
+              "cpu_percent": 14.6,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 7.9,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.3,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 12.9,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 3.8,
+              "executable": "/opt/homebrew/bin/claude",
+              "pid": 35015
+            },
+            {
+              "cpu_percent": 9.2,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 75031
+            }
+          ],
+          "load_average": [
+            2.2177734375,
+            2.646484375,
+            2.5654296875
+          ],
+          "utc": "2026-11-17T20:45:16.748467+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 3.3,
+              "executable": "/usr/libexec/logd",
+              "pid": 100
+            },
+            {
+              "cpu_percent": 5.2,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 2.7,
+              "executable": "/usr/sbin/notifyd",
+              "pid": 167
+            },
+            {
+              "cpu_percent": 15.6,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 8.6,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.2,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 13.0,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 12.4,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 78453
+            }
+          ],
+          "load_average": [
+            2.2353515625,
+            2.60107421875,
+            2.55078125
+          ],
+          "utc": "2026-11-17T20:45:46.773261+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 42.4,
+              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd",
+              "pid": 105
+            },
+            {
+              "cpu_percent": 9.3,
+              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds",
+              "pid": 130
+            },
+            {
+              "cpu_percent": 14.8,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 7.7,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.5,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 13.2,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 66.2,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 38732
+            }
+          ],
+          "load_average": [
+            2.5068359375,
+            2.63671875,
+            2.5654296875
+          ],
+          "utc": "2026-11-17T20:46:16.792516+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 17.7,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 10.0,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.1,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 16.9,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 98.7,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 38732
+            }
+          ],
+          "load_average": [
+            2.85009765625,
+            2.70263671875,
+            2.59130859375
+          ],
+          "utc": "2026-11-17T20:46:46.821535+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 17.4,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 9.4,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.4,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 17.6,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 97.3,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 38732
+            }
+          ],
+          "load_average": [
+            2.60693359375,
+            2.65087890625,
+            2.5751953125
+          ],
+          "utc": "2026-11-17T20:47:16.850480+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 3.1,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 15.8,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 9.3,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.3,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 16.6,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 5.9,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 38732
+            },
+            {
+              "cpu_percent": 37.3,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 85944
+            }
+          ],
+          "load_average": [
+            2.7490234375,
+            2.681640625,
+            2.58837890625
+          ],
+          "utc": "2026-11-17T20:47:46.873017+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 3.0,
+              "executable": "/usr/libexec/logd",
+              "pid": 100
+            },
+            {
+              "cpu_percent": 4.6,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 2.4,
+              "executable": "/usr/sbin/notifyd",
+              "pid": 167
+            },
+            {
+              "cpu_percent": 15.8,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 8.8,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.4,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 14.2,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            }
+          ],
+          "load_average": [
+            2.4189453125,
+            2.61328125,
+            2.56591796875
+          ],
+          "utc": "2026-11-17T20:48:16.900604+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 17.3,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 9.9,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.0,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 17.3,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 2.2,
+              "executable": "/opt/homebrew/bin/claude",
+              "pid": 35015
+            },
+            {
+              "cpu_percent": 98.3,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 38732
+            }
+          ],
+          "load_average": [
+            2.37841796875,
+            2.5849609375,
+            2.55712890625
+          ],
+          "utc": "2026-11-17T20:48:46.929317+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 16.5,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 9.4,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.5,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 16.8,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 55.2,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 38732
+            }
+          ],
+          "load_average": [
+            2.0068359375,
+            2.478515625,
+            2.51904296875
+          ],
+          "utc": "2026-11-17T20:49:16.957686+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 16.6,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 10.0,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.4,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 18.2,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 89.2,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 38732
+            }
+          ],
+          "load_average": [
+            1.94384765625,
+            2.416015625,
+            2.4931640625
+          ],
+          "utc": "2026-11-17T20:49:46.985289+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 16.7,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 9.4,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.2,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 18.0,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 81.4,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 38732
+            }
+          ],
+          "load_average": [
+            1.8388671875,
+            2.34326171875,
+            2.4638671875
+          ],
+          "utc": "2026-11-17T20:50:17.008576+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 16.9,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 9.0,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.5,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 17.6,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 67.8,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 38732
+            },
+            {
+              "cpu_percent": 13.0,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 96457
+            }
+          ],
+          "load_average": [
+            2.51171875,
+            2.45361328125,
+            2.49853515625
+          ],
+          "utc": "2026-11-17T20:50:47.030206+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 18.0,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 9.3,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.1,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 18.7,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 2.5,
+              "executable": "/opt/homebrew/bin/claude",
+              "pid": 35015
+            },
+            {
+              "cpu_percent": 98.7,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 38732
+            }
+          ],
+          "load_average": [
+            2.4521484375,
+            2.44140625,
+            2.4921875
+          ],
+          "utc": "2026-11-17T20:51:17.058755+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 2.9,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 16.4,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 8.4,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 37.4,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 2688
+            },
+            {
+              "cpu_percent": 4.7,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 15.9,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 2.3,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 38732
+            }
+          ],
+          "load_average": [
+            2.44677734375,
+            2.4443359375,
+            2.4912109375
+          ],
+          "utc": "2026-11-17T20:51:47.087087+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 16.5,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 9.9,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 4.6,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 18.1,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 98.9,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 38732
+            }
+          ],
+          "load_average": [
+            2.65283203125,
+            2.49560546875,
+            2.5078125
+          ],
+          "utc": "2026-11-17T20:52:17.107634+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 2.6,
+              "executable": "/usr/libexec/logd",
+              "pid": 100
+            },
+            {
+              "cpu_percent": 4.3,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 2.1,
+              "executable": "/usr/sbin/notifyd",
+              "pid": 167
+            },
+            {
+              "cpu_percent": 16.0,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 8.5,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 11.8,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 6815
+            },
+            {
+              "cpu_percent": 4.8,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 16.4,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 21.0,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 38732
+            }
+          ],
+          "load_average": [
+            2.81298828125,
+            2.54345703125,
+            2.5234375
+          ],
+          "utc": "2026-11-17T20:52:47.137397+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 3.3,
+              "executable": "/usr/libexec/logd",
+              "pid": 100
+            },
+            {
+              "cpu_percent": 5.2,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 2.7,
+              "executable": "/usr/sbin/notifyd",
+              "pid": 167
+            },
+            {
+              "cpu_percent": 14.8,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 8.1,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 12.4,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 8772
+            },
+            {
+              "cpu_percent": 4.7,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 15.0,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 2.9,
+              "executable": "/opt/homebrew/bin/claude",
+              "pid": 7813
+            }
+          ],
+          "load_average": [
+            2.65576171875,
+            2.5234375,
+            2.5146484375
+          ],
+          "utc": "2026-11-17T20:53:17.167346+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 107.2,
+              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd",
+              "pid": 105
+            },
+            {
+              "cpu_percent": 17.3,
+              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds",
+              "pid": 130
+            },
+            {
+              "cpu_percent": 10.0,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 3.7,
+              "executable": "/System/Library/CoreServices/coreservicesd",
+              "pid": 202
+            },
+            {
+              "cpu_percent": 4.8,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 18.5,
+              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores",
+              "pid": 331
+            },
+            {
+              "cpu_percent": 2.9,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 9.3,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            }
+          ],
+          "load_average": [
+            2.515625,
+            2.49755859375,
+            2.50439453125
+          ],
+          "utc": "2026-11-17T20:53:35.086436+00:00"
+        }
+      ],
+      "started_utc": "2026-11-17T20:40:16.498370+00:00"
+    },
+    {
+      "command": "PYTHONPATH=src /tmp/crosswire-v04-eval/bin/python benchmarks/perf_matrix.py --vega-scenario --baseline-ref 89cfd99 --repeat 5 --timeout 30 --output docs/validation/v04-vega-perf.json",
+      "exit_code": 0,
+      "finished_utc": "2026-11-17T20:54:45.973273+00:00",
+      "observations": [
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 107.2,
+              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd",
+              "pid": 105
+            },
+            {
+              "cpu_percent": 17.3,
+              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds",
+              "pid": 130
+            },
+            {
+              "cpu_percent": 10.0,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 3.7,
+              "executable": "/System/Library/CoreServices/coreservicesd",
+              "pid": 202
+            },
+            {
+              "cpu_percent": 4.8,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 18.5,
+              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores",
+              "pid": 331
+            },
+            {
+              "cpu_percent": 2.9,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 9.3,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            }
+          ],
+          "load_average": [
+            2.515625,
+            2.49755859375,
+            2.50439453125
+          ],
+          "utc": "2026-11-17T20:53:35.106259+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 2.9,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 16.7,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 8.1,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 47.4,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 12560
+            },
+            {
+              "cpu_percent": 4.5,
+              "executable": "/Library/Developer/CommandLineTools/usr/bin/git",
+              "pid": 12633
+            },
+            {
+              "cpu_percent": 3.9,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 12.0,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 6.9,
+              "executable": "/Applications/Superset.app/Contents/MacOS/Superset",
+              "pid": 34864
+            }
+          ],
+          "load_average": [
+            2.89892578125,
+            2.6044921875,
+            2.54248046875
+          ],
+          "utc": "2026-11-17T20:54:05.133142+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 2.6,
+              "executable": "/usr/libexec/logd",
+              "pid": 100
+            },
+            {
+              "cpu_percent": 4.0,
+              "executable": "/usr/libexec/opendirectoryd",
+              "pid": 142
+            },
+            {
+              "cpu_percent": 2.4,
+              "executable": "/usr/sbin/notifyd",
+              "pid": 167
+            },
+            {
+              "cpu_percent": 15.5,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 8.1,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 12.0,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 10363
+            },
+            {
+              "cpu_percent": 10.2,
+              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "pid": 15202
+            },
+            {
+              "cpu_percent": 3.8,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 11.6,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 2.2,
+              "executable": "/Applications/Superset.app/Contents/MacOS/Superset",
+              "pid": 34864
+            }
+          ],
+          "load_average": [
+            2.5673828125,
+            2.5595703125,
+            2.52783203125
+          ],
+          "utc": "2026-11-17T20:54:35.161235+00:00"
+        },
+        {
+          "cpu_processes": [
+            {
+              "cpu_percent": 98.3,
+              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd",
+              "pid": 105
+            },
+            {
+              "cpu_percent": 14.9,
+              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds",
+              "pid": 130
+            },
+            {
+              "cpu_percent": 12.3,
+              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "pid": 172
+            },
+            {
+              "cpu_percent": 6.1,
+              "executable": "/usr/sbin/coreaudiod",
+              "pid": 309
+            },
+            {
+              "cpu_percent": 14.3,
+              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores",
+              "pid": 331
+            },
+            {
+              "cpu_percent": 2.4,
+              "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/157.0.8103.51/Helpers/Google Chrome Helper (Aperitif).app/Contents/MacOS/Google Chrome Helper (Aperitif)",
+              "pid": 787
+            },
+            {
+              "cpu_percent": 3.7,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper.app/Contents/MacOS/Superset Helper",
+              "pid": 34852
+            },
+            {
+              "cpu_percent": 12.0,
+              "executable": "/Applications/Superset.app/Contents/Frameworks/Superset Helper (Renderer).app/Contents/MacOS/Superset Helper (Renderer)",
+              "pid": 34863
+            },
+            {
+              "cpu_percent": 2.3,
+              "executable": "/opt/homebrew/bin/codex",
+              "pid": 23991
+            }
+          ],
+          "load_average": [
+            2.55322265625,
+            2.556640625,
+            2.52685546875
+          ],
+          "utc": "2026-11-17T20:54:45.995038+00:00"
+        }
+      ],
+      "started_utc": "2026-11-17T20:53:35.086845+00:00"
+    }
+  ],
+  "sampling_seconds": 30
+}

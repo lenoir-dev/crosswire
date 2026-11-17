@@ -2,12 +2,12 @@
   "repositories": [
     {
       "command": [
-        "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+        "/private/tmp/crosswire-v04-eval/bin/python",
         "-m",
         "crosswire",
         "check",
         "--repo",
-        "${CACHE_CROSSWIRE_FIELD_HTTPX}",
+        "/tmp/crosswire-field-httpx",
         "--target",
         "origin/master",
         "--format",
@@ -77,9 +77,14 @@
       ],
       "readonly_verified": true,
       "report": {
+        "coverage": "partial",
         "findings": [
           {
             "branch": "refs/remotes/eval-pr/3835",
+            "hint": "rebase refs/remotes/eval-pr/3835 onto refs/remotes/eval-pr/3775",
+            "limitations": [
+              "file-level location; conflict line unavailable"
+            ],
             "line": 1,
             "message": "textual conflict with refs/remotes/eval-pr/3775",
             "other_branch": "refs/remotes/eval-pr/3775",
@@ -89,6 +94,25 @@
             "symbol": null
           }
         ],
+        "limitations": {
+          "splatted_call": {
+            "count": 2,
+            "examples": [
+              "tests/client/test_client.py:249: splatted call",
+              "tests/client/test_client.py:281: splatted call"
+            ]
+          },
+          "unsupported": {
+            "count": 170,
+            "examples": [
+              "httpx/_transports/default.py:34: type-only import",
+              "httpx/_transports/default.py:36: type-only import",
+              "httpx/_transports/default.py:73: decorated definition",
+              "httpx/_transports/default.py:95: decorated definition",
+              "httpx/_transports/default.py:101: method or dynamic call"
+            ]
+          }
+        },
         "pairs": [
           {
             "a": "refs/remotes/eval-pr/3841",
@@ -239,19 +263,19 @@
         "version": 1
       },
       "repository": "encode/httpx",
-      "seconds": 0.9278712080013065,
+      "seconds": 1.2256328750008834,
       "semantic_predictions": 0,
       "target": "7cff5f79bc78649bbcd3fd9aa7a74c86e0f63016",
       "unlabelled": []
     },
     {
       "command": [
-        "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+        "/private/tmp/crosswire-v04-eval/bin/python",
         "-m",
         "crosswire",
         "check",
         "--repo",
-        "${CACHE_CROSSWIRE_V03_DJANGO}",
+        "/tmp/crosswire-v03-django",
         "--target",
         "origin/main",
         "--format",
@@ -321,9 +345,14 @@
       ],
       "readonly_verified": true,
       "report": {
+        "coverage": "partial",
         "findings": [
           {
             "branch": "refs/remotes/eval-pr/22297",
+            "hint": "rebase refs/remotes/eval-pr/22297 onto refs/remotes/eval-pr/22296",
+            "limitations": [
+              "file-level location; conflict line unavailable"
+            ],
             "line": 1,
             "message": "textual conflict with refs/remotes/eval-pr/22296",
             "other_branch": "refs/remotes/eval-pr/22296",
@@ -334,6 +363,10 @@
           },
           {
             "branch": "refs/remotes/eval-pr/22300",
+            "hint": "rebase refs/remotes/eval-pr/22300 onto refs/remotes/eval-pr/22296",
+            "limitations": [
+              "file-level location; conflict line unavailable"
+            ],
             "line": 1,
             "message": "textual conflict with refs/remotes/eval-pr/22296",
             "other_branch": "refs/remotes/eval-pr/22296",
@@ -344,6 +377,10 @@
           },
           {
             "branch": "refs/remotes/eval-pr/22300",
+            "hint": "rebase refs/remotes/eval-pr/22300 onto refs/remotes/eval-pr/22292",
+            "limitations": [
+              "file-level location; conflict line unavailable"
+            ],
             "line": 1,
             "message": "textual conflict with refs/remotes/eval-pr/22292",
             "other_branch": "refs/remotes/eval-pr/22292",
@@ -353,6 +390,28 @@
             "symbol": null
           }
         ],
+        "limitations": {
+          "splatted_call": {
+            "count": 82,
+            "examples": [
+              "django/db/models/query.py:171: splatted call",
+              "django/db/models/query.py:330: splatted call",
+              "django/db/models/query.py:605: splatted call",
+              "django/db/models/query.py:665: splatted call",
+              "django/db/models/query.py:673: splatted call"
+            ]
+          },
+          "unsupported": {
+            "count": 2688,
+            "examples": [
+              "django/db/models/query.py:98: runtime attribute or item mutation",
+              "django/db/models/query.py:99: runtime attribute or item mutation",
+              "django/db/models/query.py:100: runtime attribute or item mutation",
+              "django/db/models/query.py:106: method or dynamic call",
+              "django/db/models/query.py:127: method or dynamic call"
+            ]
+          }
+        },
         "pairs": [
           {
             "a": "refs/remotes/eval-pr/22300",
@@ -503,19 +562,19 @@
         "version": 1
       },
       "repository": "django/django",
-      "seconds": 1.2596190830008709,
+      "seconds": 1.8830744579972816,
       "semantic_predictions": 0,
       "target": "102c3c327d4974a58883b47a68f8d85da0be3648",
       "unlabelled": []
     },
     {
       "command": [
-        "${CACHE_CROSSWIRE_V04_EVAL}/bin/python",
+        "/private/tmp/crosswire-v04-eval/bin/python",
         "-m",
         "crosswire",
         "check",
         "--repo",
-        "${CACHE_CROSSWIRE_V03_FLASK}",
+        "/tmp/crosswire-v03-flask",
         "--target",
         "origin/main",
         "--format",
@@ -550,9 +609,14 @@
       ],
       "readonly_verified": true,
       "report": {
+        "coverage": "partial",
         "findings": [
           {
             "branch": "refs/remotes/eval-pr/5918",
+            "hint": "rebase refs/remotes/eval-pr/5918 onto refs/remotes/eval-pr/5665",
+            "limitations": [
+              "file-level location; conflict line unavailable"
+            ],
             "line": 1,
             "message": "textual conflict with refs/remotes/eval-pr/5665",
             "other_branch": "refs/remotes/eval-pr/5665",
@@ -563,6 +627,10 @@
           },
           {
             "branch": "refs/remotes/eval-pr/5918",
+            "hint": "rebase refs/remotes/eval-pr/5918 onto refs/remotes/eval-pr/5660",
+            "limitations": [
+              "file-level location; conflict line unavailable"
+            ],
             "line": 1,
             "message": "textual conflict with refs/remotes/eval-pr/5660",
             "other_branch": "refs/remotes/eval-pr/5660",
@@ -572,6 +640,28 @@
             "symbol": null
           }
         ],
+        "limitations": {
+          "splatted_call": {
+            "count": 19,
+            "examples": [
+              "src/flask/app.py:90: splatted call",
+              "src/flask/app.py:104: splatted call",
+              "src/flask/app.py:493: splatted call",
+              "src/flask/app.py:749: splatted call",
+              "src/flask/app.py:810: splatted call"
+            ]
+          },
+          "unsupported": {
+            "count": 1168,
+            "examples": [
+              "src/flask/app.py:57: type-only import",
+              "src/flask/app.py:58: type-only import",
+              "src/flask/app.py:60: type-only import",
+              "src/flask/app.py:61: type-only import",
+              "src/flask/app.py:62: type-only import"
+            ]
+          }
+        },
         "pairs": [
           {
             "a": "refs/remotes/eval-pr/5918",
@@ -597,37 +687,40 @@
         "version": 1
       },
       "repository": "pallets/flask",
-      "seconds": 0.4716450829982932,
+      "seconds": 0.6617480419954518,
       "semantic_predictions": 0,
       "target": "49943b5a94413a530761350f04e896f76e8d620e",
       "unlabelled": []
     }
   ],
   "source_sha256": {
-    "src/crosswire/__init__.py": "af8c4016284e7fbd96f530fe969322ea7b564932933f64a5cca3f5cad92345b2",
+    "src/crosswire/__init__.py": "e364931a8afff672985ee99f795e6d8b20ff33c55d71d757ec211ec6689b3c19",
     "src/crosswire/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
-    "src/crosswire/cache.py": "e2153abeda862df972fe65c209ec48ac419c1dcdce798775276b8926f2d40a50",
-    "src/crosswire/cli.py": "decad3e097d41c553e28043b00175615373e910ace1e46168e58ea7cfe5bb617",
-    "src/crosswire/combined.py": "46dce2b4b5950ee84f7671fd34fbc551115a28128bccfac74072ef835485884a",
-    "src/crosswire/combined_report.py": "cade8c37c7392894bb9c20eedc7b6c62d2ee8eb089bff507a10f6cfb6d8fe769",
+    "src/crosswire/cache.py": "1aa621512f3744df6414f3c083f5cd9529ecc52ad580f6104b5ab21725b87974",
+    "src/crosswire/cli.py": "22af7324b0dbf5f4cdb412207e25fd56b835353c3462a7c74cb7b4480dc79c94",
+    "src/crosswire/combined.py": "2039893071391431537195595b7243fdd0dfe4185093b3af4869cbc774283c84",
+    "src/crosswire/combined_report.py": "d49f08f268ae51d05b13af3ead224bfb2f8c7b626169834f9f6dec5bfd569291",
+    "src/crosswire/coverage.py": "279050c3901fee889c9913d3877f02f7c8e54b10d44b9df6eb7425ee39d251eb",
+    "src/crosswire/diagnostics.py": "33dd42c62ab79ec7a195d954b9c077191f47dbe9bb06b7ef7bbb4aaeb70cf3ce",
     "src/crosswire/diffing.py": "edd4630c0325a00137914c6d7c4a0585481c0347f3525b4124d01bb1e72b2b8a",
-    "src/crosswire/engine.py": "cccc0449e5b9193bd46adbe1da54df25e8ab456566288caec05fc2565e1899e7",
+    "src/crosswire/engine.py": "881d704fe3cfeadfdee6120e1249f3e9daebd6386e8b63c7eaea1949a7ff9d15",
     "src/crosswire/findings.py": "8479dbd27c5b88cce5a012f76008fdb66765ce068dabd3c7ba6b949b88625c43",
-    "src/crosswire/git.py": "bd9d1527220a711a631c58cd388a016fcebde8f7c0fa1ca636a475b1c547b254",
+    "src/crosswire/git.py": "52ad1758627d54fb51313eb636ce20b065aeca4d160a48c19d03b432c0483579",
     "src/crosswire/integrate.py": "48720c2aea09d4d33ca8b8f8a2bf9c3e652ce0ed4eed09464b3ae1a2c28e628c",
-    "src/crosswire/model.py": "2d85f86dc4735f4c5714bc49c751c74b4475650febad53e562326ac7f497a44f",
-    "src/crosswire/plan_report.py": "afd73711a51553e4ee38354192cffafc94774eaf4c26d76cf63efaa563d5327b",
-    "src/crosswire/planner.py": "902093265f1430dfc07a9f5ba84850f3aae5162ddd0602121d94cbcce6685ae2",
-    "src/crosswire/python_analyzer.py": "02437e97ecd741574411bb0185e542f4bfa4d93e3f6a4ef382af547dc8ec7ebe",
-    "src/crosswire/report.py": "e6adc5e050b47cc3e6d3d3c03cd7571f269e7b964d59de9ae2aeb99e1ed1be21",
+    "src/crosswire/model.py": "f4926180aa277a03b87d7b4640bb0c1882c646c234dbb5bb54b242a376db4b1b",
+    "src/crosswire/parsing.py": "8ab2b4ff92b1552024d41d98e498eeb967b757338d85ad6c4f52ced28361cf6b",
+    "src/crosswire/plan_report.py": "db1c83c1ee97bc93966b6b495d60dcad9f0aceddb0e633b975337b66394a6aa4",
+    "src/crosswire/planner.py": "26aa3923fe8e939df6f0ba633e674e963032516b4b28f4bfebbfeea713cf8fd2",
+    "src/crosswire/python_analyzer.py": "8ad6e72d448ad580a3bd3628b6daf9a76f95c48106b2723f6f85b5d573ef4008",
+    "src/crosswire/report.py": "6b4232a11537f65ca272f9b1454e47a42df1225bd25ecb5354d96cbff0aa4b5a",
     "src/crosswire/rules/__init__.py": "8ebf4507b15cddbd42fafe6a709f0d0f28475e215868089aae7d951cf7590869",
     "src/crosswire/rules/cw001.py": "fe7f2b602a94c334f2ff593d2ac095e7c49bbfd3b99603d7727d1d904823b59e",
-    "src/crosswire/rules/cw002.py": "a9908ea5a10fef953843cd20ae3956110df1f0e013ba65224eca1af612c6fda1",
+    "src/crosswire/rules/cw002.py": "7c29a1195b8a13b9c12831eae409630be2e8bba2ac0a9463c142c1bba2c1bea0",
     "src/crosswire/rules/cw003.py": "4b94945a296858a79cf95f507d21f0748644fd3f3f88fc3321018a0bcc23f7b5",
-    "src/crosswire/rules/cw004.py": "5dfb449d8f2fbb48210aa679d356c2c761f7833b5702779027208bddbc750a9f",
+    "src/crosswire/rules/cw004.py": "5a7f84e4f0948e34eb55842e1b7201ea07c5d6321f66d85b49649829bf833628",
     "src/crosswire/rules/cw005.py": "4ce73561e819233770b21d6cfb86054ce6f20ef1dfeabd2587ecc8f4c733b04f",
-    "src/crosswire/state.py": "bb46d08d18d4ad1353ef07ca07c1c059aee2a7b3ff2912684b0908487955be6a"
+    "src/crosswire/state.py": "be6b4e7fc86aa2f79aa9954d7f7b859cd63f8a952e335f9dbabdcf8ac8609179"
   },
   "source_stable": true,
-  "stratum": "live PRs, never holdout"
+  "stratum": "pinned PR snapshot replay"
 }

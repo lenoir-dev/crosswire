@@ -1,0 +1,5171 @@
+{
+  "by_family": {
+    "class_remove": {
+      "attempted": 12,
+      "controls": 9,
+      "eligible": 12,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 3,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.4385029682449546,
+            "precision_wilson95": [
+              0.4385029682449546,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.4385029682449546,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 3,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW002": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 0
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 3,
+          "detector_errors": 0,
+          "eligible_cases": 12,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.4385029682449546,
+          "precision_wilson95": [
+            0.4385029682449546,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.4385029682449546,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 3,
+          "unlabelled_cases": 0,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.0
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 3
+    },
+    "conjunctive": {
+      "attempted": 12,
+      "controls": 9,
+      "eligible": 12,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW002": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW006": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 3,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.4385029682449546,
+            "precision_wilson95": [
+              0.4385029682449546,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.4385029682449546,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 3,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 0
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 3,
+          "detector_errors": 0,
+          "eligible_cases": 12,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.4385029682449546,
+          "precision_wilson95": [
+            0.4385029682449546,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.4385029682449546,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 3,
+          "unlabelled_cases": 0,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.0
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 3
+    },
+    "from_import": {
+      "attempted": 12,
+      "controls": 9,
+      "eligible": 12,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 3,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.4385029682449546,
+            "precision_wilson95": [
+              0.4385029682449546,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.4385029682449546,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 3,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW002": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 0
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 3,
+          "detector_errors": 0,
+          "eligible_cases": 12,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.4385029682449546,
+          "precision_wilson95": [
+            0.4385029682449546,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.4385029682449546,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 3,
+          "unlabelled_cases": 0,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.0
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 3
+    },
+    "init_required": {
+      "attempted": 12,
+      "controls": 9,
+      "eligible": 12,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW002": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 3,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.4385029682449546,
+            "precision_wilson95": [
+              0.4385029682449546,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.4385029682449546,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 3,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 0
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 3,
+          "detector_errors": 0,
+          "eligible_cases": 12,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.4385029682449546,
+          "precision_wilson95": [
+            0.4385029682449546,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.4385029682449546,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 3,
+          "unlabelled_cases": 0,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.0
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 3
+    },
+    "module_move": {
+      "attempted": 28,
+      "controls": 15,
+      "eligible": 19,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 4,
+            "detector_errors": 0,
+            "eligible_cases": 19,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.5101091635454027,
+            "precision_wilson95": [
+              0.5101091635454027,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.5101091635454027,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 4,
+            "unlabelled_cases": 9,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.3214285714285714
+          },
+          "CW002": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 19,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 9,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.3214285714285714
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 19,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 9,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.3214285714285714
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 19,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 9,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.3214285714285714
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 19,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 9,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.3214285714285714
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 9
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 4,
+          "detector_errors": 0,
+          "eligible_cases": 19,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.5101091635454027,
+          "precision_wilson95": [
+            0.5101091635454027,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.5101091635454027,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 4,
+          "unlabelled_cases": 9,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.3214285714285714
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 4
+    },
+    "remove_attribute": {
+      "attempted": 32,
+      "controls": 18,
+      "eligible": 24,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 6,
+            "detector_errors": 0,
+            "eligible_cases": 24,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.6096657120978346,
+            "precision_wilson95": [
+              0.6096657120978346,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.6096657120978346,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 6,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.25
+          },
+          "CW002": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 24,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.25
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 24,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.25
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 24,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.25
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 24,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.25
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 8
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 6,
+          "detector_errors": 0,
+          "eligible_cases": 24,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.6096657120978346,
+          "precision_wilson95": [
+            0.6096657120978346,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.6096657120978346,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 6,
+          "unlabelled_cases": 8,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.25
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 6
+    },
+    "remove_reexport": {
+      "attempted": 20,
+      "controls": 12,
+      "eligible": 16,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 4,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.5101091635454027,
+            "precision_wilson95": [
+              0.5101091635454027,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.5101091635454027,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 4,
+            "unlabelled_cases": 4,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.19999999999999996
+          },
+          "CW002": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 4,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.19999999999999996
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 4,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.19999999999999996
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 4,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.19999999999999996
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 4,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.19999999999999996
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 4
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 4,
+          "detector_errors": 0,
+          "eligible_cases": 16,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.5101091635454027,
+          "precision_wilson95": [
+            0.5101091635454027,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.5101091635454027,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 4,
+          "unlabelled_cases": 4,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.19999999999999996
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 4
+    },
+    "required_keyword": {
+      "attempted": 32,
+      "controls": 18,
+      "eligible": 24,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 24,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.25
+          },
+          "CW002": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 6,
+            "detector_errors": 0,
+            "eligible_cases": 24,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.6096657120978346,
+            "precision_wilson95": [
+              0.6096657120978346,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.6096657120978346,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 6,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.25
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 24,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.25
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 24,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.25
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 24,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.25
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 8
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 6,
+          "detector_errors": 0,
+          "eligible_cases": 24,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.6096657120978346,
+          "precision_wilson95": [
+            0.6096657120978346,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.6096657120978346,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 6,
+          "unlabelled_cases": 8,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.25
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 6
+    },
+    "required_posonly": {
+      "attempted": 24,
+      "controls": 12,
+      "eligible": 16,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.33333333333333337
+          },
+          "CW002": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 4,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.5101091635454027,
+            "precision_wilson95": [
+              0.5101091635454027,
+              1
+            ],
+            "reason_category_mismatches": 4,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.5101091635454027,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 4,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.33333333333333337
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.33333333333333337
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.33333333333333337
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.33333333333333337
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 8
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 4,
+          "detector_errors": 0,
+          "eligible_cases": 16,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.5101091635454027,
+          "precision_wilson95": [
+            0.5101091635454027,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.5101091635454027,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 4,
+          "unlabelled_cases": 8,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.33333333333333337
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 4
+    },
+    "too_many_positional": {
+      "attempted": 20,
+      "controls": 12,
+      "eligible": 16,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 4,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.19999999999999996
+          },
+          "CW002": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 4,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.5101091635454027,
+            "precision_wilson95": [
+              0.5101091635454027,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.5101091635454027,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 4,
+            "unlabelled_cases": 4,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.19999999999999996
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 4,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.19999999999999996
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 4,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.19999999999999996
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 4,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.19999999999999996
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 4
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 4,
+          "detector_errors": 0,
+          "eligible_cases": 16,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.5101091635454027,
+          "precision_wilson95": [
+            0.5101091635454027,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.5101091635454027,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 4,
+          "unlabelled_cases": 4,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.19999999999999996
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 4
+    },
+    "unknown_keyword": {
+      "attempted": 24,
+      "controls": 12,
+      "eligible": 16,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.33333333333333337
+          },
+          "CW002": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 4,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.5101091635454027,
+            "precision_wilson95": [
+              0.5101091635454027,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.5101091635454027,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 4,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.33333333333333337
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.33333333333333337
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.33333333333333337
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.33333333333333337
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 8
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 4,
+          "detector_errors": 0,
+          "eligible_cases": 16,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.5101091635454027,
+          "precision_wilson95": [
+            0.5101091635454027,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.5101091635454027,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 4,
+          "unlabelled_cases": 8,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.33333333333333337
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 4
+    }
+  },
+  "by_repository": {
+    "pallets-eco/blinker": {
+      "attempted": 68,
+      "controls": 51,
+      "eligible": 67,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 6,
+            "detector_errors": 0,
+            "eligible_cases": 67,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.6096657120978346,
+            "precision_wilson95": [
+              0.6096657120978346,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.6096657120978346,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 1,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 6,
+            "unlabelled_cases": 1,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.014705882352941124
+          },
+          "CW002": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 9,
+            "detector_errors": 0,
+            "eligible_cases": 67,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.7008549515804559,
+            "precision_wilson95": [
+              0.7008549515804559,
+              1
+            ],
+            "reason_category_mismatches": 2,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.7008549515804559,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 1,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 9,
+            "unlabelled_cases": 1,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.014705882352941124
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 67,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 1,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 1,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.014705882352941124
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 67,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 1,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 1,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.014705882352941124
+          },
+          "CW006": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 1,
+            "detector_errors": 0,
+            "eligible_cases": 67,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.20654931437723745,
+            "precision_wilson95": [
+              0.20654931437723745,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.20654931437723745,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 1,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 1,
+            "unlabelled_cases": 1,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.014705882352941124
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 1
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 16,
+          "detector_errors": 0,
+          "eligible_cases": 67,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.8063923194655637,
+          "precision_wilson95": [
+            0.8063923194655637,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.8063923194655637,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 16,
+          "unlabelled_cases": 1,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.014705882352941124
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 1,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 16
+    },
+    "pallets/itsdangerous": {
+      "attempted": 28,
+      "controls": 0,
+      "eligible": 0,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 0,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 0,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 28,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 1.0
+          },
+          "CW002": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 0,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 0,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 28,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 1.0
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 0,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 0,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 28,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 1.0
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 0,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 0,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 28,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 1.0
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 0,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 0,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 28,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 1.0
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 28
+        },
+        "micro": {
+          "attribution_accuracy": null,
+          "attribution_labelled": 0,
+          "detector_errors": 0,
+          "eligible_cases": 0,
+          "fn": 0,
+          "fp": 0,
+          "precision": null,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": null,
+          "precision_wilson95": null,
+          "recall": null,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": null,
+          "status": "insufficient data",
+          "tp": 0,
+          "unlabelled_cases": 28,
+          "unlabelled_prediction_share": null,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 1.0
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 0,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 0
+    },
+    "pypa/trove-classifiers": {
+      "attempted": 56,
+      "controls": 42,
+      "eligible": 56,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 7,
+            "detector_errors": 0,
+            "eligible_cases": 56,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.6456695649333126,
+            "precision_wilson95": [
+              0.6456695649333126,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.6456695649333126,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 1,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 7,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW002": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 6,
+            "detector_errors": 0,
+            "eligible_cases": 56,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.6096657120978346,
+            "precision_wilson95": [
+              0.6096657120978346,
+              1
+            ],
+            "reason_category_mismatches": 1,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.6096657120978346,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 1,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 6,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 56,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 1,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 56,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 1,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW006": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 1,
+            "detector_errors": 0,
+            "eligible_cases": 56,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.20654931437723745,
+            "precision_wilson95": [
+              0.20654931437723745,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.20654931437723745,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 1,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 1,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 0
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 14,
+          "detector_errors": 0,
+          "eligible_cases": 56,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.7846891972623643,
+          "precision_wilson95": [
+            0.7846891972623643,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.7846891972623643,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 14,
+          "unlabelled_cases": 0,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.0
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 1,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 14
+    },
+    "python-hyper/hyperframe": {
+      "attempted": 20,
+      "controls": 0,
+      "eligible": 0,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 0,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 0,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 20,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 1.0
+          },
+          "CW002": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 0,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 0,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 20,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 1.0
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 0,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 0,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 20,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 1.0
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 0,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 0,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 20,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 1.0
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 0,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 0,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 20,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 1.0
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 20
+        },
+        "micro": {
+          "attribution_accuracy": null,
+          "attribution_labelled": 0,
+          "detector_errors": 0,
+          "eligible_cases": 0,
+          "fn": 0,
+          "fp": 0,
+          "precision": null,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": null,
+          "precision_wilson95": null,
+          "recall": null,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": null,
+          "status": "insufficient data",
+          "tp": 0,
+          "unlabelled_cases": 20,
+          "unlabelled_prediction_share": null,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 1.0
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 0,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 0
+    },
+    "python-trio/sniffio": {
+      "attempted": 56,
+      "controls": 42,
+      "eligible": 56,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 7,
+            "detector_errors": 0,
+            "eligible_cases": 56,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.6456695649333126,
+            "precision_wilson95": [
+              0.6456695649333126,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.6456695649333126,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 1,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 7,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW002": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 6,
+            "detector_errors": 0,
+            "eligible_cases": 56,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.6096657120978346,
+            "precision_wilson95": [
+              0.6096657120978346,
+              1
+            ],
+            "reason_category_mismatches": 1,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.6096657120978346,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 1,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 6,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 56,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 1,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 56,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 1,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW006": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 1,
+            "detector_errors": 0,
+            "eligible_cases": 56,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.20654931437723745,
+            "precision_wilson95": [
+              0.20654931437723745,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.20654931437723745,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 1,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 1,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 0
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 14,
+          "detector_errors": 0,
+          "eligible_cases": 56,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.7846891972623643,
+          "precision_wilson95": [
+            0.7846891972623643,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.7846891972623643,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 14,
+          "unlabelled_cases": 0,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.0
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 1,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 14
+    }
+  },
+  "by_stratum": {
+    "historical upstream-declaration mutations": {
+      "attempted": 96,
+      "controls": 36,
+      "eligible": 47,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 5,
+            "detector_errors": 0,
+            "eligible_cases": 47,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.5655175352168251,
+            "precision_wilson95": [
+              0.5655175352168251,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.5655175352168251,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 5,
+            "unlabelled_cases": 49,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.5104166666666667
+          },
+          "CW002": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 6,
+            "detector_errors": 0,
+            "eligible_cases": 47,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.6096657120978346,
+            "precision_wilson95": [
+              0.6096657120978346,
+              1
+            ],
+            "reason_category_mismatches": 1,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.6096657120978346,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 6,
+            "unlabelled_cases": 49,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.5104166666666667
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 47,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 49,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.5104166666666667
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 47,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 49,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.5104166666666667
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 47,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 49,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.5104166666666667
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 49
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 11,
+          "detector_errors": 0,
+          "eligible_cases": 47,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.7411670330319684,
+          "precision_wilson95": [
+            0.7411670330319684,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.7411670330319684,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 11,
+          "unlabelled_cases": 49,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.5104166666666667
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 11
+    },
+    "upstream API oracle scaffolds": {
+      "attempted": 132,
+      "controls": 99,
+      "eligible": 132,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 15,
+            "detector_errors": 0,
+            "eligible_cases": 132,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.7961166989641515,
+            "precision_wilson95": [
+              0.7961166989641515,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.7961166989641515,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 15,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW002": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 15,
+            "detector_errors": 0,
+            "eligible_cases": 132,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.7961166989641515,
+            "precision_wilson95": [
+              0.7961166989641515,
+              1
+            ],
+            "reason_category_mismatches": 3,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.7961166989641515,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 15,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 132,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 132,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW006": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 3,
+            "detector_errors": 0,
+            "eligible_cases": 132,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.4385029682449546,
+            "precision_wilson95": [
+              0.4385029682449546,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.4385029682449546,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 3,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 0
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 33,
+          "detector_errors": 0,
+          "eligible_cases": 132,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "fail",
+          "precision_gate_lower_bound": 0.895730002457548,
+          "precision_wilson95": [
+            0.895730002457548,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "pass",
+          "recall_wilson95": [
+            0.895730002457548,
+            1
+          ],
+          "status": "measured",
+          "tp": 33,
+          "unlabelled_cases": 0,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.0
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 33
+    }
+  },
+  "by_type": {
+    "PY-1": {
+      "attempted": 56,
+      "controls": 36,
+      "eligible": 48,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 12,
+            "detector_errors": 0,
+            "eligible_cases": 48,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.7575059933447592,
+            "precision_wilson95": [
+              0.7575059933447592,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.7575059933447592,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 12,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.1428571428571429
+          },
+          "CW002": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 48,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.1428571428571429
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 48,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.1428571428571429
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 48,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.1428571428571429
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 48,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 8,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.1428571428571429
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 8
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 12,
+          "detector_errors": 0,
+          "eligible_cases": 48,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.7575059933447592,
+          "precision_wilson95": [
+            0.7575059933447592,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.7575059933447592,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 12,
+          "unlabelled_cases": 8,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.1428571428571429
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 12
+    },
+    "PY-2": {
+      "attempted": 28,
+      "controls": 15,
+      "eligible": 19,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 4,
+            "detector_errors": 0,
+            "eligible_cases": 19,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.5101091635454027,
+            "precision_wilson95": [
+              0.5101091635454027,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.5101091635454027,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 4,
+            "unlabelled_cases": 9,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.3214285714285714
+          },
+          "CW002": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 19,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 9,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.3214285714285714
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 19,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 9,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.3214285714285714
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 19,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 9,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.3214285714285714
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 19,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 9,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.3214285714285714
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 9
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 4,
+          "detector_errors": 0,
+          "eligible_cases": 19,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.5101091635454027,
+          "precision_wilson95": [
+            0.5101091635454027,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.5101091635454027,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 4,
+          "unlabelled_cases": 9,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.3214285714285714
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 4
+    },
+    "PY-3": {
+      "attempted": 20,
+      "controls": 12,
+      "eligible": 16,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 4,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.5101091635454027,
+            "precision_wilson95": [
+              0.5101091635454027,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.5101091635454027,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 4,
+            "unlabelled_cases": 4,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.19999999999999996
+          },
+          "CW002": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 4,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.19999999999999996
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 4,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.19999999999999996
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 4,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.19999999999999996
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 16,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 4,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.19999999999999996
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 4
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 4,
+          "detector_errors": 0,
+          "eligible_cases": 16,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.5101091635454027,
+          "precision_wilson95": [
+            0.5101091635454027,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.5101091635454027,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 4,
+          "unlabelled_cases": 4,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.19999999999999996
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 4
+    },
+    "PY-4": {
+      "attempted": 112,
+      "controls": 63,
+      "eligible": 84,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 84,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 28,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.25
+          },
+          "CW002": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 21,
+            "detector_errors": 0,
+            "eligible_cases": 84,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "fail",
+            "precision_gate_lower_bound": 0.8453609810751531,
+            "precision_wilson95": [
+              0.8453609810751531,
+              1
+            ],
+            "reason_category_mismatches": 4,
+            "recall": 1.0,
+            "recall_gate": "pass",
+            "recall_wilson95": [
+              0.8453609810751531,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "measured",
+            "tp": 21,
+            "unlabelled_cases": 28,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.25
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 84,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 28,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.25
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 84,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 28,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.25
+          },
+          "CW006": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 84,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 28,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.25
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 28
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 21,
+          "detector_errors": 0,
+          "eligible_cases": 84,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "fail",
+          "precision_gate_lower_bound": 0.8453609810751531,
+          "precision_wilson95": [
+            0.8453609810751531,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "pass",
+          "recall_wilson95": [
+            0.8453609810751531,
+            1
+          ],
+          "status": "measured",
+          "tp": 21,
+          "unlabelled_cases": 28,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.25
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 21
+    },
+    "PY-5": {
+      "attempted": 12,
+      "controls": 9,
+      "eligible": 12,
+      "metrics": {
+        "by_rule": {
+          "CW001": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW002": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW003": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW004": {
+            "attribution_accuracy": null,
+            "attribution_labelled": 0,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": null,
+            "precision_wilson95": null,
+            "reason_category_mismatches": 0,
+            "recall": null,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": null,
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 0,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": null,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          },
+          "CW006": {
+            "attribution_accuracy": 1.0,
+            "attribution_labelled": 3,
+            "detector_errors": 0,
+            "eligible_cases": 12,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "precision_gate": "insufficient data",
+            "precision_gate_lower_bound": 0.4385029682449546,
+            "precision_wilson95": [
+              0.4385029682449546,
+              1
+            ],
+            "reason_category_mismatches": 0,
+            "recall": 1.0,
+            "recall_gate": "insufficient data",
+            "recall_wilson95": [
+              0.4385029682449546,
+              1
+            ],
+            "repo_clustered95": {
+              "precision": null,
+              "recall": null,
+              "repositories": 3,
+              "status": "not estimable"
+            },
+            "status": "insufficient data",
+            "tp": 3,
+            "unlabelled_cases": 0,
+            "unlabelled_prediction_share": 0.0,
+            "unlabelled_predictions": 0,
+            "unlabelled_share": 0.0
+          }
+        },
+        "exclusions": {
+          "oracle-ineligible": 0
+        },
+        "micro": {
+          "attribution_accuracy": 1.0,
+          "attribution_labelled": 3,
+          "detector_errors": 0,
+          "eligible_cases": 12,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "precision_gate": "insufficient data",
+          "precision_gate_lower_bound": 0.4385029682449546,
+          "precision_wilson95": [
+            0.4385029682449546,
+            1
+          ],
+          "recall": 1.0,
+          "recall_gate": "insufficient data",
+          "recall_wilson95": [
+            0.4385029682449546,
+            1
+          ],
+          "status": "insufficient data",
+          "tp": 3,
+          "unlabelled_cases": 0,
+          "unlabelled_prediction_share": 0.0,
+          "unlabelled_predictions": 0,
+          "unlabelled_share": 0.0
+        },
+        "repo_clustered95": {
+          "precision": null,
+          "recall": null,
+          "repositories": 3,
+          "status": "not estimable"
+        }
+      },
+      "positive_cases": 3
+    }
+  },
+  "exclusions": [
+    {
+      "family": "remove_attribute",
+      "id": "python-hyper--hyperframe-000",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "remove_attribute",
+      "id": "python-hyper--hyperframe-001",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "remove_attribute",
+      "id": "python-hyper--hyperframe-002",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "remove_attribute",
+      "id": "python-hyper--hyperframe-003",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "required_keyword",
+      "id": "python-hyper--hyperframe-004",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "required_keyword",
+      "id": "python-hyper--hyperframe-005",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "required_keyword",
+      "id": "python-hyper--hyperframe-006",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "required_keyword",
+      "id": "python-hyper--hyperframe-007",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "unknown_keyword",
+      "id": "python-hyper--hyperframe-008",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "unknown_keyword",
+      "id": "python-hyper--hyperframe-009",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "unknown_keyword",
+      "id": "python-hyper--hyperframe-010",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "unknown_keyword",
+      "id": "python-hyper--hyperframe-011",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "required_posonly",
+      "id": "python-hyper--hyperframe-012",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "required_posonly",
+      "id": "python-hyper--hyperframe-013",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "required_posonly",
+      "id": "python-hyper--hyperframe-014",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "required_posonly",
+      "id": "python-hyper--hyperframe-015",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "module_move",
+      "id": "python-hyper--hyperframe-016",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "module_move",
+      "id": "python-hyper--hyperframe-017",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "module_move",
+      "id": "python-hyper--hyperframe-018",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "module_move",
+      "id": "python-hyper--hyperframe-019",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 40,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "python-hyper/hyperframe"
+    },
+    {
+      "family": "remove_attribute",
+      "id": "pallets--itsdangerous-000",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "remove_attribute",
+      "id": "pallets--itsdangerous-001",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "remove_attribute",
+      "id": "pallets--itsdangerous-002",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "remove_attribute",
+      "id": "pallets--itsdangerous-003",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "required_keyword",
+      "id": "pallets--itsdangerous-004",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "required_keyword",
+      "id": "pallets--itsdangerous-005",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "required_keyword",
+      "id": "pallets--itsdangerous-006",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "required_keyword",
+      "id": "pallets--itsdangerous-007",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "unknown_keyword",
+      "id": "pallets--itsdangerous-008",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "unknown_keyword",
+      "id": "pallets--itsdangerous-009",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "unknown_keyword",
+      "id": "pallets--itsdangerous-010",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "unknown_keyword",
+      "id": "pallets--itsdangerous-011",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "too_many_positional",
+      "id": "pallets--itsdangerous-012",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "too_many_positional",
+      "id": "pallets--itsdangerous-013",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "too_many_positional",
+      "id": "pallets--itsdangerous-014",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "too_many_positional",
+      "id": "pallets--itsdangerous-015",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "required_posonly",
+      "id": "pallets--itsdangerous-016",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "required_posonly",
+      "id": "pallets--itsdangerous-017",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "required_posonly",
+      "id": "pallets--itsdangerous-018",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "required_posonly",
+      "id": "pallets--itsdangerous-019",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "module_move",
+      "id": "pallets--itsdangerous-020",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "module_move",
+      "id": "pallets--itsdangerous-021",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "module_move",
+      "id": "pallets--itsdangerous-022",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "module_move",
+      "id": "pallets--itsdangerous-023",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "remove_reexport",
+      "id": "pallets--itsdangerous-024",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "remove_reexport",
+      "id": "pallets--itsdangerous-025",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "remove_reexport",
+      "id": "pallets--itsdangerous-026",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "remove_reexport",
+      "id": "pallets--itsdangerous-027",
+      "oracle_failures": {
+        "target": {
+          "diagnostic_count": 4,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets/itsdangerous"
+    },
+    {
+      "family": "module_move",
+      "id": "pallets-eco--blinker-020",
+      "oracle_failures": {
+        "A": {
+          "diagnostic_count": 1,
+          "reason": null,
+          "status": "fail"
+        },
+        "integrated": {
+          "diagnostic_count": 2,
+          "reason": null,
+          "status": "fail"
+        }
+      },
+      "reason": "oracle-ineligible",
+      "repository": "pallets-eco/blinker"
+    }
+  ],
+  "label": "development data, optimistic, not a gate",
+  "reason_disagreements": [
+    {
+      "detector_messages": [
+        "`blinker._utilities.make_id` call is incompatible with A: positional-only argument passed as keyword: obj"
+      ],
+      "family": "required_posonly",
+      "id": "pallets-eco--blinker-016",
+      "mismatches": [
+        {
+          "oracle": null,
+          "prediction": "positional-only"
+        }
+      ],
+      "oracle_messages": [
+        "Expected 1 more positional argument"
+      ],
+      "root_cause": "Detector identifies keyword use of a positional-only parameter; Pyright emits Expected 1 more positional argument, which the frozen reason categorizer maps to null. Detection identity and minimal culprit oracle still match."
+    },
+    {
+      "detector_messages": [
+        "`crosswire_probe_008.api.f` call is incompatible with A: positional-only argument passed as keyword: value"
+      ],
+      "family": "required_posonly",
+      "id": "r2-public-0032",
+      "mismatches": [
+        {
+          "oracle": null,
+          "prediction": "positional-only"
+        }
+      ],
+      "oracle_messages": [
+        "Expected 1 more positional argument"
+      ],
+      "root_cause": "Detector identifies keyword use of a positional-only parameter; Pyright emits Expected 1 more positional argument, which the frozen reason categorizer maps to null. Detection identity and minimal culprit oracle still match."
+    },
+    {
+      "detector_messages": [
+        "`crosswire_probe_008.api.f` call is incompatible with A: positional-only argument passed as keyword: value"
+      ],
+      "family": "required_posonly",
+      "id": "r2-public-0076",
+      "mismatches": [
+        {
+          "oracle": null,
+          "prediction": "positional-only"
+        }
+      ],
+      "oracle_messages": [
+        "Expected 1 more positional argument"
+      ],
+      "root_cause": "Detector identifies keyword use of a positional-only parameter; Pyright emits Expected 1 more positional argument, which the frozen reason categorizer maps to null. Detection identity and minimal culprit oracle still match."
+    },
+    {
+      "detector_messages": [
+        "`crosswire_probe_008.api.f` call is incompatible with A: positional-only argument passed as keyword: value"
+      ],
+      "family": "required_posonly",
+      "id": "r2-public-0120",
+      "mismatches": [
+        {
+          "oracle": null,
+          "prediction": "positional-only"
+        }
+      ],
+      "oracle_messages": [
+        "Expected 1 more positional argument"
+      ],
+      "root_cause": "Detector identifies keyword use of a positional-only parameter; Pyright emits Expected 1 more positional argument, which the frozen reason categorizer maps to null. Detection identity and minimal culprit oracle still match."
+    }
+  ]
+}

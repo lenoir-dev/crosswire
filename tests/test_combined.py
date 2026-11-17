@@ -7,6 +7,7 @@ semantic failures from accidental textual conflicts before checking crosswire.
 from dataclasses import FrozenInstanceError
 from itertools import combinations, permutations
 import json
+import shlex
 
 import pytest
 
@@ -187,10 +188,18 @@ def test_scenario_8_permutations_preserve_findings_and_read_only_state(repo, req
     for order in permutations(("A", "B", "C")):
         report = combined(repo, order)
         assert report["integrated"] == list(order) and report["skipped"] == []
+        for finding in report["findings"]:
+            if finding["repro"] is not None:
+                tokens = shlex.split(finding["repro"])
+                assert tokens[:2] == ["crosswire", "check"]
+                minimal = set(finding["culprits"]) | {finding["branch"]}
+                assert tokens[tokens.index("--combined") + 1:] == [label for label in order if label in minimal]
+        findings = [{key: value for key, value in finding.items() if key != "repro"}
+                    for finding in report["findings"]]
         if expected is None:
-            expected = report["findings"]
+            expected = findings
             assert expected
-        assert report["findings"] == expected, "PLAN-v0.3a §5.8: order changes findings for a clean merge set"
+        assert findings == expected, "PLAN-v0.3a §5.8: order changes findings for a clean merge set"
 
 
 def test_combined_json_v2_exact_shape_and_deterministic_serialization(repo, conjunctive):
@@ -327,6 +336,7 @@ def test_scenario_5_competing_fixes_choose_lexical_minimum_independent_of_order(
         assert (hit["rule"], hit["severity"], hit["branch"]) == ("CW001", "warning", "C")
         assert hit["culprits"] == ["A"] and hit["culprits_exact"] is True
         assert hit["resolved_by"] == ["B"]
+        assert hit["repro"] is None
         if expected is None:
             expected = report["findings"]
         assert report["findings"] == expected
@@ -352,7 +362,7 @@ def test_scenario_7_preexisting_missing_names_and_third_party_are_not_blameable(
     ({"m.py": "if enabled:\n    def f(x): pass\nelse:\n    def f(x, y): pass\n"}, "m", "f", "valid", {"m.py"}),
     ({"m.py": "try:\n    value = 1\nexcept ImportError:\n    value = 2\n"}, "m", "value", "valid", {"m.py"}),
     ({"m.py": "# No f\n"}, "m", "f", "broken", {"m.py"}),
-    ({"m.py": "from impl import *\n", "impl.py": DIRECT}, "m", "f", "broken", {"m.py"}),
+    ({"m.py": "from impl import *\n", "impl.py": DIRECT}, "m", "f", "unknown", {"m.py"}),
     ({"m.py": "def broken(\n"}, "m", "f", "unknown", {"m.py"}),
     ({"unrelated.py": ""}, "external_uninstalled_package", "f", "unknown", set()),
     ({"m.py": "from impl import f\n", "impl.py": "# No f\n"}, "m", "f", "broken", {"m.py", "impl.py"}),

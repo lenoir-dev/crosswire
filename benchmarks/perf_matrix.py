@@ -2,6 +2,8 @@
 
 import argparse
 import json
+import io
+import tarfile
 import math
 import os
 from pathlib import Path
@@ -31,7 +33,7 @@ def worker(argv):
     raise SystemExit(main())
 
 
-def sample(repo, branches, mode, timeout):
+def sample(repo, branches, mode, timeout, source=None):
     args = ["plan" if mode == "plan" else "check", "--repo", str(repo.path), "--target", "main", "--format", "json"]
     if mode == "combined":
         args.append("--combined")
@@ -40,7 +42,7 @@ def sample(repo, branches, mode, timeout):
     start = time.perf_counter()
     try:
         result = subprocess.run(command, capture_output=True, text=True, timeout=timeout,
-                                env={**repo.env, "PYTHONPATH": str(ROOT / "src")})
+                                env={**repo.env, "PYTHONPATH": str(source or ROOT / "src")})
     except subprocess.TimeoutExpired:
         assert repo.snapshot() == before
         return {"seconds_lower_bound": timeout, "status": "timeout", "peak_rss": None}
@@ -66,7 +68,8 @@ def main():
     parser.add_argument("--branches", type=int, nargs="+", default=[5, 10, 30])
     parser.add_argument("--python-fraction", type=float, default=.1)
     parser.add_argument("--resume", action="store_true")
-    parser.add_argument("--vega-scenario", action="store_true", help="V3-05: 9000 Python files, 16 branches, 2 changed files per branch")
+    parser.add_argument("--vega-scenario", action="store_true", help="R3/V4-01: 9051 files, 9000 referenced Python modules, 16 branches; all three warm budgets")
+    parser.add_argument("--baseline-ref", default="89cfd99", help="R3 immutable v0.3.1 comparison source for the same fixture")
     args = parser.parse_args()
     from tests.helpers import RepoBuilder
     import hashlib
@@ -90,30 +93,67 @@ def main():
         assert previous["python_fraction"] == args.python_fraction
         report = previous
     if args.vega_scenario:
+        baseline_sha=subprocess.check_output(['git','rev-parse',args.baseline_ref+'^{commit}'],cwd=ROOT,text=True).strip()
+        report.update(fixture="Vega V4-01: 9051 tracked files, 9000 Python modules each referencing a distinct first-party module; 16 independent branches, two edited files each",
+                      python_fraction=9000/9051, budget_seconds=15,
+                      r3_budgets={"pairwise_max_ratio":1.2,"combined_seconds":6,"plan_seconds":15,"relative_statistics":["p50","p95"]},
+                      baseline_commit=baseline_sha)
+        def quantiles(samples,preparation):
+            values=[r['seconds'] for r in samples if r['status']=='ok']
+            ready=len(values)==args.repeat and preparation['status']=='ok'
+            return {"p50":statistics.median(values) if ready else None,"p95":percentile(values,.95) if ready else None,
+                    "censored":sum(r['status']=='timeout' for r in samples),
+                    "peak_rss_max":max((r.get('peak_rss') or 0 for r in samples),default=0) or None}
+        def persist_vega():
+            args.output.parent.mkdir(parents=True,exist_ok=True)
+            args.output.write_text(json.dumps(report,sort_keys=True,indent=2)+'\n')
         with tempfile.TemporaryDirectory(prefix="crosswire-vega-perf-") as temporary:
             repo=RepoBuilder(Path(temporary)/"repo")
+            baseline=Path(temporary)/'baseline';baseline.mkdir()
+            archive=subprocess.check_output(['git','archive',baseline_sha,'src'],cwd=ROOT)
+            with tarfile.open(fileobj=io.BytesIO(archive)) as content:
+                content.extractall(baseline,filter='data')
+            report['baseline_source_sha256']={p.relative_to(baseline).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in (baseline/'src').rglob('*.py')}
+            def module_source(number,value=0):
+                following=f'm_{(number+1)%9000:05d}'
+                return f'import {following}\n\ndef value():\n    return {value}\n\nreference = {following}.value\n'
             for number in range(9000):
-                repo.write(f"modules/m_{number:05d}.py", "def value():\n    return 0\n")
-            base=repo.commit("Vega 9000 Python files")
+                repo.write(f"m_{number:05d}.py",module_source(number))
+            for number in range(51):repo.write(f'assets/{number:02d}.txt','stable asset\n')
+            base=repo.commit("Vega 9051 files and 9000 first-party resolutions")
             labels=[]
             for number in range(16):
                 label=f"feature-{number:02d}"
                 repo.branch(label,base);repo.checkout(label)
                 for offset in range(2):
-                    repo.write(f"modules/m_{2*number+offset:05d}.py",f"def value():\n    return {number+1}\n")
+                    index=2*number+offset
+                    repo.write(f"m_{index:05d}.py",module_source(index,number+1))
                 repo.commit(label);labels.append(label)
-            preparation=sample(repo,labels,"plan",args.timeout)
-            samples=[sample(repo,labels,"plan",args.timeout) for _ in range(args.repeat)]
-            ok=[r["seconds"] for r in samples if r["status"]=="ok"]
-            ready=len(ok)==args.repeat and preparation["status"]=="ok"
-            report.update(fixture="Vega V3-05: 9000 tracked Python files, 16 independent branches each editing two files", budget_seconds=15,
-                          cells=[{"files":9000,"python_files":9000,"branches":16,"mode":"plan","cache":"warm","warm_preparation":preparation,"samples":samples,
-                                  "p50":statistics.median(ok) if ready else None,"p95":percentile(ok,.95) if ready else None,
-                                  "budget":"pass" if ready and max(ok)<=15 else "fail"}])
+            preparation=sample(repo,labels,'pairwise',args.timeout,source=baseline/'src')
+            baseline_samples=[sample(repo,labels,'pairwise',args.timeout,source=baseline/'src') for _ in range(args.repeat)]
+            reference={"warm_preparation":preparation,"samples":baseline_samples,**quantiles(baseline_samples,preparation)}
+            report['baseline_pairwise']=reference;persist_vega()
+            # Plan first keeps the legacy top-level 15s budget tied to the plan cell.
+            for mode in ('plan','combined','pairwise'):
+                preparation=sample(repo,labels,mode,args.timeout)
+                samples=[sample(repo,labels,mode,args.timeout) for _ in range(args.repeat)]
+                cell={"files":9051,"python_files":9000,"branches":16,"mode":mode,"cache":"warm",
+                      "warm_preparation":preparation,"samples":samples,**quantiles(samples,preparation)}
+                ready=cell['p50'] is not None and cell['p95'] is not None
+                if mode=='pairwise':
+                    comparable=ready and reference['p50'] is not None and reference['p95'] is not None
+                    cell['reference_p50']=reference['p50'];cell['reference_p95']=reference['p95']
+                    cell['max_regression_ratio']=1.2
+                    cell['budget']='not estimable' if not comparable else 'pass' if all(cell[k]<=1.2*reference[k] for k in ('p50','p95')) else 'fail'
+                else:
+                    cell['budget_seconds']=15 if mode=='plan' else 6
+                    cell['budget']='pass' if ready and cell['p95']<=cell['budget_seconds'] else 'fail'
+                report['cells'].append(cell);persist_vega()
+                print(json.dumps({k:cell[k] for k in ('mode','p50','p95','censored','budget')}),flush=True)
         report["source_stable"]=sources=={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (ROOT/"src/crosswire").rglob("*.py")}
-        args.output.parent.mkdir(parents=True,exist_ok=True)
-        args.output.write_text(json.dumps(report,sort_keys=True,indent=2)+"\n")
-        print(json.dumps(report["cells"][0]));return
+        report['r3_budget_check']='pass' if report['source_stable'] and all(c['budget']=='pass' for c in report['cells']) else 'fail'
+        persist_vega()
+        raise SystemExit(0 if report['r3_budget_check']=='pass' else 1)
     completed = {(cell["files"], cell["branches"], cell["mode"], cell["cache"]) for cell in report["cells"]}
 
     def persist():

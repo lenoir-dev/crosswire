@@ -100,3 +100,82 @@ current authority. PLAN v0.4 R2 and matching M2 supersede their conflicting rows
   list is r6 and is still awaiting the architect's commit before source freeze.
 - Final apparatus-only focused suite: 50 passed (8.09 s). The previous broad focused
   source/contract suite passed 107 tests before the last five apparatus additions.
+
+## R3 regression follow-up (Deneb, after apparatus commit 33c2eb5)
+
+- Added `tests/test_vega_v04.py` with 46 parametrized reproductions for V4-01..07:
+  scoped coverage in all modes, external imports versus first-party unknowns,
+  valid U+FFFD versus invalid UTF-8 bytes, seven module-level lazy-export forms,
+  finding-specific bound/location caveats in JSON and SARIF, rename hints in all
+  modes, and repo spelling/omission plus original-order replay from another cwd.
+- R3 supersedes the older expectation that third-party imports imply partial
+  coverage. Existing unknown-reference regressions now use a genuinely unresolved
+  first-party open module; the external-import non-gap case has its own R3 test.
+- Submodule and malformed-source fixtures now introduce the skipped item on a
+  requested branch. Unchanged unrelated files must no longer manufacture gaps.
+- Performance remains a benchmark check, with no time assertions in unit tests.
+  `--vega-scenario` now uses 9,051 tracked files (9,000 distinct Python modules,
+  each referencing another first-party module, plus 51 assets) and 16 branches
+  touching two Python files apiece. Distinct references exercise the >8,192-entry
+  cache regression; identical function-only blobs would miss that mechanism.
+- Pairwise compares p50 AND p95 with v0.3.1 at immutable commit
+  `89cfd99e7804c4a761223f4d12f5f7e9b825c581`, exported read-only via `git archive`
+  and run against the exact same fixture. Both must be within 20%. Combined p95
+  must be <=6 s; plan p95 <=15 s. Five warm samples plus warmups; censored/error
+  baseline cannot produce a passing relative budget. The benchmark exits nonzero
+  for a failed/not-estimable budget or source drift and persists the evidence.
+- Benchmark syntax/CLI checks passed; no timing measurements were run before
+  `src frozen`. The sealed eval apparatus and private holdout were not changed.
+
+## Final frozen-source validation (Deneb, 2026-11-17)
+
+- Observed HEAD `f234bff` is a docs-only descendant of frozen `6ef67da`;
+  `git diff 6ef67da -- src pyproject.toml uv.lock README.md` is empty. Validate
+  the frozen bytes without moving HEAD. No project Git mutation is authorized.
+- Verified the v2 seal with `--verify-only`; no holdout measurement or case
+  inspection. R2's v0.4 prohibition remains absolute.
+- Updated the four explicitly authorized stale assertion groups: compose and
+  escape annotation caveats; compare every finding field except input-ordered
+  `repro`, independently parsing its minimal branch order; resolve star exports
+  as unknown; expect `SkippedBlob(non-utf8)` for actual invalid bytes. The other
+  resolved-by permutation comparison retains complete equality and asserts null
+  repro. Existing read-only and escaping checks remain.
+- Guarded recorder passed 187 checks in 62.24 s. All 155 archived cases project
+  exactly; 110 change (79 JSON, 24 analyzer, 7 rendered), 45 remain identical.
+  `v04-golden-audit.json` enumerates every addition/suffix with T14/T15/T16/R3
+  authority and archive hashes. No semantic projection broadening was needed.
+- PR cache preflight verified all pinned targets/heads before offline replay:
+  HTTPX 8, Django 8, Flask 3. All 59 pairs are an unlabelled snapshot cohort;
+  no current-live or semantic-precision claim follows from zero predictions.
+- Full 3.11 and 3.14 suites run concurrently in separate environments; these
+  timings are reliability evidence, not isolated performance observations. S14
+  starts only once all suite/evaluation processes finish.
+- Full suites are green: Python 3.11.17 446 passed in 391.08 s; Python 3.14.8
+  446 passed in 406.96 s; no failures/skips. Golden guards passed on both.
+- Final public development: TP44/FP0/FN0, 179 eligible of 228 attempts, 49
+  excluded (21.49%), no detector errors or outside-scope predictions. Report
+  three eligible repositories and unavailable clustered intervals explicitly;
+  raw arithmetic gate fields never confer a gate on development data. Separate
+  11 historical declaration positives from 33 API-scaffold positives.
+- Prepared a new 18-case seeded public R2/r6 label-audit sample; the older sample
+  remains historical and no independent audit completion is claimed. All four
+  reason disagreements are positional-only wording versus a null frozen oracle
+  category; labels and categorization were left untouched.
+- S14 ran serially after the suites/evaluations: 54 cells, 270 successful samples,
+  27 completed warmups, zero censoring. Recorded ambient load 1.84–3.17, macOS
+  27.2 arm64, Apple M5/16 GiB, Python 3.14.8. Max Python-worker RSS 516.97 MiB;
+  cold means clearing Crosswire cache, not OS page cache or a process-tree sum.
+- R3 first run passed all budgets: actual v0.3.1 baseline pairwise p50/p95
+  2.167242/2.177592 s; current 2.354558/2.381094 s (+8.64%/+9.35%). Combined
+  p95 1.884499 s, plan p95 2.475087 s. No rerun/fastest-sample selection/waiver.
+- Record the QUALITY §4 trial-count telemetry gap: frozen reports expose search
+  bounds and hit flags, but no actual trial count or --max-trials. Mark it
+  unavailable; do not instrument around frozen source or infer zero trials.
+- Propose (not accept) platform/fixture-specific future per-cell p95 and worker
+  RSS limits at 1.10× observed maxima, rounded up; Polaris decides. The fixed
+  R3 conditions stay separate and already pass.
+- Generated the base pilot with eval.publish and manually completed/reviewed its
+  missing provenance, per-stratum/type evidence, cohort SHAs, coverage/exclusions,
+  baseline/relative R3 budgets, RSS/proposals, audit status and E4-02 limitation.
+  Final source and all public sealed eval inputs have an empty diff against
+  6ef67da; every measurement hash still equals current frozen bytes.

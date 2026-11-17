@@ -1,0 +1,55 @@
+{
+  "phase": "R3 pre-freeze focused regression check; not final acceptance",
+  "source_sha256": {
+    "src/crosswire/planner.py": "26aa3923fe8e939df6f0ba633e674e963032516b4b28f4bfebbfeea713cf8fd2",
+    "src/crosswire/findings.py": "8479dbd27c5b88cce5a012f76008fdb66765ce068dabd3c7ba6b949b88625c43",
+    "src/crosswire/git.py": "52ad1758627d54fb51313eb636ce20b065aeca4d160a48c19d03b432c0483579",
+    "src/crosswire/parsing.py": "8ab2b4ff92b1552024d41d98e498eeb967b757338d85ad6c4f52ced28361cf6b",
+    "src/crosswire/diagnostics.py": "33dd42c62ab79ec7a195d954b9c077191f47dbe9bb06b7ef7bbb4aaeb70cf3ce",
+    "src/crosswire/cache.py": "1aa621512f3744df6414f3c083f5cd9529ecc52ad580f6104b5ab21725b87974",
+    "src/crosswire/__init__.py": "e364931a8afff672985ee99f795e6d8b20ff33c55d71d757ec211ec6689b3c19",
+    "src/crosswire/coverage.py": "279050c3901fee889c9913d3877f02f7c8e54b10d44b9df6eb7425ee39d251eb",
+    "src/crosswire/integrate.py": "48720c2aea09d4d33ca8b8f8a2bf9c3e652ce0ed4eed09464b3ae1a2c28e628c",
+    "src/crosswire/model.py": "f4926180aa277a03b87d7b4640bb0c1882c646c234dbb5bb54b242a376db4b1b",
+    "src/crosswire/engine.py": "881d704fe3cfeadfdee6120e1249f3e9daebd6386e8b63c7eaea1949a7ff9d15",
+    "src/crosswire/cli.py": "22af7324b0dbf5f4cdb412207e25fd56b835353c3462a7c74cb7b4480dc79c94",
+    "src/crosswire/plan_report.py": "db1c83c1ee97bc93966b6b495d60dcad9f0aceddb0e633b975337b66394a6aa4",
+    "src/crosswire/combined_report.py": "d49f08f268ae51d05b13af3ead224bfb2f8c7b626169834f9f6dec5bfd569291",
+    "src/crosswire/python_analyzer.py": "8ad6e72d448ad580a3bd3628b6daf9a76f95c48106b2723f6f85b5d573ef4008",
+    "src/crosswire/diffing.py": "edd4630c0325a00137914c6d7c4a0585481c0347f3525b4124d01bb1e72b2b8a",
+    "src/crosswire/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/crosswire/report.py": "6b4232a11537f65ca272f9b1454e47a42df1225bd25ecb5354d96cbff0aa4b5a",
+    "src/crosswire/combined.py": "2039893071391431537195595b7243fdd0dfe4185093b3af4869cbc774283c84",
+    "src/crosswire/state.py": "be6b4e7fc86aa2f79aa9954d7f7b859cd63f8a952e335f9dbabdcf8ac8609179",
+    "src/crosswire/schemas/report-v2.schema.json": "0c4d0477da8d18feccd0409d59b8693f7633379d26969bb1cef524cbb0770d03",
+    "src/crosswire/schemas/report-v1.schema.json": "897488f3c330a7ebff13d629b9c5c8c7880a3e80ab0edf86278ee9c6ecc96b6a",
+    "src/crosswire/schemas/plan-v2.schema.json": "211af24ef4aa0043d9c7af68d3254b1015a0e4c81e1cd25349d9db3163b929fb",
+    "src/crosswire/rules/cw001.py": "fe7f2b602a94c334f2ff593d2ac095e7c49bbfd3b99603d7727d1d904823b59e",
+    "src/crosswire/rules/cw005.py": "4ce73561e819233770b21d6cfb86054ce6f20ef1dfeabd2587ecc8f4c733b04f",
+    "src/crosswire/rules/cw004.py": "5a7f84e4f0948e34eb55842e1b7201ea07c5d6321f66d85b49649829bf833628",
+    "src/crosswire/rules/__init__.py": "8ebf4507b15cddbd42fafe6a709f0d0f28475e215868089aae7d951cf7590869",
+    "src/crosswire/rules/cw003.py": "4b94945a296858a79cf95f507d21f0748644fd3f3f88fc3321018a0bcc23f7b5",
+    "src/crosswire/rules/cw002.py": "7c29a1195b8a13b9c12831eae409630be2e8bba2ac0a9463c142c1bba2c1bea0"
+  },
+  "checks": [
+    {
+      "command": "uv run --group eval pytest -q tests/test_eval.py tests/test_eval_r2.py tests/test_vega_v03.py tests/test_vega_v04.py tests/test_v04.py tests/test_golden_v04.py",
+      "result": "158 passed in 104.25s"
+    },
+    {
+      "command": "python3 -m py_compile benchmarks/perf_matrix.py tests/test_vega_v04.py",
+      "result": "passed"
+    },
+    {
+      "command": "python3 benchmarks/perf_matrix.py --help",
+      "result": "passed; R3 baseline and budget options exposed"
+    },
+    {
+      "command": "git diff --check -- tests benchmarks docs/validation",
+      "result": "passed"
+    }
+  ],
+  "performance_measurement": "not run; awaits src frozen",
+  "golden_recording": "not run; awaits src frozen",
+  "holdout": "unchanged; never measured in v0.4"
+}

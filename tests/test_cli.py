@@ -212,8 +212,10 @@ def test_github_annotation_escapes_properties_and_message(repo):
     github = repo.check("--format", "github")
     assert raw.returncode == github.returncode == 1
     finding = json.loads(raw.stdout)["findings"][0]
+    message = finding["message"] + (" Hint: " + finding["hint"] if finding["hint"] else "")
+    message += "".join(" Limitation: " + item for item in finding["limitations"])
     assert github.stdout.strip("\n") == (
-        f"::error file={escape(path, True)},line=1,title=CW005::{escape(finding['message'] + (' Hint: ' + finding['hint'] if finding['hint'] else ''))}"
+        f"::error file={escape(path, True)},line=1,title=CW005::{escape(message)}"
     )
     assert "%25" in github.stdout
     assert "%2C" in github.stdout and "%3A" in github.stdout

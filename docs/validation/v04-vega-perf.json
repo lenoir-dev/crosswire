@@ -1,0 +1,412 @@
+{
+  "baseline_commit": "89cfd99e7804c4a761223f4d12f5f7e9b825c581",
+  "baseline_pairwise": {
+    "censored": 0,
+    "p50": 2.1672424169955775,
+    "p95": 2.1775918339990312,
+    "peak_rss_max": 29212672,
+    "samples": [
+      {
+        "coverage": null,
+        "exit": 0,
+        "findings": 0,
+        "limits": null,
+        "peak_rss": 29114368,
+        "seconds": 2.1775918339990312,
+        "status": "ok"
+      },
+      {
+        "coverage": null,
+        "exit": 0,
+        "findings": 0,
+        "limits": null,
+        "peak_rss": 28934144,
+        "seconds": 2.164759875005984,
+        "status": "ok"
+      },
+      {
+        "coverage": null,
+        "exit": 0,
+        "findings": 0,
+        "limits": null,
+        "peak_rss": 28950528,
+        "seconds": 2.1672424169955775,
+        "status": "ok"
+      },
+      {
+        "coverage": null,
+        "exit": 0,
+        "findings": 0,
+        "limits": null,
+        "peak_rss": 29196288,
+        "seconds": 2.1662719170053606,
+        "status": "ok"
+      },
+      {
+        "coverage": null,
+        "exit": 0,
+        "findings": 0,
+        "limits": null,
+        "peak_rss": 29212672,
+        "seconds": 2.1709534589972463,
+        "status": "ok"
+      }
+    ],
+    "warm_preparation": {
+      "coverage": null,
+      "exit": 0,
+      "findings": 0,
+      "limits": null,
+      "peak_rss": 30474240,
+      "seconds": 2.8856666249994305,
+      "status": "ok"
+    }
+  },
+  "baseline_source_sha256": {
+    "src/crosswire/__init__.py": "af8c4016284e7fbd96f530fe969322ea7b564932933f64a5cca3f5cad92345b2",
+    "src/crosswire/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/crosswire/cache.py": "e2153abeda862df972fe65c209ec48ac419c1dcdce798775276b8926f2d40a50",
+    "src/crosswire/cli.py": "decad3e097d41c553e28043b00175615373e910ace1e46168e58ea7cfe5bb617",
+    "src/crosswire/combined.py": "46dce2b4b5950ee84f7671fd34fbc551115a28128bccfac74072ef835485884a",
+    "src/crosswire/combined_report.py": "cade8c37c7392894bb9c20eedc7b6c62d2ee8eb089bff507a10f6cfb6d8fe769",
+    "src/crosswire/diffing.py": "edd4630c0325a00137914c6d7c4a0585481c0347f3525b4124d01bb1e72b2b8a",
+    "src/crosswire/engine.py": "cccc0449e5b9193bd46adbe1da54df25e8ab456566288caec05fc2565e1899e7",
+    "src/crosswire/findings.py": "8479dbd27c5b88cce5a012f76008fdb66765ce068dabd3c7ba6b949b88625c43",
+    "src/crosswire/git.py": "bd9d1527220a711a631c58cd388a016fcebde8f7c0fa1ca636a475b1c547b254",
+    "src/crosswire/integrate.py": "48720c2aea09d4d33ca8b8f8a2bf9c3e652ce0ed4eed09464b3ae1a2c28e628c",
+    "src/crosswire/model.py": "2d85f86dc4735f4c5714bc49c751c74b4475650febad53e562326ac7f497a44f",
+    "src/crosswire/plan_report.py": "afd73711a51553e4ee38354192cffafc94774eaf4c26d76cf63efaa563d5327b",
+    "src/crosswire/planner.py": "875fa1f2a61ec56e846794bf10f3f5d3caa09029032eab530339757581ddb628",
+    "src/crosswire/python_analyzer.py": "02437e97ecd741574411bb0185e542f4bfa4d93e3f6a4ef382af547dc8ec7ebe",
+    "src/crosswire/report.py": "e6adc5e050b47cc3e6d3d3c03cd7571f269e7b964d59de9ae2aeb99e1ed1be21",
+    "src/crosswire/rules/__init__.py": "8ebf4507b15cddbd42fafe6a709f0d0f28475e215868089aae7d951cf7590869",
+    "src/crosswire/rules/cw001.py": "fe7f2b602a94c334f2ff593d2ac095e7c49bbfd3b99603d7727d1d904823b59e",
+    "src/crosswire/rules/cw002.py": "a9908ea5a10fef953843cd20ae3956110df1f0e013ba65224eca1af612c6fda1",
+    "src/crosswire/rules/cw003.py": "4b94945a296858a79cf95f507d21f0748644fd3f3f88fc3321018a0bcc23f7b5",
+    "src/crosswire/rules/cw004.py": "5dfb449d8f2fbb48210aa679d356c2c761f7833b5702779027208bddbc750a9f",
+    "src/crosswire/rules/cw005.py": "4ce73561e819233770b21d6cfb86054ce6f20ef1dfeabd2587ecc8f4c733b04f",
+    "src/crosswire/state.py": "bb46d08d18d4ad1353ef07ca07c1c059aee2a7b3ff2912684b0908487955be6a"
+  },
+  "budget_seconds": 15,
+  "cells": [
+    {
+      "branches": 16,
+      "budget": "pass",
+      "budget_seconds": 15,
+      "cache": "warm",
+      "censored": 0,
+      "files": 9051,
+      "mode": "plan",
+      "p50": 2.439898042001005,
+      "p95": 2.4750865000023623,
+      "peak_rss_max": 103153664,
+      "python_files": 9000,
+      "samples": [
+        {
+          "coverage": "complete",
+          "exit": 0,
+          "findings": 0,
+          "limits": {
+            "group_search_max_remaining": 8,
+            "hit": [],
+            "max_candidates": 6,
+            "max_group": 3
+          },
+          "peak_rss": 103120896,
+          "seconds": 2.4292297499996494,
+          "status": "ok"
+        },
+        {
+          "coverage": "complete",
+          "exit": 0,
+          "findings": 0,
+          "limits": {
+            "group_search_max_remaining": 8,
+            "hit": [],
+            "max_candidates": 6,
+            "max_group": 3
+          },
+          "peak_rss": 102940672,
+          "seconds": 2.4750865000023623,
+          "status": "ok"
+        },
+        {
+          "coverage": "complete",
+          "exit": 0,
+          "findings": 0,
+          "limits": {
+            "group_search_max_remaining": 8,
+            "hit": [],
+            "max_candidates": 6,
+            "max_group": 3
+          },
+          "peak_rss": 103153664,
+          "seconds": 2.439898042001005,
+          "status": "ok"
+        },
+        {
+          "coverage": "complete",
+          "exit": 0,
+          "findings": 0,
+          "limits": {
+            "group_search_max_remaining": 8,
+            "hit": [],
+            "max_candidates": 6,
+            "max_group": 3
+          },
+          "peak_rss": 102629376,
+          "seconds": 2.442750166999758,
+          "status": "ok"
+        },
+        {
+          "coverage": "complete",
+          "exit": 0,
+          "findings": 0,
+          "limits": {
+            "group_search_max_remaining": 8,
+            "hit": [],
+            "max_candidates": 6,
+            "max_group": 3
+          },
+          "peak_rss": 102809600,
+          "seconds": 2.4398417499978677,
+          "status": "ok"
+        }
+      ],
+      "warm_preparation": {
+        "coverage": "complete",
+        "exit": 0,
+        "findings": 0,
+        "limits": {
+          "group_search_max_remaining": 8,
+          "hit": [],
+          "max_candidates": 6,
+          "max_group": 3
+        },
+        "peak_rss": 146128896,
+        "seconds": 2.9820838750019902,
+        "status": "ok"
+      }
+    },
+    {
+      "branches": 16,
+      "budget": "pass",
+      "budget_seconds": 6,
+      "cache": "warm",
+      "censored": 0,
+      "files": 9051,
+      "mode": "combined",
+      "p50": 1.874149999996007,
+      "p95": 1.8844989999997779,
+      "peak_rss_max": 64061440,
+      "python_files": 9000,
+      "samples": [
+        {
+          "coverage": "complete",
+          "exit": 0,
+          "findings": 0,
+          "limits": {
+            "group_search_max_remaining": 8,
+            "hit": [],
+            "max_candidates": 6,
+            "max_group": 3
+          },
+          "peak_rss": 63815680,
+          "seconds": 1.8599541660005343,
+          "status": "ok"
+        },
+        {
+          "coverage": "complete",
+          "exit": 0,
+          "findings": 0,
+          "limits": {
+            "group_search_max_remaining": 8,
+            "hit": [],
+            "max_candidates": 6,
+            "max_group": 3
+          },
+          "peak_rss": 63832064,
+          "seconds": 1.8844989999997779,
+          "status": "ok"
+        },
+        {
+          "coverage": "complete",
+          "exit": 0,
+          "findings": 0,
+          "limits": {
+            "group_search_max_remaining": 8,
+            "hit": [],
+            "max_candidates": 6,
+            "max_group": 3
+          },
+          "peak_rss": 64061440,
+          "seconds": 1.874149999996007,
+          "status": "ok"
+        },
+        {
+          "coverage": "complete",
+          "exit": 0,
+          "findings": 0,
+          "limits": {
+            "group_search_max_remaining": 8,
+            "hit": [],
+            "max_candidates": 6,
+            "max_group": 3
+          },
+          "peak_rss": 63832064,
+          "seconds": 1.8802143749999232,
+          "status": "ok"
+        },
+        {
+          "coverage": "complete",
+          "exit": 0,
+          "findings": 0,
+          "limits": {
+            "group_search_max_remaining": 8,
+            "hit": [],
+            "max_candidates": 6,
+            "max_group": 3
+          },
+          "peak_rss": 63832064,
+          "seconds": 1.8573686670060852,
+          "status": "ok"
+        }
+      ],
+      "warm_preparation": {
+        "coverage": "complete",
+        "exit": 0,
+        "findings": 0,
+        "limits": {
+          "group_search_max_remaining": 8,
+          "hit": [],
+          "max_candidates": 6,
+          "max_group": 3
+        },
+        "peak_rss": 64028672,
+        "seconds": 1.8810682499970426,
+        "status": "ok"
+      }
+    },
+    {
+      "branches": 16,
+      "budget": "pass",
+      "cache": "warm",
+      "censored": 0,
+      "files": 9051,
+      "max_regression_ratio": 1.2,
+      "mode": "pairwise",
+      "p50": 2.354557582999405,
+      "p95": 2.3810942499985686,
+      "peak_rss_max": 29507584,
+      "python_files": 9000,
+      "reference_p50": 2.1672424169955775,
+      "reference_p95": 2.1775918339990312,
+      "samples": [
+        {
+          "coverage": "complete",
+          "exit": 0,
+          "findings": 0,
+          "limits": null,
+          "peak_rss": 29491200,
+          "seconds": 2.354557582999405,
+          "status": "ok"
+        },
+        {
+          "coverage": "complete",
+          "exit": 0,
+          "findings": 0,
+          "limits": null,
+          "peak_rss": 29196288,
+          "seconds": 2.3810942499985686,
+          "status": "ok"
+        },
+        {
+          "coverage": "complete",
+          "exit": 0,
+          "findings": 0,
+          "limits": null,
+          "peak_rss": 29507584,
+          "seconds": 2.3505660419978085,
+          "status": "ok"
+        },
+        {
+          "coverage": "complete",
+          "exit": 0,
+          "findings": 0,
+          "limits": null,
+          "peak_rss": 29081600,
+          "seconds": 2.3571465839995653,
+          "status": "ok"
+        },
+        {
+          "coverage": "complete",
+          "exit": 0,
+          "findings": 0,
+          "limits": null,
+          "peak_rss": 29474816,
+          "seconds": 2.347341125001549,
+          "status": "ok"
+        }
+      ],
+      "warm_preparation": {
+        "coverage": "complete",
+        "exit": 0,
+        "findings": 0,
+        "limits": null,
+        "peak_rss": 29622272,
+        "seconds": 2.379478499999095,
+        "status": "ok"
+      }
+    }
+  ],
+  "fixture": "Vega V4-01: 9051 tracked files, 9000 Python modules each referencing a distinct first-party module; 16 independent branches, two edited files each",
+  "git": "git version 2.50.1 (Apple Git-155)",
+  "memory_bytes": 17179869184,
+  "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "processor": "Apple M5",
+  "python": "3.14.8 (main, Sep 30 2026, 17:55:09) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "python_fraction": 0.9943652635067949,
+  "r3_budget_check": "pass",
+  "r3_budgets": {
+    "combined_seconds": 6,
+    "pairwise_max_ratio": 1.2,
+    "plan_seconds": 15,
+    "relative_statistics": [
+      "p50",
+      "p95"
+    ]
+  },
+  "repeat": 5,
+  "rss_scope": "Python worker peak RSS; not the simultaneous sum of the full process tree",
+  "rss_units": "bytes",
+  "source_sha256": {
+    "src/crosswire/__init__.py": "e364931a8afff672985ee99f795e6d8b20ff33c55d71d757ec211ec6689b3c19",
+    "src/crosswire/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/crosswire/cache.py": "1aa621512f3744df6414f3c083f5cd9529ecc52ad580f6104b5ab21725b87974",
+    "src/crosswire/cli.py": "22af7324b0dbf5f4cdb412207e25fd56b835353c3462a7c74cb7b4480dc79c94",
+    "src/crosswire/combined.py": "2039893071391431537195595b7243fdd0dfe4185093b3af4869cbc774283c84",
+    "src/crosswire/combined_report.py": "d49f08f268ae51d05b13af3ead224bfb2f8c7b626169834f9f6dec5bfd569291",
+    "src/crosswire/coverage.py": "279050c3901fee889c9913d3877f02f7c8e54b10d44b9df6eb7425ee39d251eb",
+    "src/crosswire/diagnostics.py": "33dd42c62ab79ec7a195d954b9c077191f47dbe9bb06b7ef7bbb4aaeb70cf3ce",
+    "src/crosswire/diffing.py": "edd4630c0325a00137914c6d7c4a0585481c0347f3525b4124d01bb1e72b2b8a",
+    "src/crosswire/engine.py": "881d704fe3cfeadfdee6120e1249f3e9daebd6386e8b63c7eaea1949a7ff9d15",
+    "src/crosswire/findings.py": "8479dbd27c5b88cce5a012f76008fdb66765ce068dabd3c7ba6b949b88625c43",
+    "src/crosswire/git.py": "52ad1758627d54fb51313eb636ce20b065aeca4d160a48c19d03b432c0483579",
+    "src/crosswire/integrate.py": "48720c2aea09d4d33ca8b8f8a2bf9c3e652ce0ed4eed09464b3ae1a2c28e628c",
+    "src/crosswire/model.py": "f4926180aa277a03b87d7b4640bb0c1882c646c234dbb5bb54b242a376db4b1b",
+    "src/crosswire/parsing.py": "8ab2b4ff92b1552024d41d98e498eeb967b757338d85ad6c4f52ced28361cf6b",
+    "src/crosswire/plan_report.py": "db1c83c1ee97bc93966b6b495d60dcad9f0aceddb0e633b975337b66394a6aa4",
+    "src/crosswire/planner.py": "26aa3923fe8e939df6f0ba633e674e963032516b4b28f4bfebbfeea713cf8fd2",
+    "src/crosswire/python_analyzer.py": "8ad6e72d448ad580a3bd3628b6daf9a76f95c48106b2723f6f85b5d573ef4008",
+    "src/crosswire/report.py": "6b4232a11537f65ca272f9b1454e47a42df1225bd25ecb5354d96cbff0aa4b5a",
+    "src/crosswire/rules/__init__.py": "8ebf4507b15cddbd42fafe6a709f0d0f28475e215868089aae7d951cf7590869",
+    "src/crosswire/rules/cw001.py": "fe7f2b602a94c334f2ff593d2ac095e7c49bbfd3b99603d7727d1d904823b59e",
+    "src/crosswire/rules/cw002.py": "7c29a1195b8a13b9c12831eae409630be2e8bba2ac0a9463c142c1bba2c1bea0",
+    "src/crosswire/rules/cw003.py": "4b94945a296858a79cf95f507d21f0748644fd3f3f88fc3321018a0bcc23f7b5",
+    "src/crosswire/rules/cw004.py": "5a7f84e4f0948e34eb55842e1b7201ea07c5d6321f66d85b49649829bf833628",
+    "src/crosswire/rules/cw005.py": "4ce73561e819233770b21d6cfb86054ce6f20ef1dfeabd2587ecc8f4c733b04f",
+    "src/crosswire/state.py": "be6b4e7fc86aa2f79aa9954d7f7b859cd63f8a952e335f9dbabdcf8ac8609179"
+  },
+  "source_stable": true,
+  "timeout_seconds": 30.0
+}

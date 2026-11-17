@@ -253,9 +253,9 @@ def test_t18_submodule_is_ignored_and_reported_without_initializing_it(repo, tmp
     (other / "broken.py").write_text("def broken(\n")
     subprocess.run(["git", "add", "."], cwd=other, env=repo.env, capture_output=True, check=True)
     subprocess.run(["git", "-c", "user.name=Fixture", "-c", "user.email=fixture@invalid", "commit", "-m", "submodule"], cwd=other, env=repo.env, capture_output=True, check=True)
-    repo.git("-c", "protocol.file.allow=always", "submodule", "add", str(other), "vendor")
-    repo.commit("add submodule")
     repo.pair({}, {"a.txt": "a\n"}, {"b.txt": "b\n"})
+    repo.git("-c", "protocol.file.allow=always", "submodule", "add", str(other), "vendor")
+    repo.commit("requested branch adds submodule")
     result = repo.check("--format", "json")
     report = decode(result, 0)
     assert report["coverage"] == "partial"
@@ -266,8 +266,8 @@ def test_t18_submodule_is_ignored_and_reported_without_initializing_it(repo, tmp
 def test_t16_bounded_wins_over_partial_and_inexact_repro_is_null(repo):
     source = "".join(f"value_{i} = 0\n" + GAP for i in range(7))
     changes = {f"A{i}": ("target", {"same.py": source.replace(f"value_{i} = 0", f"value_{i} = 1")}) for i in range(7)}
-    changes["X"] = ("target", {"same.py": source.replace("value_0 = 0", "value_0 = 2")})
-    repo.named_dag({"same.py": source, "unparsable.py": "def broken(\n"}, changes)
+    changes["X"] = ("target", {"same.py": source.replace("value_0 = 0", "value_0 = 2"), "unparsable.py": "def broken(\n"})
+    repo.named_dag({"same.py": source}, changes)
     report = decode(repo.check("--target", "main", "--combined", "--format", "json", branches=tuple(changes)))
     assert report["coverage"] == "bounded" and report["limits"]["hit"]
     assert report["limitations"]
@@ -275,10 +275,10 @@ def test_t16_bounded_wins_over_partial_and_inexact_repro_is_null(repo):
 
 
 def test_t16_unknown_resolution_is_visible_once_not_per_internal_trial(repo):
-    repo.named_dag({"m.py": DIRECT}, {
+    repo.named_dag({"m.py": DIRECT, "opaque.py": "def __getattr__(name): return 1\n"}, {
         "A": ("target", {"a.txt": "safe\n"}),
         "B": ("target", {"b.txt": "safe\n"}),
-        "C": ("target", {"use.py": "import not_installed_third_party as external\nexternal.run()\n"}),
+        "C": ("target", {"use.py": "import opaque\nopaque.run()\n"}),
     })
     report = decode(repo.check("--target", "main", "--combined", "--format", "json", branches=("A", "B", "C")), 0)
     assert report["coverage"] == "partial"

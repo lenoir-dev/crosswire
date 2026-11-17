@@ -1,0 +1,44 @@
+{
+  "repositories": [
+    {
+      "repository": "encode/httpx",
+      "target": "7cff5f79bc78649bbcd3fd9aa7a74c86e0f63016",
+      "heads": {
+        "refs/remotes/eval-pr/3775": "8a959d830e8631f84401aeb5fd2e0ffa9bbfe3d7",
+        "refs/remotes/eval-pr/3776": "70c704071724bead53f1bf002cdcb0f2b8f6aea9",
+        "refs/remotes/eval-pr/3778": "09fc81a33c51f090002e340173f231d403c11ac5",
+        "refs/remotes/eval-pr/3785": "54857a13dfd2d868fc52a54b0eaa4a97487f97d2",
+        "refs/remotes/eval-pr/3835": "8fda64fbd023ab60b1b7d208c0d833023243b312",
+        "refs/remotes/eval-pr/3837": "440dd004c98d8717c397645f8270dd3d1fc08976",
+        "refs/remotes/eval-pr/3838": "76c401cd8d8dd3358113151942569058d88b5a87",
+        "refs/remotes/eval-pr/3841": "5ed1225de5cf1fa6624c3b72f7cd177ae41aacce"
+      },
+      "status": "pinned refs verified"
+    },
+    {
+      "repository": "django/django",
+      "target": "102c3c327d4974a58883b47a68f8d85da0be3648",
+      "heads": {
+        "refs/remotes/eval-pr/22289": "0fd6ce3ef09d7b294ded32f67393838dece4be48",
+        "refs/remotes/eval-pr/22291": "afa2d7f4f3609b2f455a05e04b8be8c1626973f9",
+        "refs/remotes/eval-pr/22292": "0a302af6c5d0d4733f2bd640997ff4778f72c1ca",
+        "refs/remotes/eval-pr/22294": "068854ea6872ce36105166026660c3521b585d5f",
+        "refs/remotes/eval-pr/22295": "c07de8e8000dc50da7c0780e6f0a730407768c17",
+        "refs/remotes/eval-pr/22296": "efd0c54eeedf8daecfe677d6a692aa4fbce7b138",
+        "refs/remotes/eval-pr/22297": "c400a159b20fd8dfcde8e502f778bcb6269f780a",
+        "refs/remotes/eval-pr/22300": "c2c1b02454cb679f4ba4e8b9587f8fe25c2df502"
+      },
+      "status": "pinned refs verified"
+    },
+    {
+      "repository": "pallets/flask",
+      "target": "49943b5a94413a530761350f04e896f76e8d620e",
+      "heads": {
+        "refs/remotes/eval-pr/5660": "028160e49f9d07f0244bcb149f74fd1946950941",
+        "refs/remotes/eval-pr/5665": "eb8cfa9bf80902fa39379155df5843d58969b67e",
+        "refs/remotes/eval-pr/5918": "a82e942870b6472bb40017349cca772c242eb1ad"
+      },
+      "status": "pinned refs verified"
+    }
+  ]
+}

@@ -1,93 +1,110 @@
-# v0.4 Deneb checkpoint
+# v0.4 Deneb — final validation completed
 
-R2 apparatus and corpus work completed (final seal revision r6) in this fresh session. **Waiting for the
-architect's exact `src frozen` before golden re-recording or final measurements.**
-No budget stop is claimed. No commits/checkouts/stashes/resets/pushes occurred in
-the shared project. All Git mutations belong to isolated evaluation/test fixtures.
+Updated 2026-11-17T20:54:55.583931+00:00. Task: `v0.4-deneb-final`.
 
-## Sealed holdout
+## Current boundary
 
-- Old exposed holdout retained untouched; retirement is a separate private marker.
-- New `~/.crosswire-holdout/v2/`: four repositories; 20 oracle positives each for
-  CW001/CW002/CW006, 180 controls. Private candidate/rejection identities remain
-  outside the shared workspace. All 240 eligible cases are sealed, unmeasured.
-- `docs/validation/holdout.sha256` covers manifest, repositories/refs, eval code,
-  policy, M1/M2, toolchain pins and hashed Python dependency lock.
-- `docs/validation/eval-code.sha256` is the combined apparatus fingerprint.
-- Architect must commit hash list + apparatus before announcing source freeze.
-- `python -m eval.run_holdout --verify-only` verifies without measuring.
-- **Never run holdout in v0.4.** The future v0.5 path requires separate explicit
-  authorization, immutable source manifest and a single-attempt marker.
-- Do not edit `eval/**/*.py`, `eval/policy.json`, `eval/toolchain.json`,
-  `matching.md`, or the dependency lock after this seal without architect review;
-  hash verification will fail. Tests, benchmarks and report files can still change.
-- Pre-commit construct-validity repairs replaced 12 private/9 public controls. All
-  positive case/label bytes were asserted unchanged. The final r6 seal was verified;
-  earlier evidence/seals are archived privately. No detector/tuning informed repairs.
+All requested Deneb validation work is complete. The report is
+`docs/validation/v0.4.md`. Polaris owns acceptance, commits and publication;
+independent final label audit remains a Vega/Polaris decision, not a claimed
+completed audit. No project commit/checkout/stash/reset/push was performed.
+No source edit or test workaround was made.
 
-## Public apparatus and corpus
+Frozen source: `6ef67da19a136f88a90b5f567255196ca78c2a94` (0.4.0).
+Observed HEAD: `f234bff69d8a7f31585361591e7ec0b9a76252e2` (docs-only descendant).
+`git diff 6ef67da -- src pyproject.toml uv.lock README.md` is empty.
+All development/live/performance `source_stable` flags are true. Public sealed
+apparatus/policy/matching/toolchain/lock inputs remain unchanged.
 
-- Matching uses emitted rule/type identities, PY-2 module/file, all attributable
-  oracle diagnostics, one-to-one occurrences and category-set agreement.
-- Crashes/timeouts/malformed detector output retain positive FN and error counts.
-- Rule-keyed buckets; clustered bounds require five eligible repositories and
-  stricter precision lower bounds gate future valid measurements.
-- Oracle includes all discovered test directories/root-level tests. No diagnostics
-  were disabled. Runtime export checks cover ambiguous supplemental controls.
-- New public corpus: 228 attempted cases, 179 eligible and 44 positives; historical
-  ineligible rows are retained. Scaffolds are explicitly distinguished from old
-  direct upstream-declaration mutations and natural mined incidents.
-- Public cache tokens resolve via `~/.crosswire-eval/locations.json` (or env
-  `CROSSWIRE_EVAL_LOCATIONS`); no committed JSON configs contain absolute tmp paths.
-- Node/Python/checker binary versions, actual npm engine/typeshed tree and hashes: `eval/toolchain.json`;
-  distributions: `docs/validation/v04-oracle-requirements.lock`.
-- Local pinned oracle remains `/tmp/crosswire-v04-eval/bin/python`, pyright 1.1.407.
-  Pyright update notification is disabled, not compiler diagnostics.
-- Shell HTTPS timed out; the connected GitHub read API supplied pinned private
-  source/test snapshots, all Git blobs verified. Non-source fixtures omitted;
-  static tests checked, upstream test execution not claimed.
-- `eval/development/gallery.md` has honest replayable public examples.
-- Independent offline replay of `r2-public-0040` passed all three branch patches.
+**Never measure either holdout in v0.4.** Only `--verify-only` was called;
+result: “seal verified; not measured”. No private identities/content entered the
+workspace. R2 item 2 and E4-02 procedural same-user isolation still apply.
 
-## Tests and final jobs
+## Completed checks and evidence
 
-- New `tests/test_vega_v03.py`: one reproduction per V3-01..V3-13 (30 parametrized
-  checks). Latest V3 + T14-T20 run: 56 passed.
-- `tests/test_eval*.py`: 50 focused harness tests passed after final apparatus edits (8.09 seconds).
-- Final combined focused harness + V3 + T14-T20 + projection run: **112 passed**
-  in 45.45 seconds. This is a pre-freeze focused check, not the final full suite.
-- `v04-source-observed.json` records a source observation only; it is explicitly
-  not an architect freeze signal.
-- Goldens are not re-recorded. Projection now also permits appended coverage text;
-  all prior finding semantics still require the historical projection guard.
+- Four authorized assertion groups fixed (annotations, permutation repro order,
+  star-export unknown, actual invalid UTF-8 SkippedBlob). Resolved-by comparison
+  still checks all fields and explicitly null repro.
+- Guarded golden recorder: 187 passed in 62.24 s. All 155 projections equal;
+  110 changed cases, 45 unchanged. `v04-golden-audit.json` inventories every
+  field/suffix and T14/T16/R3 contract item, hashes all immutable archives.
+  No projection broadening; A2/T12/v0.4 guards passed in both full suites.
+- Python 3.11.17: 446 passed, 0 failed/skipped, 391.08 s.
+- Python 3.14.8: 446 passed, 0 failed/skipped, 406.96 s.
+  Exact commands, interpreter/source provenance and suite output:
+  `v04-checks.json`. The two suites ran concurrently; their elapsed times are
+  not isolated performance observations.
+- Development: 228 attempted / 179 eligible / 44 positives / 135 controls;
+  TP44 FP0 FN0, detection precision/recall 100%, micro Wilson 95% 91.9704–100%.
+  Exact labelled attribution 44/44; errors0; outside-scope predictions0/44;
+  excluded49/228 (21.4912%). Only three eligible repositories; all clustered
+  intervals are not estimable. **Development data, optimistic, not a gate.**
+  CW001 TP20, CW002 TP21, CW006 TP3; all FP/FN zero. CW006 and most supported
+  types remain insufficient. PY-6/CW004 and non-Python cells are unmeasured.
+- Historical declaration mutations: 47 eligible / 11 positive / 36 controls.
+  API oracle scaffolds: 132 eligible / 33 positive / 99 controls. The latter
+  are wrappers around upstream API objects, not natural incidents.
+- Four CW002 reason disagreements (17/21 agreement): positional-only keyword
+  use versus Pyright “Expected 1 more positional argument”, frozen categorizer
+  null. Entries/root causes retained in `v04-development-breakdown.json` and
+  report. No eligible FP or miss exists to diagnose. Coverage:116 complete,
+  63 partial. Do not infer whole-program coverage from the matching result.
+- Fresh 18-case seeded public R2/r6 audit sample:
+  `v04-final-audit-sample.json`. Prepared only; not independently audited.
+  Old `v04-development-audit-sample.json` remains historical evidence.
+- PR preflight verified HTTPX/Django/Flask target and all old PR head SHAs.
+  Pinned snapshot replay:19 heads / 59 pairs / 0 semantic predictions;
+  six CW005 textual findings and zero CW003 warnings. Read-only verified.
+  All pairs are oracle-unlabelled, so no semantic precision claim. Evidence:
+  `v04-live-preflight.json`, `v04-live-prs.json`.
 
-After exact `src frozen`:
+## S14 and R3
 
-```sh
-uv run --group eval python tests/refresh_v04_goldens.py
-uv run --group eval pytest -q
-PYTHONPATH=src uv run --no-project --python /opt/homebrew/bin/python3.14 \
-  --with pytest --with jsonschema==4.25.1 python -m pytest -q
-uv run --group eval python -m eval.run_development
-uv run --group eval python -m eval.live --offline
-```
+Both timing jobs ran serially, only after all Deneb tests/oracles/evaluations.
+No reruns or selected fast samples. Exact commands, UTC bounds, exits, load
+and process-executable CPU observations: `v04-perf-environment.json`.
 
-The PR run replays the previously fetched pinned open-PR cohort, explicitly not a
-claim about current live heads. Field cache locations are in the external map.
+Matrix: 54 cells × 5 = 270 samples;
+0 censored. 1k/10k/50k files,10% Python;
+5/10/30 branches; pairwise/combined/plan; cold/warm disk cache.
+`v04-perf-matrix.json` retains every sample/warmup/coverage/search limit/RSS.
+All matrix samples report complete coverage; search hit flags are empty.
+Actual trial counts / --max-trials are not exposed by frozen source: unavailable
+telemetry against QUALITY §4, not inferred from empty hit flags.
+Quantiles require all samples plus warmup where applicable. Peak RSS is the
+Python worker only, bytes on Darwin; report tables convert to MiB. This is
+not summed process-tree RSS. Platform/hardware/interpreter are recorded.
 
-Run performance alone after all oracle/test jobs finish:
+R3 fixture:9,051 files / 9,000 distinct first-party-referencing Python modules /
+16 independent branches editing two files each. Baseline commit
+`89cfd99e7804c4a761223f4d12f5f7e9b825c581` exported read-only with git archive.
+Baseline warm pairwise p50=2.167242,p95=2.177592 s.
 
-```sh
-uv run --group eval python benchmarks/perf_matrix.py --repeat 5 --timeout 30 \
-  --output docs/validation/v04-perf-matrix.json
-uv run --group eval python benchmarks/perf_matrix.py --vega-scenario \
-  --repeat 5 --timeout 30 --output docs/validation/v04-vega-perf.json
-uv run --group eval python -m eval.publish
-```
+| Current mode | p50 s | p95 s | R3 status |
+| --- | ---: | ---: | --- |
+| plan | 2.439898 | 2.475087 | pass |
+| combined | 1.874150 | 1.884499 | pass |
+| pairwise | 2.354558 | 2.381094 | pass |
 
-Main matrix: 54 cells, five samples each; timeouts retained as censored bounds.
-Vega scenario: 9000 Python files, 16 branches, two changed files each, warm plan
-budget ≤15 s. Record full-suite results in `v04-checks.json`; publish development
-as **development data, optimistic, not a gate**. Same-user holdout isolation is
-procedural, explicitly disclosed. No source or performance acceptance is claimed
-before the gated jobs complete.
+Overall R3: **pass**, benchmark exit 0.
+Pairwise p50 AND p95 must be <=1.2× baseline; combined p95<=6s;
+plan p95<=15s. No hidden waiver. The report proposes next-release per-cell
+1.10× p95/RSS budgets on this platform; Polaris must accept or adjust them.
+
+## Acceptance handoff / what remains for Polaris
+
+1. Read `v0.4.md` and evidence; decide pilot acceptance and any R3 budget issue.
+2. Independently audit final public labels (18-case sample, empty FP set).
+3. Accept/adjust S14 platform-specific future budgets explicitly and address
+   the unavailable trial-count telemetry in acceptance.
+4. Preserve v2 holdout seal for separately authorized v0.5 measurement. Do not
+   run it to complete v0.4 or tune to its content.
+5. Commit/publish owned work. Pre-existing untracked
+   `docs/design/v0.4-review-sol.md` and `docs/design/v0.4-review-terra.md` were
+   left untouched; distinguish them from Deneb's files.
+
+Final commands are recorded in `v04-checks.json` and performance environment
+artifact. To regenerate base report use `python -m eval.publish`; it requires
+manual review/completion of R3 budgets, provenance, exclusions/coverage,
+per-stratum/type metrics, audit status and cohort SHAs, all present in final
+`v0.4.md`. Do not replace the completed report with its incomplete boilerplate.

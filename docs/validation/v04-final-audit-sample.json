@@ -1,0 +1,419 @@
+{
+  "cases": [
+    {
+      "family": "remove_attribute",
+      "id": "pallets-eco--blinker-000",
+      "integrated": "c534c46e3b7eb5381c04546453f548c77cabc738",
+      "kind": "positive",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "repository": "pallets-eco/blinker",
+      "stratum": "historical upstream-declaration mutations",
+      "target": "ce75d8dc3a3f0bd8adf518531caeca330e8be8b8",
+      "tips": {
+        "A": "0c6dbd6d83a327cf8062f8ff6d6fbd56998e6f32",
+        "B": "ae07b516c81c128ae8e16ec42970ed92f695ca35"
+      },
+      "type": "PY-1",
+      "upstream_sha": "c3364059663df1ddce32799d6b1922af89a345f6"
+    },
+    {
+      "family": "required_posonly",
+      "id": "pallets-eco--blinker-016",
+      "integrated": "d1700aa3087937a197a9ee0f3aae178d755ffa68",
+      "kind": "positive",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass"
+      },
+      "repository": "pallets-eco/blinker",
+      "stratum": "historical upstream-declaration mutations",
+      "target": "c8e7327c9804c3212be9b21ec0f802d7a3d04844",
+      "tips": {
+        "A": "69bfbe704f4e6dc9bd399c4e7d39aec89c237da1",
+        "B": "8cb7dd5db591751e5323f6e15befa71413c3a697"
+      },
+      "type": "PY-4",
+      "upstream_sha": "c3364059663df1ddce32799d6b1922af89a345f6"
+    },
+    {
+      "family": "remove_attribute",
+      "id": "r2-public-0003",
+      "integrated": "6b83c36fe1b04c5b3083e1217f970172589d5ba6",
+      "kind": "coordinated",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "repository": "python-trio/sniffio",
+      "stratum": "upstream API oracle scaffolds",
+      "target": "d040081083ddeefc427409b100367715505b4e4d",
+      "tips": {
+        "A": "b2951b353a9a64107c3b78eb461a2e0e659ee1f6",
+        "B": "ce2a4510f9cf84396520e23d21b15b7a5ad0a790"
+      },
+      "type": "PY-1",
+      "upstream_sha": "6996e05d9b9debe32f42f709c8041e744f850478"
+    },
+    {
+      "family": "module_move",
+      "id": "r2-public-0008",
+      "integrated": "6d94710a36b2b06b7c530fd19083568d442b1540",
+      "kind": "positive",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass",
+        "without-A": "pass"
+      },
+      "repository": "python-trio/sniffio",
+      "stratum": "upstream API oracle scaffolds",
+      "target": "6e844f3182262245312c396dec96895f0eab6d94",
+      "tips": {
+        "A": "dfd90675e2dcae09563cac516e412b84cc933fec",
+        "B": "3c8c78ae64c30bf873357f6725ccf62b7efeccb8"
+      },
+      "type": "PY-2",
+      "upstream_sha": "6996e05d9b9debe32f42f709c8041e744f850478"
+    },
+    {
+      "family": "module_move",
+      "id": "r2-public-0011",
+      "integrated": "d85fdea3b3983fdd0865ff53a90c4945efb9ac6a",
+      "kind": "coordinated",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "repository": "python-trio/sniffio",
+      "stratum": "upstream API oracle scaffolds",
+      "target": "6e844f3182262245312c396dec96895f0eab6d94",
+      "tips": {
+        "A": "2f8d21912c2499148871af76141d1ff94bd389e6",
+        "B": "d5752900f874b9fbc5a3f5353a6e75eeefbe3026"
+      },
+      "type": "PY-2",
+      "upstream_sha": "6996e05d9b9debe32f42f709c8041e744f850478"
+    },
+    {
+      "family": "remove_reexport",
+      "id": "r2-public-0013",
+      "integrated": "3c9b54b2e61e06f25256e971616f8e0ff5bcd1f6",
+      "kind": "compatible",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "repository": "python-trio/sniffio",
+      "stratum": "upstream API oracle scaffolds",
+      "target": "c8659de0ec789f08e4ee37b67297445da7c52a42",
+      "tips": {
+        "A": "07cd29e308120469e0c9d244e72c1ba1bc23d60f",
+        "B": "651105c51dc996423d678cd278abe2db00935f22"
+      },
+      "type": "PY-3",
+      "upstream_sha": "6996e05d9b9debe32f42f709c8041e744f850478"
+    },
+    {
+      "family": "remove_reexport",
+      "id": "r2-public-0014",
+      "integrated": "c8396178ad9c167449e6d995f8b538ea07d0ab88",
+      "kind": "unrelated",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "repository": "python-trio/sniffio",
+      "stratum": "upstream API oracle scaffolds",
+      "target": "c8659de0ec789f08e4ee37b67297445da7c52a42",
+      "tips": {
+        "A": "bd8c116d75c7d1e9d36524f29baa09262805f107",
+        "B": "fc050720ccc829c77fe4ba680cf673e6ebe2ccd1"
+      },
+      "type": "PY-3",
+      "upstream_sha": "6996e05d9b9debe32f42f709c8041e744f850478"
+    },
+    {
+      "family": "too_many_positional",
+      "id": "r2-public-0028",
+      "integrated": "46c389d630b78b2521250e3a4217e826ed40952c",
+      "kind": "positive",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass",
+        "without-A": "pass"
+      },
+      "repository": "python-trio/sniffio",
+      "stratum": "upstream API oracle scaffolds",
+      "target": "5be84b68d8b85238b42eff017805116230cf6666",
+      "tips": {
+        "A": "170ea0d45f2eb99775ab5d2d25d6e09bdbdc2668",
+        "B": "4332c0f6dbd01bb67641062655368fffac5a0791"
+      },
+      "type": "PY-4",
+      "upstream_sha": "6996e05d9b9debe32f42f709c8041e744f850478"
+    },
+    {
+      "family": "init_required",
+      "id": "r2-public-0037",
+      "integrated": "37817df0165c8725691415128b0bfbd5af084979",
+      "kind": "compatible",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "repository": "python-trio/sniffio",
+      "stratum": "upstream API oracle scaffolds",
+      "target": "4a98bb869908cdb24c97e7d76a0d9dd927a2d524",
+      "tips": {
+        "A": "0a066dd327945b7d9d5a8b0490014ee2f4cfb00e",
+        "B": "8e5c106e344066e3a109dae2e3677258af284e6e"
+      },
+      "type": "PY-4",
+      "upstream_sha": "6996e05d9b9debe32f42f709c8041e744f850478"
+    },
+    {
+      "family": "conjunctive",
+      "id": "r2-public-0041",
+      "integrated": "e5053fb9594fe51e60834b750645a899643a177d",
+      "kind": "compatible",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "C": "pass",
+        "integrated": "pass",
+        "state:A+B": "pass",
+        "state:A+C": "pass",
+        "state:B+C": "pass",
+        "target": "pass"
+      },
+      "repository": "python-trio/sniffio",
+      "stratum": "upstream API oracle scaffolds",
+      "target": "052233ececa5af584b225e9337993942466029df",
+      "tips": {
+        "A": "7b0270cae39557b07f0fe47e6c08b0999914f091",
+        "B": "08e1b2c2540ec7d8a631103f900a651b79203ef9",
+        "C": "e36d1ab96ad0b4c763e7f58e1b03d96a31feb1df"
+      },
+      "type": "PY-5",
+      "upstream_sha": "6996e05d9b9debe32f42f709c8041e744f850478"
+    },
+    {
+      "family": "module_move",
+      "id": "r2-public-0053",
+      "integrated": "dd3d2a10c7470f6430b5d4bdd4281aa8a8939d33",
+      "kind": "compatible",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "repository": "pallets-eco/blinker",
+      "stratum": "upstream API oracle scaffolds",
+      "target": "09b706935ae2e12ddc74e98ec9bf531e25f8f541",
+      "tips": {
+        "A": "621bf2283cd1fa9cf2ad3f2de399fb892bb4f5a7",
+        "B": "27305f242d01f4b246ede99c2984817c6824ff01"
+      },
+      "type": "PY-2",
+      "upstream_sha": "c3364059663df1ddce32799d6b1922af89a345f6"
+    },
+    {
+      "family": "remove_reexport",
+      "id": "r2-public-0057",
+      "integrated": "018dbe3b40f0d664f8c446467a10d9f9c270f6c8",
+      "kind": "compatible",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "repository": "pallets-eco/blinker",
+      "stratum": "upstream API oracle scaffolds",
+      "target": "6ed5f98e4ebea69cabb2fd771f394ad86824258c",
+      "tips": {
+        "A": "00956a16c1b297cb150289cf1c53db355e06b515",
+        "B": "d7f3d2e308176fca714f7c01a65ddcdd79636166"
+      },
+      "type": "PY-3",
+      "upstream_sha": "c3364059663df1ddce32799d6b1922af89a345f6"
+    },
+    {
+      "family": "remove_reexport",
+      "id": "r2-public-0059",
+      "integrated": "2fc4330c00269f69e40e16e04772b1d283916921",
+      "kind": "coordinated",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "repository": "pallets-eco/blinker",
+      "stratum": "upstream API oracle scaffolds",
+      "target": "6ed5f98e4ebea69cabb2fd771f394ad86824258c",
+      "tips": {
+        "A": "90400350c4786dd0291daff794556ed556f27fe6",
+        "B": "c5b1a45197bc204e7ebf18da5d9da3641daa98ab"
+      },
+      "type": "PY-3",
+      "upstream_sha": "c3364059663df1ddce32799d6b1922af89a345f6"
+    },
+    {
+      "family": "class_remove",
+      "id": "r2-public-0060",
+      "integrated": "925dcec8ae7772ffd9ccbdd03389556874dcce5e",
+      "kind": "positive",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "fail",
+        "target": "pass",
+        "without-A": "pass"
+      },
+      "repository": "pallets-eco/blinker",
+      "stratum": "upstream API oracle scaffolds",
+      "target": "92d02989ad48a3d51f4d708a3a286afe11cb3ec7",
+      "tips": {
+        "A": "3ef5fedf27aa5f5152466ff7b31a218f7b45b7f8",
+        "B": "3f25d212eaf45ffba151b358ce49a2b953867d43"
+      },
+      "type": "PY-1",
+      "upstream_sha": "c3364059663df1ddce32799d6b1922af89a345f6"
+    },
+    {
+      "family": "required_keyword",
+      "id": "r2-public-0065",
+      "integrated": "e8fe7e9e5d79199ed0c1f60fe46034f1d15b0fa2",
+      "kind": "compatible",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "repository": "pallets-eco/blinker",
+      "stratum": "upstream API oracle scaffolds",
+      "target": "2c172d82208b45300079294be9560a56ecc24d3a",
+      "tips": {
+        "A": "732d22ea95d83e5f35abdf31e6120b080d323eaf",
+        "B": "9a7e63f494975295d4f0ea4ba9688207f8d7e8e9"
+      },
+      "type": "PY-4",
+      "upstream_sha": "c3364059663df1ddce32799d6b1922af89a345f6"
+    },
+    {
+      "family": "required_posonly",
+      "id": "r2-public-0078",
+      "integrated": "0bcb6d396ab7d02fd0af786490d6ed99d3542fed",
+      "kind": "unrelated",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "repository": "pallets-eco/blinker",
+      "stratum": "upstream API oracle scaffolds",
+      "target": "856c8673dc8f9e79a7d80785eb1704d0cf6e389c",
+      "tips": {
+        "A": "5bb227906cb29ff73b53b319b68053fc511a7a8e",
+        "B": "e77ce881b29ba9227abdbd39d4b7905a22e51270"
+      },
+      "type": "PY-4",
+      "upstream_sha": "c3364059663df1ddce32799d6b1922af89a345f6"
+    },
+    {
+      "family": "module_move",
+      "id": "r2-public-0099",
+      "integrated": "7089a3d4fdb38a7fef8ed73822646b291920d3b5",
+      "kind": "coordinated",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "integrated": "pass",
+        "target": "pass"
+      },
+      "repository": "pypa/trove-classifiers",
+      "stratum": "upstream API oracle scaffolds",
+      "target": "0b80e2f338be93702c5d1f65b9d5fe1049a4a21b",
+      "tips": {
+        "A": "2525a04565568d4225cce848a57e05c7f700d7c3",
+        "B": "e13385da4298c8266ce76e48dcb5f7a1810e0cd5"
+      },
+      "type": "PY-2",
+      "upstream_sha": "bc832553ebe6114e7682f09bc59bda6552da37cd"
+    },
+    {
+      "family": "conjunctive",
+      "id": "r2-public-0130",
+      "integrated": "e7689077d74602a8e8cd834640fb7aabfe51dc1f",
+      "kind": "unrelated",
+      "manifest": "eval/development/cases.json",
+      "oracle_statuses": {
+        "A": "pass",
+        "B": "pass",
+        "C": "pass",
+        "integrated": "pass",
+        "state:A+B": "pass",
+        "state:A+C": "pass",
+        "state:B+C": "pass",
+        "target": "pass"
+      },
+      "repository": "pypa/trove-classifiers",
+      "stratum": "upstream API oracle scaffolds",
+      "target": "af77ad7e36b7e02128318597217eed29c24f0ab5",
+      "tips": {
+        "A": "d0cf8facc795d70d8e99b875b248ae62a83ce2ed",
+        "B": "e73b7ffef7ddccf34050acfd78ec3e2e8b162f6c",
+        "C": "f4467df8fffdf148d85d8b79cbd5419debfb36c5"
+      },
+      "type": "PY-5",
+      "upstream_sha": "bc832553ebe6114e7682f09bc59bda6552da37cd"
+    }
+  ],
+  "eligible_population": 179,
+  "false_positives": [],
+  "label_revision": "R2 / r6 controls",
+  "random_sample_size": 18,
+  "seed": 17042026,
+  "status": "prepared for independent auditor; not an audit completion claim"
+}

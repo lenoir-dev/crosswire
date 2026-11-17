@@ -8,7 +8,7 @@ import subprocess
 import pytest
 
 from crosswire.git import (
-    GitError, changed_files, git_version, is_ancestor, list_files, merge_base,
+    GitError, SkippedBlob, changed_files, git_version, is_ancestor, list_files, merge_base,
     merge_tree_conflicts, read_file, repo_root, resolve,
 )
 
@@ -73,7 +73,9 @@ def test_nul_delimited_paths_and_utf8_replacement(repo):
     with repo.unchanged():
         assert {c.path for c in changed_files(repo.path, base, tip)} == set(paths)
         assert set(list_files(repo.path, tip)) == set(paths)
-        assert read_file(repo.path, tip, paths[0]) == "# bad byte: \ufffd\n"
+        with pytest.raises(SkippedBlob) as skipped:
+            read_file(repo.path, tip, paths[0])
+        assert skipped.value.reason == "non-utf8"
 
 
 def test_read_file_is_revision_specific_and_missing_is_none(repo):

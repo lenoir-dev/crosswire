@@ -172,3 +172,12 @@ crosswire check rename-charge add-refunds
 The merge is textually clean, but crosswire exits 1 and reports CW001 with `create_charge` as a
 possible rename. Run `uv run crosswire` from this project with `--repo /path/to/crosswire-demo`
 if crosswire is not installed on your PATH.
+
+## Checking 3+ branches together
+
+Use `crosswire check --target main --combined branch-a branch-b branch-c` to analyze the
+virtual result of integrating a set of branches in the given order. CW006 identifies a broken
+reference caused by a combination of changes; single-branch causes use CW001 or CW002. A
+pairwise conflict repaired by another integrated branch is reported as a warning. Textual
+conflicts skip the affected branch. Git creates unreferenced virtual objects without modifying
+refs, the index, or the worktree. Use `--format json` for the version 2 combined report.

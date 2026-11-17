@@ -6,8 +6,8 @@ Architect / acceptor: Opus 5.5 · Implementation: GPT-6.1 Terra · Tests & verif
 | --- | --- | --- |
 | v0.1 | Pairwise detector, rules CW001–CW005 | ✅ accepted (`562deeb`, 187 tests) |
 | v0.2 | Harden pairwise + groundwork for N-way (per-branch summaries, target ref, cache, SARIF, GitHub Action) | ✅ accepted (218 tests, field run on 20 httpx PRs: 7 TP / 0 FP) |
-| v0.3a | N-way: virtual integration, `check --combined`, CW006 with minimal culprit sets | 🔄 in progress (design approved: `docs/design/nway.md` D1–D8) |
-| v0.3b | `crosswire plan` merge order, target-reference re-check, stacked branches, batched git I/O | next |
+| v0.3a | N-way: virtual integration, `check --combined`, CW006 with minimal culprit sets | ✅ accepted (257 tests; conjunctive break caught, pairwise misses it) |
+| v0.3b | `crosswire plan` merge order, target-reference re-check, stacked branches, batched git I/O | next — waits for the Codex limit reset |
 | v0.4 | Agent-native: intent claims before code exists, orchestrator hook / MCP server | idea |
 | v0.5 | More languages (TypeScript/JS, Go) behind optional extras | idea |
 
@@ -61,3 +61,16 @@ merge of the whole set), new rule **CW006 combined-break** with a *minimal culpr
   *before* any work is wasted.
 - `crosswire serve --mcp` so coding agents can query "is it safe to change `billing.charge`?".
 - Paradev / CI integration recipe: re-check all live agent branches on every push.
+
+## v0.3b — backlog from the v0.3a acceptance (architect)
+
+| Task | Owner | Item |
+| --- | --- | --- |
+| T9 plan | Terra | `crosswire plan` per nway.md §3 + D4–D6, D8 |
+| T10 target refs | Terra | D4 part 2: re-check references already in `T` that point into modules changed in `I` |
+| T11 precise CW005 culprits | Terra | a skipped branch currently lists *all* integrated branches as culprits; minimise to the branches whose changes it conflicts with |
+| T12 one finding per use site | Terra | an import line and its call both produce a finding; group them per (branch, symbol, path) with the first line as location and the count in the message |
+| T13 batched git I/O | Terra | one `git cat-file --batch` process and one merge-base pass per run (current wall time is dominated by subprocesses) |
+| S8 plan oracles | Sol | all-orders oracle for 3–5 branch scenarios: safe steps, `together` groups, blocked reasons, stacks |
+| S9 semantic field validation | Sol | real refactoring PR sets (candidates in `docs/validation/v0.2.md`); measure CW001/CW002/CW006 precision |
+| A3 | Opus | review, acceptance, v0.3 release notes |

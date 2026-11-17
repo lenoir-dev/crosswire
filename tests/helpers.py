@@ -85,6 +85,22 @@ class RepoBuilder:
             self.commit(name)
         return base_sha
 
+    def named_dag(self, base, nodes):
+        """Build named single-parent DAG nodes from explicit parent labels/SHAs.
+
+        nodes maps label to (parent_label, file_changes); 'target' names the base.
+        Every Git mutation remains confined to this temporary fixture repository.
+        """
+        self.apply(base)
+        commits = {"target": self.commit("target")}
+        for label, (parent, changes) in nodes.items():
+            parent_sha = commits.get(parent, parent)
+            self.branch(label, parent_sha)
+            self.checkout(label)
+            self.apply(changes)
+            commits[label] = self.commit(label)
+        return commits
+
     def snapshot(self):
         # Read bytes rather than `git status`, which can refresh the index.
         files = {}
@@ -101,7 +117,7 @@ class RepoBuilder:
         return (
             self.git("rev-parse", "HEAD").stdout,
             self.git("symbolic-ref", "-q", "HEAD", check=False).stdout,
-            self.git("show-ref", check=False).stdout,
+            self.git("for-each-ref", "--format=%(refname) %(objectname)").stdout,
             index.read_bytes() if index.exists() else None,
             files,
         )

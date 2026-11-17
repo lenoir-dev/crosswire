@@ -1,6 +1,7 @@
 import argparse
 import sys
-from . import __version__, git, report
+from . import __version__, git, report, combined_report
+from .combined import analyze_combined
 from .engine import analyze
 
 
@@ -39,26 +40,28 @@ def main(argv=None):
         default='text')
     check.add_argument('--no-textual', action='store_true')
     check.add_argument('--no-cache', action='store_true')
+    check.add_argument('--combined', action='store_true')
     check.add_argument('branches', nargs='+', metavar='BRANCH')
     args = parser.parse_args(argv)
+    if args.combined and not args.target:
+        parser.error('--combined requires --target')
+    if args.combined and args.no_textual:
+        parser.error('--combined is incompatible with --no-textual')
     try:
-        result = analyze(
-            args.repo,
-            args.branches,
-            args.base,
-            args.src,
-            not args.no_textual,
-            target=args.target,
-            cache=not args.no_cache)
+        if args.combined:
+            result = analyze_combined(args.repo, args.branches, args.target,
+                                      args.src, cache=not args.no_cache)
+            formatter = combined_report
+        else:
+            result = analyze(args.repo, args.branches, args.base, args.src,
+                             not args.no_textual, target=args.target,
+                             cache=not args.no_cache)
+            formatter = report
     except git.GitError as exc:
         print(f'crosswire: error: {exc}', file=sys.stderr)
         return 2
-    rendered = {
-        'text': report.text,
-        'json': report.json_report,
-        'github': report.github,
-        'sarif': report.sarif}[
-        args.format](result)
+    rendered = {'text': formatter.text, 'json': formatter.json_report,
+                'github': formatter.github, 'sarif': formatter.sarif}[args.format](result)
     if rendered:
         print(rendered)
     return 1 if any(f.severity == 'error' for f in result.findings) else 0

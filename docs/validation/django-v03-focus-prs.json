@@ -1,0 +1,31 @@
+{
+  "repository": "django/django",
+  "selection": "Five public PR heads selected from the original 25 by declared refactoring/removal topic, before any combined/plan result: version constant removal, middleware class naming, messages API kwargs, permission reconciliation, file move semantics. This bounded primary S9 cohort is development-only; the 25-head pairwise scan is supplementary.",
+  "prs": [
+    {
+      "number": 21772,
+      "title": "Fixed #15396 -- Fully qualified middleware class names.",
+      "url": "https://github.com/django/django/pull/21772"
+    },
+    {
+      "number": 18332,
+      "title": "Fixed #13376: Added kwargs argument to messages API to allow extension of functionality to the Storage & Message class.",
+      "url": "https://github.com/django/django/pull/18332"
+    },
+    {
+      "number": 21361,
+      "title": "Fixed #26756 -- Updated permission names when model's verbose_name changes.",
+      "url": "https://github.com/django/django/pull/21361"
+    },
+    {
+      "number": 22014,
+      "title": "Fixed #37225 -- Prevented file_move_safe() from overwriting concurren…",
+      "url": "https://github.com/django/django/pull/22014"
+    },
+    {
+      "number": 22162,
+      "title": "Fixed #36123 -- Removed references to PyPy.",
+      "url": "https://github.com/django/django/pull/22162"
+    }
+  ]
+}

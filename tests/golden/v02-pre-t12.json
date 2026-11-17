@@ -1,0 +1,1446 @@
+{
+  "cases": {
+    "tests/test_amendment_a1.py::test_a1_cw001_actual_deletion_still_reports::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "68f2d72d59a5c83c81497cb0e427eb7b7c1030d7"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 1,
+          "message": "`pkg.billing.charge` is used here but was removed in a",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW001",
+          "severity": "error",
+          "symbol": "pkg.billing.charge"
+        },
+        {
+          "branch": "b",
+          "line": 2,
+          "message": "`pkg.billing.charge` is used here but was removed in a",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW001",
+          "severity": "error",
+          "symbol": "pkg.billing.charge"
+        }
+      ]
+    },
+    "tests/test_amendment_a1.py::test_a1_cw001_actual_deletion_still_reports::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"`pkg.billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"pkg.billing.charge\"\n    },\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`pkg.billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"pkg.billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"68f2d72d59a5c83c81497cb0e427eb7b7c1030d7\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 2,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_amendment_a1.py::test_a1_cw001_guarded_definition_is_not_removal[replacement0]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "3d44e212d7712b5a045932087c2a103e109a407c"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_amendment_a1.py::test_a1_cw001_guarded_definition_is_not_removal[replacement0]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"3d44e212d7712b5a045932087c2a103e109a407c\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_amendment_a1.py::test_a1_cw001_guarded_definition_is_not_removal[replacement1]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "3d44e212d7712b5a045932087c2a103e109a407c"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_amendment_a1.py::test_a1_cw001_guarded_definition_is_not_removal[replacement1]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"3d44e212d7712b5a045932087c2a103e109a407c\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_amendment_a1.py::test_a1_cw001_guarded_definition_is_not_removal[replacement2]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "3d44e212d7712b5a045932087c2a103e109a407c"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_amendment_a1.py::test_a1_cw001_guarded_definition_is_not_removal[replacement2]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"3d44e212d7712b5a045932087c2a103e109a407c\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_amendment_a1.py::test_a1_cw001_reexport_or_module_alias_is_not_removal[from .core.impl import charge\\n]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "4fff8892cf6708238363b8ddaecd701871004b69"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_amendment_a1.py::test_a1_cw001_reexport_or_module_alias_is_not_removal[from .core.impl import charge\\n]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"4fff8892cf6708238363b8ddaecd701871004b69\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_amendment_a1.py::test_a1_cw001_reexport_or_module_alias_is_not_removal[from pkg.core.impl import charge as charge\\n]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "4fff8892cf6708238363b8ddaecd701871004b69"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_amendment_a1.py::test_a1_cw001_reexport_or_module_alias_is_not_removal[from pkg.core.impl import charge as charge\\n]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"4fff8892cf6708238363b8ddaecd701871004b69\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_amendment_a1.py::test_a1_cw001_reexport_or_module_alias_is_not_removal[from pkg.core.impl import charge\\n]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "4fff8892cf6708238363b8ddaecd701871004b69"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_amendment_a1.py::test_a1_cw001_reexport_or_module_alias_is_not_removal[from pkg.core.impl import charge\\n]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"4fff8892cf6708238363b8ddaecd701871004b69\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_amendment_a1.py::test_a1_cw001_reexport_or_module_alias_is_not_removal[import pkg.core.impl as charge\\n]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "4fff8892cf6708238363b8ddaecd701871004b69"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_amendment_a1.py::test_a1_cw001_reexport_or_module_alias_is_not_removal[import pkg.core.impl as charge\\n]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"4fff8892cf6708238363b8ddaecd701871004b69\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_amendment_a1.py::test_readme_demo_cli_reports_semantic_error_despite_clean_git_merge::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "refunds.py:4: ERROR CW001 [add-refunds \u00d7 rename-charge] `billing.charge` is used here but was removed in rename-charge (renamed to `billing.create_charge`?)\n1 error(s), 0 warning(s) across 1 pair(s)\n"
+    },
+    "tests/test_cli.py::test_analysis_preserves_dirty_index_worktree_untracked_files_and_refs::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "f7e64d03c7dceb0cb6e2d6676f813d8061000706"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 2,
+          "message": "`billing.charge` is used here but was removed in a (renamed to `billing.create_charge`?)",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW001",
+          "severity": "error",
+          "symbol": "billing.charge"
+        }
+      ]
+    },
+    "tests/test_cli.py::test_analysis_preserves_dirty_index_worktree_untracked_files_and_refs::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a (renamed to `billing.create_charge`?)\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"f7e64d03c7dceb0cb6e2d6676f813d8061000706\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_cli.py::test_analysis_preserves_dirty_index_worktree_untracked_files_and_refs::cli::1": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a (renamed to `billing.create_charge`?)\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"f7e64d03c7dceb0cb6e2d6676f813d8061000706\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_cli.py::test_cli_clean_exit_zero_and_text::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "No semantic conflicts found across 1 pair(s).\n"
+    },
+    "tests/test_cli.py::test_cli_default_repo_is_current_directory::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "No semantic conflicts found across 1 pair(s).\n"
+    },
+    "tests/test_cli.py::test_cli_error_exit_one_and_text_location::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "client.py:2: ERROR CW001 [b \u00d7 a] `billing.charge` is used here but was removed in a (renamed to `billing.create_charge`?)\n1 error(s), 0 warning(s) across 1 pair(s)\n"
+    },
+    "tests/test_cli.py::test_cli_no_textual_disables_conflicts::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "readme.txt:1: ERROR CW005 [b \u00d7 a] textual conflict with a\n1 error(s), 0 warning(s) across 1 pair(s)\n"
+    },
+    "tests/test_cli.py::test_cli_no_textual_disables_conflicts::cli::1": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "No semantic conflicts found across 1 pair(s).\n"
+    },
+    "tests/test_cli.py::test_cli_repo_can_be_nested_directory::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "No semantic conflicts found across 1 pair(s).\n"
+    },
+    "tests/test_cli.py::test_cli_valid_explicit_base::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_cli.py::test_cli_warnings_only_exit_zero::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "api.py:1: WARNING CW003 [b \u00d7 a] `api.f` is independently defined in both branches\n0 error(s), 1 warning(s) across 1 pair(s)\n"
+    },
+    "tests/test_cli.py::test_default_source_roots_use_src_at_pair_base::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a2ceecc448850a2ec9eb0637c25cbfa0b77e275b\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_cli.py::test_github_annotation_escapes_properties_and_message::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"textual conflict with a\",\n      \"other_branch\": \"a\",\n      \"path\": \"odd %,colon:\\r\\nfile.txt\",\n      \"rule\": \"CW005\",\n      \"severity\": \"error\",\n      \"symbol\": null\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"3625d6cac230e10ffed74e634f66f12b79863d0b\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_cli.py::test_github_annotation_escapes_properties_and_message::cli::1": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "::error file=odd %25%2Ccolon%3A%0D%0Afile.txt,line=1,title=CW005::textual conflict with a\n"
+    },
+    "tests/test_cli.py::test_github_message_percent_and_newline_escaping::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"consumer\",\n      \"line\": 2,\n      \"message\": \"`api.f` is used here but was removed in remove%api\",\n      \"other_branch\": \"remove%api\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"api.f\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"remove%api\",\n      \"b\": \"consumer\",\n      \"base\": \"189ee6bd16c50e536e37a34a9b934f5418ed5988\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_cli.py::test_github_message_percent_and_newline_escaping::cli::1": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "::error file=client.py,line=2,title=CW001::`api.f` is used here but was removed in remove%25api\n"
+    },
+    "tests/test_cli.py::test_github_warning_annotation::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "::warning file=api.py,line=1,title=CW003::`api.f` is independently defined in both branches\n"
+    },
+    "tests/test_cli.py::test_json_empty_report::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_cli.py::test_json_exact_shape_sorted_keys_and_repeatability::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a (renamed to `billing.create_charge`?)\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"f7e64d03c7dceb0cb6e2d6676f813d8061000706\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_cli.py::test_json_exact_shape_sorted_keys_and_repeatability::cli::1": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a (renamed to `billing.create_charge`?)\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"f7e64d03c7dceb0cb6e2d6676f813d8061000706\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_cli.py::test_json_findings_deduplicated_and_sorted::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"a.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    },\n    {\n      \"branch\": \"b\",\n      \"line\": 3,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"a.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    },\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"z.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"1aefe03756c3c1bc6b5054ebc0a74e4f983d976b\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 3,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_cli.py::test_json_pairs_preserve_input_combinations_and_user_labels::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"z\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    },\n    {\n      \"a\": \"z\",\n      \"b\": \"a\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    },\n    {\n      \"a\": \"b\",\n      \"b\": \"a\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_cli.py::test_parse_diagnostic_is_not_repeated_for_same_revision_across_pairs::cli::0": {
+      "returncode": 0,
+      "stderr": "crosswire: warning: cannot parse broken.py@957ca44\n",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    },\n    {\n      \"a\": \"a\",\n      \"b\": \"broken\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    },\n    {\n      \"a\": \"b\",\n      \"b\": \"broken\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_cli.py::test_parse_failures_warn_on_stderr_and_skip_revision::cli::0": {
+      "returncode": 0,
+      "stderr": "crosswire: warning: cannot parse broken.py@162460b\n",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_cli.py::test_source_roots_explicit_and_repeatable::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"064c1b4dadc6848addfd37d95d60dd6248a3b27f\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_cli.py::test_source_roots_explicit_and_repeatable::cli::1": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"clients/client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"064c1b4dadc6848addfd37d95d60dd6248a3b27f\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw001_demo_rename_and_new_call_into_untouched_module::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "rename-charge",
+          "b": "add-refunds",
+          "base": "472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "add-refunds",
+          "line": 2,
+          "message": "`billing.charge` is used here but was removed in rename-charge (renamed to `billing.create_charge`?)",
+          "other_branch": "rename-charge",
+          "path": "refunds.py",
+          "rule": "CW001",
+          "severity": "error",
+          "symbol": "billing.charge"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw001_demo_rename_and_new_call_into_untouched_module::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"add-refunds\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in rename-charge (renamed to `billing.create_charge`?)\",\n      \"other_branch\": \"rename-charge\",\n      \"path\": \"refunds.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"rename-charge\",\n      \"b\": \"add-refunds\",\n      \"base\": \"472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw001_own_redefinition_suppresses_stale_reference::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw001_own_redefinition_suppresses_stale_reference::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw001_removed_symbol_or_module[False]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 1,
+          "message": "`billing.charge` is used here but was removed in a",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW001",
+          "severity": "error",
+          "symbol": "billing.charge"
+        },
+        {
+          "branch": "b",
+          "line": 2,
+          "message": "`billing.charge` is used here but was removed in a",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW001",
+          "severity": "error",
+          "symbol": "billing.charge"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw001_removed_symbol_or_module[False]::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    },\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 2,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw001_removed_symbol_or_module[True]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 1,
+          "message": "`billing.charge` is used here but was removed in a",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW001",
+          "severity": "error",
+          "symbol": "billing.charge"
+        },
+        {
+          "branch": "b",
+          "line": 2,
+          "message": "`billing.charge` is used here but was removed in a",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW001",
+          "severity": "error",
+          "symbol": "billing.charge"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw001_removed_symbol_or_module[True]::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    },\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 2,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw001_renamed_file_removes_old_module::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 2,
+          "message": "`billing.charge` is used here but was removed in a",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW001",
+          "severity": "error",
+          "symbol": "billing.charge"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw001_renamed_file_removes_old_module::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw001_repeated_identical_added_call_is_not_lost::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "6573e2cf21f091f874829cc3656736a34939b86e"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 3,
+          "message": "`billing.charge` is used here but was removed in a",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW001",
+          "severity": "error",
+          "symbol": "billing.charge"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw001_repeated_identical_added_call_is_not_lost::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 3,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"6573e2cf21f091f874829cc3656736a34939b86e\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw001_runs_both_directions::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "8f3eb4e9669890a9a51a80f9ce9a16359f58b595"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 1,
+          "message": "`one.f` is used here but was removed in a",
+          "other_branch": "a",
+          "path": "uses_one.py",
+          "rule": "CW001",
+          "severity": "error",
+          "symbol": "one.f"
+        },
+        {
+          "branch": "b",
+          "line": 2,
+          "message": "`one.f` is used here but was removed in a",
+          "other_branch": "a",
+          "path": "uses_one.py",
+          "rule": "CW001",
+          "severity": "error",
+          "symbol": "one.f"
+        },
+        {
+          "branch": "a",
+          "line": 1,
+          "message": "`two.g` is used here but was removed in b",
+          "other_branch": "b",
+          "path": "uses_two.py",
+          "rule": "CW001",
+          "severity": "error",
+          "symbol": "two.g"
+        },
+        {
+          "branch": "a",
+          "line": 2,
+          "message": "`two.g` is used here but was removed in b",
+          "other_branch": "b",
+          "path": "uses_two.py",
+          "rule": "CW001",
+          "severity": "error",
+          "symbol": "two.g"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw001_runs_both_directions::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"`one.f` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"uses_one.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"one.f\"\n    },\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`one.f` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"uses_one.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"one.f\"\n    },\n    {\n      \"branch\": \"a\",\n      \"line\": 1,\n      \"message\": \"`two.g` is used here but was removed in b\",\n      \"other_branch\": \"b\",\n      \"path\": \"uses_two.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"two.g\"\n    },\n    {\n      \"branch\": \"a\",\n      \"line\": 2,\n      \"message\": \"`two.g` is used here but was removed in b\",\n      \"other_branch\": \"b\",\n      \"path\": \"uses_two.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"two.g\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"8f3eb4e9669890a9a51a80f9ce9a16359f58b595\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 4,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw001_uncertain_targets_are_skipped[from billing import *\\ncharge(1, 'USD')\\n]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw001_uncertain_targets_are_skipped[from billing import *\\ncharge(1, 'USD')\\n]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw001_uncertain_targets_are_skipped[import billing as bill\\nbill = object()\\nbill.charge(1, 'USD')\\n]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw001_uncertain_targets_are_skipped[import billing as bill\\nbill = object()\\nbill.charge(1, 'USD')\\n]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw001_uncertain_targets_are_skipped[import billing\\ngetattr(billing, 'charge')(1, 'USD')\\n]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw001_uncertain_targets_are_skipped[import billing\\ngetattr(billing, 'charge')(1, 'USD')\\n]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw001_unchanged_references_and_shifted_lines_are_ignored::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "6573e2cf21f091f874829cc3656736a34939b86e"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw001_unchanged_references_and_shifted_lines_are_ignored::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"6573e2cf21f091f874829cc3656736a34939b86e\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_decorated_function_is_not_checked::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "96d7ef7b94b9a7d6ecb5a4bb762f06fe66f1f962"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw002_decorated_function_is_not_checked::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"96d7ef7b94b9a7d6ecb5a4bb762f06fe66f1f962\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_existing_call_shifted_in_file_is_ignored::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "536725f4f3e507f32a0a55357abc77090a67f2ee"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw002_existing_call_shifted_in_file_is_ignored::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"536725f4f3e507f32a0a55357abc77090a67f2ee\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_plain_constructor::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a8a7a1e8db48564d51a59c50f416fd1e8d5a6a97"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 2,
+          "message": "`api.Client` call is incompatible with a: missing required argument: token",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW002",
+          "severity": "error",
+          "symbol": "api.Client"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw002_plain_constructor::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`api.Client` call is incompatible with a: missing required argument: token\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW002\",\n      \"severity\": \"error\",\n      \"symbol\": \"api.Client\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a8a7a1e8db48564d51a59c50f416fd1e8d5a6a97\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[**kwargs-x, /, **kwargs-f(x=1)-True]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "511ce03db2522b115383aba0328f640721d59741"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 2,
+          "message": "`api.f` call is incompatible with a: missing required argument: x",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW002",
+          "severity": "error",
+          "symbol": "api.f"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[**kwargs-x, /, **kwargs-f(x=1)-True]::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`api.f` call is incompatible with a: missing required argument: x\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW002\",\n      \"severity\": \"error\",\n      \"symbol\": \"api.f\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"511ce03db2522b115383aba0328f640721d59741\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x, /, **kwargs-x, /, **kwargs-f(1, x=2)-False]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a3ecb1bf2947be5ca50f3725cf04075d8ca9147a"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x, /, **kwargs-x, /, **kwargs-f(1, x=2)-False]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a3ecb1bf2947be5ca50f3725cf04075d8ca9147a\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x, y=0-x, **kwargs-f(1, y=2)-False]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "4ee3bbf65cd080a68dd7d683c7f8d7289dd8bfc2"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x, y=0-x, **kwargs-f(1, y=2)-False]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"4ee3bbf65cd080a68dd7d683c7f8d7289dd8bfc2\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x, y=0-x-f(1, 2)-True]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "4ee3bbf65cd080a68dd7d683c7f8d7289dd8bfc2"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 2,
+          "message": "`api.f` call is incompatible with a: too many positional arguments",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW002",
+          "severity": "error",
+          "symbol": "api.f"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x, y=0-x-f(1, 2)-True]::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`api.f` call is incompatible with a: too many positional arguments\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW002\",\n      \"severity\": \"error\",\n      \"symbol\": \"api.f\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"4ee3bbf65cd080a68dd7d683c7f8d7289dd8bfc2\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x, y=0-x-f(1, y=2)-True]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "4ee3bbf65cd080a68dd7d683c7f8d7289dd8bfc2"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 2,
+          "message": "`api.f` call is incompatible with a: unknown keyword argument: y",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW002",
+          "severity": "error",
+          "symbol": "api.f"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x, y=0-x-f(1, y=2)-True]::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`api.f` call is incompatible with a: unknown keyword argument: y\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW002\",\n      \"severity\": \"error\",\n      \"symbol\": \"api.f\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"4ee3bbf65cd080a68dd7d683c7f8d7289dd8bfc2\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, *, required-f(1)-True]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "d6a47fdd02143ffcfc87f4a397f16e7b800025ed"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 2,
+          "message": "`api.f` call is incompatible with a: missing required argument: required",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW002",
+          "severity": "error",
+          "symbol": "api.f"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, *, required-f(1)-True]::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`api.f` call is incompatible with a: missing required argument: required\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW002\",\n      \"severity\": \"error\",\n      \"symbol\": \"api.f\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"d6a47fdd02143ffcfc87f4a397f16e7b800025ed\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, *args-f(1)-False]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "d6a47fdd02143ffcfc87f4a397f16e7b800025ed"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, *args-f(1)-False]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"d6a47fdd02143ffcfc87f4a397f16e7b800025ed\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, /-f(x=1)-True]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "d6a47fdd02143ffcfc87f4a397f16e7b800025ed"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 2,
+          "message": "`api.f` call is incompatible with a: positional-only argument passed as keyword: x",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW002",
+          "severity": "error",
+          "symbol": "api.f"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, /-f(x=1)-True]::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`api.f` call is incompatible with a: positional-only argument passed as keyword: x\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW002\",\n      \"severity\": \"error\",\n      \"symbol\": \"api.f\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"d6a47fdd02143ffcfc87f4a397f16e7b800025ed\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, y-f()-False]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "d6a47fdd02143ffcfc87f4a397f16e7b800025ed"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, y-f()-False]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"d6a47fdd02143ffcfc87f4a397f16e7b800025ed\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, y-f(*args)-False]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "d6a47fdd02143ffcfc87f4a397f16e7b800025ed"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, y-f(*args)-False]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"d6a47fdd02143ffcfc87f4a397f16e7b800025ed\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, y-f(1)-True]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "d6a47fdd02143ffcfc87f4a397f16e7b800025ed"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 2,
+          "message": "`api.f` call is incompatible with a: missing required argument: y",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW002",
+          "severity": "error",
+          "symbol": "api.f"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, y-f(1)-True]::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`api.f` call is incompatible with a: missing required argument: y\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW002\",\n      \"severity\": \"error\",\n      \"symbol\": \"api.f\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"d6a47fdd02143ffcfc87f4a397f16e7b800025ed\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, y-f(1, **kwargs)-False]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "d6a47fdd02143ffcfc87f4a397f16e7b800025ed"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, y-f(1, **kwargs)-False]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"d6a47fdd02143ffcfc87f4a397f16e7b800025ed\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, y-f(1, *args, **kwargs)-False]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "d6a47fdd02143ffcfc87f4a397f16e7b800025ed"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, y-f(1, *args, **kwargs)-False]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"d6a47fdd02143ffcfc87f4a397f16e7b800025ed\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, y-f(1, unknown=2)-False]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "d6a47fdd02143ffcfc87f4a397f16e7b800025ed"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, y-f(1, unknown=2)-False]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"d6a47fdd02143ffcfc87f4a397f16e7b800025ed\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, y=0-f(1)-False]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "d6a47fdd02143ffcfc87f4a397f16e7b800025ed"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[x-x, y=0-f(1)-False]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"d6a47fdd02143ffcfc87f4a397f16e7b800025ed\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[y, x=0-x, y=0-f(1, x=2)-True]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "b725f2d888398d27b1a3dbe88f5e46a6b9515dc5"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 2,
+          "message": "`api.f` call is incompatible with a: duplicate value for x",
+          "other_branch": "a",
+          "path": "client.py",
+          "rule": "CW002",
+          "severity": "error",
+          "symbol": "api.f"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw002_python_binding_matrix[y, x=0-x, y=0-f(1, x=2)-True]::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`api.f` call is incompatible with a: duplicate value for x\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW002\",\n      \"severity\": \"error\",\n      \"symbol\": \"api.f\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"b725f2d888398d27b1a3dbe88f5e46a6b9515dc5\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw003_duplicate_definition_once_with_lexical_location[branches0]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 1,
+          "message": "`api.parse_config` is independently defined in both branches",
+          "other_branch": "a",
+          "path": "api.py",
+          "rule": "CW003",
+          "severity": "warning",
+          "symbol": "api.parse_config"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw003_duplicate_definition_once_with_lexical_location[branches0]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"`api.parse_config` is independently defined in both branches\",\n      \"other_branch\": \"a\",\n      \"path\": \"api.py\",\n      \"rule\": \"CW003\",\n      \"severity\": \"warning\",\n      \"symbol\": \"api.parse_config\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 1\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw003_duplicate_definition_once_with_lexical_location[branches1]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "b",
+          "b": "a",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 1,
+          "message": "`api.parse_config` is independently defined in both branches",
+          "other_branch": "a",
+          "path": "api.py",
+          "rule": "CW003",
+          "severity": "warning",
+          "symbol": "api.parse_config"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw003_duplicate_definition_once_with_lexical_location[branches1]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"`api.parse_config` is independently defined in both branches\",\n      \"other_branch\": \"a\",\n      \"path\": \"api.py\",\n      \"rule\": \"CW003\",\n      \"severity\": \"warning\",\n      \"symbol\": \"api.parse_config\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"b\",\n      \"b\": \"a\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 1\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw003_non_collisions[base0-left0-right0]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw003_non_collisions[base0-left0-right0]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw003_non_collisions[base1-left1-right1]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "e9dfe002a647f070a6c7524fee407183b4be8641"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw003_non_collisions[base1-left1-right1]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"e9dfe002a647f070a6c7524fee407183b4be8641\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw003_non_collisions[base2-left2-right2]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw003_non_collisions[base2-left2-right2]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw003_non_collisions[base3-left3-right3]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw003_non_collisions[base3-left3-right3]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw003_same_class_method_added::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "6098112a8085c1c5133c2ea6965bb52f1cf5970d"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 2,
+          "message": "`api.Client.send` is independently defined in both branches",
+          "other_branch": "a",
+          "path": "api.py",
+          "rule": "CW003",
+          "severity": "warning",
+          "symbol": "api.Client.send"
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw003_same_class_method_added::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`api.Client.send` is independently defined in both branches\",\n      \"other_branch\": \"a\",\n      \"path\": \"api.py\",\n      \"rule\": \"CW003\",\n      \"severity\": \"warning\",\n      \"symbol\": \"api.Client.send\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"6098112a8085c1c5133c2ea6965bb52f1cf5970d\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 1\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw004_alembic_literal_intersection['parent'-'parent']::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 1,
+          "message": "Alembic revisions share down_revision parent with alembic/versions/left.py in a",
+          "other_branch": "a",
+          "path": "alembic/versions/right.py",
+          "rule": "CW004",
+          "severity": "error",
+          "symbol": null
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw004_alembic_literal_intersection['parent'-'parent']::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"Alembic revisions share down_revision parent with alembic/versions/left.py in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"alembic/versions/right.py\",\n      \"rule\": \"CW004\",\n      \"severity\": \"error\",\n      \"symbol\": null\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw004_alembic_literal_intersection[('other', 'parent')-['parent', 'third']]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 1,
+          "message": "Alembic revisions share down_revision parent with alembic/versions/left.py in a",
+          "other_branch": "a",
+          "path": "alembic/versions/right.py",
+          "rule": "CW004",
+          "severity": "error",
+          "symbol": null
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw004_alembic_literal_intersection[('other', 'parent')-['parent', 'third']]::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"Alembic revisions share down_revision parent with alembic/versions/left.py in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"alembic/versions/right.py\",\n      \"rule\": \"CW004\",\n      \"severity\": \"error\",\n      \"symbol\": null\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw004_alembic_literal_intersection[['parent']-'parent']::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 1,
+          "message": "Alembic revisions share down_revision parent with alembic/versions/left.py in a",
+          "other_branch": "a",
+          "path": "alembic/versions/right.py",
+          "rule": "CW004",
+          "severity": "error",
+          "symbol": null
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw004_alembic_literal_intersection[['parent']-'parent']::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"Alembic revisions share down_revision parent with alembic/versions/left.py in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"alembic/versions/right.py\",\n      \"rule\": \"CW004\",\n      \"severity\": \"error\",\n      \"symbol\": null\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw004_alembic_non_collisions[''-'']::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw004_alembic_non_collisions[''-'']::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw004_alembic_non_collisions['one'-'two']::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw004_alembic_non_collisions['one'-'two']::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw004_alembic_non_collisions[None-None]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw004_alembic_non_collisions[None-None]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw004_alembic_non_collisions[['parent', dynamic]-'parent']::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw004_alembic_non_collisions[['parent', dynamic]-'parent']::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw004_alembic_non_collisions[compute()-compute()]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw004_alembic_non_collisions[compute()-compute()]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw004_alembic_requires_versions_directory::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw004_alembic_requires_versions_directory::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw004_django_non_collisions[app/0007_left.py-app/0007_right.py]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw004_django_non_collisions[app/0007_left.py-app/0007_right.py]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw004_django_non_collisions[app/migrations/0007_left.py-app/migrations/0008_right.py]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw004_django_non_collisions[app/migrations/0007_left.py-app/migrations/0008_right.py]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw004_django_non_collisions[app/migrations/0007_same.py-app/migrations/0007_same.py]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw004_django_non_collisions[app/migrations/0007_same.py-app/migrations/0007_same.py]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw004_django_non_collisions[app/migrations/007_left.py-app/migrations/007_right.py]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw004_django_non_collisions[app/migrations/007_left.py-app/migrations/007_right.py]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw004_django_non_collisions[one/migrations/0007_left.py-two/migrations/0007_right.py]::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw004_django_non_collisions[one/migrations/0007_left.py-two/migrations/0007_right.py]::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw004_django_same_number_same_directory::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 1,
+          "message": "migration number 0007 also added in a: app/migrations/0007_left.py",
+          "other_branch": "a",
+          "path": "app/migrations/0007_right.py",
+          "rule": "CW004",
+          "severity": "error",
+          "symbol": null
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw004_django_same_number_same_directory::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"migration number 0007 also added in a: app/migrations/0007_left.py\",\n      \"other_branch\": \"a\",\n      \"path\": \"app/migrations/0007_right.py\",\n      \"rule\": \"CW004\",\n      \"severity\": \"error\",\n      \"symbol\": null\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw004_only_new_migrations_collide::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "d9a96bad69bef806da2b9756a46a1d2925bf7446"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw004_only_new_migrations_collide::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"d9a96bad69bef806da2b9756a46a1d2925bf7446\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw005_clean_merge_no_findings::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "a0e08cea0e1517161fe1712c2795ca64433081a0"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw005_clean_merge_no_findings::cli::0": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"a0e08cea0e1517161fe1712c2795ca64433081a0\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw005_text_conflict_once_per_path::analyze::0": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "2dc6bbc8d0625586dd6f5a1491f638b1f8067659"
+        }
+      ],
+      "findings": [
+        {
+          "branch": "b",
+          "line": 1,
+          "message": "textual conflict with a",
+          "other_branch": "a",
+          "path": "readme.txt",
+          "rule": "CW005",
+          "severity": "error",
+          "symbol": null
+        }
+      ]
+    },
+    "tests/test_rules.py::test_cw005_text_conflict_once_per_path::analyze::1": {
+      "base_by_pair": [
+        {
+          "a": "a",
+          "b": "b",
+          "base": "2dc6bbc8d0625586dd6f5a1491f638b1f8067659"
+        }
+      ],
+      "findings": []
+    },
+    "tests/test_rules.py::test_cw005_text_conflict_once_per_path::cli::0": {
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"textual conflict with a\",\n      \"other_branch\": \"a\",\n      \"path\": \"readme.txt\",\n      \"rule\": \"CW005\",\n      \"severity\": \"error\",\n      \"symbol\": null\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"2dc6bbc8d0625586dd6f5a1491f638b1f8067659\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    },
+    "tests/test_rules.py::test_cw005_text_conflict_once_per_path::cli::1": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"findings\": [],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"2dc6bbc8d0625586dd6f5a1491f638b1f8067659\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+    }
+  },
+  "provenance": {
+    "amendment_a2": {
+      "command": "uv run python tests/refresh_a2_goldens.py",
+      "cw005_source_sha256": "4ce73561e819233770b21d6cfb86054ce6f20ef1dfeabd2587ecc8f4c733b04f",
+      "policy": "Re-record CW005-containing outputs only; original recording retained in v01-original.json",
+      "refreshed_cases": [
+        "tests/test_cli.py::test_cli_no_textual_disables_conflicts::cli::0",
+        "tests/test_cli.py::test_github_annotation_escapes_properties_and_message::cli::0",
+        "tests/test_cli.py::test_github_annotation_escapes_properties_and_message::cli::1",
+        "tests/test_rules.py::test_cw005_text_conflict_once_per_path::analyze::0",
+        "tests/test_rules.py::test_cw005_text_conflict_once_per_path::cli::0"
+      ]
+    },
+    "command": "CROSSWIRE_GOLDEN_RECORD=1 CROSSWIRE_GOLDEN_SOURCE=/tmp/crosswire-sol-v01-562deeb/src PYTHONPATH=/tmp/crosswire-sol-v01-562deeb/src uv run pytest -q tests/test_git.py tests/test_python_analyzer.py tests/test_diffing.py tests/test_rules.py tests/test_cli.py tests/test_amendment_a1.py",
+    "commit": "562deeb",
+    "full_commit": "562deeb51105bdf2b5d89a202878ec50e9d3f6d2",
+    "source": "isolated git worktree at commit 562deeb"
+  }
+}

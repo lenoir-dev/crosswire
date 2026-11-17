@@ -195,7 +195,8 @@ def test_json_findings_deduplicated_and_sorted(repo):
     assert hits == sorted(hits, key=key)
     identities = [(f["rule"], f["branch"], f["other_branch"], f["path"], f["line"], f["symbol"]) for f in hits]
     assert len(identities) == len(set(identities))
-    assert len(hits) == 3
+    assert len(hits) == 2
+    assert hits[0]["line"] == 2 and hits[0]["message"].endswith("(2 uses in this file)")
 
 
 def escape(value, property_value=False):

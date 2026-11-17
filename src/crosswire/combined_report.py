@@ -11,6 +11,7 @@ def json_report(report):
     errors = sum(f.severity == 'error' for f in report.findings)
     payload = {
         'version': 2, 'tool': 'crosswire', 'mode': 'combined', 'target': report.target,
+        'coverage': report.coverage, 'limits': report.limits,
         'integrated': report.integrated,
         'skipped': [{'branch': label, 'paths': paths} for label, paths in report.skipped],
         'findings': [asdict(f) for f in report.findings],
@@ -22,7 +23,10 @@ def json_report(report):
 def text(report):
     """Render combined findings for a terminal."""
     if not report.findings:
-        return f'No semantic conflicts found across {len(report.integrated)} integrated branch(es).'
+        line = f'No semantic conflicts found across {len(report.integrated)} integrated branch(es).'
+        if report.coverage == 'bounded':
+            line += f"\nCoverage: bounded ({', '.join(report.limits['hit'])}) — unchecked combinations are not proven safe."
+        return line
     lines = []
     for f in report.findings:
         line = f'{f.path}:{f.line}: {f.severity.upper()} {f.rule} [{f.branch} × {{{", ".join(f.culprits)}}}] {f.message}'
@@ -31,6 +35,8 @@ def text(report):
         lines.append(line)
     errors = sum(f.severity == 'error' for f in report.findings)
     lines.append(f'{errors} error(s), {len(report.findings) - errors} warning(s) across {len(report.integrated)} integrated branch(es)')
+    if report.coverage == 'bounded':
+        lines.append(f"Coverage: bounded ({', '.join(report.limits['hit'])}) — unchecked combinations are not proven safe.")
     return '\n'.join(lines)
 
 

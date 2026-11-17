@@ -1,0 +1,161 @@
+{
+  "command": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "-m",
+    "crosswire",
+    "check",
+    "--repo",
+    "/tmp/crosswire-field-httpx",
+    "--target",
+    "origin/master",
+    "--format",
+    "json",
+    "refs/remotes/pr/3777",
+    "refs/remotes/pr/3733",
+    "refs/remotes/pr/3778",
+    "refs/remotes/pr/3767",
+    "refs/remotes/pr/3696"
+  ],
+  "exit": 1,
+  "mode": "pairwise",
+  "prs": [
+    {
+      "number": 3777,
+      "ref": "refs/remotes/pr/3777",
+      "sha": "357b42fdefa4ac1f0fec37776828618176e9e7c9",
+      "title": "Add real async iterator for ByteStreams",
+      "url": "https://github.com/encode/httpx/pull/3777"
+    },
+    {
+      "number": 3733,
+      "ref": "refs/remotes/pr/3733",
+      "sha": "d4d1959a6953ced4eca59bc7a35691e7561ec73c",
+      "title": "Use weakref for bound stream _response.",
+      "url": "https://github.com/encode/httpx/pull/3733"
+    },
+    {
+      "number": 3778,
+      "ref": "refs/remotes/pr/3778",
+      "sha": "09fc81a33c51f090002e340173f231d403c11ac5",
+      "title": "Refactor `map_httpcore_exceptions` to not be a context manager",
+      "url": "https://github.com/encode/httpx/pull/3778"
+    },
+    {
+      "number": 3767,
+      "ref": "refs/remotes/pr/3767",
+      "sha": "a23676eecf94b8025b2a817a71358f8e8311fd40",
+      "title": "Include header name in encoding error message",
+      "url": "https://github.com/encode/httpx/pull/3767"
+    },
+    {
+      "number": 3696,
+      "ref": "refs/remotes/pr/3696",
+      "sha": "ed923cea1b8902cacf97b098a2adff8c51601488",
+      "title": "Include header name in encoding error messages",
+      "url": "https://github.com/encode/httpx/pull/3696"
+    }
+  ],
+  "readonly_verified": true,
+  "report": {
+    "findings": [
+      {
+        "branch": "refs/remotes/pr/3767",
+        "line": 1,
+        "message": "textual conflict with refs/remotes/pr/3696",
+        "other_branch": "refs/remotes/pr/3696",
+        "path": "httpx/_models.py",
+        "rule": "CW005",
+        "severity": "error",
+        "symbol": null
+      }
+    ],
+    "pairs": [
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3733",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3778",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3767",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3777",
+        "b": "refs/remotes/pr/3696",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3778",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3767",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3733",
+        "b": "refs/remotes/pr/3696",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3778",
+        "b": "refs/remotes/pr/3767",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      },
+      {
+        "a": "refs/remotes/pr/3778",
+        "b": "refs/remotes/pr/3696",
+        "base": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+      },
+      {
+        "a": "refs/remotes/pr/3767",
+        "b": "refs/remotes/pr/3696",
+        "base": "ae1b9f66238f75ced3ced5e4485408435de10768"
+      }
+    ],
+    "summary": {
+      "errors": 1,
+      "warnings": 0
+    },
+    "tool": "crosswire",
+    "version": 1
+  },
+  "repository": "encode/httpx",
+  "seconds": 0.43725691600047867,
+  "source_before": {
+    "src/crosswire/__init__.py": "667d4a15b970b851e20d17510224670c14646cfb6d5a1e388ca6b9cc6da8bf41",
+    "src/crosswire/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/crosswire/cache.py": "e2153abeda862df972fe65c209ec48ac419c1dcdce798775276b8926f2d40a50",
+    "src/crosswire/cli.py": "decad3e097d41c553e28043b00175615373e910ace1e46168e58ea7cfe5bb617",
+    "src/crosswire/combined.py": "123b756d504067bcf3a10773f5cca98667ccd36017d44c48c9cd502f4574554d",
+    "src/crosswire/combined_report.py": "cade8c37c7392894bb9c20eedc7b6c62d2ee8eb089bff507a10f6cfb6d8fe769",
+    "src/crosswire/diffing.py": "edd4630c0325a00137914c6d7c4a0585481c0347f3525b4124d01bb1e72b2b8a",
+    "src/crosswire/engine.py": "5af92e70116c90df0ec4c2c7ea72a721b6240f4840eaf51c7ff93b3f23ea1c4a",
+    "src/crosswire/findings.py": "8479dbd27c5b88cce5a012f76008fdb66765ce068dabd3c7ba6b949b88625c43",
+    "src/crosswire/git.py": "bd9d1527220a711a631c58cd388a016fcebde8f7c0fa1ca636a475b1c547b254",
+    "src/crosswire/integrate.py": "48720c2aea09d4d33ca8b8f8a2bf9c3e652ce0ed4eed09464b3ae1a2c28e628c",
+    "src/crosswire/model.py": "2d85f86dc4735f4c5714bc49c751c74b4475650febad53e562326ac7f497a44f",
+    "src/crosswire/plan_report.py": "afd73711a51553e4ee38354192cffafc94774eaf4c26d76cf63efaa563d5327b",
+    "src/crosswire/planner.py": "875fa1f2a61ec56e846794bf10f3f5d3caa09029032eab530339757581ddb628",
+    "src/crosswire/python_analyzer.py": "1eaf0c5d3d3866d02ea042516aa30b05cd2ce25177aae65e43a93b52213d832a",
+    "src/crosswire/report.py": "e6adc5e050b47cc3e6d3d3c03cd7571f269e7b964d59de9ae2aeb99e1ed1be21",
+    "src/crosswire/rules/__init__.py": "8ebf4507b15cddbd42fafe6a709f0d0f28475e215868089aae7d951cf7590869",
+    "src/crosswire/rules/cw001.py": "fe7f2b602a94c334f2ff593d2ac095e7c49bbfd3b99603d7727d1d904823b59e",
+    "src/crosswire/rules/cw002.py": "a9908ea5a10fef953843cd20ae3956110df1f0e013ba65224eca1af612c6fda1",
+    "src/crosswire/rules/cw003.py": "4b94945a296858a79cf95f507d21f0748644fd3f3f88fc3321018a0bcc23f7b5",
+    "src/crosswire/rules/cw004.py": "5dfb449d8f2fbb48210aa679d356c2c761f7833b5702779027208bddbc750a9f",
+    "src/crosswire/rules/cw005.py": "4ce73561e819233770b21d6cfb86054ce6f20ef1dfeabd2587ecc8f4c733b04f",
+    "src/crosswire/state.py": "6900db27ea1648404bcee16b048a408b144fcd62bc8f11e2ead4a413e4b46dd7"
+  },
+  "sources_stable": true,
+  "stderr": "",
+  "target": "7cff5f79bc78649bbcd3fd9aa7a74c86e0f63016"
+}

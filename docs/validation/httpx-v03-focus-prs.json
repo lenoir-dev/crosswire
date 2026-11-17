@@ -1,0 +1,31 @@
+{
+  "prs": [
+    {
+      "number": 3777,
+      "title": "Add real async iterator for ByteStreams",
+      "url": "https://github.com/encode/httpx/pull/3777"
+    },
+    {
+      "number": 3733,
+      "title": "Use weakref for bound stream _response.",
+      "url": "https://github.com/encode/httpx/pull/3733"
+    },
+    {
+      "number": 3778,
+      "title": "Refactor `map_httpcore_exceptions` to not be a context manager",
+      "url": "https://github.com/encode/httpx/pull/3778"
+    },
+    {
+      "number": 3767,
+      "title": "Include header name in encoding error message",
+      "url": "https://github.com/encode/httpx/pull/3767"
+    },
+    {
+      "number": 3696,
+      "title": "Include header name in encoding error messages",
+      "url": "https://github.com/encode/httpx/pull/3696"
+    }
+  ],
+  "repository": "encode/httpx",
+  "selection": "Public five-head refactoring cohort: context-manager refactor, async iterator, weakrefs, and two header helper signature changes. Supplement to the slow Django cohort; development data, never holdout. Pinned heads from the same public 2026-11-17 snapshot."
+}

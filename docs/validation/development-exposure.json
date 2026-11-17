@@ -1,0 +1,14 @@
+{
+  "policy": "Repositories with implementation-visible evaluation cases stay development data and must not become repository-level holdout sources.",
+  "repositories": [
+    {
+      "repository": "encode/httpx",
+      "reason": "Public v0.2 PR snapshots, findings and triage were shared with implementation."
+    },
+    {
+      "repository": "django/django",
+      "reason": "Public v0.3 exploratory PR selection and checker results are implementation-visible development data."
+    }
+  ],
+  "holdout_cases_disclosed": false
+}

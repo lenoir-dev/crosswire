@@ -34,3 +34,9 @@ recording is archived byte-for-byte as `v01-original.json`, pinned by SHA-256 in
 `test_golden_a2.py`. Run `uv run python tests/refresh_a2_goldens.py` to refresh only
 CW005-containing outputs. The guard proves that all other outputs remain exact
 and permits only canonical branch/other_branch/message changes within CW005.
+
+PLAN-v0.3b T12 permits coalescing findings by owner/file/symbol at the first use.
+`v02-pre-t12.json` is the pinned pre-change archive. Re-record with
+`uv run python tests/refresh_t12_goldens.py`; that command approves exactly nine
+affected outputs and rejects changes to the remaining 146. `test_golden_t12.py`
+and the original A2 guard enforce both amendments independently of production helpers.

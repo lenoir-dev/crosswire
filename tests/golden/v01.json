@@ -12,17 +12,7 @@
         {
           "branch": "b",
           "line": 1,
-          "message": "`pkg.billing.charge` is used here but was removed in a",
-          "other_branch": "a",
-          "path": "client.py",
-          "rule": "CW001",
-          "severity": "error",
-          "symbol": "pkg.billing.charge"
-        },
-        {
-          "branch": "b",
-          "line": 2,
-          "message": "`pkg.billing.charge` is used here but was removed in a",
+          "message": "`pkg.billing.charge` is used here but was removed in a (2 uses in this file)",
           "other_branch": "a",
           "path": "client.py",
           "rule": "CW001",
@@ -34,7 +24,7 @@
     "tests/test_amendment_a1.py::test_a1_cw001_actual_deletion_still_reports::cli::0": {
       "returncode": 1,
       "stderr": "",
-      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"`pkg.billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"pkg.billing.charge\"\n    },\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`pkg.billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"pkg.billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"68f2d72d59a5c83c81497cb0e427eb7b7c1030d7\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 2,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"`pkg.billing.charge` is used here but was removed in a (2 uses in this file)\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"pkg.billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"68f2d72d59a5c83c81497cb0e427eb7b7c1030d7\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
     },
     "tests/test_amendment_a1.py::test_a1_cw001_guarded_definition_is_not_removal[replacement0]::analyze::0": {
       "base_by_pair": [
@@ -265,7 +255,7 @@
     "tests/test_cli.py::test_json_findings_deduplicated_and_sorted::cli::0": {
       "returncode": 1,
       "stderr": "",
-      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"a.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    },\n    {\n      \"branch\": \"b\",\n      \"line\": 3,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"a.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    },\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"z.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"1aefe03756c3c1bc6b5054ebc0a74e4f983d976b\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 3,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a (2 uses in this file)\",\n      \"other_branch\": \"a\",\n      \"path\": \"a.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    },\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"z.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"1aefe03756c3c1bc6b5054ebc0a74e4f983d976b\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 2,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
     },
     "tests/test_cli.py::test_json_pairs_preserve_input_combinations_and_user_labels::cli::0": {
       "returncode": 0,
@@ -345,17 +335,7 @@
         {
           "branch": "b",
           "line": 1,
-          "message": "`billing.charge` is used here but was removed in a",
-          "other_branch": "a",
-          "path": "client.py",
-          "rule": "CW001",
-          "severity": "error",
-          "symbol": "billing.charge"
-        },
-        {
-          "branch": "b",
-          "line": 2,
-          "message": "`billing.charge` is used here but was removed in a",
+          "message": "`billing.charge` is used here but was removed in a (2 uses in this file)",
           "other_branch": "a",
           "path": "client.py",
           "rule": "CW001",
@@ -367,7 +347,7 @@
     "tests/test_rules.py::test_cw001_removed_symbol_or_module[False]::cli::0": {
       "returncode": 1,
       "stderr": "",
-      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    },\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 2,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"`billing.charge` is used here but was removed in a (2 uses in this file)\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
     },
     "tests/test_rules.py::test_cw001_removed_symbol_or_module[True]::analyze::0": {
       "base_by_pair": [
@@ -381,17 +361,7 @@
         {
           "branch": "b",
           "line": 1,
-          "message": "`billing.charge` is used here but was removed in a",
-          "other_branch": "a",
-          "path": "client.py",
-          "rule": "CW001",
-          "severity": "error",
-          "symbol": "billing.charge"
-        },
-        {
-          "branch": "b",
-          "line": 2,
-          "message": "`billing.charge` is used here but was removed in a",
+          "message": "`billing.charge` is used here but was removed in a (2 uses in this file)",
           "other_branch": "a",
           "path": "client.py",
           "rule": "CW001",
@@ -403,7 +373,7 @@
     "tests/test_rules.py::test_cw001_removed_symbol_or_module[True]::cli::0": {
       "returncode": 1,
       "stderr": "",
-      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    },\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`billing.charge` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 2,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"`billing.charge` is used here but was removed in a (2 uses in this file)\",\n      \"other_branch\": \"a\",\n      \"path\": \"client.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"billing.charge\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"472e17f84f815b4c1e6e9eb5dbc23cbe87d87d8d\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
     },
     "tests/test_rules.py::test_cw001_renamed_file_removes_old_module::analyze::0": {
       "base_by_pair": [
@@ -469,17 +439,7 @@
         {
           "branch": "b",
           "line": 1,
-          "message": "`one.f` is used here but was removed in a",
-          "other_branch": "a",
-          "path": "uses_one.py",
-          "rule": "CW001",
-          "severity": "error",
-          "symbol": "one.f"
-        },
-        {
-          "branch": "b",
-          "line": 2,
-          "message": "`one.f` is used here but was removed in a",
+          "message": "`one.f` is used here but was removed in a (2 uses in this file)",
           "other_branch": "a",
           "path": "uses_one.py",
           "rule": "CW001",
@@ -489,17 +449,7 @@
         {
           "branch": "a",
           "line": 1,
-          "message": "`two.g` is used here but was removed in b",
-          "other_branch": "b",
-          "path": "uses_two.py",
-          "rule": "CW001",
-          "severity": "error",
-          "symbol": "two.g"
-        },
-        {
-          "branch": "a",
-          "line": 2,
-          "message": "`two.g` is used here but was removed in b",
+          "message": "`two.g` is used here but was removed in b (2 uses in this file)",
           "other_branch": "b",
           "path": "uses_two.py",
           "rule": "CW001",
@@ -511,7 +461,7 @@
     "tests/test_rules.py::test_cw001_runs_both_directions::cli::0": {
       "returncode": 1,
       "stderr": "",
-      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"`one.f` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"uses_one.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"one.f\"\n    },\n    {\n      \"branch\": \"b\",\n      \"line\": 2,\n      \"message\": \"`one.f` is used here but was removed in a\",\n      \"other_branch\": \"a\",\n      \"path\": \"uses_one.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"one.f\"\n    },\n    {\n      \"branch\": \"a\",\n      \"line\": 1,\n      \"message\": \"`two.g` is used here but was removed in b\",\n      \"other_branch\": \"b\",\n      \"path\": \"uses_two.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"two.g\"\n    },\n    {\n      \"branch\": \"a\",\n      \"line\": 2,\n      \"message\": \"`two.g` is used here but was removed in b\",\n      \"other_branch\": \"b\",\n      \"path\": \"uses_two.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"two.g\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"8f3eb4e9669890a9a51a80f9ce9a16359f58b595\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 4,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+      "stdout": "{\n  \"findings\": [\n    {\n      \"branch\": \"b\",\n      \"line\": 1,\n      \"message\": \"`one.f` is used here but was removed in a (2 uses in this file)\",\n      \"other_branch\": \"a\",\n      \"path\": \"uses_one.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"one.f\"\n    },\n    {\n      \"branch\": \"a\",\n      \"line\": 1,\n      \"message\": \"`two.g` is used here but was removed in b (2 uses in this file)\",\n      \"other_branch\": \"b\",\n      \"path\": \"uses_two.py\",\n      \"rule\": \"CW001\",\n      \"severity\": \"error\",\n      \"symbol\": \"two.g\"\n    }\n  ],\n  \"pairs\": [\n    {\n      \"a\": \"a\",\n      \"b\": \"b\",\n      \"base\": \"8f3eb4e9669890a9a51a80f9ce9a16359f58b595\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 2,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
     },
     "tests/test_rules.py::test_cw001_uncertain_targets_are_skipped[from billing import *\\ncharge(1, 'USD')\\n]::analyze::0": {
       "base_by_pair": [
@@ -1441,6 +1391,20 @@
     "command": "CROSSWIRE_GOLDEN_RECORD=1 CROSSWIRE_GOLDEN_SOURCE=/tmp/crosswire-sol-v01-562deeb/src PYTHONPATH=/tmp/crosswire-sol-v01-562deeb/src uv run pytest -q tests/test_git.py tests/test_python_analyzer.py tests/test_diffing.py tests/test_rules.py tests/test_cli.py tests/test_amendment_a1.py",
     "commit": "562deeb",
     "full_commit": "562deeb51105bdf2b5d89a202878ec50e9d3f6d2",
-    "source": "isolated git worktree at commit 562deeb"
+    "source": "isolated git worktree at commit 562deeb",
+    "t12": {
+      "changed_cases": [
+        "tests/test_amendment_a1.py::test_a1_cw001_actual_deletion_still_reports::analyze::0",
+        "tests/test_amendment_a1.py::test_a1_cw001_actual_deletion_still_reports::cli::0",
+        "tests/test_cli.py::test_json_findings_deduplicated_and_sorted::cli::0",
+        "tests/test_rules.py::test_cw001_removed_symbol_or_module[False]::analyze::0",
+        "tests/test_rules.py::test_cw001_removed_symbol_or_module[False]::cli::0",
+        "tests/test_rules.py::test_cw001_removed_symbol_or_module[True]::analyze::0",
+        "tests/test_rules.py::test_cw001_removed_symbol_or_module[True]::cli::0",
+        "tests/test_rules.py::test_cw001_runs_both_directions::analyze::0",
+        "tests/test_rules.py::test_cw001_runs_both_directions::cli::0"
+      ],
+      "command": "uv run python tests/refresh_t12_goldens.py"
+    }
   }
 }

@@ -1,6 +1,9 @@
+import atexit
 import os
 import re
 import subprocess
+import threading
+from collections import OrderedDict
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
@@ -66,10 +69,27 @@ def resolve(repo, ref):
     return result.stdout.decode().strip()
 
 
+@lru_cache(maxsize=32768)
+def _merge_base_sha(repo, a, b):
+    result = _run(repo, 'merge-base', a, b, allowed=(0, 1))
+    return result.stdout.decode().strip() if result.returncode == 0 else None
+
+
 def merge_base(repo, a, b):
-    """Merge base."""
-    p = _run(repo, 'merge-base', a, b, allowed=(0, 1))
-    return p.stdout.decode().strip() if p.returncode == 0 else None
+    """Return a merge base, memoizing only immutable commit IDs."""
+    if all(re.fullmatch(r'(?:[0-9a-fA-F]{40}|[0-9a-fA-F]{64})', x) for x in (a, b)):
+        return _merge_base_sha(str(repo), a, b)
+    result = _run(repo, 'merge-base', a, b, allowed=(0, 1))
+    return result.stdout.decode().strip() if result.returncode == 0 else None
+
+
+def direct_parents(repo, commits):
+    """Read direct parents of a batch of already-resolved commits."""
+    if not commits:
+        return {}
+    result = _run(repo, 'rev-list', '--no-walk', '--parents', *commits)
+    return {parts[0]: tuple(parts[1:]) for line in result.stdout.decode().splitlines()
+            if (parts := line.split())}
 
 
 def is_ancestor(repo, anc, desc):
@@ -110,24 +130,118 @@ def changed_files(repo, base, tip):
     return result
 
 
+class _BlobBatch:
+    """One serialized cat-file stream for a repository."""
+
+    def __init__(self, repo):
+        env = os.environ.copy()
+        env.update(GIT_OPTIONAL_LOCKS='0', LC_ALL='C')
+        try:
+            self.process = subprocess.Popen(['git', 'cat-file', '--batch', '-z'], cwd=repo,
+                                            stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                            stderr=subprocess.DEVNULL, env=env)
+        except OSError as exc:
+            raise GitError(str(exc)) from exc
+        self.lock = threading.Lock()
+
+    def read(self, rev, path):
+        request = os.fsencode(f'{rev}:{path}')
+        if b'\0' in request:
+            raise GitError('NUL in Git object path')
+        with self.lock:
+            try:
+                self.process.stdin.write(request + b'\0')
+                self.process.stdin.flush()
+                header = self.process.stdout.readline()
+                match = re.fullmatch(rb'[0-9a-fA-F]{40,64} ([a-z]+) ([0-9]+)\n', header)
+                if match:
+                    kind, size = match.group(1), int(match.group(2))
+                    content = self.process.stdout.read(size)
+                    end = self.process.stdout.read(1)
+                    if len(content) != size or end != b'\n':
+                        raise GitError('truncated git cat-file response')
+                    if kind != b'blob':
+                        raise GitError(f'not a blob: {path}')
+                    return content.decode('utf-8', 'replace')
+                expected = request + b' missing\n'
+                if expected.startswith(header) and header:
+                    rest = self.process.stdout.read(len(expected) - len(header))
+                    if header + rest == expected:
+                        return None
+                raise GitError('invalid git cat-file response')
+            except (BrokenPipeError, OSError, ValueError) as exc:
+                raise GitError(f'git cat-file failed: {exc}') from exc
+
+    def close(self):
+        """Close the batch stream when the process exits."""
+        try:
+            if self.process.stdin:
+                self.process.stdin.close()
+            self.process.wait(timeout=1)
+        except (OSError, subprocess.TimeoutExpired):
+            self.process.kill()
+
+
+_batches = OrderedDict()
+_batches_lock = threading.Lock()
+_MAX_BATCHES = 16
+
+
+def _read_batch(repo, rev, path):
+    # The global lock also protects a stream from eviction while it is in use.
+    key = str(Path(repo).resolve())
+    with _batches_lock:
+        batch = _batches.get(key)
+        if batch is None or batch.process.poll() is not None:
+            if batch is not None:
+                _batches.pop(key)
+                batch.close()
+            while len(_batches) >= _MAX_BATCHES:
+                _, evicted = _batches.popitem(last=False)
+                evicted.close()
+            batch = _BlobBatch(key)
+            _batches[key] = batch
+        _batches.move_to_end(key)
+        return batch.read(rev, path)
+
+
+def _close_batches():
+    for batch in list(_batches.values()):
+        batch.close()
+
+
+atexit.register(_close_batches)
+
+
 @lru_cache(maxsize=16384)
+def _read_file_sha(repo, rev, path):
+    return _read_batch(repo, rev, path)
+
+
 def read_file(repo, rev, path):
-    # Check existence separately so other git failures are not mistaken for
-    # missing files.
-    """Read file."""
-    p = _run(repo, 'cat-file', '-e', f'{rev}:{path}', allowed=(0, 1, 128))
-    if p.returncode:
-        return None
-    return _run(repo, 'cat-file', 'blob',
-                f'{rev}:{path}').stdout.decode('utf-8', 'replace')
+    """Read a Git blob with a shared batch process; missing paths return None."""
+    if re.fullmatch(r'(?:[0-9a-fA-F]{40}|[0-9a-fA-F]{64})', rev):
+        return _read_file_sha(str(repo), rev, path)
+    return _read_batch(repo, rev, path)
 
 
-def list_files(repo, rev, prefix=''):
-    """List files."""
+@lru_cache(maxsize=8192)
+def _list_files_sha(repo, rev, prefix):
+    return tuple(_list_files(repo, rev, prefix))
+
+
+def _list_files(repo, rev, prefix):
     args = ['ls-tree', '-r', '-z', '--name-only', rev]
     if prefix:
         args += ['--', prefix]
     return [os.fsdecode(x) for x in _run(repo, *args).stdout.split(b'\0') if x]
+
+
+def list_files(repo, rev, prefix=''):
+    """List tracked files, caching only immutable revisions."""
+    if re.fullmatch(r'(?:[0-9a-fA-F]{40}|[0-9a-fA-F]{64})', rev):
+        return list(_list_files_sha(str(repo), rev, prefix))
+    return _list_files(repo, rev, prefix)
 
 
 def merge_tree_conflicts(repo, a, b):

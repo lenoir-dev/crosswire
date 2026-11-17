@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 import re
 
+from .golden_t12 import coalesce_case
+
 
 GOLDEN = Path(__file__).parent / "golden"
 ORIGINAL_SHA256 = "b49a78c31843cf88185a067371a6045d2198d928719ae86b569d099fd00bb834"
@@ -68,6 +70,6 @@ def test_a2_preserves_all_non_cw005_v01_outputs_exactly():
     assert updated.keys() == original.keys()
     for key, value in original.items():
         if "CW005" not in json.dumps(value):
-            assert updated[key] == value, f"A2 changed a non-CW005 v0.1 output: {key}"
+            assert updated[key] == coalesce_case(key, value), f"Change outside A2/T12: {key}"
         else:
-            assert updated[key] == canonical_case(key, value, original), f"A2 changed more than CW005 orientation: {key}"
+            assert updated[key] == coalesce_case(key, canonical_case(key, value, original)), f"Change outside A2/T12: {key}"

@@ -3,10 +3,12 @@
 import ast
 import itertools
 from dataclasses import dataclass
+from collections import Counter
 
 from . import git
 from .cache import SummaryCache
 from .engine import PairContext, _Analysis
+from .findings import consolidate
 from .integrate import integrate
 from .python_analyzer import extract_references, module_name_for_path
 from .rules import cw001, cw002, cw003, cw004
@@ -38,6 +40,9 @@ class CombinedReport:
     integrated: tuple[str, ...]
     skipped: tuple[tuple[str, tuple[str, ...]], ...]
     findings: list[CombinedFinding]
+    coverage: str = 'complete'
+    limits: dict | None = None
+    commit: str | None = None
 
 
 def _broken(ref, tip, final, final_index):
@@ -99,14 +104,14 @@ def _subsets(candidates):
         yield from itertools.combinations(labels, size)
 
 
-def analyze_combined(repo, branches, target, src=None, cache=True):
+def analyze_combined(repo, branches, target, src=None, cache=True, min_branches=2):
     """Integrate branches and find new broken references in the final state."""
     repo = git.repo_root(repo)
     git.git_version(repo)
     if not target:
         raise git.GitError('--combined requires --target')
-    if len(branches) < 2:
-        raise git.GitError('at least two branches are required')
+    if len(branches) < min_branches:
+        raise git.GitError(f'at least {min_branches} branches are required')
     target_sha = git.resolve(repo, target)
     shas = [git.resolve(repo, b) for b in branches]
     if len(set(shas)) != len(shas):
@@ -144,13 +149,32 @@ def analyze_combined(repo, branches, target, src=None, cache=True):
         result = integrate(repo, target_sha, selected)
         return None if result.skipped else result.commit
     findings = []
+    limits_hit = set()
     preceding = []
     skips = dict(merged.skipped)
     for label, sha in ordered:
         if label in skips:
+            conflicts = set(skips[label])
+            candidates = [other for other in preceding
+                          if _changed_paths(summaries[other]) & conflicts]
+            culprits = tuple(sorted(candidates))
+            exact = False
+            if len(candidates) <= 6:
+                for subset in _subsets(candidates):
+                    subset_set = set(subset)
+                    prior = [(other, other_sha) for other, other_sha in ordered
+                             if other in subset_set]
+                    attempt = integrate(repo, target_sha, prior + [(label, sha)])
+                    if (label in dict(attempt.skipped)
+                            and all(other in attempt.integrated for other in subset)):
+                        culprits, exact = subset, True
+                        break
+            if not exact:
+                limits_hit.add('max_candidates' if len(candidates) > 6 else 'max_group')
             for path in skips[label]:
-                findings.append(CombinedFinding('CW005', 'error', 'textual conflict with integrated state',
-                                                label, tuple(sorted(preceding)), True, None,
+                conflict_with = ', '.join(culprits) if culprits else target
+                findings.append(CombinedFinding('CW005', 'error', f'textual conflict with {conflict_with}',
+                                                label, culprits, exact, None,
                                                 path, 1, 'branch', None))
         else:
             preceding.append(label)
@@ -185,6 +209,8 @@ def analyze_combined(repo, branches, target, src=None, cache=True):
                     if _broken(ref, tip, trial_index.resolve(ref.module, ref.name), trial_index) is not None:
                         culprits, exact = subset, True
                         break
+            if not exact:
+                limits_hit.add('max_candidates' if len(candidates) > 6 else 'max_group')
             symbol = f'{ref.module}.{ref.name}'
             if len(culprits) == 1:
                 rule = 'CW001' if reason == 'undefined' else 'CW002'
@@ -195,6 +221,67 @@ def analyze_combined(repo, branches, target, src=None, cache=True):
                 message = f'`{symbol}` is broken after merging {{{", ".join(culprits)}}}: {reason}; no single branch causes it'
             findings.append(CombinedFinding(rule, 'error', message, label, tuple(culprits), exact, None,
                                             ref.path, location[0], location[1], symbol))
+    # Recheck occurrences already present on the target against the integrated state.
+    target_files = git.list_files(repo, target_sha)
+    roots = tuple(src) if src is not None else (('src', '.') if any(p.startswith('src/') for p in target_files) else ('.',))
+    changed_paths = {path for change in git.changed_files(repo, target_sha, merged.commit)
+                     for path in (change.path, change.old_path) if path}
+    target_index = index(target_sha, roots)
+    final_index = index(merged.commit, roots)
+    for path in git.list_files(repo, merged.commit):
+        module = module_name_for_path(path, roots)
+        if module is None or git.read_file(repo, target_sha, path) is None:
+            continue
+        old = analysis.parse(target_sha, path, module, roots)
+        new = analysis.parse(merged.commit, path, module, roots)
+        if old is None or new is None:
+            continue
+        def ref_key(ref):
+            return ref.path, ref.module, ref.name, ref.call
+        remaining = Counter(ref_key(ref) for ref in old[1])
+        for ref in sorted(new[1], key=lambda item: item.line):
+            key = ref_key(ref)
+            if not remaining[key]:
+                continue
+            remaining[key] -= 1
+            tip = target_index.resolve(ref.module, ref.name)
+            if tip.status != 'valid':
+                continue
+            if (ref.call is not None and not ref.call.has_star and not ref.call.has_starstar
+                    and tip.symbol is not None and tip.symbol.params is not None
+                    and cw002.binding_error(ref.call, tip.symbol.params) is not None):
+                continue
+            final = final_index.resolve(ref.module, ref.name)
+            relevant = set(tip.files) | set(final.files)
+            if not (relevant & changed_paths):
+                continue
+            reason = _broken(ref, tip, final, final_index)
+            if reason is None:
+                continue
+            candidates = [label for label, _ in live if _changed_paths(summaries[label]) & relevant]
+            culprits = tuple(sorted(candidates))
+            exact = False
+            if len(candidates) <= 6:
+                for subset in _subsets(candidates):
+                    commit = trial(set(subset))
+                    if commit is None:
+                        continue
+                    check_index = index(commit, roots)
+                    if _broken(ref, tip, check_index.resolve(ref.module, ref.name), check_index) is not None:
+                        culprits, exact = subset, True
+                        break
+            if not exact:
+                limits_hit.add('max_candidates' if len(candidates) > 6 else 'max_group')
+            symbol = f'{ref.module}.{ref.name}'
+            if len(culprits) == 1:
+                rule = 'CW001' if reason == 'undefined' else 'CW002'
+                message = (f'`{symbol}` is used here but was removed in {culprits[0]}' if rule == 'CW001'
+                           else f'`{symbol}` call is incompatible with {culprits[0]}: {reason}')
+            else:
+                rule = 'CW006'
+                message = f'`{symbol}` is broken after merging {{{", ".join(culprits)}}}: {reason}; no single branch causes it'
+            findings.append(CombinedFinding(rule, 'error', message, target, tuple(culprits), exact,
+                                            None, ref.path, ref.line, 'integrated', symbol))
     # Explain pairwise breakages repaired by another integrated branch.
     for (a, _), (b, _) in itertools.combinations(live, 2):
         context = PairContext(repo, target_sha, summaries[a], summaries[b], False, [], analysis)
@@ -245,6 +332,7 @@ def analyze_combined(repo, branches, target, src=None, cache=True):
                             break
                 if resolved is None and candidates:
                     resolved = tuple(sorted(candidates))
+                    limits_hit.add('max_candidates' if len(candidates) > 6 else 'max_group')
                 if resolved is not None:
                     findings.append(CombinedFinding(finding.rule, 'warning', finding.message,
                                                     owner, (cause,), exact, resolved,
@@ -258,9 +346,8 @@ def analyze_combined(repo, branches, target, src=None, cache=True):
                 findings.append(CombinedFinding(f.rule, f.severity, f.message, f.branch,
                                                 (f.other_branch,), True, None, f.path, f.line,
                                                 'integrated', f.symbol))
-    unique = {}
-    for f in findings:
-        unique.setdefault((f.rule, f.branch, f.path, f.line, f.symbol, f.culprits), f)
-    result = sorted(unique.values(), key=lambda f: (f.path, f.line, f.rule, f.branch,
+    result = sorted(consolidate(findings), key=lambda f: (f.path, f.line, f.rule, f.branch,
                                                        f.culprits, f.symbol or '', f.message))
-    return CombinedReport(target_sha, merged.integrated, merged.skipped, result)
+    limits = {'max_candidates': 6, 'max_group': 3, 'group_search_max_remaining': 8, 'hit': sorted(limits_hit)}
+    return CombinedReport(target_sha, merged.integrated, merged.skipped, result,
+                          'bounded' if limits_hit else 'complete', limits, merged.commit)

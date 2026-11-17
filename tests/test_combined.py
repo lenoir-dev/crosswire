@@ -173,6 +173,7 @@ def test_scenario_6_conflicting_branch_is_skipped_and_later_branch_continues(rep
     hit = report["findings"][0]
     assert (hit["rule"], hit["branch"], hit["path"], hit["line"]) == ("CW005", "B", "conflict.txt", 1)
     assert hit["culprits"] == ["A"]
+    assert hit["message"] == "textual conflict with A"
 
 
 @pytest.mark.parametrize("fixture_name", ["conjunctive", "fixed_by_third"])
@@ -198,7 +199,8 @@ def test_combined_json_v2_exact_shape_and_deterministic_serialization(repo, conj
     assert first.returncode == second.returncode == 1
     assert first.stdout == second.stdout and first.stderr == second.stderr == ""
     report = json.loads(first.stdout)
-    assert set(report) == {"version", "tool", "mode", "target", "integrated", "skipped", "findings", "summary"}
+    assert set(report) == {"version", "tool", "mode", "target", "integrated", "skipped", "findings", "summary", "coverage", "limits"}
+    assert report["coverage"] == "complete" and report["limits"]["hit"] == []
     assert report["version"] == 2 and report["tool"] == "crosswire" and report["mode"] == "combined"
     assert report["target"] == conjunctive["target"]
     assert report["integrated"] == ["A", "B", "C"] and report["skipped"] == []
@@ -411,8 +413,15 @@ def test_combined_reexport_dependency_is_a_culprit_file(repo):
          "C": ("target", {"use.py": CALLER})},
     )
     report = combined(repo, ("A", "C"), 1)
-    assert len(report["findings"]) == 1
-    assert_break(report["findings"][0], "CW001", ["A"])
+    assert len(report["findings"]) == 2
+    findings = {(hit["branch"], hit["path"], hit["symbol"]): hit for hit in report["findings"]}
+    assert set(findings) == {("C", "use.py", "m.f"), ("main", "m.py", "impl.f")}
+    assert_break(findings[("C", "use.py", "m.f")], "CW001", ["A"])
+    target = findings[("main", "m.py", "impl.f")]
+    assert target["rule"] == "CW001" and target["severity"] == "error"
+    assert target["culprits"] == ["A"] and target["culprits_exact"] is True
+    assert target["resolved_by"] is None
+    assert target["line"] == 1 and target["location"] == "integrated"
 
 
 def test_combined_deleted_repo_module_is_broken_not_third_party(repo):

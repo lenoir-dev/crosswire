@@ -1,5 +1,4 @@
 # Vision / QUALITY review (Sol)
-
 The methodology is sound; the full five-language corpus is a staged v1.0 deliverable,
 not a one-session task. Begin with a labelled Python pilot before interpreting percentages.
 Python: compileall catches syntax only; pin pyright basic diagnostics/config and supplement

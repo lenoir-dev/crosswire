@@ -1,0 +1,131 @@
+{
+  "repository": "django/django",
+  "selection": "Public exploratory development cohort, not holdout. Most recently updated open PRs matching refactor or removed, plus independently identified removal PR 22162; 2026-11-17.",
+  "prs": [
+    {
+      "number": 22040,
+      "title": "Fixed #37372 -- Made handling of null values in __in lookups consistent.",
+      "url": "https://github.com/django/django/pull/22040"
+    },
+    {
+      "number": 21972,
+      "title": "Fixed #34402 -- Admin search_fields crashes for inherited model and _…",
+      "url": "https://github.com/django/django/pull/21972"
+    },
+    {
+      "number": 19097,
+      "title": "Fixed #36134 -- Added support for ABSENT ON NULL clause for JSONArray.",
+      "url": "https://github.com/django/django/pull/19097"
+    },
+    {
+      "number": 21970,
+      "title": "Refs #34597 -- Avoided outer joins for reverse relation absence.",
+      "url": "https://github.com/django/django/pull/21970"
+    },
+    {
+      "number": 21737,
+      "title": "Fixed #37252 -- Made If-Unmodified-Since ignored for responses without Last-Modified.",
+      "url": "https://github.com/django/django/pull/21737"
+    },
+    {
+      "number": 21772,
+      "title": "Fixed #15396 -- Fully qualified middleware class names.",
+      "url": "https://github.com/django/django/pull/21772"
+    },
+    {
+      "number": 17818,
+      "title": "Refs #18597 -- Refactor new hooks for BaseModelFormSet and BaseInlineFormSet",
+      "url": "https://github.com/django/django/pull/17818"
+    },
+    {
+      "number": 18332,
+      "title": "Fixed #13376: Added kwargs argument to messages API to allow extension of functionality to the Storage & Message class.",
+      "url": "https://github.com/django/django/pull/18332"
+    },
+    {
+      "number": 21144,
+      "title": "Fixed #36602 -- Refactored showmigrations to use structured migration data.",
+      "url": "https://github.com/django/django/pull/21144"
+    },
+    {
+      "number": 19598,
+      "title": "Removed unneeded field_name checks within MigrationAutodetector.check_dependency().",
+      "url": "https://github.com/django/django/pull/19598"
+    },
+    {
+      "number": 19885,
+      "title": "Fixed #24886 — Added Transform.process_lhs().",
+      "url": "https://github.com/django/django/pull/19885"
+    },
+    {
+      "number": 19172,
+      "title": "Fixed #36175 -- Refactor admin pagination to make it reusable across different queryset.",
+      "url": "https://github.com/django/django/pull/19172"
+    },
+    {
+      "number": 21312,
+      "title": "Refs #28905 -- Declared optional dependencies in pyproject.toml",
+      "url": "https://github.com/django/django/pull/21312"
+    },
+    {
+      "number": 21361,
+      "title": "Fixed #26756 -- Updated permission names when model's verbose_name changes.",
+      "url": "https://github.com/django/django/pull/21361"
+    },
+    {
+      "number": 22048,
+      "title": "Fixed #37379 -- Made migrate check for the django_migrations table once.",
+      "url": "https://github.com/django/django/pull/22048"
+    },
+    {
+      "number": 19603,
+      "title": "Fixed #34613 -- Added support for Partitioned cookies",
+      "url": "https://github.com/django/django/pull/19603"
+    },
+    {
+      "number": 22251,
+      "title": "Fixed #37473 -- Fixed crash when aggregating values() of aggregates.",
+      "url": "https://github.com/django/django/pull/22251"
+    },
+    {
+      "number": 21462,
+      "title": "Fixed #17752 -- Updated serialization docs with overall intent and multi-table inheritance usage.",
+      "url": "https://github.com/django/django/pull/21462"
+    },
+    {
+      "number": 20711,
+      "title": "Fixed #36930 -- Restored str() behaviour on members of models.Choices",
+      "url": "https://github.com/django/django/pull/20711"
+    },
+    {
+      "number": 21017,
+      "title": "Fixed #22125 -- Removed redundant index on ManyToManyField intermediary tables.",
+      "url": "https://github.com/django/django/pull/21017"
+    },
+    {
+      "number": 22074,
+      "title": "Fixed #33882 -- async with transaction.atomic.",
+      "url": "https://github.com/django/django/pull/22074"
+    },
+    {
+      "number": 20937,
+      "title": "Fixed #36988 -- Relaxed GeoIP2 database type validation.",
+      "url": "https://github.com/django/django/pull/20937"
+    },
+    {
+      "number": 22014,
+      "title": "Fixed #37225 -- Prevented file_move_safe() from overwriting concurren…",
+      "url": "https://github.com/django/django/pull/22014"
+    },
+    {
+      "number": 21845,
+      "title": "Fixed #36539 -- Fixed verbose_name on related fields being ignored for admin label generation.",
+      "url": "https://github.com/django/django/pull/21845"
+    },
+    {
+      "number": 22162,
+      "title": "Fixed #36123 -- Removed references to PyPy.",
+      "url": "https://github.com/django/django/pull/22162"
+    }
+  ]
+}

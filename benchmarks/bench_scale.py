@@ -10,11 +10,14 @@ from __future__ import annotations
 
 import argparse
 import atexit
+import hashlib
 from dataclasses import replace
 import importlib
 import json
 import os
+import platform
 from pathlib import Path
+import resource
 import statistics
 import subprocess
 import sys
@@ -53,7 +56,12 @@ def worker(force_prefilter_off, argv):
             return check(context)
 
         module.check = counted
-    atexit.register(lambda: print("BENCH_COUNTERS=" + json.dumps(counters, sort_keys=True), file=sys.stderr))
+    def report_counters():
+        counters["peak_rss"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+        counters["peak_rss_unit"] = "bytes" if platform.system() == "Darwin" else "KiB"
+        print("BENCH_COUNTERS=" + json.dumps(counters, sort_keys=True), file=sys.stderr)
+
+    atexit.register(report_counters)
     sys.argv = ["crosswire", *argv]
     raise SystemExit(cli_main())
 
@@ -130,6 +138,14 @@ def main():
         result = {
             "branches": args.branches, "pairs": args.branches * (args.branches - 1) // 2,
             "python": sys.version, "textual_enabled": args.textual, "cases": cases,
+            "platform": platform.platform(), "machine": platform.machine(),
+            "processor": subprocess.check_output(["sysctl", "-n", "machdep.cpu.brand_string"], text=True).strip()
+                         if platform.system() == "Darwin" else platform.processor(),
+            "memory_bytes": int(subprocess.check_output(["sysctl", "-n", "hw.memsize"], text=True).strip())
+                            if platform.system() == "Darwin" else None,
+            "git": subprocess.check_output(["git", "--version"], text=True).strip(),
+            "source_sha256": {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
+                              for p in sorted((ROOT / "src/crosswire").rglob("*.py"))},
             "finding_count": len(expected["findings"]), "readonly_verified": True,
             "method": "separate subprocesses; cold has no prior cache; warm reuses disk; no-cache disables disk; unfiltered wraps BranchSummary construction to force shared interaction fields",
         }

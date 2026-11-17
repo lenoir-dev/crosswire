@@ -5,6 +5,7 @@ from dataclasses import dataclass, replace
 from pathlib import Path
 from . import git
 from .cache import SummaryCache
+from .findings import consolidate
 from .diffing import added_references, api_changes
 from .python_analyzer import module_name_for_path, extract_symbols, extract_references, definition_dumps
 from .model import BranchSummary, Report
@@ -166,8 +167,16 @@ def analyze(repo, branches, base=None, src=None, textual=True, target=None, cach
     pairs, findings = {}, []
     summaries = {}
     roots_by_base = {}
+    parents = git.direct_parents(repo, shas) if base_sha is None else {}
     for (a, asha), (b, bsha) in itertools.combinations(zip(branches, shas), 2):
-        common = base_sha or git.merge_base(repo, asha, bsha)
+        a_parents = parents.get(asha, ())
+        b_parents = parents.get(bsha, ())
+        if base_sha:
+            common = base_sha
+        elif len(a_parents) == len(b_parents) == 1 and a_parents == b_parents:
+            common = a_parents[0]
+        else:
+            common = git.merge_base(repo, asha, bsha)
         if common is None:
             raise git.GitError(f'no merge base for {a} and {b}')
         if base_sha and (not git.is_ancestor(repo, common, asha)
@@ -218,12 +227,8 @@ def analyze(repo, branches, base=None, src=None, textual=True, target=None, cach
             for rule in (cw001, cw002, cw003, cw004):
                 findings.extend(rule.check(ctx))
         findings.extend(cw005.check(ctx))
-    unique = {}
-    for f in findings:
-        key = (f.rule, f.branch, f.other_branch, f.path, f.line, f.symbol)
-        unique.setdefault(key, f)
     ordered = sorted(
-        unique.values(),
+        consolidate(findings),
         key=lambda f: (
             f.path,
             f.line,

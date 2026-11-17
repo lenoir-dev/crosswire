@@ -1,0 +1,12 @@
+{
+  "include": ["django", "tests"],
+  "typeCheckingMode": "basic",
+  "pythonVersion": "3.14",
+  "pythonPlatform": "Darwin",
+  "venvPath": "/tmp",
+  "venv": "crosswire-v03-django-oracle",
+  "reportMissingImports": "error",
+  "reportAttributeAccessIssue": "error",
+  "reportCallIssue": "error",
+  "reportArgumentType": "error"
+}

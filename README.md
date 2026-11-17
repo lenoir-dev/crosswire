@@ -181,3 +181,12 @@ reference caused by a combination of changes; single-branch causes use CW001 or 
 pairwise conflict repaired by another integrated branch is reported as a warning. Textual
 conflicts skip the affected branch. Git creates unreferenced virtual objects without modifying
 refs, the index, or the worktree. Use `--format json` for the version 2 combined report.
+
+## Plan a merge order
+
+Run `crosswire plan --target main branch-a branch-b branch-c` to find a safe sequence.
+The planner checks references already on the target, preserves branch ancestry, and can
+recommend merging a small group together when only the combined state is safe. A blocked
+branch includes its findings and a hint when one is available. Use `--format json` for
+steps, blockers, containment and coverage. Bounded coverage means some combinations were
+not checked and must not be assumed safe.

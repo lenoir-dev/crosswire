@@ -52,3 +52,36 @@ numbers (no gate is required to pass in the pilot — the pilot exists to find o
    branch only if placing the step actually changes that branch's outcome.
 4. **Performance reference** for S14 budgets: Django 2,943 .py files, 5 heads, cold `--no-cache`:
    combined 8.5 s, plan 8.7 s (v0.3.1, M5).
+
+## Amendment R1 — fixes from Vega's independent review (`docs/reviews/v0.3-vega.md`)
+
+All 13 findings are accepted into v0.4 (Altair implements, Deneb adds a regression test per finding
+from Vega's reproductions). They must land **before** the pilot holdout measurement — V3-02, V3-07
+and V3-08 are false positives in supported flows and would distort precision.
+
+Order: V3-01 → V3-02/03 → V3-06/07/08 → V3-04/09 → V3-05 → V3-10/11/12/13 (V3-13 merges into T16).
+
+Architect decisions where the review asked for one:
+
+- **V3-01:** parse choke points treat `SyntaxError`, `RecursionError`, `ValueError` (NUL bytes on 3.11) and
+  `MemoryError` as a parse failure (`unknown` + one stderr warning + a `limitations` entry). `main()` maps any
+  unexpected exception to exit **2** with `crosswire: error: internal error: <type>: <msg>`; exit 1 means only
+  "error findings present".
+- **V3-02/03:** a module with any module-level star import (guarded included), a module-level `__getattr__`,
+  or `globals()`/`sys.modules[__name__]` mutation is *open*: a missing name resolves to `unknown`, and
+  `removed` API changes of such a module are suppressed (counted in `limitations` as `open-module`).
+- **V3-04/09 wire form:** the target can be a culprit. `culprits` may contain the `--target` label exactly as
+  given; the size-0 trial (`T + owner`) is always evaluated first; if it reproduces, `culprits = [<target>]`,
+  `culprits_exact: true`, rule CW001/CW002, message "…was removed in <target>", hint "rebase <branch> onto
+  <target>". `coverage: bounded` / `limits.hit` only when a limit was actually hit.
+- **V3-05:** T10 candidate files = files at `T` whose imports hit a changed module (reverse index built once per
+  `T`); per-state memoisation in `plan`; refs/version/root resolved once per run; ancestor relations from one
+  `git rev-list`/`merge-base --independent` pass; the engine prefilter applies to combined pair loops.
+  Budget for v0.4: the reviewer's 9k-file / 16-branch `plan` ≤ 15 s warm on the M5.
+- **V3-06/08:** `from P import n` resolves to submodule `P/n.py` / `P/n/__init__.py` when it exists at that commit.
+- **V3-07:** a deleted/renamed module file is diffed against the same *module name* at the tip, whatever file provides it.
+- **V3-10:** D8 attribution (earliest containing branch) moves into `analyze_combined`.
+- **V3-11:** state CW004 culprits = branches whose added files collide.
+- **V3-12:** `BranchSummary.migrations` keeps only Django/Alembic paths; cache schema version bump.
+- **V3-13:** folded into T16: `limitations` counts `unresolved` references by reason (third-party, open-module,
+  cycle/depth, parse failure); `coverage: partial` when any supported-flow reference was unresolved.

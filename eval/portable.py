@@ -1,39 +1,48 @@
-"""Remove host-specific temporary prefixes from public evidence and configs.
+"""Replace machine-specific path prefixes without changing labels or evidence.
 
-Exact mutation patches/source are left byte-identical. Location mappings are local
-and public-development-only; they never include a holdout identity.
+Public mappings expand through eval.paths; custom cache locations stay in the
+external CROSSWIRE_EVAL_LOCATIONS JSON map. Mutation patches/source stay intact.
 """
 import argparse
 import json
-import re
 from pathlib import Path
+import re
 
-TEMP=re.compile(r'/(?:private/)?tmp/([A-Za-z0-9_.-]+)')
-CODE={'patch','patch_A','patch_B','patch_C','patches','consumer_source','source'}
+from .paths import locations
+
+CODE = {'patch', 'patch_A', 'patch_B', 'patch_C', 'patches', 'consumer_source', 'source'}
 
 
-def portable(value,mapping,key=None):
-    if key in CODE:return value
-    if isinstance(value,dict):return {k:portable(v,mapping,k) for k,v in value.items()}
-    if isinstance(value,list):return [portable(v,mapping,key) for v in value]
-    if isinstance(value,str):
-        def replace(match):
-            name=match.group(1)
-            token='${CACHE_'+re.sub('[^A-Za-z0-9]','_',name).upper()+'}'
-            mapping[token]=str(Path('/tmp')/name)
-            return token
-        return TEMP.sub(replace,value)
+def portable(value, mapping, key=None):
+    if key in CODE:
+        return value
+    if isinstance(value, dict):
+        return {k: portable(v, mapping, k) for k, v in value.items()}
+    if isinstance(value, list):
+        return [portable(v, mapping, key) for v in value]
+    if isinstance(value, str):
+        # Longest prefix wins; existing portable tokens are never rewritten.
+        choices = {}
+        for token, path in mapping.items():
+            if isinstance(path, str) and Path(path).is_absolute():
+                choices.setdefault(path.rstrip('/'), token)
+        if not choices:
+            return value
+        prefixes = sorted(choices, key=len, reverse=True)
+        pattern = re.compile(r'(?<![A-Za-z0-9_/$}])(?:' + '|'.join(re.escape(p) for p in prefixes) + r')(?=/|[\s\x22\x27`),;:]|$)')
+        return pattern.sub(lambda m: choices[m[0]], value)
     return value
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('files',type=Path,nargs='+');args=p.parse_args()
-    path=Path.home()/'.crosswire-eval/locations.json';path.parent.mkdir(exist_ok=True)
-    mapping=json.loads(path.read_text()) if path.exists() else {}
-    mapping.update({'${LIVE_HTTPX}':'/tmp/crosswire-field-httpx','${LIVE_DJANGO}':'/tmp/crosswire-v03-django','${LIVE_FLASK}':'/tmp/crosswire-v03-flask'})
-    for f in args.files:
-        data=json.loads(f.read_text());f.write_text(json.dumps(portable(data,mapping),indent=2)+'\n')
-    path.write_text(json.dumps(mapping,indent=2)+'\n')
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('files', type=Path, nargs='+')
+    args = parser.parse_args()
+    mapping = locations()
+    for path in args.files:
+        data = json.loads(path.read_text())
+        path.write_text(json.dumps(portable(data, mapping), indent=2) + '\n')
 
 
-if __name__=='__main__':main()
+if __name__ == '__main__':
+    main()

@@ -63,7 +63,7 @@ def finish_recording():
                 "commit": "562deeb",
                 "full_commit": "562deeb51105bdf2b5d89a202878ec50e9d3f6d2",
                 "source": "isolated git worktree at commit 562deeb",
-                "command": "CROSSWIRE_GOLDEN_RECORD=1 CROSSWIRE_GOLDEN_SOURCE=/tmp/crosswire-sol-v01-562deeb/src PYTHONPATH=/tmp/crosswire-sol-v01-562deeb/src uv run pytest -q tests/test_git.py tests/test_python_analyzer.py tests/test_diffing.py tests/test_rules.py tests/test_cli.py tests/test_amendment_a1.py",
+                "command": "CROSSWIRE_GOLDEN_RECORD=1 CROSSWIRE_GOLDEN_SOURCE=${TMP}/crosswire-sol-v01-562deeb/src PYTHONPATH=${TMP}/crosswire-sol-v01-562deeb/src uv run pytest -q tests/test_git.py tests/test_python_analyzer.py tests/test_diffing.py tests/test_rules.py tests/test_cli.py tests/test_amendment_a1.py",
             },
             "cases": RECORDED,
         }, indent=2, sort_keys=True) + "\n")

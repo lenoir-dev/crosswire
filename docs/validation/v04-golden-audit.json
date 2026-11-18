@@ -1,8 +1,13 @@
 {
-  "archive_sha256": {
+  "archive_prepublication_sha256": {
     "v01-original.json": "b49a78c31843cf88185a067371a6045d2198d928719ae86b569d099fd00bb834",
     "v02-pre-t12.json": "ea112a3753c0effe5b8b68ef8009f17dd72443ef0f85da8d82e566b027260efa",
     "v03b-pre-v04.json": "0946bd3495112de8ef1350e7342128324cbd586add5aaed3c8188e48f98a98dd"
+  },
+  "archive_sha256": {
+    "v01-original.json": "e17aef18ae39ee750714084dfdcb9f2495a43be5f4a33aeeb48a4557f6ab7638",
+    "v02-pre-t12.json": "0d25523cbc0ff90023a50519e0e9b24c648275e7894426d95e1c6e90000d46b4",
+    "v03b-pre-v04.json": "95e9ad6c7a3f39066d10712a9f0706c5397617353baa588f3d3b4bebb23b2486"
   },
   "change_counts": {
     "hint": 59,
@@ -2279,8 +2284,10 @@
       "kind": "json"
     }
   ],
-  "current_sha256": "046c8a50d62606f5eeef402a27057d1a04b41fd3a6b8d809555f91b07c098b01",
+  "current_sha256": "a1b85cbe8f0165a14890e9cdd84662c4e304109451bb12744a59037bc76531f3",
   "observed_HEAD": "f234bff69d8a7f31585361591e7ec0b9a76252e2",
+  "prepublication_current_sha256": "046c8a50d62606f5eeef402a27057d1a04b41fd3a6b8d809555f91b07c098b01",
+  "publication_note": "Only provenance paths tokenised; all archived/current case payloads identical to measured bytes.",
   "source_commit": "6ef67da19a136f88a90b5f567255196ca78c2a94",
   "source_diff_against_freeze": "",
   "total_cases": 155,

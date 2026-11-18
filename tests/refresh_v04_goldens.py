@@ -14,7 +14,7 @@ from tests.golden_v04 import project_case
 
 def main():
     archived = json.loads((ROOT / "tests/golden/v03b-pre-v04.json").read_text())
-    with tempfile.TemporaryDirectory(prefix="crosswire-v04-golden-", dir="/tmp") as temporary:
+    with tempfile.TemporaryDirectory(prefix="crosswire-v04-golden-") as temporary:
         destination = Path(temporary) / "recording.json"
         env = {**os.environ, "CROSSWIRE_GOLDEN_RECORD": "1", "CROSSWIRE_GOLDEN_OUTPUT": str(destination),
                "CROSSWIRE_GOLDEN_SOURCE": str(ROOT / "src"), "PYTHONPATH": str(ROOT / "src")}

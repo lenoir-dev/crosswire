@@ -1,0 +1,44 @@
+{
+  "authorization": "Polaris task v0.4-release-fixes; publication privacy only",
+  "current_eval_code_sha256": "fe47568f027b0467acbd351c08c39572628081ca865af9e142532beb867ee47d",
+  "current_seal": "holdout.sha256",
+  "entries": 31,
+  "explanation": "Portable path expansion/serialization, discovered interpreter and platform temporary directory; lockfile provenance comment only. Policy, matching, labels, source patches, distribution/toolchain pins and recorded numeric measurements unchanged.",
+  "holdout_measured": false,
+  "original_eval_code_sha256": "290608b6f99ba1ef72b6c0e78fb9885d49d5ae484d90c75cbe067aa760e258eb",
+  "original_seal": "holdout-pre-publication.sha256",
+  "private_files_rewritten": false,
+  "private_hashes_unchanged": true,
+  "public_changes": [
+    {
+      "after_sha256": "10c275fbb61d25711eced3afccc609ff4b4f8cc7f9977487f2c0e8cabd6b53ef",
+      "before_sha256": "2a72d0fc745ceacc2e576817c208a1dc7024879651a4431d6be7e6a734ec4a30",
+      "path": "docs/validation/v04-oracle-requirements.lock"
+    },
+    {
+      "after_sha256": "8991882ccb359a8617b70da37e938bf0becd6abda3311c1d1d8ceb7747b95945",
+      "before_sha256": "360f0b4393b03c7634668b36cc9bf779557b56ff44fdba0bc8abcea654e7dfb0",
+      "path": "eval/live.py"
+    },
+    {
+      "after_sha256": "dcfc00d98d3ad7ebd926d719f1be8e4494ec1fc5352639c5c5f36cf8517d5b5c",
+      "before_sha256": "86ab640be9d171f84c3b2b7a723273e29b496a360a52a7ba9c3ad35e61cf0740",
+      "path": "eval/mine_history.py"
+    },
+    {
+      "after_sha256": "389331bd2e9ef1fd7bc24b6fbcd72f6ca5f37a93793941245da666066ca6fd64",
+      "before_sha256": "65d84ff9405c21d452f30a29c26f628922a3264756b0adf58ee7ce1c7acb2789",
+      "path": "eval/paths.py"
+    },
+    {
+      "after_sha256": "b3cfac6ec60d222ed7837a35b011d5ef1150706f82786bc60d70f01ba25f0b21",
+      "before_sha256": "21210d91ffd861b3cf7b964f6deb8e0a6ba01cc68d55e3a542404894321517fb",
+      "path": "eval/portable.py"
+    },
+    {
+      "after_sha256": "148195749191451349becb71c6f99fa06432e4cbd80a9fa185021ebe5aa838f6",
+      "before_sha256": "e4520eccbbf5eb5bdccae3357a53584f5c1b718eb77117dc754a3122ab14a46d",
+      "path": "eval/run_development.py"
+    }
+  ]
+}

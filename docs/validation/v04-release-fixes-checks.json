@@ -1,0 +1,51 @@
+{
+  "checks": [
+    {
+      "command": "uv run --offline --group eval --python 3.11.17 python -m pytest -q tests/test_eval.py",
+      "exit_code": 0,
+      "result": "22 passed in 3.55s"
+    },
+    {
+      "command": "uv run --offline --group eval --python 3.11.17 python -m pytest -q tests/test_eval.py tests/test_eval_r2.py tests/test_golden_a2.py tests/test_golden_t12.py tests/test_golden_v04.py",
+      "exit_code": 0,
+      "result": "56 passed in 11.95s"
+    },
+    {
+      "command": "uv run --offline --group eval --python 3.11.17 python -m pytest -q",
+      "exit_code": 0,
+      "result": "449 passed in 359.50s (0:05:59)"
+    },
+    {
+      "command": "${CACHE_CROSSWIRE_V04_EVAL}/bin/python benchmarks/excluded_noise.py",
+      "exit_code": 0,
+      "result": "49 excluded cases replayed; 20 with findings; 49 unlabelled findings (CW00140/CW0029); zero detector errors; source stable and readonly verified"
+    },
+    {
+      "command": "${CACHE_CROSSWIRE_V04_EVAL}/bin/python -m eval.run_holdout --verify-only",
+      "exit_code": 0,
+      "result": "31 entries verified; seal verified; not measured; private hashes unchanged"
+    },
+    {
+      "command": "grep -rn \"$CW_PRIVACY_PREFIX\" eval docs/validation tests",
+      "exit_code": 1,
+      "pattern_utf8_hex": "2f55736572732f",
+      "result": "no matches, including derived-cache cleanup; identical to requested literal-prefix grep"
+    },
+    {
+      "command": "python -m eval.paths eval/development/cases.json",
+      "exit_code": 0,
+      "result": "228 cases expand identically to pre-publication evidence; all labels and numbers unchanged"
+    }
+  ],
+  "existing_JSON_files_checked": 47,
+  "existing_JSON_values_preserved": 21027,
+  "history_note": "Current files sanitized; earlier Git history retains original paths. No project history was changed.",
+  "holdout_measured": false,
+  "observed_HEAD": "e6f0bf4b8f509e176c0cd14c96fbe79e6651b31c",
+  "original_labelled_metrics_unchanged": true,
+  "private_hashes_unchanged": true,
+  "recorded_utc": "2026-11-17T21:43:17.426768+00:00",
+  "source_commit": "6ef67da19a136f88a90b5f567255196ca78c2a94",
+  "source_unchanged": true,
+  "task": "v0.4-release-fixes"
+}

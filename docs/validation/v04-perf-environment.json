@@ -2,7 +2,7 @@
   "isolation": "No concurrent Deneb tests/oracles/evaluation jobs; shared user desktop remains active. CPU observations are executable names, never arguments.",
   "jobs": [
     {
-      "command": "PYTHONPATH=src /tmp/crosswire-v04-eval/bin/python benchmarks/perf_matrix.py --repeat 5 --timeout 30 --output docs/validation/v04-perf-matrix.json",
+      "command": "PYTHONPATH=src ${CACHE_CROSSWIRE_V04_EVAL}/bin/python benchmarks/perf_matrix.py --repeat 5 --timeout 30 --output docs/validation/v04-perf-matrix.json",
       "exit_code": 0,
       "finished_utc": "2026-11-17T20:53:35.067044+00:00",
       "observations": [
@@ -10,7 +10,7 @@
           "cpu_processes": [
             {
               "cpu_percent": 20.8,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -35,7 +35,7 @@
             },
             {
               "cpu_percent": 11.4,
-              "executable": "/opt/homebrew/bin/codex",
+              "executable": "${HOMEBREW}/bin/codex",
               "pid": 23991
             }
           ],
@@ -65,7 +65,7 @@
             },
             {
               "cpu_percent": 15.1,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -85,7 +85,7 @@
             },
             {
               "cpu_percent": 9.9,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 42644
             }
           ],
@@ -115,7 +115,7 @@
             },
             {
               "cpu_percent": 15.9,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -135,7 +135,7 @@
             },
             {
               "cpu_percent": 10.6,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 46374
             }
           ],
@@ -165,7 +165,7 @@
             },
             {
               "cpu_percent": 15.9,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -185,7 +185,7 @@
             },
             {
               "cpu_percent": 9.3,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 50759
             }
           ],
@@ -215,7 +215,7 @@
             },
             {
               "cpu_percent": 15.2,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -240,7 +240,7 @@
             },
             {
               "cpu_percent": 10.6,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 54741
             }
           ],
@@ -270,7 +270,7 @@
             },
             {
               "cpu_percent": 15.4,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -290,7 +290,7 @@
             },
             {
               "cpu_percent": 10.4,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 58854
             }
           ],
@@ -305,7 +305,7 @@
           "cpu_processes": [
             {
               "cpu_percent": 18.3,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -330,7 +330,7 @@
             },
             {
               "cpu_percent": 60.5,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 38732
             }
           ],
@@ -360,7 +360,7 @@
             },
             {
               "cpu_percent": 16.5,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -380,12 +380,12 @@
             },
             {
               "cpu_percent": 7.3,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 38732
             },
             {
               "cpu_percent": 17.4,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 64560
             }
           ],
@@ -415,7 +415,7 @@
             },
             {
               "cpu_percent": 16.4,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -435,7 +435,7 @@
             },
             {
               "cpu_percent": 12.4,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 67806
             }
           ],
@@ -465,7 +465,7 @@
             },
             {
               "cpu_percent": 15.5,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -485,7 +485,7 @@
             },
             {
               "cpu_percent": 9.6,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 71435
             }
           ],
@@ -515,7 +515,7 @@
             },
             {
               "cpu_percent": 14.6,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -535,12 +535,12 @@
             },
             {
               "cpu_percent": 3.8,
-              "executable": "/opt/homebrew/bin/claude",
+              "executable": "${HOMEBREW}/bin/claude",
               "pid": 35015
             },
             {
               "cpu_percent": 9.2,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 75031
             }
           ],
@@ -570,7 +570,7 @@
             },
             {
               "cpu_percent": 15.6,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -590,7 +590,7 @@
             },
             {
               "cpu_percent": 12.4,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 78453
             }
           ],
@@ -605,17 +605,17 @@
           "cpu_processes": [
             {
               "cpu_percent": 42.4,
-              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd",
+              "executable": "${SYSTEM}/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd",
               "pid": 105
             },
             {
               "cpu_percent": 9.3,
-              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds",
+              "executable": "${SYSTEM}/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds",
               "pid": 130
             },
             {
               "cpu_percent": 14.8,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -635,7 +635,7 @@
             },
             {
               "cpu_percent": 66.2,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 38732
             }
           ],
@@ -650,7 +650,7 @@
           "cpu_processes": [
             {
               "cpu_percent": 17.7,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -670,7 +670,7 @@
             },
             {
               "cpu_percent": 98.7,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 38732
             }
           ],
@@ -685,7 +685,7 @@
           "cpu_processes": [
             {
               "cpu_percent": 17.4,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -705,7 +705,7 @@
             },
             {
               "cpu_percent": 97.3,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 38732
             }
           ],
@@ -725,7 +725,7 @@
             },
             {
               "cpu_percent": 15.8,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -745,12 +745,12 @@
             },
             {
               "cpu_percent": 5.9,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 38732
             },
             {
               "cpu_percent": 37.3,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 85944
             }
           ],
@@ -780,7 +780,7 @@
             },
             {
               "cpu_percent": 15.8,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -810,7 +810,7 @@
           "cpu_processes": [
             {
               "cpu_percent": 17.3,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -830,12 +830,12 @@
             },
             {
               "cpu_percent": 2.2,
-              "executable": "/opt/homebrew/bin/claude",
+              "executable": "${HOMEBREW}/bin/claude",
               "pid": 35015
             },
             {
               "cpu_percent": 98.3,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 38732
             }
           ],
@@ -850,7 +850,7 @@
           "cpu_processes": [
             {
               "cpu_percent": 16.5,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -870,7 +870,7 @@
             },
             {
               "cpu_percent": 55.2,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 38732
             }
           ],
@@ -885,7 +885,7 @@
           "cpu_processes": [
             {
               "cpu_percent": 16.6,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -905,7 +905,7 @@
             },
             {
               "cpu_percent": 89.2,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 38732
             }
           ],
@@ -920,7 +920,7 @@
           "cpu_processes": [
             {
               "cpu_percent": 16.7,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -940,7 +940,7 @@
             },
             {
               "cpu_percent": 81.4,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 38732
             }
           ],
@@ -955,7 +955,7 @@
           "cpu_processes": [
             {
               "cpu_percent": 16.9,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -975,12 +975,12 @@
             },
             {
               "cpu_percent": 67.8,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 38732
             },
             {
               "cpu_percent": 13.0,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 96457
             }
           ],
@@ -995,7 +995,7 @@
           "cpu_processes": [
             {
               "cpu_percent": 18.0,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -1015,12 +1015,12 @@
             },
             {
               "cpu_percent": 2.5,
-              "executable": "/opt/homebrew/bin/claude",
+              "executable": "${HOMEBREW}/bin/claude",
               "pid": 35015
             },
             {
               "cpu_percent": 98.7,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 38732
             }
           ],
@@ -1040,7 +1040,7 @@
             },
             {
               "cpu_percent": 16.4,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -1050,7 +1050,7 @@
             },
             {
               "cpu_percent": 37.4,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 2688
             },
             {
@@ -1065,7 +1065,7 @@
             },
             {
               "cpu_percent": 2.3,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 38732
             }
           ],
@@ -1080,7 +1080,7 @@
           "cpu_processes": [
             {
               "cpu_percent": 16.5,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -1100,7 +1100,7 @@
             },
             {
               "cpu_percent": 98.9,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 38732
             }
           ],
@@ -1130,7 +1130,7 @@
             },
             {
               "cpu_percent": 16.0,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -1140,7 +1140,7 @@
             },
             {
               "cpu_percent": 11.8,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 6815
             },
             {
@@ -1155,7 +1155,7 @@
             },
             {
               "cpu_percent": 21.0,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 38732
             }
           ],
@@ -1185,7 +1185,7 @@
             },
             {
               "cpu_percent": 14.8,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -1195,7 +1195,7 @@
             },
             {
               "cpu_percent": 12.4,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 8772
             },
             {
@@ -1210,7 +1210,7 @@
             },
             {
               "cpu_percent": 2.9,
-              "executable": "/opt/homebrew/bin/claude",
+              "executable": "${HOMEBREW}/bin/claude",
               "pid": 7813
             }
           ],
@@ -1225,22 +1225,22 @@
           "cpu_processes": [
             {
               "cpu_percent": 107.2,
-              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd",
+              "executable": "${SYSTEM}/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd",
               "pid": 105
             },
             {
               "cpu_percent": 17.3,
-              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds",
+              "executable": "${SYSTEM}/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds",
               "pid": 130
             },
             {
               "cpu_percent": 10.0,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
               "cpu_percent": 3.7,
-              "executable": "/System/Library/CoreServices/coreservicesd",
+              "executable": "${SYSTEM}/Library/CoreServices/coreservicesd",
               "pid": 202
             },
             {
@@ -1250,7 +1250,7 @@
             },
             {
               "cpu_percent": 18.5,
-              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores",
+              "executable": "${SYSTEM}/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores",
               "pid": 331
             },
             {
@@ -1275,7 +1275,7 @@
       "started_utc": "2026-11-17T20:40:16.498370+00:00"
     },
     {
-      "command": "PYTHONPATH=src /tmp/crosswire-v04-eval/bin/python benchmarks/perf_matrix.py --vega-scenario --baseline-ref 89cfd99 --repeat 5 --timeout 30 --output docs/validation/v04-vega-perf.json",
+      "command": "PYTHONPATH=src ${CACHE_CROSSWIRE_V04_EVAL}/bin/python benchmarks/perf_matrix.py --vega-scenario --baseline-ref 89cfd99 --repeat 5 --timeout 30 --output docs/validation/v04-vega-perf.json",
       "exit_code": 0,
       "finished_utc": "2026-11-17T20:54:45.973273+00:00",
       "observations": [
@@ -1283,22 +1283,22 @@
           "cpu_processes": [
             {
               "cpu_percent": 107.2,
-              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd",
+              "executable": "${SYSTEM}/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd",
               "pid": 105
             },
             {
               "cpu_percent": 17.3,
-              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds",
+              "executable": "${SYSTEM}/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds",
               "pid": 130
             },
             {
               "cpu_percent": 10.0,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
               "cpu_percent": 3.7,
-              "executable": "/System/Library/CoreServices/coreservicesd",
+              "executable": "${SYSTEM}/Library/CoreServices/coreservicesd",
               "pid": 202
             },
             {
@@ -1308,7 +1308,7 @@
             },
             {
               "cpu_percent": 18.5,
-              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores",
+              "executable": "${SYSTEM}/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores",
               "pid": 331
             },
             {
@@ -1338,7 +1338,7 @@
             },
             {
               "cpu_percent": 16.7,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -1348,12 +1348,12 @@
             },
             {
               "cpu_percent": 47.4,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 12560
             },
             {
               "cpu_percent": 4.5,
-              "executable": "/Library/Developer/CommandLineTools/usr/bin/git",
+              "executable": "${LIBRARY}/Developer/CommandLineTools/usr/bin/git",
               "pid": 12633
             },
             {
@@ -1398,7 +1398,7 @@
             },
             {
               "cpu_percent": 15.5,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -1408,12 +1408,12 @@
             },
             {
               "cpu_percent": 12.0,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 10363
             },
             {
               "cpu_percent": 10.2,
-              "executable": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+              "executable": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
               "pid": 15202
             },
             {
@@ -1443,17 +1443,17 @@
           "cpu_processes": [
             {
               "cpu_percent": 98.3,
-              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd",
+              "executable": "${SYSTEM}/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd",
               "pid": 105
             },
             {
               "cpu_percent": 14.9,
-              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds",
+              "executable": "${SYSTEM}/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds",
               "pid": 130
             },
             {
               "cpu_percent": 12.3,
-              "executable": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
+              "executable": "${SYSTEM}/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer",
               "pid": 172
             },
             {
@@ -1463,7 +1463,7 @@
             },
             {
               "cpu_percent": 14.3,
-              "executable": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores",
+              "executable": "${SYSTEM}/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores",
               "pid": 331
             },
             {
@@ -1483,7 +1483,7 @@
             },
             {
               "cpu_percent": 2.3,
-              "executable": "/opt/homebrew/bin/codex",
+              "executable": "${HOMEBREW}/bin/codex",
               "pid": 23991
             }
           ],

@@ -1,13 +1,13 @@
 [
   {
-    "command": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -m crosswire check --repo /tmp/crosswire-v03-django --target origin/main --format json --combined refs/remotes/pr/22040 refs/remotes/pr/21972 refs/remotes/pr/19097 refs/remotes/pr/21970 refs/remotes/pr/21737 refs/remotes/pr/21772 refs/remotes/pr/17818 refs/remotes/pr/18332 refs/remotes/pr/21144 refs/remotes/pr/19598 refs/remotes/pr/19885 refs/remotes/pr/19172 refs/remotes/pr/21312 refs/remotes/pr/21361 refs/remotes/pr/22048 refs/remotes/pr/19603 refs/remotes/pr/22251 refs/remotes/pr/21462 refs/remotes/pr/20711 refs/remotes/pr/21017 refs/remotes/pr/22074 refs/remotes/pr/20937 refs/remotes/pr/22014 refs/remotes/pr/21845 refs/remotes/pr/22162",
+    "command": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -m crosswire check --repo ${LIVE_DJANGO} --target origin/main --format json --combined refs/remotes/pr/22040 refs/remotes/pr/21972 refs/remotes/pr/19097 refs/remotes/pr/21970 refs/remotes/pr/21737 refs/remotes/pr/21772 refs/remotes/pr/17818 refs/remotes/pr/18332 refs/remotes/pr/21144 refs/remotes/pr/19598 refs/remotes/pr/19885 refs/remotes/pr/19172 refs/remotes/pr/21312 refs/remotes/pr/21361 refs/remotes/pr/22048 refs/remotes/pr/19603 refs/remotes/pr/22251 refs/remotes/pr/21462 refs/remotes/pr/20711 refs/remotes/pr/21017 refs/remotes/pr/22074 refs/remotes/pr/20937 refs/remotes/pr/22014 refs/remotes/pr/21845 refs/remotes/pr/22162",
     "elapsed": "10:20",
     "pid": 78866,
     "reason": "Pre-T13 exploratory run; full target oracle failed; CPU-bound runtime exceeded the exploratory budget. No partial findings enter precision metrics.",
     "status": "terminated_without_report"
   },
   {
-    "command": "/opt/homebrew/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -m crosswire check --repo /tmp/crosswire-v03-django --target origin/main --format json --combined refs/remotes/pr/21772 refs/remotes/pr/18332 refs/remotes/pr/21361 refs/remotes/pr/22014 refs/remotes/pr/22162",
+    "command": "${HOMEBREW}/Cellar/python@3.14/3.14.8/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -m crosswire check --repo ${LIVE_DJANGO} --target origin/main --format json --combined refs/remotes/pr/21772 refs/remotes/pr/18332 refs/remotes/pr/21361 refs/remotes/pr/22014 refs/remotes/pr/22162",
     "elapsed": "06:46",
     "pid": 6002,
     "reason": "Pre-T13 exploratory run; full target oracle failed; CPU-bound runtime exceeded the exploratory budget. No partial findings enter precision metrics.",

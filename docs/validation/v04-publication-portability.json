@@ -1,0 +1,164 @@
+{
+  "all_expanded_JSON_equal": true,
+  "all_golden_case_payloads_equal": true,
+  "authorization": "Polaris v0.4-release-fixes publication privacy migration",
+  "final_corpus_expanded_evidence_equal": true,
+  "final_existing_measurement_artifacts_expanded_equal": true,
+  "final_numeric_or_boolean_or_null_values_unchanged": true,
+  "final_preexisting_JSON_files_verified": 47,
+  "final_preexisting_JSON_numeric_or_null_values_verified": 21027,
+  "original_measurements_and_labels_unchanged": true,
+  "path_only_changes": [
+    {
+      "after_sha256": "cc62200c25a5a2d01854227d61b4d7c200db076b833e3bae66a1a1d0fee9ed3f",
+      "before_sha256": "74ccecd7de2ffeeeb8b8a966f46618b871e22b3b6695d53139ea3a528fb09a98",
+      "expanded_JSON_equal": true,
+      "path": "docs/validation/django-v03-focus-combined.json"
+    },
+    {
+      "after_sha256": "3cae94ae0a4846dd6db01075f32fe46894688bb6fa5aefb3707e63fe2ec0fa34",
+      "before_sha256": "8c14517611c47eb55c396fd1855ac3d7a70a25b07ffb4ae595be7f62d9c15373",
+      "expanded_JSON_equal": true,
+      "path": "docs/validation/django-v03-limits.json"
+    },
+    {
+      "after_sha256": "6bdc67a681daf02681bf8b2e39959e151ae4eb6eea46a1cee40f11ad173e2fa5",
+      "before_sha256": "845045436b91639f190ebd68082c44a8ab914d74a4581b672e710f3ffd8bff27",
+      "expanded_JSON_equal": true,
+      "path": "docs/validation/django-v03-oracle-target.json"
+    },
+    {
+      "after_sha256": "1b8be19b00008dcaf01e7da6662fa1727c4725dc1a9a24fbe4446e17b35da811",
+      "before_sha256": "24967b46ff26b1674ca941e99079b3ec5d2961129b0f0681b69d553e9ac6ea80",
+      "expanded_JSON_equal": true,
+      "path": "docs/validation/django-v03-pairwise.json"
+    },
+    {
+      "after_sha256": "9c8305d76ebc01eb0829bca5d80970a745930cc1e03449a81713b848854c7de4",
+      "before_sha256": "48ee0d43b1195376b2f9269e9534fe6f3d9d66be3a8b84c9167d2da63c7eeb9c",
+      "expanded_JSON_equal": true,
+      "path": "docs/validation/django-v03-pyrightconfig.json"
+    },
+    {
+      "after_sha256": "3372b37cda7303fa42d47b2eb9a23c2a266b0d1923d270a129155489d1ffd43f",
+      "before_sha256": "0fe0832432b34e51d694cff629b5fdd6703ca6edcec2388541948721a1cbcfb3",
+      "expanded_JSON_equal": true,
+      "path": "docs/validation/httpx-target.json"
+    },
+    {
+      "after_sha256": "c7266ed251c98534e0d8e66d1d4511ab8155cd04fed611dd2b35893a36527595",
+      "before_sha256": "08f05c709250ca5f55692ffe7cca497c2efedbf9cac1d5baf11216e5caacc91c",
+      "expanded_JSON_equal": true,
+      "path": "docs/validation/httpx-v03-combined.json"
+    },
+    {
+      "after_sha256": "07a0440f726953ec2afe5386b4dd6b2e46d3bf81d91b9cf3528208ab89de6e51",
+      "before_sha256": "fda16cdcd71b97f31ce24f3575b11820e107f44a0f60fb280a01a835cc4a1081",
+      "expanded_JSON_equal": true,
+      "path": "docs/validation/httpx-v03-pairwise.json"
+    },
+    {
+      "after_sha256": "0c9852dbc9a5656a9ed2675d94cb8f7eff437da24a88614b205f43b033e3ab8a",
+      "before_sha256": "11afbff496e77fe1c64b56fe4257dcc59f7b68d981d2cbbb4d2fb3ae29d95be7",
+      "expanded_JSON_equal": true,
+      "path": "docs/validation/httpx-v03-plan.json"
+    },
+    {
+      "after_sha256": "5d38c3b5dbddc1dce5467a0b3074bacdce706e2ecfd6484b546988e9d3c27391",
+      "before_sha256": "5e80173527f66f3e8759f687a2337df09af9bc89b330fc70c8dd19b293bd7ab6",
+      "expanded_JSON_equal": null,
+      "path": "docs/validation/v0.2.md"
+    },
+    {
+      "after_sha256": "7d79deb4b2674662ec58f8acc8fc0fcde891857ca24ca432ba76c8e147340084",
+      "before_sha256": "9069c83ef0b0379944b4e89be7395058f071e9da23f42d0f4aa3c01c251e24e6",
+      "expanded_JSON_equal": true,
+      "path": "docs/validation/v0.3-checks.json"
+    },
+    {
+      "after_sha256": "f101a8de2a661cc83e2dc5bee2779bc0f05941674658a55b8d6036d940203c1a",
+      "before_sha256": "2d2821c983cc60d4367f11cbdb31956268d9dc9384d0b6d028551726cfd23a03",
+      "expanded_JSON_equal": null,
+      "path": "docs/validation/v0.3.md"
+    },
+    {
+      "after_sha256": "3694f105f77f69e1bfeb8ba5150fdd1ecc7f2e9bade7a5483896f56167b30ce3",
+      "before_sha256": "b58655638e9febab353c5a6db12099d4c5eea3892f1fcf848cff7a250f185d95",
+      "expanded_JSON_equal": null,
+      "path": "docs/validation/v0.4.md"
+    },
+    {
+      "after_sha256": "c17f9c4dec28bf9b485c3829e47a9a2fef2171bf2b995a250e07cda6172427ab",
+      "before_sha256": "b23650a9f6c43e22afe00fb16303015af0d2ec65a5b97f4e09d9b5602faff8c3",
+      "expanded_JSON_equal": true,
+      "path": "docs/validation/v04-checks.json"
+    },
+    {
+      "after_sha256": "6686d75f02d8e605827cc6b193e3a23ef5b67a24fb92ce3e8ab03e80d0982238",
+      "before_sha256": "50b3a54549b10b3d0abf7dca3f83c65ed21c54b4f7926ae53ae12746632426b4",
+      "expanded_JSON_equal": true,
+      "path": "docs/validation/v04-development-results.json"
+    },
+    {
+      "after_sha256": "8b5fa0f235810ee376ed1120b3deae02cdc4635aaa15ffeaf6e7a594a9bc5819",
+      "before_sha256": "8d989b4429af20f86d8f3640f617b2e8118cb1505a713232ab6b0236bfb45e09",
+      "expanded_JSON_equal": true,
+      "path": "docs/validation/v04-live-prs.json"
+    },
+    {
+      "after_sha256": "10c275fbb61d25711eced3afccc609ff4b4f8cc7f9977487f2c0e8cabd6b53ef",
+      "before_sha256": "2a72d0fc745ceacc2e576817c208a1dc7024879651a4431d6be7e6a734ec4a30",
+      "expanded_JSON_equal": null,
+      "path": "docs/validation/v04-oracle-requirements.lock"
+    },
+    {
+      "after_sha256": "746664f2187f0b7f6bfd4f0d9a528bde394b6baf5affc0d2b91217da52c265c3",
+      "before_sha256": "10446f6bebd268133240cb120ddb74649514ae60497f32b1f248cc2d1ceaf3cb",
+      "expanded_JSON_equal": true,
+      "path": "docs/validation/v04-perf-environment.json"
+    },
+    {
+      "after_sha256": "99323c69914c2d173c50d81e3ddaabd8633ca4ccced78e844534dc87cedfe932",
+      "before_sha256": "477b7afe7eeef80d07cb74c0c5607e840cc127f5c522f3620f87807f197a413b",
+      "expanded_JSON_equal": true,
+      "path": "eval/development/cases.json"
+    },
+    {
+      "after_sha256": "f27d7ba62c6cb4ecc2b5d87c20e6df71aa34e722d731572af91a6ff43803ab9a",
+      "before_sha256": "7aedc839681238950900c153564de01a5262b5655732feec8ff0c69053fdffe0",
+      "expanded_JSON_equal": null,
+      "path": "tests/golden/README.md"
+    },
+    {
+      "after_sha256": "e17aef18ae39ee750714084dfdcb9f2495a43be5f4a33aeeb48a4557f6ab7638",
+      "before_sha256": "b49a78c31843cf88185a067371a6045d2198d928719ae86b569d099fd00bb834",
+      "expanded_JSON_equal": true,
+      "path": "tests/golden/v01-original.json"
+    },
+    {
+      "after_sha256": "a1b85cbe8f0165a14890e9cdd84662c4e304109451bb12744a59037bc76531f3",
+      "before_sha256": "046c8a50d62606f5eeef402a27057d1a04b41fd3a6b8d809555f91b07c098b01",
+      "expanded_JSON_equal": true,
+      "path": "tests/golden/v01.json"
+    },
+    {
+      "after_sha256": "0d25523cbc0ff90023a50519e0e9b24c648275e7894426d95e1c6e90000d46b4",
+      "before_sha256": "ea112a3753c0effe5b8b68ef8009f17dd72443ef0f85da8d82e566b027260efa",
+      "expanded_JSON_equal": true,
+      "path": "tests/golden/v02-pre-t12.json"
+    },
+    {
+      "after_sha256": "95e9ad6c7a3f39066d10712a9f0706c5397617353baa588f3d3b4bebb23b2486",
+      "before_sha256": "0946bd3495112de8ef1350e7342128324cbd586add5aaed3c8188e48f98a98dd",
+      "expanded_JSON_equal": true,
+      "path": "tests/golden/v03b-pre-v04.json"
+    },
+    {
+      "after_sha256": "8aad830a1a85cf8cd55982a64a8a7b5ef87b03d60d49e4595280282cbe206b89",
+      "before_sha256": "312e2e848f5fe02af2e848bfa885daad4e61614835ae0ab8f35fd16b86bdc0bd",
+      "expanded_JSON_equal": null,
+      "path": "tests/golden_support.py"
+    }
+  ],
+  "scope": "Path-tokenisation stage before report corrections and provenance checksum amendments; original numeric measurements/labels are preserved."
+}

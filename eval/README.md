@@ -53,3 +53,32 @@ and separate detection/attribution. Detector failures count as FN on positives.
 Clustered intervals require five eligible repositories; stricter lower bounds
 apply to future gates. Private exports allowlist both keys and values and suppress
 small cells. `tests/test_eval*.py` use synthetic evidence and never read holdout.
+
+## Publication path migration (v0.4 release correction)
+
+Public evidence uses `${HOME}`, `${CHECKOUT}`, `${CACHE_DIR}`, `${TMP}`,
+`${PRIVATE_TMP}`, `${SYSTEM_TMP}`, `${PYTHON314}`, `${HOMEBREW}`, `${SYSTEM}`,
+`${LIBRARY}` and existing `${CACHE_*}` / `${LIVE_*}` tokens. `eval.paths.resolve`
+expands them recursively. Generic defaults use the current home, checkout,
+system temporary directory and discovered interpreter; exact historical cache
+locations belong in the external `CROSSWIRE_EVAL_LOCATIONS` JSON map. Defaults
+and tokens contain no public account name. Missing custom cache tokens must be
+mapped to your recreated public case/cache directories before replay.
+
+For example, `python -m eval.paths eval/development/cases.json` expands a JSON
+artifact locally; add `--text` to expand recorded commands or prose. These are
+tooling tokens, not a requirement to export similarly named shell variables.
+The development and PR runners now write portable output automatically;
+`python -m eval.portable FILE.json` tokenises other public JSON artifacts.
+Numbers, labels and exact source/patch strings are preserved.
+
+Polaris explicitly authorised this exception to the pre-freeze apparatus rule
+for publication privacy. The original audited seal remains in
+`docs/validation/holdout-pre-publication.sha256`; the current seal and
+`v04-publication-integrity.json` record the public-file hash amendment. Private
+manifest/repository bytes and hashes remain unchanged. No holdout measurement
+or relabelling was authorised. Golden archives changed only in provenance
+paths; their case payloads are identical and old/new hashes are retained.
+
+`benchmarks/excluded_noise.py` separately replays public oracle-ineligible
+cases. Its findings remain unlabelled and never enter TP/FP/FN or gate metrics.

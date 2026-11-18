@@ -2,12 +2,12 @@
   "repositories": [
     {
       "command": [
-        "/private/tmp/crosswire-v04-eval/bin/python",
+        "${PRIVATE_TMP}/crosswire-v04-eval/bin/python",
         "-m",
         "crosswire",
         "check",
         "--repo",
-        "/tmp/crosswire-field-httpx",
+        "${LIVE_HTTPX}",
         "--target",
         "origin/master",
         "--format",
@@ -270,12 +270,12 @@
     },
     {
       "command": [
-        "/private/tmp/crosswire-v04-eval/bin/python",
+        "${PRIVATE_TMP}/crosswire-v04-eval/bin/python",
         "-m",
         "crosswire",
         "check",
         "--repo",
-        "/tmp/crosswire-v03-django",
+        "${LIVE_DJANGO}",
         "--target",
         "origin/main",
         "--format",
@@ -569,12 +569,12 @@
     },
     {
       "command": [
-        "/private/tmp/crosswire-v04-eval/bin/python",
+        "${PRIVATE_TMP}/crosswire-v04-eval/bin/python",
         "-m",
         "crosswire",
         "check",
         "--repo",
-        "/tmp/crosswire-v03-flask",
+        "${LIVE_FLASK}",
         "--target",
         "origin/main",
         "--format",

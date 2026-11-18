@@ -9,6 +9,8 @@ import subprocess
 import sys
 import time
 from .paths import resolve
+from .paths import locations
+from .portable import portable
 
 
 REPOSITORIES = [("encode/httpx", "${LIVE_HTTPX}", "master"),
@@ -57,7 +59,7 @@ def main():
                      "unlabelled": [{"finding": finding, "reason": "full parent/merge oracle eligibility not established for live-PR screen"} for finding in semantic]})
     output = {"stratum": "pinned PR snapshot replay" if args.offline else "live PRs, never holdout", "repositories": rows, "source_sha256": sources,
               "source_stable": sources == {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest() for p in (root / "src/crosswire").rglob("*.py")}}
-    args.output.write_text(json.dumps(output, sort_keys=True, indent=2) + "\n")
+    args.output.write_text(json.dumps(portable(output, locations()), sort_keys=True, indent=2) + "\n")
     print(json.dumps({"projects": len(rows), "pairs": sum(row["pairs"] for row in rows), "semantic_predictions": sum(row["semantic_predictions"] for row in rows), "source_stable": output["source_stable"]}))
 
 

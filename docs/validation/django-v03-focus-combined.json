@@ -1,11 +1,11 @@
 {
   "command": [
-    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "${HOMEBREW}/opt/python@3.14/bin/python3.14",
     "-m",
     "crosswire",
     "check",
     "--repo",
-    "/tmp/crosswire-v03-django",
+    "${LIVE_DJANGO}",
     "--target",
     "origin/main",
     "--format",

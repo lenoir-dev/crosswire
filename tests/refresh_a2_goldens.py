@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
-    with tempfile.TemporaryDirectory(prefix="crosswire-a2-", dir="/tmp") as directory:
+    with tempfile.TemporaryDirectory(prefix="crosswire-a2-") as directory:
         recording = Path(directory) / "recording.json"
         environment = {**os.environ, "CROSSWIRE_GOLDEN_RECORD": "1",
                        "CROSSWIRE_GOLDEN_OUTPUT": str(recording),

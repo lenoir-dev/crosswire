@@ -179,3 +179,49 @@ current authority. PLAN v0.4 R2 and matching M2 supersede their conflicting rows
   baseline/relative R3 budgets, RSS/proposals, audit status and E4-02 limitation.
   Final source and all public sealed eval inputs have an empty diff against
   6ef67da; every measurement hash still equals current frozen bytes.
+
+## v0.4 release corrections (Polaris, 2026-11-18)
+
+- Read Vega's release audit; distinguish its completed independent 30-case label
+  audit from the earlier prepared sample. Updated the pilot with 30/30 labels,
+  16/16 minimal attributions, zero disagreements/FP/FN, four confirmed reason
+  categories, nine confirmed exclusions and the original 31/31 integrity audit.
+  Retain the shared-policy and scaffold-diversity caveats.
+- Added PR coverage and scoped gap counts: HTTPX 170 unsupported +2 splatted,
+  Django 2,688 +82, Flask 1,168 +19. Every replay is partial; zero flags describes
+  only supported constructs in the analysable portion, not conflict-free PRs.
+- Replayed all 49 public excluded cases with frozen detector source and no cache;
+  every ref/worktree remained unchanged. Twenty cases emitted 49 semantic findings
+  (40 CW001, nine CW002), 29 emitted none, zero detector errors. Every finding is
+  unlabelled; no TP/FP/FN or original metric is changed. The original measurement
+  did not run these cases, so its zero outside-scope share was not an estimate
+  of all attempted-case predictions. Combined emitted-candidate share is now
+  49/93 (52.69%), reported separately with rule denominators.
+- Publication privacy explicitly authorises tokenising tracked evidence and
+  provenance. The location map stays outside the checkout; eval tooling expands
+  generic/home/cache/interpreter tokens. Development and live runners serialize
+  portable results. Python temporary paths use platform defaults; alternate
+  interpreter discovery replaces a machine installation path.
+- All JSON at the tokenisation stage expands to the original JSON exactly,
+  including labels, numeric observations, diagnostics and patches. All golden
+  case payloads are byte-for-byte equivalent as parsed JSON. Only provenance
+  paths changed in the archived recordings; old/new hashes are retained and the
+  strict checksum guards bind the new bytes. No finding assertion was relaxed.
+- Explicit integrity amendment: retain the original audited seal under
+  holdout-pre-publication.sha256, update six public-file byte hashes in the
+  current 31-entry list, and recompute the apparatus aggregate hash. Private
+  manifest/repository hashes are identical; private bytes were not rewritten.
+  Policy/matching and dependency/toolchain pins stay unchanged (only a lockfile
+  command comment was tokenised). Verification passes; holdout remains unmeasured.
+- This cleanup changes current files only. Earlier Git history still contains
+  the original local paths; release-manager history/publication choices remain
+  Polaris's responsibility. No Git state-changing command was run by Deneb.
+- Final release checks: eval22 passed (3.55s); focused eval/archive56 passed
+  (11.95s); full3.11 suite449 passed (359.50s),no failures/skips. Three path
+  portability regressions account for the increase from446 to449. All21,027
+  existing numeric/boolean/null values in47 JSON files match exactly; expanded
+  corpus and measurement JSON equal their pre-publication inputs.
+- Removed only ignored bytecode caches (which embed compiler-local filenames)
+  after the suites; the exact requested recursive account-home grep returns no
+  output (exit1:no matches). Temp/installation prefix scan is also empty.
+  Source still matches6ef67da; report links/JSON and diff whitespace checks pass.

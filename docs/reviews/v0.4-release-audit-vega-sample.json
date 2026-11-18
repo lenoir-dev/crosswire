@@ -1,0 +1,580 @@
+{
+ "seeds": {
+  "random_sample_of_eligible": 20261118,
+  "extra_positives": 7
+ },
+ "eligible_population": 179,
+ "oracle": "pyright 1.1.407 basic, python 3.14.8, same pinned toolchain; own merges via git merge-tree",
+ "cases": [
+  {
+   "id": "pallets-eco--blinker-000",
+   "kind": "positive",
+   "type": "PY-1",
+   "states": "pppF",
+   "my_label": "positive",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [
+    [
+     "CW001",
+     "B",
+     [
+      "A"
+     ],
+     "blinker._utilities.make_id"
+    ]
+   ],
+   "crosswire_pairwise_n": 1,
+   "coverage": "partial",
+   "agree": true
+  },
+  {
+   "id": "pallets-eco--blinker-001",
+   "kind": "compatible",
+   "type": "PY-1",
+   "states": "pppp",
+   "my_label": "negative",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [],
+   "crosswire_pairwise_n": 0,
+   "coverage": "partial",
+   "agree": true
+  },
+  {
+   "id": "pallets-eco--blinker-004",
+   "kind": "positive",
+   "type": "PY-4",
+   "states": "pppF",
+   "my_label": "positive",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [
+    [
+     "CW002",
+     "B",
+     [
+      "A"
+     ],
+     "blinker._utilities.make_ref"
+    ]
+   ],
+   "crosswire_pairwise_n": 1,
+   "coverage": "partial",
+   "agree": true
+  },
+  {
+   "id": "pallets-eco--blinker-011",
+   "kind": "coordinated",
+   "type": "PY-4",
+   "states": "pppp",
+   "my_label": "negative",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [],
+   "crosswire_pairwise_n": 0,
+   "coverage": "partial",
+   "agree": true
+  },
+  {
+   "id": "pallets-eco--blinker-013",
+   "kind": "compatible",
+   "type": "PY-4",
+   "states": "pppp",
+   "my_label": "negative",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [],
+   "crosswire_pairwise_n": 0,
+   "coverage": "partial",
+   "agree": true
+  },
+  {
+   "id": "pallets-eco--blinker-019",
+   "kind": "coordinated",
+   "type": "PY-4",
+   "states": "pppp",
+   "my_label": "negative",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [],
+   "crosswire_pairwise_n": 0,
+   "coverage": "partial",
+   "agree": true
+  },
+  {
+   "id": "python-trio--sniffio-007",
+   "kind": "coordinated",
+   "type": "PY-4",
+   "states": "pppp",
+   "my_label": "negative",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [],
+   "crosswire_pairwise_n": 0,
+   "coverage": "partial",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0005",
+   "kind": "compatible",
+   "type": "PY-1",
+   "states": "pppp",
+   "my_label": "negative",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [],
+   "crosswire_pairwise_n": 0,
+   "coverage": "partial",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0008",
+   "kind": "positive",
+   "type": "PY-2",
+   "states": "pppF",
+   "my_label": "positive",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [
+    [
+     "CW001",
+     "B",
+     [
+      "A"
+     ],
+     "crosswire_probe_002.api.f"
+    ]
+   ],
+   "crosswire_pairwise_n": 1,
+   "coverage": "complete",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0010",
+   "kind": "unrelated",
+   "type": "PY-2",
+   "states": "pppp",
+   "my_label": "negative",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [],
+   "crosswire_pairwise_n": 0,
+   "coverage": "complete",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0011",
+   "kind": "coordinated",
+   "type": "PY-2",
+   "states": "pppp",
+   "my_label": "negative",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [],
+   "crosswire_pairwise_n": 0,
+   "coverage": "complete",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0033",
+   "kind": "compatible",
+   "type": "PY-4",
+   "states": "pppp",
+   "my_label": "negative",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [],
+   "crosswire_pairwise_n": 0,
+   "coverage": "partial",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0040",
+   "kind": "positive",
+   "type": "PY-5",
+   "states": "pppppppF",
+   "my_label": "positive",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [
+    [
+     "CW006",
+     "C",
+     [
+      "A",
+      "B"
+     ],
+     "crosswire_probe_010.api.f"
+    ]
+   ],
+   "crosswire_pairwise_n": 0,
+   "coverage": "complete",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0047",
+   "kind": "coordinated",
+   "type": "PY-1",
+   "states": "pppp",
+   "my_label": "negative",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [],
+   "crosswire_pairwise_n": 0,
+   "coverage": "complete",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0050",
+   "kind": "unrelated",
+   "type": "PY-1",
+   "states": "pppp",
+   "my_label": "negative",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [],
+   "crosswire_pairwise_n": 0,
+   "coverage": "complete",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0061",
+   "kind": "compatible",
+   "type": "PY-1",
+   "states": "pppp",
+   "my_label": "negative",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [],
+   "crosswire_pairwise_n": 0,
+   "coverage": "partial",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0079",
+   "kind": "coordinated",
+   "type": "PY-4",
+   "states": "pppp",
+   "my_label": "negative",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [],
+   "crosswire_pairwise_n": 0,
+   "coverage": "complete",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0092",
+   "kind": "positive",
+   "type": "PY-1",
+   "states": "pppF",
+   "my_label": "positive",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [
+    [
+     "CW001",
+     "B",
+     [
+      "A"
+     ],
+     "crosswire_probe_001.api.f"
+    ]
+   ],
+   "crosswire_pairwise_n": 1,
+   "coverage": "complete",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0120",
+   "kind": "positive",
+   "type": "PY-4",
+   "states": "pppF",
+   "my_label": "positive",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [
+    [
+     "CW002",
+     "B",
+     [
+      "A"
+     ],
+     "crosswire_probe_008.api.f"
+    ]
+   ],
+   "crosswire_pairwise_n": 1,
+   "coverage": "complete",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0126",
+   "kind": "unrelated",
+   "type": "PY-4",
+   "states": "pppp",
+   "my_label": "negative",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [],
+   "crosswire_pairwise_n": 0,
+   "coverage": "partial",
+   "agree": true
+  },
+  {
+   "id": "pallets-eco--blinker-012",
+   "kind": "positive",
+   "type": "PY-4",
+   "states": "pppF",
+   "my_label": "positive",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [
+    [
+     "CW002",
+     "B",
+     [
+      "A"
+     ],
+     "blinker._utilities.make_ref"
+    ]
+   ],
+   "crosswire_pairwise_n": 1,
+   "coverage": "partial",
+   "agree": true
+  },
+  {
+   "id": "pypa--trove-classifiers-000",
+   "kind": "positive",
+   "type": "PY-1",
+   "states": "pppF",
+   "my_label": "positive",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [
+    [
+     "CW001",
+     "B",
+     [
+      "A"
+     ],
+     "trove_classifiers.__main__.cli"
+    ]
+   ],
+   "crosswire_pairwise_n": 1,
+   "coverage": "complete",
+   "agree": true
+  },
+  {
+   "id": "pypa--trove-classifiers-004",
+   "kind": "positive",
+   "type": "PY-4",
+   "states": "pppF",
+   "my_label": "positive",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [
+    [
+     "CW002",
+     "B",
+     [
+      "A"
+     ],
+     "trove_classifiers.__main__.cli"
+    ]
+   ],
+   "crosswire_pairwise_n": 1,
+   "coverage": "complete",
+   "agree": true
+  },
+  {
+   "id": "python-trio--sniffio-000",
+   "kind": "positive",
+   "type": "PY-1",
+   "states": "pppF",
+   "my_label": "positive",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [
+    [
+     "CW001",
+     "B",
+     [
+      "A"
+     ],
+     "sniffio._impl.current_async_library"
+    ]
+   ],
+   "crosswire_pairwise_n": 1,
+   "coverage": "partial",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0000",
+   "kind": "positive",
+   "type": "PY-1",
+   "states": "pppF",
+   "my_label": "positive",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [
+    [
+     "CW001",
+     "B",
+     [
+      "A"
+     ],
+     "crosswire_probe_000.api.f"
+    ]
+   ],
+   "crosswire_pairwise_n": 1,
+   "coverage": "complete",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0032",
+   "kind": "positive",
+   "type": "PY-4",
+   "states": "pppF",
+   "my_label": "positive",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [
+    [
+     "CW002",
+     "B",
+     [
+      "A"
+     ],
+     "crosswire_probe_008.api.f"
+    ]
+   ],
+   "crosswire_pairwise_n": 1,
+   "coverage": "complete",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0044",
+   "kind": "positive",
+   "type": "PY-1",
+   "states": "pppF",
+   "my_label": "positive",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [
+    [
+     "CW001",
+     "B",
+     [
+      "A"
+     ],
+     "crosswire_probe_000.api.f"
+    ]
+   ],
+   "crosswire_pairwise_n": 1,
+   "coverage": "complete",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0052",
+   "kind": "positive",
+   "type": "PY-2",
+   "states": "pppF",
+   "my_label": "positive",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [
+    [
+     "CW001",
+     "B",
+     [
+      "A"
+     ],
+     "crosswire_probe_002.api.f"
+    ]
+   ],
+   "crosswire_pairwise_n": 1,
+   "coverage": "complete",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0064",
+   "kind": "positive",
+   "type": "PY-4",
+   "states": "pppF",
+   "my_label": "positive",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [
+    [
+     "CW002",
+     "B",
+     [
+      "A"
+     ],
+     "crosswire_probe_005.api.f"
+    ]
+   ],
+   "crosswire_pairwise_n": 1,
+   "coverage": "complete",
+   "agree": true
+  },
+  {
+   "id": "r2-public-0072",
+   "kind": "positive",
+   "type": "PY-4",
+   "states": "pppF",
+   "my_label": "positive",
+   "merge_tree_equal_to_recorded": true,
+   "crosswire_combined": [
+    [
+     "CW002",
+     "B",
+     [
+      "A"
+     ],
+     "crosswire_probe_007.api.f"
+    ]
+   ],
+   "crosswire_pairwise_n": 1,
+   "coverage": "complete",
+   "agree": true
+  }
+ ],
+ "excluded_sample": [
+  {
+   "id": "python-hyper--hyperframe-006",
+   "kind": "unrelated",
+   "states": "FFFF",
+   "target_errors": 40,
+   "crosswire_combined_findings": 0
+  },
+  {
+   "id": "python-hyper--hyperframe-010",
+   "kind": "unrelated",
+   "states": "FFFF",
+   "target_errors": 40,
+   "crosswire_combined_findings": 0
+  },
+  {
+   "id": "python-hyper--hyperframe-002",
+   "kind": "unrelated",
+   "states": "FFFF",
+   "target_errors": 40,
+   "crosswire_combined_findings": 0
+  },
+  {
+   "id": "python-hyper--hyperframe-001",
+   "kind": "compatible",
+   "states": "FFFF",
+   "target_errors": 40,
+   "crosswire_combined_findings": 0
+  },
+  {
+   "id": "pallets--itsdangerous-024",
+   "kind": "positive",
+   "states": "FFFF",
+   "target_errors": 4,
+   "crosswire_combined_findings": 2
+  },
+  {
+   "id": "pallets--itsdangerous-000",
+   "kind": "positive",
+   "states": "FFFF",
+   "target_errors": 4,
+   "crosswire_combined_findings": 2
+  },
+  {
+   "id": "pallets--itsdangerous-007",
+   "kind": "coordinated",
+   "states": "FFFF",
+   "target_errors": 4,
+   "crosswire_combined_findings": 1
+  },
+  {
+   "id": "pallets--itsdangerous-012",
+   "kind": "positive",
+   "states": "FFFF",
+   "target_errors": 4,
+   "crosswire_combined_findings": 2
+  },
+  {
+   "id": "pallets-eco--blinker-020",
+   "kind": "positive",
+   "states": "pFpF",
+   "target_errors": 0,
+   "crosswire_combined_findings": 2
+  }
+ ]
+}

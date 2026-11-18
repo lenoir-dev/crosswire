@@ -31,7 +31,7 @@
   "exit": 1,
   "first_diagnostics": [
     {
-      "file": "/tmp/crosswire-django-v03-oracle-target/django/apps/config.py",
+      "file": "${TMP}/crosswire-django-v03-oracle-target/django/apps/config.py",
       "message": "Argument of type \"ModuleType | Any | type[Self@AppConfig] | None\" cannot be assigned to parameter \"cls\" of type \"type\" in function \"issubclass\"\n\u00a0\u00a0Type \"ModuleType | Any | type[AppConfig]* | None\" is not assignable to type \"type\"\n\u00a0\u00a0\u00a0\u00a0\"ModuleType\" is not assignable to \"type\"",
       "range": {
         "end": {
@@ -47,7 +47,7 @@
       "severity": "error"
     },
     {
-      "file": "/tmp/crosswire-django-v03-oracle-target/django/apps/config.py",
+      "file": "${TMP}/crosswire-django-v03-oracle-target/django/apps/config.py",
       "message": "Cannot access attribute \"name\" for class \"type[AppConfig]\"\n\u00a0\u00a0Attribute \"name\" is unknown",
       "range": {
         "end": {
@@ -63,7 +63,7 @@
       "severity": "error"
     },
     {
-      "file": "/tmp/crosswire-django-v03-oracle-target/django/apps/config.py",
+      "file": "${TMP}/crosswire-django-v03-oracle-target/django/apps/config.py",
       "message": "Cannot access attribute \"name\" for class \"type[AppConfig]*\"\n\u00a0\u00a0Attribute \"name\" is unknown",
       "range": {
         "end": {
@@ -79,7 +79,7 @@
       "severity": "error"
     },
     {
-      "file": "/tmp/crosswire-django-v03-oracle-target/django/apps/config.py",
+      "file": "${TMP}/crosswire-django-v03-oracle-target/django/apps/config.py",
       "message": "Cannot access attribute \"check_models_ready\" for class \"None\"\n\u00a0\u00a0Attribute \"check_models_ready\" is unknown",
       "range": {
         "end": {
@@ -95,7 +95,7 @@
       "severity": "error"
     },
     {
-      "file": "/tmp/crosswire-django-v03-oracle-target/django/apps/config.py",
+      "file": "${TMP}/crosswire-django-v03-oracle-target/django/apps/config.py",
       "message": "Cannot access attribute \"check_apps_ready\" for class \"None\"\n\u00a0\u00a0Attribute \"check_apps_ready\" is unknown",
       "range": {
         "end": {
@@ -111,7 +111,7 @@
       "severity": "error"
     },
     {
-      "file": "/tmp/crosswire-django-v03-oracle-target/django/apps/config.py",
+      "file": "${TMP}/crosswire-django-v03-oracle-target/django/apps/config.py",
       "message": "Object of type \"None\" is not subscriptable",
       "range": {
         "end": {
@@ -127,7 +127,7 @@
       "severity": "error"
     },
     {
-      "file": "/tmp/crosswire-django-v03-oracle-target/django/apps/config.py",
+      "file": "${TMP}/crosswire-django-v03-oracle-target/django/apps/config.py",
       "message": "Cannot access attribute \"check_models_ready\" for class \"None\"\n\u00a0\u00a0Attribute \"check_models_ready\" is unknown",
       "range": {
         "end": {
@@ -143,7 +143,7 @@
       "severity": "error"
     },
     {
-      "file": "/tmp/crosswire-django-v03-oracle-target/django/apps/config.py",
+      "file": "${TMP}/crosswire-django-v03-oracle-target/django/apps/config.py",
       "message": "\"values\" is not a known attribute of \"None\"",
       "range": {
         "end": {
@@ -159,7 +159,7 @@
       "severity": "error"
     },
     {
-      "file": "/tmp/crosswire-django-v03-oracle-target/django/apps/config.py",
+      "file": "${TMP}/crosswire-django-v03-oracle-target/django/apps/config.py",
       "message": "Cannot access attribute \"all_models\" for class \"None\"\n\u00a0\u00a0Attribute \"all_models\" is unknown",
       "range": {
         "end": {
@@ -175,7 +175,7 @@
       "severity": "error"
     },
     {
-      "file": "/tmp/crosswire-django-v03-oracle-target/django/apps/registry.py",
+      "file": "${TMP}/crosswire-django-v03-oracle-target/django/apps/registry.py",
       "message": "Object of type \"None\" cannot be used as iterable value",
       "range": {
         "end": {
@@ -191,7 +191,7 @@
       "severity": "error"
     },
     {
-      "file": "/tmp/crosswire-django-v03-oracle-target/django/apps/registry.py",
+      "file": "${TMP}/crosswire-django-v03-oracle-target/django/apps/registry.py",
       "message": "Cannot assign to attribute \"apps\" for class \"AppConfig\"\n\u00a0\u00a0Expression of type \"Self@Apps\" cannot be assigned to attribute \"apps\" of class \"AppConfig\"\n\u00a0\u00a0\u00a0\u00a0\"Apps*\" is not assignable to \"None\"",
       "range": {
         "end": {
@@ -207,7 +207,7 @@
       "severity": "error"
     },
     {
-      "file": "/tmp/crosswire-django-v03-oracle-target/django/conf/__init__.py",
+      "file": "${TMP}/crosswire-django-v03-oracle-target/django/conf/__init__.py",
       "message": "__new__ override should take a \"cls\" parameter",
       "range": {
         "end": {
@@ -223,7 +223,7 @@
       "severity": "warning"
     }
   ],
-  "raw_path": "/tmp/crosswire-django-v03-pyright-target.json",
+  "raw_path": "${TMP}/crosswire-django-v03-pyright-target.json",
   "raw_sha256": "29ff1cfb869ccf55c39e71e18b7721f6420bbf8df6543af751b723cab9dde39b",
   "seconds": 13.630924542001594,
   "stderr": "",

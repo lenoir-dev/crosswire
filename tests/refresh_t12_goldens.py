@@ -15,7 +15,7 @@ from tests.golden_t12 import coalesce_case
 
 def main():
     archive = json.loads((ROOT / "tests/golden/v02-pre-t12.json").read_text())
-    with tempfile.TemporaryDirectory(prefix="crosswire-t12-", dir="/tmp") as temporary:
+    with tempfile.TemporaryDirectory(prefix="crosswire-t12-") as temporary:
         output = Path(temporary) / "recording.json"
         env = {**os.environ, "CROSSWIRE_GOLDEN_RECORD": "1", "CROSSWIRE_GOLDEN_OUTPUT": str(output),
                "CROSSWIRE_GOLDEN_SOURCE": str(ROOT / "src"), "PYTHONPATH": str(ROOT / "src")}

@@ -1,11 +1,11 @@
 {
   "command": [
-    "${HOME}/.paradev/worktrees/blackOut-fa821389/lenoir-dev/github-opus-5-5-d15e3f5c/.venv/bin/python",
+    "${CHECKOUT}/.venv/bin/python",
     "-m",
     "crosswire",
     "check",
     "--repo",
-    "/tmp/crosswire-field-httpx",
+    "${LIVE_HTTPX}",
     "--format",
     "json",
     "--target",

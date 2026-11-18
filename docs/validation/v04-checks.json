@@ -13,7 +13,7 @@
       "xfailed": 0
     },
     {
-      "command": "PYTHONPATH=src uv run --offline --no-project --python /opt/homebrew/bin/python3.14 --with pytest==9.0.2 --with jsonschema==4.25.1 python -m pytest -q",
+      "command": "PYTHONPATH=src uv run --offline --no-project --python ${PYTHON314} --with pytest==9.0.2 --with jsonschema==4.25.1 python -m pytest -q",
       "exit_code": 0,
       "failed": 0,
       "passed": 446,
@@ -30,27 +30,27 @@
       "result": "187 passed in 62.24s; 155 historical projections equal, 110 changed cases explained by T14/T16/R3; immutable archives preserved"
     },
     {
-      "command": "/tmp/crosswire-v04-eval/bin/python -m eval.run_holdout --verify-only",
+      "command": "${CACHE_CROSSWIRE_V04_EVAL}/bin/python -m eval.run_holdout --verify-only",
       "exit_code": 0,
       "result": "seal verified; not measured"
     },
     {
-      "command": "uv run --offline --group eval --python 3.11.17 python -m eval.run_development --detector-python /opt/homebrew/bin/python3.14 --output docs/validation/v04-development-results.json",
+      "command": "uv run --offline --group eval --python 3.11.17 python -m eval.run_development --detector-python ${PYTHON314} --output docs/validation/v04-development-results.json",
       "exit_code": 0,
       "result": "179 eligible / 228 attempted; TP44 FP0 FN0; 0 detector failures; source_stable true"
     },
     {
-      "command": "/tmp/crosswire-v04-eval/bin/python -m eval.live --offline --output docs/validation/v04-live-prs.json",
+      "command": "${CACHE_CROSSWIRE_V04_EVAL}/bin/python -m eval.live --offline --output docs/validation/v04-live-prs.json",
       "exit_code": 0,
       "result": "3 repositories, 19 heads, 59 pairs, 0 semantic predictions; pinned refs and read-only state verified; source_stable true"
     },
     {
-      "command": "PYTHONPATH=src /tmp/crosswire-v04-eval/bin/python benchmarks/perf_matrix.py --repeat 5 --timeout 30 --output docs/validation/v04-perf-matrix.json",
+      "command": "PYTHONPATH=src ${CACHE_CROSSWIRE_V04_EVAL}/bin/python benchmarks/perf_matrix.py --repeat 5 --timeout 30 --output docs/validation/v04-perf-matrix.json",
       "exit_code": 0,
       "result": "54 cells, 270 successful samples, 27 completed warmups, zero censored; source_stable true"
     },
     {
-      "command": "PYTHONPATH=src /tmp/crosswire-v04-eval/bin/python benchmarks/perf_matrix.py --vega-scenario --baseline-ref 89cfd99 --repeat 5 --timeout 30 --output docs/validation/v04-vega-perf.json",
+      "command": "PYTHONPATH=src ${CACHE_CROSSWIRE_V04_EVAL}/bin/python benchmarks/perf_matrix.py --vega-scenario --baseline-ref 89cfd99 --repeat 5 --timeout 30 --output docs/validation/v04-vega-perf.json",
       "exit_code": 0,
       "result": "R3 pass; baseline pairwise p50/p95 2.167242/2.177592 s, current 2.354558/2.381094 s; combined p95 1.884499 s, plan p95 2.475087 s; source_stable true"
     },
@@ -61,6 +61,7 @@
     }
   ],
   "observed_HEAD": "f234bff69d8a7f31585361591e7ec0b9a76252e2",
+  "public_seal_at_measurement": "holdout-pre-publication.sha256",
   "public_seal_sha256": "e60e68e6f726f6cb84440985e96c11c353f1bdd615abc1fdf480406ee87b2bad",
   "recorded_utc": "2026-11-17T20:40:16.465801+00:00",
   "source_commit": "6ef67da19a136f88a90b5f567255196ca78c2a94",

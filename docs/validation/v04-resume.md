@@ -6,8 +6,8 @@ Updated 2026-11-17T20:54:55.583931+00:00. Task: `v0.4-deneb-final`.
 
 All requested Deneb validation work is complete. The report is
 `docs/validation/v0.4.md`. Polaris owns acceptance, commits and publication;
-independent final label audit remains a Vega/Polaris decision, not a claimed
-completed audit. No project commit/checkout/stash/reset/push was performed.
+independent final label audit is now complete (Vega, 30/30 independently
+re-derived labels; see the release audit and the publication correction below). No project commit/checkout/stash/reset/push was performed.
 No source edit or test workaround was made.
 
 Frozen source: `6ef67da19a136f88a90b5f567255196ca78c2a94` (0.4.0).
@@ -94,7 +94,7 @@ plan p95<=15s. No hidden waiver. The report proposes next-release per-cell
 ## Acceptance handoff / what remains for Polaris
 
 1. Read `v0.4.md` and evidence; decide pilot acceptance and any R3 budget issue.
-2. Independently audit final public labels (18-case sample, empty FP set).
+2. Retain Vega’s completed 30-case independent label audit as acceptance evidence.
 3. Accept/adjust S14 platform-specific future budgets explicitly and address
    the unavailable trial-count telemetry in acceptance.
 4. Preserve v2 holdout seal for separately authorized v0.5 measurement. Do not
@@ -108,3 +108,31 @@ artifact. To regenerate base report use `python -m eval.publish`; it requires
 manual review/completion of R3 budgets, provenance, exclusions/coverage,
 per-stratum/type metrics, audit status and cohort SHAs, all present in final
 `v0.4.md`. Do not replace the completed report with its incomplete boilerplate.
+
+## Release corrections (2026-11-18, v0.4-release-fixes)
+
+The final-validation sections above preserve the original measurement boundary.
+Current source is still frozen at 6ef67da; observed release-correction HEAD is
+e6f0bf4. The report now cites Vega’s completed 30/30 label audit, all three PR
+coverage gaps, and the separate excluded-case replay:49 cases,20 with findings,
+49 unlabelled semantic findings (CW00140/CW0029),zero detector errors. Original
+labelled metrics remain unchanged. Overall emitted-candidate unlabelled share
+is49/93 (52.69%); no excluded finding becomes TP/FP/FN.
+
+Publication privacy tokenises local evidence/provenance paths. Expanded JSON
+reproduces the original evidence exactly; all golden case payloads are unchanged.
+Six public hash entries were explicitly amended; the original31-entry seal is
+archived as holdout-pre-publication.sha256 and private hashes are identical.
+Verification passes without measurement. See v04-publication-integrity.json and
+v04-publication-portability.json. Full release-correction checks are recorded
+separately from original v04-checks.json in v04-release-fixes-checks.json.
+
+Earlier Git history still has original paths; publishing or replacing that
+history is Polaris’s decision. Deneb has run no state-changing project Git
+commands and has not edited source, README or package metadata.
+
+Release corrections complete: eval22/focused56/full449 checks pass; full3.11
+suite359.50s. Requested privacy grep returns no matches after ignored-bytecode
+cleanup. All21,027 original numeric/boolean/null values in47 JSON files match;
+all original corpus/measurement JSON expands identically. See
+v04-release-fixes-checks.json for the complete release-correction handoff.

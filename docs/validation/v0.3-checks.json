@@ -13,7 +13,7 @@
       "seconds": 300.58
     },
     "python314": {
-      "command": "PYTHONPATH=src uv run --no-project --python /opt/homebrew/bin/python3.14 --with pytest python -m pytest -q",
+      "command": "PYTHONPATH=src uv run --no-project --python ${PYTHON314} --with pytest python -m pytest -q",
       "passed": 288,
       "seconds": 313.19
     }

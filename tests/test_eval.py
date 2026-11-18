@@ -2,6 +2,7 @@
 
 import pytest
 import subprocess
+import shutil
 import sys
 from pathlib import Path
 import json
@@ -63,8 +64,8 @@ def test_repository_bootstrap_is_deterministic_and_resamples_clusters():
 
 
 def test_occurrence_fingerprint_is_identical_on_python_311_and_314():
-    alternative = Path("/opt/homebrew/bin/python3.14")
-    if not alternative.exists():
+    alternative = shutil.which("python3.14")
+    if not alternative:
         pytest.skip("local alternate interpreter not installed")
     code = "from eval.oracle import occurrence; print(occurrence('import m\\nm.f(1)\\n', 2, 'm.f'))"
     first = subprocess.check_output([sys.executable, "-c", code], text=True)
@@ -125,3 +126,39 @@ def test_holdout_export_guard_rejects_case_level_fields_without_reading_private_
     for payload in ({"rows": []}, {"micro": {"symbol": "private"}}, {"reason": ".crosswire-holdout/case"}):
         with pytest.raises(AssertionError):
             assert_aggregate_only(payload)
+
+
+def test_portable_paths_roundtrip_without_changing_labels_or_numbers(tmp_path, monkeypatch):
+    from eval.paths import resolve
+    from eval.portable import portable
+    mapping = {'${CACHE_DIR}': str(tmp_path / 'cache'), '${HOME}': str(tmp_path)}
+    file = tmp_path / 'locations.json'
+    file.write_text(json.dumps(mapping))
+    monkeypatch.setenv('CROSSWIRE_EVAL_LOCATIONS', str(file))
+    evidence = {'path': str(tmp_path / 'cache' / 'case-0001'),
+                'command': 'python --repo ' + str(tmp_path / 'cache' / 'case-0001'),
+                'eligible': False, 'kind': 'positive', 'tp': 44, 'precision': 1.0,
+                'patch_A': 'original source bytes\n'}
+    published = portable(evidence, mapping)
+    assert published['path'] == '${CACHE_DIR}/case-0001'
+    assert published['command'] == 'python --repo ${CACHE_DIR}/case-0001'
+    assert published['eligible'] is False and published['tp'] == 44
+    assert published['patch_A'] == evidence['patch_A']
+    assert resolve(published) == evidence
+
+
+def test_portable_paths_preserve_existing_tokens_and_prefix_boundaries(tmp_path):
+    from eval.portable import portable
+    mapping = {'${CACHE_DIR}': str(tmp_path / 'cache')}
+    assert portable('${CACHE_DIR}/case', mapping) == '${CACHE_DIR}/case'
+    other = str(tmp_path / 'cache-other' / 'case')
+    assert portable(other, mapping) == other
+    assert portable(str(tmp_path / 'cache' / 'case'), mapping) == '${CACHE_DIR}/case'
+
+
+def test_portable_paths_have_defaults_without_a_host_map(tmp_path, monkeypatch):
+    from eval.paths import resolve
+    monkeypatch.setenv('CROSSWIRE_EVAL_LOCATIONS', str(tmp_path / 'absent.json'))
+    assert resolve('${HOME}/project') == str(Path.home() / 'project')
+    assert resolve('${CHECKOUT}/eval') == str(Path(__file__).resolve().parents[1] / 'eval')
+    assert resolve({'path': '${UNKNOWN_LOCATION}/case'}) == {'path': '${UNKNOWN_LOCATION}/case'}

@@ -11,7 +11,7 @@ from .golden_v04 import project_case
 
 
 GOLDEN = Path(__file__).parent / "golden"
-ORIGINAL_SHA256 = "b49a78c31843cf88185a067371a6045d2198d928719ae86b569d099fd00bb834"
+ORIGINAL_SHA256 = "e17aef18ae39ee750714084dfdcb9f2495a43be5f4a33aeeb48a4557f6ab7638"
 
 
 def canonical_report(report):

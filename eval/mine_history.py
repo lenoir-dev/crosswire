@@ -40,7 +40,7 @@ def main():
             if merge.returncode == 0:
                 # Test the native merge-tree, not an upstream merge commit containing hidden fixes.
                 tree = merge.stdout.splitlines()[0]
-                with tempfile.TemporaryDirectory(prefix="crosswire-mined-", dir="/tmp") as temporary:
+                with tempfile.TemporaryDirectory(prefix="crosswire-mined-") as temporary:
                     for label, sha in [("target", base), ("parent1", parents[0]), ("parent2", parents[1]), ("integrated", tree)]:
                         root = Path(temporary) / label
                         export(repo, sha, root)

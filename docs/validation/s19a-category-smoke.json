@@ -1,0 +1,373 @@
+{
+  "scope": "synthetic apparatus validation only; excluded from natural census and ranking",
+  "toolchain": "go1.27.1 darwin/arm64",
+  "checks": [
+    {
+      "fixture": "duplicate",
+      "sources": {
+        "a.go": "package duplicate\nfunc F() {}\n",
+        "b.go": "package duplicate\nfunc F() {}\n"
+      },
+      "expected": "GO-4",
+      "observed_rules": [
+        "GO-4"
+      ],
+      "build": {
+        "exit": 1,
+        "stdout": "",
+        "stderr": "# example.invalid/duplicate\n./b.go:2:6: F redeclared in this block\n\t./a.go:2:6: other declaration of F\n",
+        "seconds": 0.1440517080045538
+      },
+      "classification": {
+        "status": "classified",
+        "diagnostics": [
+          {
+            "package": "example.invalid/duplicate",
+            "path": "b.go",
+            "line": 2,
+            "column": 6,
+            "start_line": 0,
+            "start_column": 0,
+            "end_line": 0,
+            "end_column": 0,
+            "code": 10,
+            "syntax": "other",
+            "message": "F redeclared in this block",
+            "category": "DuplicateDecl",
+            "candidate_rule": "GO-4",
+            "compiler_position_match": true
+          },
+          {
+            "package": "example.invalid/duplicate",
+            "path": "a.go",
+            "line": 2,
+            "column": 6,
+            "start_line": 0,
+            "start_column": 0,
+            "end_line": 0,
+            "end_column": 0,
+            "code": 10,
+            "syntax": "other",
+            "message": "\tother declaration of F",
+            "category": "DuplicateDecl",
+            "candidate_rule": "GO-4",
+            "compiler_position_match": false
+          }
+        ],
+        "compiler_positions": [
+          {
+            "path": "b.go",
+            "line": 2,
+            "column": 6
+          },
+          {
+            "path": "\t./a.go",
+            "line": 2,
+            "column": 6
+          }
+        ],
+        "import_cycles": [],
+        "missing_packages": [],
+        "package_errors": [
+          {
+            "import_path": "example.invalid/duplicate",
+            "error": {
+              "ImportStack": [],
+              "Pos": "",
+              "Err": "# example.invalid/duplicate\n./b.go:2:6: F redeclared in this block\n\t./a.go:2:6: other declaration of F\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fixture": "missing",
+      "sources": {
+        "a.go": "package missing\nimport _ \"example.invalid/missing/deleted\"\n"
+      },
+      "expected": "GO-2",
+      "observed_rules": [
+        "GO-2"
+      ],
+      "build": {
+        "exit": 1,
+        "stdout": "",
+        "stderr": "a.go:2:8: cannot find module providing package example.invalid/missing/deleted: import lookup disabled by -mod=readonly\n",
+        "seconds": 0.017951166999409907
+      },
+      "classification": {
+        "status": "classified",
+        "diagnostics": [
+          {
+            "package": "example.invalid/missing",
+            "path": "a.go",
+            "line": 2,
+            "column": 10,
+            "start_line": 2,
+            "start_column": 8,
+            "end_line": 2,
+            "end_column": 43,
+            "code": 6,
+            "syntax": "import",
+            "import_path": "example.invalid/missing/deleted",
+            "message": "could not import example.invalid/missing/deleted (open : no such file or directory)",
+            "category": "BrokenImport",
+            "candidate_rule": null,
+            "compiler_position_match": true
+          }
+        ],
+        "compiler_positions": [
+          {
+            "path": "a.go",
+            "line": 2,
+            "column": 8
+          }
+        ],
+        "import_cycles": [],
+        "missing_packages": [
+          {
+            "import_path": "example.invalid/missing/deleted",
+            "import_stack": [
+              "example.invalid/missing"
+            ]
+          }
+        ],
+        "package_errors": [
+          {
+            "import_path": "example.invalid/missing/deleted",
+            "error": {
+              "ImportStack": [
+                "example.invalid/missing"
+              ],
+              "Pos": "a.go:2:8",
+              "Err": "cannot find module providing package example.invalid/missing/deleted: import lookup disabled by -mod=readonly"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fixture": "cycle",
+      "sources": {
+        "a/a.go": "package a\nimport \"example.invalid/cycle/b\"\nvar A=b.B\n",
+        "b/b.go": "package b\nimport \"example.invalid/cycle/a\"\nvar B=a.A\n"
+      },
+      "expected": "GO-8",
+      "observed_rules": [
+        "GO-8"
+      ],
+      "build": {
+        "exit": 1,
+        "stdout": "",
+        "stderr": "package example.invalid/cycle/a\n\timports example.invalid/cycle/b from a.go\n\timports example.invalid/cycle/a from b.go: import cycle not allowed\n",
+        "seconds": 0.016868542006704956
+      },
+      "classification": {
+        "status": "classified",
+        "diagnostics": [
+          {
+            "package": "example.invalid/cycle/b",
+            "path": "b/b.go",
+            "line": 2,
+            "column": 8,
+            "start_line": 2,
+            "start_column": 8,
+            "end_line": 2,
+            "end_column": 33,
+            "code": 6,
+            "syntax": "import",
+            "import_path": "example.invalid/cycle/a",
+            "message": "could not import example.invalid/cycle/a (open : no such file or directory)",
+            "category": "BrokenImport",
+            "candidate_rule": null,
+            "compiler_position_match": false
+          },
+          {
+            "package": "example.invalid/cycle/a",
+            "path": "a/a.go",
+            "line": 2,
+            "column": 8,
+            "start_line": 2,
+            "start_column": 8,
+            "end_line": 2,
+            "end_column": 33,
+            "code": 6,
+            "syntax": "import",
+            "import_path": "example.invalid/cycle/b",
+            "message": "could not import example.invalid/cycle/b (open : no such file or directory)",
+            "category": "BrokenImport",
+            "candidate_rule": null,
+            "compiler_position_match": false
+          }
+        ],
+        "compiler_positions": [],
+        "import_cycles": [
+          [
+            "example.invalid/cycle/a",
+            "example.invalid/cycle/b"
+          ]
+        ],
+        "missing_packages": [],
+        "package_errors": [
+          {
+            "import_path": "example.invalid/cycle/a",
+            "error": {
+              "ImportStack": [
+                "example.invalid/cycle/a",
+                "example.invalid/cycle/b",
+                "example.invalid/cycle/a"
+              ],
+              "Pos": "",
+              "Err": "import cycle not allowed"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fixture": "mixed",
+      "expected": [
+        "GO-1",
+        "GO-3",
+        "GO-6",
+        "GO-7",
+        "GO-9"
+      ],
+      "build": {
+        "exit": 1,
+        "stdout": "",
+        "stderr": "# example.invalid/census\n./main.go:3:8: \"fmt\" imported and not used\n./main.go:7:2: not enough arguments in call to F\n\thave ()\n\twant (int)\n./main.go:8:2: undefined: Missing\n./main.go:9:9: assignment mismatch: 2 variables but G returns 1 value\n./main.go:11:10: undefined: dep.Absent\n",
+        "seconds": 0.19890008300717454
+      },
+      "classification": {
+        "status": "classified",
+        "diagnostics": [
+          {
+            "package": "example.invalid/census",
+            "path": "main.go",
+            "line": 7,
+            "column": 4,
+            "start_line": 7,
+            "start_column": 2,
+            "end_line": 7,
+            "end_column": 5,
+            "code": 126,
+            "syntax": "bare-call",
+            "symbol": "F",
+            "message": "not enough arguments in call to F\n\thave ()\n\twant (int)",
+            "category": "WrongArgCount",
+            "candidate_rule": "GO-3",
+            "compiler_position_match": true
+          },
+          {
+            "package": "example.invalid/census",
+            "path": "main.go",
+            "line": 8,
+            "column": 2,
+            "start_line": 8,
+            "start_column": 2,
+            "end_line": 8,
+            "end_column": 11,
+            "code": 75,
+            "syntax": "bare-call",
+            "symbol": "Missing",
+            "message": "undefined: Missing",
+            "category": "UndeclaredName",
+            "candidate_rule": "GO-9",
+            "compiler_position_match": true
+          },
+          {
+            "package": "example.invalid/census",
+            "path": "main.go",
+            "line": 9,
+            "column": 9,
+            "start_line": 9,
+            "start_column": 2,
+            "end_line": 9,
+            "end_column": 12,
+            "code": 17,
+            "syntax": "multi-assignment-call",
+            "message": "assignment mismatch: 2 variables but G returns 1 value",
+            "category": "WrongAssignCount",
+            "candidate_rule": "GO-6",
+            "compiler_position_match": true
+          },
+          {
+            "package": "example.invalid/census",
+            "path": "main.go",
+            "line": 11,
+            "column": 10,
+            "start_line": 11,
+            "start_column": 6,
+            "end_line": 11,
+            "end_column": 16,
+            "code": 73,
+            "syntax": "package-selector",
+            "symbol": "Absent",
+            "import_path": "example.invalid/census/dep",
+            "message": "undefined: dep.Absent",
+            "category": "UndeclaredImportedName",
+            "candidate_rule": "GO-1",
+            "compiler_position_match": true
+          },
+          {
+            "package": "example.invalid/census",
+            "path": "main.go",
+            "line": 3,
+            "column": 8,
+            "start_line": 3,
+            "start_column": 8,
+            "end_line": 3,
+            "end_column": 13,
+            "code": 8,
+            "syntax": "import",
+            "import_path": "fmt",
+            "message": "\"fmt\" imported and not used",
+            "category": "UnusedImport",
+            "candidate_rule": "GO-7",
+            "compiler_position_match": true
+          }
+        ],
+        "compiler_positions": [
+          {
+            "path": "main.go",
+            "line": 3,
+            "column": 8
+          },
+          {
+            "path": "main.go",
+            "line": 7,
+            "column": 2
+          },
+          {
+            "path": "main.go",
+            "line": 8,
+            "column": 2
+          },
+          {
+            "path": "main.go",
+            "line": 9,
+            "column": 9
+          },
+          {
+            "path": "main.go",
+            "line": 11,
+            "column": 10
+          }
+        ],
+        "import_cycles": [],
+        "missing_packages": [],
+        "package_errors": [
+          {
+            "import_path": "example.invalid/census",
+            "error": {
+              "ImportStack": [],
+              "Pos": "",
+              "Err": "# example.invalid/census\n./main.go:3:8: \"fmt\" imported and not used\n./main.go:7:2: not enough arguments in call to F\n\thave ()\n\twant (int)\n./main.go:8:2: undefined: Missing\n./main.go:9:9: assignment mismatch: 2 variables but G returns 1 value\n./main.go:11:10: undefined: dep.Absent\n"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

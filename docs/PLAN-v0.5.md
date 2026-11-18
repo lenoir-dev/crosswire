@@ -66,9 +66,9 @@ development corpus only; the sealed v2 holdout keeps the policy it was sealed wi
 | Task | Owner | Deliverable |
 | --- | --- | --- |
 | T25 Go adapter | Altair | tree-sitter-go (pinned runtime + grammar, extra `crosswire[go]`); go.mod module path, packages = directories, exported = capitalised, build-tag files as guarded definitions, `replace`/`go.work` targets → `unknown` |
-| T26 Go rules | Altair | GO-1…GO-5 of the contract; CW003 is an **error** for Go (redeclaration fails to compile) |
+| T26 Go rules | Altair | GO-1…GO-4 of the frozen contract (decision D-Go1); CW003 is an **error** for Go (redeclaration fails to compile) |
 | T27 polyglot | Altair | Python + Go in one repository: independent analysis, combined report, per-language coverage |
-| S19 Go conformance + corpus | Deneb | S16 templates rendered for Go; Go development corpus (oracle `go build ./... && go vet ./...`, pinned Go), ≥ 5 repositories |
+| S19 Go conformance + corpus | Deneb | S16 templates rendered for Go; Go development corpus with the contract's oracle (`go build`; `go vet` a separate channel), ≥ 5 repositories, preregistered selection of module-era histories with divergent parents (S19a found zero natural positives) |
 | S20 Go holdout | Deneb | sealed, not measured in 0.5b |
 
 ## 4. Acceptance

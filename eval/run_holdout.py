@@ -9,7 +9,11 @@ import json
 import math
 import os
 from pathlib import Path
+import locale
+import platform
 import re
+import shutil
+import subprocess
 import sys
 import tempfile
 
@@ -17,6 +21,7 @@ from .integrity import apparatus, digest, verify_seal
 
 ORIGINAL_SEAL_SHA256 = '90c0a799531382e07b657bed4fe85a41941bba7af0d3100fe761982a4a2253d1'
 SAFE_WORDS = set('micro repo_clustered95 by_rule exclusions oracle-ineligible source_sha256 manifest_sha256 eval_sha256 stratum mutation-holdout precision recall tp fp fn precision_wilson95 recall_wilson95 attribution_accuracy attribution_labelled eligible_cases unlabelled_predictions unlabelled_prediction_share unlabelled_cases unlabelled_share precision_gate recall_gate status measured insufficient data not estimable pass fail complete detector_errors precision_gate_lower_bound repositories replicates seed suppressed n reason_category_mismatches CW001 CW002 CW003 CW004 CW006 release 0.5a interrupted attempted_cases completed_cases failed_cases unattempted_cases'.split()) | {'insufficient data', 'not estimable', 'provisional pass', 'not evaluated'}
+SAFE_WORDS.add('micro_gates')
 COUNT_FIELDS = {'tp','fp','fn','eligible_cases','unlabelled_cases','attribution_labelled',
                 'detector_errors','unlabelled_predictions','reason_category_mismatches',
                 'attempted_cases','completed_cases','failed_cases','unattempted_cases','oracle-ineligible'}
@@ -26,6 +31,12 @@ STAT_BLOCKS = {'micro','by_rule','repo_clustered95','exclusions',
 
 class AttemptConsumed(RuntimeError):
     """Neither a complete nor an interrupted attempt may execute the detector again."""
+
+
+class ExportFailed(RuntimeError):
+    def __init__(self, attempt_status):
+        self.attempt_status=attempt_status
+        super().__init__('Export failed; existing journal remains authoritative')
 
 
 def assert_aggregate_only(value, field=None):
@@ -57,6 +68,11 @@ def suppress_small_cells(value, minimum=5, _field=None):
     """
     def small(item, field=None):
         if isinstance(item, dict):
+            labelled=item.get('attribution_labelled');accuracy=item.get('attribution_accuracy')
+            if type(labelled) is int and isinstance(accuracy,(int,float)):
+                correct=round(accuracy*labelled)
+                if any(0 < count < minimum for count in (correct,labelled-correct)):
+                    return True
             return any(small(v,k) for k,v in item.items())
         if isinstance(item, list):
             return any(small(v,field) for v in item)
@@ -66,7 +82,10 @@ def suppress_small_cells(value, minimum=5, _field=None):
             return {k:({'status':'suppressed'} if k in STAT_BLOCKS else suppress_small_cells(v,minimum,k))
                     for k,v in value.items()}
         counts = [value[k] for k in COUNT_FIELDS-{'oracle-ineligible'} if type(value.get(k)) is int]
-        if counts and (sum(counts)==0 or any(0 < n < minimum for n in counts)):
+        n=value.get('attribution_labelled');accuracy=value.get('attribution_accuracy')
+        derived_small=(type(n) is int and isinstance(accuracy,(int,float)) and
+                       any(0 < count < minimum for count in (round(accuracy*n),n-round(accuracy*n))))
+        if counts and (sum(counts)==0 or any(0 < n < minimum for n in counts) or derived_small):
             return {'status':'suppressed'}
         return {k:suppress_small_cells(v,minimum,k) for k,v in value.items()}
     if isinstance(value, list):
@@ -88,7 +107,11 @@ def _write_private(path, value, *, replace=False):
     """Exclusive create, or atomic status update; flush content AND directory."""
     data=(json.dumps(value,sort_keys=True,indent=2,allow_nan=False)+'\n').encode()
     path=Path(path)
+    if replace and path.name=='measurement-attempt.json':
+        raise ValueError('Attempt marker is never replaceable')
     temporary=path.with_name(path.name+'.next') if replace else path
+    if replace:
+        temporary.unlink(missing_ok=True) # stale scratch only; NEVER the marker
     fd=os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     try:
         with os.fdopen(fd,'wb') as stream:
@@ -105,13 +128,32 @@ def _canonical_sha(value):
     return hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 
 
+def _measurement_environment(detector_python, source=None):
+    """Private provenance only; never part of compared/report-only metadata."""
+    probe='import json,sys; print(json.dumps({"version":sys.version,"executable":sys.executable}))'
+    detector=json.loads(subprocess.check_output([str(detector_python),'-c',probe],text=True,timeout=30))
+    detector.update(requested_executable=str(detector_python),sha256=digest(Path(detector['executable']).resolve()))
+    git_binary=shutil.which('git')
+    controls={'LANG','LC_ALL','LC_CTYPE','TZ','PYTHONHASHSEED','PYTHONDONTWRITEBYTECODE',
+              'PYTHONOPTIMIZE','PYTHONSAFEPATH','PYTHONPATH','PYTHONHOME','GIT_OPTIONAL_LOCKS',
+              'GIT_CONFIG_GLOBAL','GIT_CONFIG_NOSYSTEM','GIT_CONFIG_SYSTEM'}
+    effective={k:os.environ.get(k) for k in sorted(controls)}
+    effective['GIT_OPTIONAL_LOCKS']='0'
+    if source is not None:effective['PYTHONPATH']=str(source)
+    return {'controller':{'version':sys.version,'executable':sys.executable,'sha256':digest(Path(sys.executable).resolve())},
+            'detector':detector,'git':{'executable':git_binary,'version':subprocess.check_output([git_binary,'--version'],text=True).strip(),
+                                     'sha256':digest(Path(git_binary).resolve())},
+            'uname':list(platform.uname()),'environment_keys':sorted(os.environ),
+            'locale':locale.setlocale(locale.LC_ALL,None),'effective_controls':effective}
+
+
 class AttemptJournal:
     def __init__(self, private):
         self.private=Path(private)
         self.directory=self.private/'measurement-journal'
 
     @classmethod
-    def claim(cls, private, metadata):
+    def claim(cls, private, metadata, detector_python=sys.executable, source=None):
         journal=cls(private)
         journal.private.chmod(0o700)
         try:
@@ -120,6 +162,7 @@ class AttemptJournal:
             raise AttemptConsumed('Attempt consumed; report-only is permitted, detector rerun is not') from error
         journal.directory.mkdir(mode=0o700)
         _directory_sync(journal.private)
+        _write_private(journal.private/'measurement-environment.json',_measurement_environment(detector_python,source))
         journal.state('running')
         return journal
 
@@ -127,10 +170,13 @@ class AttemptJournal:
         _write_private(self.private/'measurement-state.json',{'status':status,**details},replace=True)
 
     def started(self, index, identity):
-        _write_private(self.directory/f'{index:06d}.started.json',{'case_sha256':identity})
+        previous=None
+        if index:
+            previous=_canonical_sha(json.loads((self.directory/f'{index-1:06d}.result.json').read_text())['row'])
+        _write_private(self.directory/f'{index:06d}.started.json',{'case_sha256':identity,'previous_row_sha256':previous})
 
     def finished(self, index, identity, row):
-        _write_private(self.directory/f'{index:06d}.result.json',{'case_sha256':identity,'row':row})
+        _write_private(self.directory/f'{index:06d}.result.json',{'case_sha256':identity,'row':row,'row_sha256':_canonical_sha(row)})
 
     def read(self, identities):
         rows=[];attempted=0;gap=False
@@ -142,12 +188,17 @@ class AttemptJournal:
                 if gap:
                     raise ValueError('Noncontiguous journal')
                 attempted+=1;expected.add(start.name)
-                if json.loads(start.read_text())['case_sha256']!=identity:
+                start_record=json.loads(start.read_text())
+                if start_record['case_sha256']!=identity:
                     raise ValueError('Journal case identity mismatch')
+                if start_record['previous_row_sha256']!=(_canonical_sha(rows[-1]) if rows else None):
+                    raise ValueError('Journal row chain mismatch')
                 if result.exists():
                     raw=json.loads(result.read_text());expected.add(result.name)
                     if raw['case_sha256']!=identity:
                         raise ValueError('Journal result identity mismatch')
+                    if raw['row_sha256']!=_canonical_sha(raw['row']):
+                        raise ValueError('Journal row hash mismatch')
                     rows.append(raw['row'])
                 else:
                     gap=True
@@ -155,8 +206,13 @@ class AttemptJournal:
                 if result.exists():
                     raise ValueError('Journal result without start')
                 gap=True
-        if (set() if not self.directory.exists() else {p.name for p in self.directory.iterdir()}) != expected:
+        if (set() if not self.directory.exists() else {p.name for p in self.directory.iterdir() if not p.name.startswith('.')}) != expected:
             raise ValueError('Unknown journal record')
+        state_path=self.private/'measurement-state.json'
+        if state_path.exists():
+            state=json.loads(state_path.read_text())
+            if state['status']=='complete' and state.get('rows_sha256')!=_canonical_sha(rows):
+                raise ValueError('Completed journal rows hash mismatch')
         return rows,{'attempted_cases':attempted,'completed_cases':len(rows),
                      'failed_cases':attempted-len(rows),'unattempted_cases':len(identities)-attempted}
 
@@ -200,6 +256,8 @@ def holdout_report(rows, *, interrupted=False):
     if interrupted:
         micro['precision_gate']=micro['recall_gate']='insufficient data'
         micro['status']='insufficient data'
+    # P4 D1: only categorical micro verdicts bypass numeric suppression.
+    summary['micro_gates']={key:micro[key] for key in ('precision_gate','recall_gate')}
     summary.update(release='0.5a',status='interrupted' if interrupted else 'complete')
     return summary
 
@@ -247,15 +305,17 @@ def run_attempt(private, root, source_freeze, output, detector_python, successor
         journal=AttemptJournal(private)
     else:
         from .measure import evaluate
-        journal=AttemptJournal.claim(private,metadata)
+        journal=AttemptJournal.claim(private,metadata,detector_python,root/'src')
         try:
+            completed_rows=[]
             for index,(identity,case) in enumerate(zip(identities,sealed['cases'])):
                 journal.started(index,identity)
                 row=evaluate(case,detector_python,root/'src')
                 journal.finished(index,identity,row)
+                completed_rows.append(row)
             if hashes!=_source_hashes(root) or metadata['eval_sha256']!=_canonical_sha(apparatus(root)):
                 raise ValueError('Frozen source/apparatus changed during attempt')
-            journal.state('complete')
+            journal.state('complete',rows_sha256=_canonical_sha(completed_rows))
         except BaseException as error:
             journal.state('interrupted',error_type=type(error).__name__)
             raise
@@ -272,7 +332,10 @@ def run_attempt(private, root, source_freeze, output, detector_python, successor
     public=suppress_small_cells(summary)
     assert_aggregate_only(public)
     # An existing public output is never silently overwritten by a first attempt.
-    _write_private(Path(output),public,replace=report_only)
+    try:
+        _write_private(Path(output),public,replace=report_only)
+    except OSError as error:
+        raise ExportFailed('interrupted' if interrupted else 'complete') from error
     return public
 
 
@@ -312,6 +375,8 @@ def main():
                             args.detector_python,successor,report_only=args.report_only,rehearsal=args.rehearsal)
     except AttemptConsumed:
         print(json.dumps({'status':'attempt consumed; report-only only'}),file=sys.stderr);raise SystemExit(2)
+    except ExportFailed as error:
+        print(json.dumps({'status':'export failed','attempt_status':error.attempt_status}),file=sys.stderr);raise SystemExit(2)
     except BaseException:
         # Detailed rows and the exception category are private. Do not print a
         # traceback whose paths/messages could disclose sealed case identities.

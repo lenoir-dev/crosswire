@@ -104,11 +104,12 @@ def wrapper(private,*,kill_second=False):
 import os,signal,sys
 from pathlib import Path
 path=Path({str(log)!r})
-with path.open('a') as stream:
-    stream.write('invocation\\n');stream.flush();os.fsync(stream.fileno())
-if {kill_second!r} and len(path.read_text().splitlines())==2:
-    os.kill(os.getppid(),signal.SIGKILL)
-    sys.exit(77)
+if sys.argv[1:3]==['-m','crosswire']:
+    with path.open('a') as stream:
+        stream.write('invocation\\n');stream.flush();os.fsync(stream.fileno())
+    if {kill_second!r} and len(path.read_text().splitlines())==2:
+        os.kill(os.getppid(),signal.SIGKILL)
+        sys.exit(77)
 os.execv({sys.executable!r},[{sys.executable!r},*sys.argv[1:]])
 ''');script.chmod(0o700)
     return script,log
@@ -163,6 +164,7 @@ def run(output,oracle_python):
     assert recovered.returncode==0 and len(counter.read_text().splitlines())==2
     partial=json.loads(partial.read_text());assert_aggregate_only(partial)
     assert partial['status']=='interrupted' and partial['micro']=={'status':'suppressed'}
+    assert partial['micro_gates']=={'precision_gate':'insufficient data','recall_gate':'insufficient data'}
     assert partial['by_rule']==partial['exclusions']=={'status':'suppressed'}
     assert partial['completed_cases']==partial['failed_cases']=={'status':'suppressed'}
     # A single small outcome hides both the cell and complementary statistics.
@@ -170,6 +172,13 @@ def run(output,oracle_python):
     unsafe['micro']['fp']=1;unsafe['micro']['precision']=60/61
     hidden=suppress_small_cells(unsafe);assert_aggregate_only(hidden)
     assert all(hidden[k]=={'status':'suppressed'} for k in ('micro','by_rule','repo_clustered95','exclusions'))
+    assert hidden['micro_gates']==public['micro_gates']
+    for n,correct,key in [(60,58,'micro'),(20,19,'CW001')]:
+        unsafe=deepcopy(public)
+        cell=unsafe['micro'] if key=='micro' else unsafe['by_rule'][key]
+        cell.update(attribution_labelled=n,attribution_accuracy=correct/n)
+        assert suppress_small_cells(unsafe)['micro']=={'status':'suppressed'}
+    assert (good/'measurement-environment.json').stat().st_mode & 0o777==0o600
     result={'status':'pass','scope':'synthetic private fixtures only; real holdout never accessed',
             'release':'0.5a','fixtures':240,'positives':60,'controls':180,'repositories':4,
             'oracle_states_checked':oracle_states,'oracle':provenance,
@@ -179,6 +188,8 @@ def run(output,oracle_python):
                               'detector_invocations_before_and_after_denied_rerun':2,
                               'report_only_detector_invocations':0,'public_status':'interrupted'},
             'complementary_suppression':'all linked statistical blocks withheld for a small outcome',
+            'p4_checks':{'attribution_complements':'2/60 and 1/20 suppressed','categorical_micro_gates':'published outside suppressed statistics',
+                         'measurement_environment':'private at claim time, not compared metadata','journal_chain':'per-row and completed-row hash verified'},
             'apparatus_sha256':apparatus(immutable),'rehearsal_driver_sha256':digest(Path(__file__)),
             'fixture_location':'system temporary directory, crosswire-s18-synthetic-*; private, not committed'}
     write(output,result)

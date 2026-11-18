@@ -141,3 +141,77 @@ def test_report_inputs_need_only_sealed_files_not_case_repositories(tmp_path,mon
     assert len(h1._recorded_inputs(private,tmp_path,seal)['cases'])==1
     manifest.write_text('{}')
     with pytest.raises(ValueError,match='hash mismatch'):h1._recorded_inputs(private,tmp_path,seal)
+
+
+@pytest.mark.parametrize('denominator,correct,cell',[(60,58,'micro'),(20,19,'CW001')])
+def test_vega_b1_derived_attribution_complements_are_suppressed(denominator,correct,cell):
+    summary=h1.holdout_report(rows())
+    # Use the plan-shaped eligible count so no unrelated 1-4 count masks B1.
+    for value in [summary['micro'],*summary['by_rule'].values()]:value['eligible_cases']=240
+    target=summary['micro'] if cell=='micro' else summary['by_rule'][cell]
+    target.update(attribution_labelled=denominator,attribution_accuracy=correct/denominator)
+    public=h1.suppress_small_cells(summary)
+    assert public['micro']==public['by_rule']=={'status':'suppressed'}
+    assert public['micro_gates']=={'precision_gate':'provisional pass','recall_gate':'pass'}
+    assert public['status']=='complete'
+
+
+def test_p4_categorical_verdicts_survive_fp_suppression():
+    summary=h1.holdout_report(rows(tp=59,fp=1,fn=1))
+    public=h1.suppress_small_cells(summary)
+    assert public['micro']=={'status':'suppressed'}
+    assert public['micro_gates']=={'precision_gate':'provisional pass','recall_gate':'pass'}
+    h1.assert_aggregate_only(public)
+    public=h1.suppress_small_cells(h1.holdout_report(rows(),interrupted=True))
+    assert public['micro_gates']=={'precision_gate':'insufficient data','recall_gate':'insufficient data'}
+
+
+def test_stale_next_is_recovered_without_removing_attempt_marker(tmp_path):
+    marker=tmp_path/'measurement-attempt.json';h1._write_private(marker,{'n':1})
+    target=tmp_path/'measurement-rows.json';target.with_name(target.name+'.next').write_text('stale')
+    h1._write_private(target,[{'tp':1}],replace=True)
+    assert json.loads(target.read_text())==[{'tp':1}]
+    assert marker.exists()
+    with pytest.raises(ValueError):h1._write_private(marker,{},replace=True)
+
+
+def test_environment_is_private_and_not_part_of_compared_metadata(tmp_path):
+    metadata={'n':1,'release':'0.5a'}
+    h1.AttemptJournal.claim(tmp_path,metadata)
+    env=tmp_path/'measurement-environment.json'
+    data=json.loads(env.read_text())
+    assert env.stat().st_mode & 0o777==0o600
+    assert data['environment_keys']==sorted(os.environ)
+    assert data['detector']['version'] and data['git']['version'] and data['uname']
+    assert json.loads((tmp_path/'measurement-attempt.json').read_text())==metadata
+
+
+def test_journal_ignores_dot_files_but_detects_changed_row(tmp_path):
+    journal=h1.AttemptJournal.claim(tmp_path,{'n':2,'release':'0.5a'})
+    journal.started(0,'a'*64);journal.finished(0,'a'*64,{'tp':1})
+    journal.started(1,'b'*64);journal.finished(1,'b'*64,{'tp':2})
+    (journal.directory/'.DS_Store').write_bytes(b'noise')
+    assert len(journal.read(['a'*64,'b'*64])[0])==2
+    path=journal.directory/'000000.result.json';raw=json.loads(path.read_text());raw['row']['tp']=99
+    path.write_text(json.dumps(raw))
+    with pytest.raises(ValueError,match='hash|chain'):journal.read(['a'*64,'b'*64])
+
+
+def test_row_chain_and_completion_hash_detect_recomputed_local_row_hash(tmp_path):
+    journal=h1.AttemptJournal.claim(tmp_path,{'n':2,'release':'0.5a'})
+    journal.started(0,'a'*64);journal.finished(0,'a'*64,{'tp':1})
+    journal.started(1,'b'*64);journal.finished(1,'b'*64,{'tp':2})
+    journal.state('complete',rows_sha256=h1._canonical_sha([{'tp':1},{'tp':2}]))
+    path=journal.directory/'000001.result.json';raw=json.loads(path.read_text())
+    raw['row']['tp']=3;raw['row_sha256']=h1._canonical_sha(raw['row']);path.write_text(json.dumps(raw))
+    with pytest.raises(ValueError,match='Completed journal rows hash'):journal.read(['a'*64,'b'*64])
+
+
+def test_all_results_without_completion_marker_remain_interrupted(tmp_path):
+    journal=h1.AttemptJournal.claim(tmp_path,{'n':1,'release':'0.5a'})
+    journal.started(0,'a'*64);journal.finished(0,'a'*64,{'repository':'synthetic','eligible':True,'tp':60})
+    recorded,counts=journal.read(['a'*64])
+    assert counts['completed_cases']==1 and counts['failed_cases']==0
+    assert json.loads((tmp_path/'measurement-state.json').read_text())['status']=='running'
+    summary=h1.holdout_report(recorded,interrupted=True)
+    assert summary['micro_gates']=={'precision_gate':'insufficient data','recall_gate':'insufficient data'}

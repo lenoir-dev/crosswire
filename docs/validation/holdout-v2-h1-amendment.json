@@ -2,34 +2,66 @@
   "amendment": "H1",
   "checks": {
     "commits": "none",
-    "focused_tests": "68 passed",
+    "focused_tests": "76 passed",
     "forced_midrun_failure": "SIGKILL; no rerun; journal-only report",
+    "minor_dispositions": "m1-m3,m5 fixed; m4,m6 explicitly documented and m4 regression-tested",
+    "p4": "categorical micro gates survive numeric suppression; environment and row chain verified",
     "real_holdout_access": "none",
     "src_edits": "none",
-    "synthetic_full_pipeline": "pass"
+    "synthetic_full_pipeline": "pass",
+    "vega_b1": "2/60 and 1/20 reproduced before fix; numeric complements hidden afterwards"
   },
   "labels": "untouched; no real measurement, rescreening or relabelling",
   "next": "Vega audit and Polaris commit; later T22-T24 accepted source archive and separate explicit attempt authorization",
   "original_seal_sha256": "90c0a799531382e07b657bed4fe85a41941bba7af0d3100fe761982a4a2253d1",
   "permitted_scope": [
-    "durable private per-case journal",
-    "no-rerun failure policy",
-    "release 0.5a",
-    "complementary cell suppression",
-    "plan-prescribed verdict presentation"
+    "exclusive durable attempt marker and per-case private start/result journal; mode 0600 files, 0700 directory; file and directory fsync",
+    "no detector rerun or resume after any claimed attempt, including SIGKILL; explicit source/apparatus post-check before complete state",
+    "per-row content hashes, previous-row chain and completed ordered-row hash; procedural, not signed tamper protection",
+    "journal-only report/export path validates sealed input bytes without reopening case repositories or executing detector",
+    "release label 0.5a and plan-prescribed micro provisional/per-rule no-verdict presentation",
+    "complementary numeric suppression including derived correct/incorrect attribution counts",
+    "P4 D1 categorical micro_gates and attempt status intentionally survive numeric suppression; disclosed implied ranges",
+    "explicit synthetic rehearsal/custom-seal branch confined to shared temporary directory and synthetic manifest flag; no real directory selection",
+    "explicit required private-dir instead of home-directory default; amended verify-only preflight ordering and H1 successor validation",
+    "measurement refusal in a Git checkout; source manifest excludes pycache and pyc; compact canonical JSON source/eval provenance formulas",
+    "private claim-time interpreter/Git/OS/environment-key/locale record outside compared metadata; no arbitrary secret environment values",
+    "stale replace scratch recovery never replaces marker; ignored dot journal files; unknown non-dot records fail closed",
+    "explicit export-failed status distinguishing completed/interrupted evaluation; all-results-but-unmarked remains interrupted",
+    "aggregate key/value allowlist and finite-number export guards"
   ],
   "private_pins": "identical copied public seal entries; private content never opened or hashed during preparation",
+  "provenance_formulas": {
+    "canonical": "SHA256(json.dumps(mapping, sort_keys=True, separators=(\",\", \":\")).encode(\"utf-8\")); ensure_ascii=True",
+    "environment": "private measurement-environment.json at claim time, intentionally outside compared metadata",
+    "eval_sha256": "canonical hash of eval.integrity.apparatus(root): original public apparatus paths mapped to SHA256(file bytes), including amended runner",
+    "manifest_sha256": "SHA256(exact private manifest bytes)",
+    "source_sha256": "canonical hash of _source_hashes(root): repo-relative src files excluding __pycache__ and .pyc mapped to SHA256(file bytes)"
+  },
+  "rehearsal_cannot_select_real_data": "Explicit private path must resolve beneath shared temporary directory; custom synthetic seal and synthetic_private_fixture=true mandatory; generator accepts no real private source. This is procedural isolation, not a same-user security boundary.",
   "release": "0.5a",
+  "runner_unified_diff": {
+    "baseline": "2cb3a06:eval/run_holdout.py",
+    "format": "difflib.unified_diff with keepends=True, context=3, a/eval/run_holdout.py and b/eval/run_holdout.py, UTF-8",
+    "sha256": "2c21f7f50b77c7b30dffaea9af543c61f45e632f6fd36b4e9d33213250269842"
+  },
   "sealed_public_changes": {
     "eval/run_holdout.py": {
-      "after": "e5d25c7d0529b0884f1d6f310735c7f8b75eb593d2613f55de9fdffcdef40d5f",
+      "after": "ed15ff88cbab7641e9537d155b18aa83e887c7f439cfbe51e0c8eb1199d05799",
       "before": "5f0bf6d97d346559deb15db3ec7805fcd7e259d7b85786ea320c66ec89a226a1"
     }
   },
-  "status": "prepared; requires Polaris commit and Vega audit before real authorization",
-  "successor_seal_sha256": "2d35a0dbc42eeb6cbad82becf9321ad06e1b4b58b472cdda4ec77e718996cd69",
+  "status": "P4 fixes prepared; Vega re-audit and Polaris authorization still required; real attempt not run",
+  "successor_eval_sha256": "0ac92cc192d46d8191e6a939791ca7eb1d9d6c582d2c795d17106842389d1eea",
+  "successor_seal_sha256": "e00b74b7ce4944e38cf30d84ca0a75d47f05f7881b5f84c679616813e9d5d8f6",
+  "superseded": {
+    "docs/validation/eval-code.sha256": {
+      "file_sha256": "4c4d03135e95d47fe83722addcb9506230715e530d12a3192e69168e0ee12c6f",
+      "status": "historical original-seal value, unchanged; use holdout-v2-eval-code.sha256 for H1"
+    }
+  },
   "supporting_files_sha256": {
-    "benchmarks/s18_rehearsal.py": "56a26c205d29913b86e80c22fa8e032c6641e06bee8e8e3befda907822a91924",
+    "benchmarks/s18_rehearsal.py": "e18118731dcba671e60b58d871b8724a66f0198fb1a64512030d8f7479dcaaed",
     "conformance/README.md": "84384001282579d980af83c6bb6671dfb24698b8e3a37522e5d6cd9e716ddb30",
     "conformance/__init__.py": "1736192e3b0221b4e70b2479ffe03cb8e562ca4b7cda8b30252090ed6b06bea4",
     "conformance/git.py": "32a7d669a7bafe79e7eda4385d925e213b6c8b96906f92a11acfff9b5c4b0912",
@@ -45,15 +77,17 @@
     "conformance/templates/open_dynamic.json": "1a04363b7b041834c59cc384f5cbc358baa40b59aaab2b3e242e2be7fd6ebfa6",
     "conformance/templates/open_wildcard.json": "aed9deaf5a47396ae5ae2d607371679ab1e634786e8b068979c91e247310db4a",
     "conformance/templates/rename.json": "866d157d802bc198e21f086ff84d8fec95f197cc756f7f1a580d9c594d3702b7",
-    "docs/PLAN-v0.5.md": "8eb016814523f92eb29f3afb102ba4f6270e51dc9fc4e5972e9f591a25db4f86",
+    "docs/PLAN-v0.5.md": "3d2562ae81c57a52485de391f01737abab649406f4aaf8dbe833c13ee3d7bd9c",
     "docs/QUALITY.md": "7fc14b3563b5e47c4e7ffcf0ca7b3e88906a163bea98bd816746b2ec85d8723d",
-    "docs/validation/holdout-v2-preregistration.md": "9ed61a409ac5d1b059e6707a772b2dcabb236878832936189bc5d69366a51a23",
-    "docs/validation/s18-prep-rehearsal.json": "2b33436916fd0f15ae2c59d9c2ba669455a5b9b0504a550596432dc4adf7fdae",
-    "docs/validation/s18-prep.md": "8e2314f013976e3e4e6f612ddda89c551b7cfb90b1845a5cacb7ebbce399719d",
-    "docs/validation/s18-resume.md": "6a9994f75d566a31ca35b55c9869915c56a876c407c228fa5a1065731ddc64fd",
+    "docs/reviews/v0.5-s18-audit-vega.md": "57bbb04121f0392c65e4b9f62a8cabc172054177b092f56c4818585e942620c3",
+    "docs/validation/holdout-v2-eval-code.sha256": "d44eeabdd2e0d36f85f0d2d46cf967686a4c23a5f81d7ea1055998cbcda58c2a",
+    "docs/validation/holdout-v2-preregistration.md": "0282b64ab0acd09829a321ea2f083e636ae4cd84d9206a581fec769f86bb6e87",
+    "docs/validation/s18-prep-rehearsal.json": "ed00238acde007e4f900805231faabebf93525bf1b047f323c756a62a6957582",
+    "docs/validation/s18-prep.md": "af5390f459343ed36fa17292f5a09b7d4ba58b938c481dbe42487a6e4d5004ed",
+    "docs/validation/s18-resume.md": "8d61c07d2cf8f9a442044d78767dd17b1dee912f623ea50d7fea981301df23aa",
     "tests/test_eval.py": "48f3135b5a3b499410c27dc33f78b6bac96c87d30ac045d694e78c17b014a0fd",
     "tests/test_eval_r2.py": "5a4df2dffc4e0a7ce342db99509db7343341b6ce66deedb6ca22c7e0e7ebade2",
-    "tests/test_holdout_h1.py": "14247ff9d9941f1c5b8b10d21acb3f7b7e9fe128fea81dc9259458b25cc926ed"
+    "tests/test_holdout_h1.py": "d6f817e4dacb1993a9aec064b156ee2c536feaaa841595a3174a92214056c6eb"
   },
   "unchanged_public_entries": 28
 }

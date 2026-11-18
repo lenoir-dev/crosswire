@@ -23,7 +23,7 @@
     "eval/revisions/r4_families.py": "bc90e09e502da912d1732906bbe2bdb9032bce17714b5089528670f79a3898b4",
     "eval/revisions/r5_families.py": "b5fb58409e6ca839f1126c0c5354376a4d7d9e81645b598f0476f678acd6a68b",
     "eval/run_development.py": "148195749191451349becb71c6f99fa06432e4cbd80a9fa185021ebe5aa838f6",
-    "eval/run_holdout.py": "e5d25c7d0529b0884f1d6f310735c7f8b75eb593d2613f55de9fdffcdef40d5f",
+    "eval/run_holdout.py": "ed15ff88cbab7641e9537d155b18aa83e887c7f439cfbe51e0c8eb1199d05799",
     "eval/runtime.py": "7394d0e628d95d3a7b01ef492cdbadd5d91c84a2a9acd01162042291736d4e8c",
     "eval/screen.py": "6f6d45aa0be597be13cd668fa40443d35eee621b83f5fa057d5e0a1fe99d61e1",
     "eval/seal.py": "53b374074844d075f2fb59d06287c9f530ee8d00e7f7e8c75a70f32a8104fdb5",
@@ -70,8 +70,14 @@
     "version": "1.1.407"
   },
   "oracle_states_checked": 32,
+  "p4_checks": {
+    "attribution_complements": "2/60 and 1/20 suppressed",
+    "categorical_micro_gates": "published outside suppressed statistics",
+    "journal_chain": "per-row and completed-row hash verified",
+    "measurement_environment": "private at claim time, not compared metadata"
+  },
   "positives": 60,
-  "rehearsal_driver_sha256": "56a26c205d29913b86e80c22fa8e032c6641e06bee8e8e3befda907822a91924",
+  "rehearsal_driver_sha256": "e18118731dcba671e60b58d871b8724a66f0198fb1a64512030d8f7479dcaaed",
   "release": "0.5a",
   "repositories": 4,
   "scope": "synthetic private fixtures only; real holdout never accessed",

@@ -154,3 +154,61 @@ reported as a separate development-only stratum, never relabels past exclusions 
 extras and broken bindings are distinguished; ABI checked at load. Claimed platforms: Linux (x86_64, aarch64) and
 macOS (arm64, x86_64), Python 3.11–3.14; Windows is not claimed yet. CI tests core-only and `[go]` installs with
 binary-only resolution.
+
+## Amendment P2 — decisions on Vega's design review (`docs/reviews/v0.5-design-vega.md`)
+
+All findings accepted. Together with P1 this freezes the 0.5a protocol; the Go rule set is frozen after the
+census below.
+
+**Protocol (B1, M1, M2, M4)**
+- Added operations: `summarize(base_snap, tip_snap, changes, ctx) -> LanguageSummary` (the per-branch step that
+  today lives in `engine._Analysis.side`, including renames and rule-specific data such as migrations);
+  `namespaces_of(path, ctx) -> tuple[str, ...]` (replaces `module_of`; Go/Java many files → one namespace,
+  PHP/TS one file → several); `normalize(name, kind)`; a per-kind duplicate policy for CW003; member
+  resolvability as adapter policy (the core's hard-coded `'.' in qualname` skip moves into the Python adapter).
+- `resolve` returns `Resolution(verdict, binding, files, reason)` where `reason` is a closed core enum
+  (`external`, `skipped-blob`, `parse-failure`, `open-namespace`, `unsupported-construct`, `depth-limit`,
+  `constraint-dependent`, …) plus free text; Python's `stdlib`/`third-party` map to `external`.
+- Overload-ready identities: bindings may form a `SymbolGroup` with a discriminator; `ApiChange` reports group
+  deltas. Python and Go use singleton groups.
+- **State-invariant primitive:** `violations(snapshot, scope) -> list[Violation]`, evaluated by the core on the
+  target, each tip, the integrated state and trial subsets; a violation present in the integrated state and absent
+  from the target and every proper subset has exact culprits. Go rules are implemented as violations. Python's
+  CW001/CW002/CW006 keep their current implementation in 0.5a (byte-identity) and may migrate later.
+- `--src` stays a Python option in 0.5; per-language context enters the cache key; `repro` for Python-only runs
+  is unchanged. Findings and coverage categories carry `language` **only when a non-Python adapter contributed** a
+  finding or limitation (Python-only output stays byte-identical).
+- `language-extra-missing:<lang>` counts only files of that language that are **in analysis scope** (changed by an
+  analysed branch or consulted), so ordinary Python repositories with a stray `.go` file are not `partial`.
+- Gaps from selector uses are scoped to changed API names (m3).
+
+**Go (M5–M8, m1, m2, m4) — `docs/languages/go.md` is revised and frozen only after S19a**
+- **S19a census (Deneb, before the Go contract is frozen):** replay merge commits of 3–5 public Go repositories,
+  classify the compiler errors of "clean merge, broken build" outcomes and of the follow-up fix commits, and rank
+  candidate rules by observed counts. The 0.5b supported set is chosen from this ranking.
+- Candidate rules (all verified against the compiler by Vega): GO-1 exported removal; GO-2 package removal
+  (evidence `cannot find module providing package` / `no required module provides package`); GO-3 arity —
+  broken iff the new signature cannot accept the call's `n` arguments (adding a trailing variadic does **not**
+  break); GO-4 redeclaration in one package namespace, **any file including the same file**, all kinds (funcs,
+  types, vars, consts, methods `T.M`, per-file import names), identical declarations included, `_`/`init` exempt,
+  constraint-dependent pairs `unknown`; GO-6 result-count change vs a syntactic multi-assignment (`assignment
+  mismatch`); GO-7 per-file imports after a clean merge (unused / missing / duplicate import); GO-8 import cycles;
+  GO-9 same-package unqualified references (conservative: bare calls with no local binding).
+- 0.5b analyses production code only (P1). Test namespaces (package + `_test.go`, external `_test`) are a v0.6
+  extension, because test-file redeclarations are visible only through `go vet`.
+- Oracle additions: `-gcflags=-e`, `GOFLAGS=-mod=readonly`, fixed `GOCACHE`, matching by position and error
+  category (never by message text), one-root-cause cases (dependent-package masking stated in the report), vet
+  findings split by category.
+- tree-sitter `ERROR`/`MISSING` nodes inside a proof's span make it `unknown` (m1); package identity comes from
+  the package clause, not the directory name (m2); GO-5 stays deferred (m4).
+
+**Holdout (M9, M10)**
+- Before the single attempt Deneb commits `docs/validation/holdout-v2-preregistration.md`: the exact gates
+  (per-rule cells reported without a verdict; micro precision point ≥ 95 % and Wilson lower bound ≥ 90 % =
+  "provisional pass" because clustered intervals are not estimable with 4 repositories; recall point ≥ 80 %),
+  the stated independence assumptions, and the **fail path**: a failing or insufficient result is published as
+  is, root-caused, and v2 is never measured again — the next measurement needs a new sealed holdout (v3).
+- M3 identities are the P1 tuple (rule, path, symbol, occurrence, root cause); Vega's M10 is satisfied by P1.
+
+**Other (m5)** T22 may require a newer Git than 2.38 for batching: capability-detect and fall back (P1). S17 may
+again yield zero natural positives; report that honestly rather than substituting scaffolds.

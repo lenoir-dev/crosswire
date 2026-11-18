@@ -1,4 +1,4 @@
-# Go — supported conflict types (contract, DRAFT for v0.5b)
+# Go — supported conflict types (contract, DRAFT for v0.5b — rule set to be chosen by the S19a census, PLAN-v0.5 P2)
 
 Status: DRAFT (Polaris), amended by PLAN-v0.5 Amendment P1 (binding where it differs). Frozen before the first Go measurement; recall is measured only over the types
 marked supported. Analysis: tree-sitter-go (no type checker at runtime). Oracle: pinned

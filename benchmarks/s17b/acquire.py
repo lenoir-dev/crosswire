@@ -188,7 +188,7 @@ class Metadata:
         timeline,time_pages=pages(self.client,f'repos/{self.repository}/issues/{n}/timeline',per_page=100)
         value.update(_metadata_stage='timeline',_timeline=timeline,_timeline_complete=True)
         self.ledger[n]={'timeline_pages':time_pages}
-        proof=terminal_proof(value);value['_terminal_event_proof']=proof;self.ledger[n]['terminal_event_proof']=proof
+        proof=terminal_proof(value,self.policy);value['_terminal_event_proof']=proof;self.ledger[n]['terminal_event_proof']=proof
         # Fully loaded for this proof means detail plus every timeline page;
         # R2 still short-circuits before unrelated file GETs on a failed proof.
         if value.get('merged_at') and len(self.terminal_health)<10:

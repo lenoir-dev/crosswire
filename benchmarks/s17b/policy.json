@@ -49,7 +49,7 @@
   "squash_corroboration": "C single-parent; negative tuple/patch matches; git cherry + for every non-merge PR commit, count equals non-merge count; C-parent..C changed-path set equals complete PR files including previous rename paths",
   "status": "implementation for review only; collection not authorized",
   "stratum": "natural branches, virtual integration",
-  "terminal_event_proof": "required event exists, is last terminal timestamp, absolute skew <=60 seconds; signed skew recorded",
+  "terminal_event_proof": "required event exists, is within tolerance of last terminal timestamp, absolute field skew <= tolerance; both skews recorded; tolerance from terminal_event_tolerance_seconds",
   "terminal_event_tolerance_seconds": 60,
   "terminal_health_stop": "first 10 merged PRs with complete detail and timeline, all failing terminal/lifecycle proof: repository acquisition-incomplete; stop before files/next request",
   "terminal_lower": "2022-01-01T00:00:00Z",

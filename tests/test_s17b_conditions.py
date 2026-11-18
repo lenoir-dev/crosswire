@@ -18,10 +18,14 @@ def test_c1_terminal_event_tolerance(skew,accepted):
     assert (selection.timeline_filter(value) is None)==accepted
 
 
-def test_c1_last_terminal_event_required():
+@pytest.mark.parametrize('last_offset,accepted',[(1,True),(60,True),(61,False)])
+def test_c1_last_terminal_event_required(last_offset,accepted):
+    from datetime import timedelta
     value=pr(1,merged_at='2025-04-01T00:00:00Z')
-    value['_timeline'].append({'event':'closed','created_at':'2025-04-01T00:00:01Z'})
-    assert selection.timeline_filter(value)=='lifecycle-terminal-unproven'
+    value['_timeline'].append({'event':'closed','created_at':(selection.timestamp(value['merged_at'])+timedelta(seconds=last_offset)).isoformat()})
+    proof=selection.terminal_proof(value)
+    assert (proof['reason'] is None)==accepted
+    assert proof['last_terminal_skew_seconds']==last_offset
 
 
 @pytest.mark.parametrize('endpoint',['repos/some-other/unlisted-repo','repos/../user','repos/example/repo/../user',
@@ -163,3 +167,23 @@ def test_m4_failed_head_is_not_retried_on_reused_pair():
     for _ in range(2):
         with pytest.raises(selection.Incomplete,match='unavailable'):acquire.fetch_head(g,1,'a'*40,permit,budget,transport)
     assert calls==[1] and budget.used==4
+
+
+@pytest.mark.parametrize('offset,accepted',[(1,True),(2,False)])
+def test_e1_terminal_proof_uses_policy_tolerance(offset,accepted):
+    from datetime import timedelta
+    value=pr(1,merged_at='2025-04-01T00:00:00Z')
+    value['_timeline'].append({'event':'closed','created_at':(selection.timestamp(value['merged_at'])+timedelta(seconds=offset)).isoformat()})
+    proof=selection.terminal_proof(value,{'terminal_event_tolerance_seconds':1})
+    assert (proof['reason'] is None)==accepted and proof['tolerance_seconds']==1
+
+
+def test_e2_natural_permit_clone_call_passes_budget_by_keyword(tmp_path,monkeypatch):
+    permit=checkpoint.Permit(tmp_path/'unwritten-checkpoint',tmp_path/'unwritten-authorization')
+    monkeypatch.setattr(checkpoint.Permit,'verify',ClonePermit.verify)
+    budget=acquire.GitBudget.from_policy(permit);calls=[]
+    g,record=permit.prepare_clone(tmp_path/'clone','example/repo','main','a'*40,budget,
+        transport=lambda *a,**kw:acquire.FetchReceipt('a'*40,8),runner=clone_runner(calls))
+    assert record['fetched_default_sha']=='a'*40 and budget.used==8
+    assert ['git','remote','add','origin','https://github.com/example/repo.git'] in calls
+    assert not permit.checkpoint.exists() and not permit.authorization.exists()

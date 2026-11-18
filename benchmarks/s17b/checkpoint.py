@@ -75,6 +75,7 @@ class Permit:
         if data['policy'].get('status')!=READY or any(data['policy'].get(k)!=v for k,v in runtime_pins().items()):raise ValueError('Checkpoint runtime/status drift')
         return data['policy']
 
-    def prepare_clone(self,*args,**kwargs):
+    def prepare_clone(self,directory,repository,branch,expected,budget,**kwargs):
         from .acquire import prepare_clone
-        return prepare_clone(*args,permit=self,**kwargs)
+        return prepare_clone(directory=directory,repository=repository,branch=branch,expected=expected,
+                             permit=self,budget=budget,**kwargs)

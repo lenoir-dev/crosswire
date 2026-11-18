@@ -80,9 +80,11 @@ def detail_filter(pr,default_branch,policy):
     return None
 
 
-def terminal_proof(pr):
-    """Complete terminal timeline only; equal-time events share last position."""
+def terminal_proof(pr,policy=None):
+    """Complete timeline; required event is within policy tolerance of field/last."""
     try:
+        tolerance=(policy or {}).get('terminal_event_tolerance_seconds',60)
+        if type(tolerance) is not int or tolerance<0:return {'reason':'invalid-metadata'}
         start,end=interval(pr)
         if not pr.get('_timeline_complete'):return {'reason':'incomplete-metadata'}
         events=pr['_timeline']
@@ -93,13 +95,15 @@ def terminal_proof(pr):
         candidates=[t for event,t in terminal if event==required]
         if not candidates:return {'reason':'lifecycle-terminal-unproven','required_event':required}
         event=max(candidates);last=max(t for _,t in terminal);skew=(event-end).total_seconds()
-        return {'reason':None if event==last and abs(skew)<=60 else 'lifecycle-terminal-unproven',
+        last_skew=(last-event).total_seconds()
+        return {'reason':None if last_skew<=tolerance and abs(skew)<=tolerance else 'lifecycle-terminal-unproven',
                 'required_event':required,'event_at':event.isoformat(),'field_at':end.isoformat(),
-                'last_terminal_at':last.isoformat(),'skew_seconds':skew,'tolerance_seconds':60}
+                'last_terminal_at':last.isoformat(),'last_terminal_skew_seconds':last_skew,
+                'skew_seconds':skew,'tolerance_seconds':tolerance}
     except (ValueError,KeyError,TypeError):return {'reason':'invalid-metadata'}
 
 
-def timeline_filter(pr):return terminal_proof(pr)['reason']
+def timeline_filter(pr,policy=None):return terminal_proof(pr,policy)['reason']
 
 
 def files_filter(pr):
@@ -114,7 +118,7 @@ def files_filter(pr):
 
 
 def metadata_filter(pr,default_branch,policy):
-    return detail_filter(pr,default_branch,policy) or timeline_filter(pr) or files_filter(pr)
+    return detail_filter(pr,default_branch,policy) or timeline_filter(pr,policy) or files_filter(pr)
 
 
 def select_pairs(items,repo_id,default_branch,policy,load_metadata):

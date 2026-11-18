@@ -6,3 +6,7 @@ dist/
 .DS_Store
 # T21 recorded baseline: local artefact, not committed (tar headers carry host metadata); manifest hash pinned in docs/validation/t21a.md
 docs/validation/t21-baseline/
+
+# S17 evidence is archived externally; selections and aggregate pins stay in git.
+docs/validation/s17-*/cases/
+docs/validation/s17-*/results.json

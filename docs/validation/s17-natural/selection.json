@@ -1,0 +1,552 @@
+{
+  "apparatus_freeze_sha256": "5e7dc0bbedbc88d55dec3fb3767322b1f2cf991d30d5b2016ecebb5e7a1e2170",
+  "policy_sha256": "c57e2bb91504730ae5c6750b4a40c91225401c2e4356f93d1868fc2d38262730",
+  "repositories": [
+    {
+      "cases": [
+        {
+          "merge": "8a6693cf7c985ec67062399143c70aff156a2ed6",
+          "parents": [
+            "f231b86a9e6a2aaee9b382de46f712e309d207a2",
+            "b3fe909d498ad226410ff86fb0e0371a88cb6841"
+          ],
+          "target": "931bfad5e556710551dd26e65dbb35b095bbb05a",
+          "timestamp": 1714156944
+        },
+        {
+          "merge": "7167d5dddb7afdc30ce29bb481c4e2209a1e0f06",
+          "parents": [
+            "eb48ea651000ec4ad444726f5183badda3e7868e",
+            "8238e16c699ce7f99f5ff3f80d03d332d72015f8"
+          ],
+          "target": "bf5f8f0968552670744fee7960419b8aea27c5b5",
+          "timestamp": 1658061573
+        },
+        {
+          "merge": "b5e9f0629200d2b2f62e13e595b802948bb4fefb",
+          "parents": [
+            "904d8d3803e84257c08526e9047474215aa1c976",
+            "c7b83a18a54efa9e08a9446e2d16956ee5fe353b"
+          ],
+          "target": "bf5f8f0968552670744fee7960419b8aea27c5b5",
+          "timestamp": 1611927398
+        },
+        {
+          "merge": "74df4c141934c01b3b2f7e27f8438b07b1c12b63",
+          "parents": [
+            "d841e82241a209573a1da638aa64921c7e65b811",
+            "bf5f8f0968552670744fee7960419b8aea27c5b5"
+          ],
+          "target": "6d75600087e94bb26c1e2a07a63c7687e186f672",
+          "timestamp": 1601650648
+        },
+        {
+          "merge": "17653564e53669899275d23f60b4c7b162218293",
+          "parents": [
+            "f92e54348bdc9fe3e015e73b200f61043bc11152",
+            "398ef40a52749dfa005609f6b1f5b180fb4b3fbe"
+          ],
+          "target": "42aad6110a02a86a9a51a77c75c2d638a50656b7",
+          "timestamp": 1555922855
+        },
+        {
+          "merge": "398ef40a52749dfa005609f6b1f5b180fb4b3fbe",
+          "parents": [
+            "ccb68825fa49af893220788ac67c47aca7dad8a4",
+            "0d6b26ff74da42cb1aaa0226cff792dc3190c90d"
+          ],
+          "target": "42aad6110a02a86a9a51a77c75c2d638a50656b7",
+          "timestamp": 1555860818
+        },
+        {
+          "merge": "503007873b1b39c6c174c2ee55673ecb8388318c",
+          "parents": [
+            "df1643d93e9d55edcc41fbdd50f8e4c7d0bd48cf",
+            "ebe474458063d87c3e43ae90d6e4111cc8bda4f8"
+          ],
+          "target": "5983f7c7af695c47926bc1b3bf7c99c68870359f",
+          "timestamp": 1437407268
+        },
+        {
+          "merge": "3f5023f85766852cc7a35ee5ace1cf430f7c8cda",
+          "parents": [
+            "5037e58adeeaf8f554b290a2e2bc95f57c9a7113",
+            "b0487751c30b14d490a13719c189921549869ddf"
+          ],
+          "target": "d821f483f949d7e8fc269e1b2b4c28b454ddf956",
+          "timestamp": 1351624758
+        }
+      ],
+      "domain": "event dispatch",
+      "examined_two_parent_merges": 72,
+      "head": "c3364059663df1ddce32799d6b1922af89a345f6",
+      "id": "blinker",
+      "roots": [
+        "src/blinker",
+        "blinker"
+      ],
+      "url": "https://github.com/pallets-eco/blinker.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "672971d66a2ef9f85151e53283113f33d642dabd",
+          "parents": [
+            "8953020d029bfc9f9d5a4f853e6dafd11a54a902",
+            "b0410878b9e46bd4c008eeac8cf4ed3d345e69b4"
+          ],
+          "target": "f593a0584f2efe929200a20fd1f78f2c3e1dcb04",
+          "timestamp": 1749933342
+        },
+        {
+          "merge": "8953020d029bfc9f9d5a4f853e6dafd11a54a902",
+          "parents": [
+            "73ad98e8629e67a85bf47a525aa7e5c8489e447c",
+            "f593a0584f2efe929200a20fd1f78f2c3e1dcb04"
+          ],
+          "target": "0b92f16a59022b5756311b1ca5ebd67aabef9371",
+          "timestamp": 1749761848
+        },
+        {
+          "merge": "73ad98e8629e67a85bf47a525aa7e5c8489e447c",
+          "parents": [
+            "31f46a3469dbfb2ecf83dd0c4297c1efc508fcca",
+            "0b92f16a59022b5756311b1ca5ebd67aabef9371"
+          ],
+          "target": "09a8e058a9cca4cae9fb993d936957278cbec151",
+          "timestamp": 1749669072
+        },
+        {
+          "merge": "117218e006641644a038772e557a3ae6cb1448a1",
+          "parents": [
+            "62fde54d4ff717fa1c4af688dbebf97845fed495",
+            "09a8e058a9cca4cae9fb993d936957278cbec151"
+          ],
+          "target": "044bb34b2ac4b8cd5d0ed278d94aba00844e9b9c",
+          "timestamp": 1748465515
+        },
+        {
+          "merge": "d408c5ef2ae186d2f4d768ac502298047f301797",
+          "parents": [
+            "e9620514720116f76dc3884e0c6b2bd651b1c9a8",
+            "2b4057a393a3a3ac30ffec644f3985bfbd4ef155"
+          ],
+          "target": "6ca10918f91a4903d7cab480ae2084441fe01e72",
+          "timestamp": 1724459866
+        },
+        {
+          "merge": "3ddb1ce418712d02f674a171b3f13ab20f6839a7",
+          "parents": [
+            "060bb1cb68dfd90375be57d6ebec79a0a7b4de6d",
+            "11e882bb4a74d571bed0e3f6b4e004eeb2daa970"
+          ],
+          "target": "c15f434e2fe0c8fc1d6fe8f0df0ea384c8b335ac",
+          "timestamp": 1713303276
+        },
+        {
+          "merge": "aef6c59378ca2d5698d91d771e5277efb415f77f",
+          "parents": [
+            "620efc9d12889da2594a0e38840512afe0a58c17",
+            "c15f434e2fe0c8fc1d6fe8f0df0ea384c8b335ac"
+          ],
+          "target": "1001d4625affafe1fa3b317cbb3ab84b982170b1",
+          "timestamp": 1687880476
+        },
+        {
+          "merge": "620efc9d12889da2594a0e38840512afe0a58c17",
+          "parents": [
+            "5bbe1b40817e66e6e0f23830526564ec8b5ff88d",
+            "1001d4625affafe1fa3b317cbb3ab84b982170b1"
+          ],
+          "target": "ec4c661303b05799a7d32db16329e6398761d20e",
+          "timestamp": 1685651940
+        }
+      ],
+      "domain": "security signing",
+      "examined_two_parent_merges": 241,
+      "head": "672971d66a2ef9f85151e53283113f33d642dabd",
+      "id": "itsdangerous",
+      "roots": [
+        "src/itsdangerous",
+        "itsdangerous"
+      ],
+      "url": "https://github.com/pallets/itsdangerous.git"
+    },
+    {
+      "cases": [],
+      "domain": "package taxonomy",
+      "examined_two_parent_merges": 1,
+      "head": "bc832553ebe6114e7682f09bc59bda6552da37cd",
+      "id": "trove-classifiers",
+      "roots": [
+        "src/trove_classifiers",
+        "trove_classifiers"
+      ],
+      "url": "https://github.com/pypa/trove-classifiers.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "22387baf7d5417842c0c2030ef860cae7c8f3a7a",
+          "parents": [
+            "aeb60572f52c403ea28e9889ef0a979efe6e263d",
+            "ebaa5934a615156bd219da4dac217332c618619f"
+          ],
+          "target": "949b2591da374bf20c77cad79f66920389094d6f",
+          "timestamp": 1662027643
+        }
+      ],
+      "domain": "async runtime detection",
+      "examined_two_parent_merges": 20,
+      "head": "6996e05d9b9debe32f42f709c8041e744f850478",
+      "id": "sniffio",
+      "roots": [
+        "src/sniffio",
+        "sniffio"
+      ],
+      "url": "https://github.com/python-trio/sniffio.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "7aebe6c28c92aca1025cb106f60fc98e1c598a41",
+          "parents": [
+            "ed17dd6e97dfd031178a4430c5c856f474cd301e",
+            "6d21c672eef52777ae29a898ca8f09dccc7467fb"
+          ],
+          "target": "54656762145b9274cd99f30770d2f856a9f569f9",
+          "timestamp": 1544712092
+        },
+        {
+          "merge": "f7173957f86fb0026462351db97800b12d7ee612",
+          "parents": [
+            "424778585b2a810e01155ebb3a3f1170d19360c7",
+            "32d01bf1f3f3fce6c34af64e0462d2df7cebb439"
+          ],
+          "target": "e916bc8f864c0d0ad1860f73f5668a7a8a1ce047",
+          "timestamp": 1488874979
+        },
+        {
+          "merge": "8cfa87a1973f86e960d9441e6aa3771812979326",
+          "parents": [
+            "ad4dadeb644bee9c3ebab6ff5a48aaab15d94818",
+            "067a746717379f6324cc5873b982009c900a4cfa"
+          ],
+          "target": "2a3d085bf0398e746cbbff32805702016ebc4546",
+          "timestamp": 1475094322
+        },
+        {
+          "merge": "5b6a0b6eea33bf387bb853550e476f339a0626a9",
+          "parents": [
+            "49e41e85d3d65b3254997f07553e28a612d61823",
+            "327e63c70ad20207672ad5eab71348ac52865915"
+          ],
+          "target": "fd4ca241e68d56380573d19dc1f6e82e9204f942",
+          "timestamp": 1452683074
+        },
+        {
+          "merge": "aca6f7197299a0b86ff4ac993f7ad0f6813cde3d",
+          "parents": [
+            "922ea744d2ed8467919cc949344cc839c1b3b9a4",
+            "73632f2fcd35ff06471fb4df8d8d45b7c6ddfc6b"
+          ],
+          "target": "28aa5b96b79e29e15e2d28914f40166afeb19222",
+          "timestamp": 1452186978
+        },
+        {
+          "merge": "41c0b72c69034b20d9bd5eae56200d9bed7bdc42",
+          "parents": [
+            "40b7669447673c7590db2b7da26d0e8584e46b76",
+            "626685db689a40126877aad141866302d20f3466"
+          ],
+          "target": "f13427d6c0495fc7bef8f2cb755abb08aa5ad927",
+          "timestamp": 1444922550
+        },
+        {
+          "merge": "365b8a30eb8031c89418b46dbaf77b5ee8aaad51",
+          "parents": [
+            "8b411ff6ec07ba5cff45833cd3aaa4612b620abd",
+            "904365837447cca1261f1f68b807d285b0c97291"
+          ],
+          "target": "d848c6131f90cf5fa64726265e9f5549c1cb2d2a",
+          "timestamp": 1442668632
+        },
+        {
+          "merge": "d848c6131f90cf5fa64726265e9f5549c1cb2d2a",
+          "parents": [
+            "f5248d40dcca198e4d882f7e647697bd2a964898",
+            "7d71a48e5c9b88bb661906de959384d62c8aed7f"
+          ],
+          "target": "2e28024273377b756725fcf7dee94a4dc714f01b",
+          "timestamp": 1442665152
+        }
+      ],
+      "domain": "HTTP/2 framing",
+      "examined_two_parent_merges": 113,
+      "head": "632e309bf6d76d6a3cd04e3cbc0b006eddbf7056",
+      "id": "hyperframe",
+      "roots": [
+        "src/hyperframe",
+        "hyperframe"
+      ],
+      "url": "https://github.com/python-hyper/hyperframe.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "c5a8876c9de994e1feaeaf3c221a1921d9c7eef5",
+          "parents": [
+            "172bcb3c5c7f22f24da608d13fa25d1576248067",
+            "0fcdde9cce8bfdc3ba5e84711a990a32b74564a4"
+          ],
+          "target": "81c21a8db1c922260cd673841257fb9b112c1318",
+          "timestamp": 1794955767
+        },
+        {
+          "merge": "0fcdde9cce8bfdc3ba5e84711a990a32b74564a4",
+          "parents": [
+            "de8d98968205993aca2bc1361d9036203190d42f",
+            "270267b3de1eb10d135b7309ea90045fe3eea1f9"
+          ],
+          "target": "00383df5e6e3059501efee0fec8a51b13031dd4e",
+          "timestamp": 1794955493
+        },
+        {
+          "merge": "ceafee8ce96f4bc1eb74c528bc247c91d648a0bb",
+          "parents": [
+            "00383df5e6e3059501efee0fec8a51b13031dd4e",
+            "9971bedb2db953e9d682892c1964f2d42cc30c82"
+          ],
+          "target": "4aeb4338ae1407d8da9723e86da99efeb446f719",
+          "timestamp": 1794323535
+        },
+        {
+          "merge": "dbffa3c23de634b0343169221ea637ca1d0030d4",
+          "parents": [
+            "f42daddf205f335fea6e200dad46049f33e71221",
+            "0672d325721eff54ccc7c5b4e3076f4fc3a259a2"
+          ],
+          "target": "08dca284ba5446a026afdc34067b658f9da989eb",
+          "timestamp": 1794236926
+        },
+        {
+          "merge": "08dca284ba5446a026afdc34067b658f9da989eb",
+          "parents": [
+            "20c4ee5c63f8f8c35a37aee3b69d95cd2450c09a",
+            "fbd55137fe47b44f55190c3714c75f1b21bf834d"
+          ],
+          "target": "4aeb4338ae1407d8da9723e86da99efeb446f719",
+          "timestamp": 1793371827
+        },
+        {
+          "merge": "20c4ee5c63f8f8c35a37aee3b69d95cd2450c09a",
+          "parents": [
+            "69dbc3392928afe1cc892a387bf0e721522f21c2",
+            "bafe069b729fc6456a603bd3a87483e50c36c852"
+          ],
+          "target": "4aeb4338ae1407d8da9723e86da99efeb446f719",
+          "timestamp": 1793371563
+        },
+        {
+          "merge": "a00e2b34c7a3cc895aa7df117d16222da8316b08",
+          "parents": [
+            "e6ce1b0f65a57c459fc5004ad84158447b65b0ac",
+            "4aeb4338ae1407d8da9723e86da99efeb446f719"
+          ],
+          "target": "b21ec4ee8e139ebe297e2221980a694bebb69523",
+          "timestamp": 1792148864
+        },
+        {
+          "merge": "1dd480a08bc2a4c399c84bf21cb1558f8b5fc838",
+          "parents": [
+            "670b715b307adfe5d2fca08a87ca562cb8bfea2c",
+            "edc63587ed2ec41ecc802d5550524471f48161c0"
+          ],
+          "target": "d634820be7a23b6a85441ee67051530fb0a8a960",
+          "timestamp": 1790353627
+        }
+      ],
+      "domain": "iterator utilities",
+      "examined_two_parent_merges": 719,
+      "head": "c0ede7fcd50340170bc7f428b7b658f6e767a34c",
+      "id": "more-itertools",
+      "roots": [
+        "more_itertools",
+        "src/more_itertools"
+      ],
+      "url": "https://github.com/more-itertools/more-itertools.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "b72dd12c0799788d9755ec31eaad601e82f83f01",
+          "parents": [
+            "b1f46096fb12a2c00b4ef15584636ea748c0b09a",
+            "56b4327945b607a45aec5c4aed689fbffbcecbd6"
+          ],
+          "target": "358a676ab5515b6280112355313bf58f41db55e7",
+          "timestamp": 1758221239
+        },
+        {
+          "merge": "6dc8a5f8117212655467fa5d07caf3433739fa65",
+          "parents": [
+            "b84ee483b3ab6886129ad6567156c13042250e89",
+            "358a676ab5515b6280112355313bf58f41db55e7"
+          ],
+          "target": "c7e47172749bf1d6b1056a5a3bada94cfc3ac0b1",
+          "timestamp": 1758201795
+        },
+        {
+          "merge": "945774e8d19e2bce94b1f5a0190efb2927590f40",
+          "parents": [
+            "b1c16aaf2974d4630ee4b0c259bb7b1ca48d02fb",
+            "358a676ab5515b6280112355313bf58f41db55e7"
+          ],
+          "target": "e76d32ab9bc1f8b746bad1636c986e825f170c6f",
+          "timestamp": 1758183178
+        },
+        {
+          "merge": "a74c6f0116d8da74e4130491bf03543f83640eac",
+          "parents": [
+            "ca6b13eeddf3e3efcef22cd056a1121d30cd9373",
+            "e76d32ab9bc1f8b746bad1636c986e825f170c6f"
+          ],
+          "target": "a82540186213c05892da15d26eb758686ae5e458",
+          "timestamp": 1758179689
+        },
+        {
+          "merge": "c993aabccf3fcc611dc97bd74af9b89d1c8d7004",
+          "parents": [
+            "60acd01b8a45c392dd39d3379362d557a6a689d3",
+            "a82540186213c05892da15d26eb758686ae5e458"
+          ],
+          "target": "9640b4f29ac5c6525432fe6de742da7fe4609af5",
+          "timestamp": 1758176761
+        },
+        {
+          "merge": "46300f092daa6fb167d5b27307119faf769334f1",
+          "parents": [
+            "559b7047a4f4e1f0e10f83fd9d171e036f34d2c2",
+            "96529d395d7835ce49c1bcc191266bb7d29f3441"
+          ],
+          "target": "c7e47172749bf1d6b1056a5a3bada94cfc3ac0b1",
+          "timestamp": 1758085362
+        },
+        {
+          "merge": "0115bd1ff622d11e5075b3a0a445068f4cb27a5f",
+          "parents": [
+            "9644095e0deca01eaac2610c20c3b36c9c34e6d5",
+            "08e24d4560d090a3fec3198b7a5b3280473c67f7"
+          ],
+          "target": "d46f5daa80d3b4da2b8e4255f0ef26676d96e5b8",
+          "timestamp": 1758085285
+        },
+        {
+          "merge": "d4dc329ade9711ac0ba6c4f812c30856678f21ee",
+          "parents": [
+            "deec7bf397b0fe7c45c71fff2cb266201ed256f8",
+            "9640b4f29ac5c6525432fe6de742da7fe4609af5"
+          ],
+          "target": "57cfbda2a87d9d6c5a2ba7b5018f3ce2c04b6383",
+          "timestamp": 1757987913
+        }
+      ],
+      "domain": "terminal Unicode width",
+      "examined_two_parent_merges": 60,
+      "head": "cd984fb579b2dc07a1c0a72d1aabd74291263c90",
+      "id": "wcwidth",
+      "roots": [
+        "wcwidth",
+        "src/wcwidth"
+      ],
+      "url": "https://github.com/jquast/wcwidth.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "3913220988e1e7c80620796fdcb4f74eb598d179",
+          "parents": [
+            "346fc650de373926803ad6d497bf75e93e960971",
+            "45a251181fba4c5a4ecc05e838da1c394e1ed0e4"
+          ],
+          "target": "e66cade323f5c11cebb4bd0f099e634b245adccd",
+          "timestamp": 1788777097
+        },
+        {
+          "merge": "45a251181fba4c5a4ecc05e838da1c394e1ed0e4",
+          "parents": [
+            "1cdc0e9d36f3eb32608f3b34885717697643e9b8",
+            "f268ec349d4a4f13e3e8f2dd86db059959514222"
+          ],
+          "target": "967864f89791509f9eb36b22b4579d36b72a6df2",
+          "timestamp": 1788775559
+        },
+        {
+          "merge": "805c803ca71da28f09cb7ec521f7ea14d1a4048b",
+          "parents": [
+            "5150802911edbf8ade1e7d1bfb346fed52c88d05",
+            "1a04b637900cf7e3f01186cf9f5b669224438990"
+          ],
+          "target": "967864f89791509f9eb36b22b4579d36b72a6df2",
+          "timestamp": 1788774563
+        },
+        {
+          "merge": "574393a4c349d5b81ee328a9e450c34dd0614635",
+          "parents": [
+            "56161fec0ac7a1e5ba0577cc33c20bbdbb331728",
+            "91b2bb47ae9b22953f61c17c20860bcb7dd1d6b1"
+          ],
+          "target": "967864f89791509f9eb36b22b4579d36b72a6df2",
+          "timestamp": 1788773585
+        },
+        {
+          "merge": "56161fec0ac7a1e5ba0577cc33c20bbdbb331728",
+          "parents": [
+            "a180020c760b532e8889f161d97d05647adfee8c",
+            "448b1db11afdde8edaf7c2c280a5b38f0d8672a7"
+          ],
+          "target": "967864f89791509f9eb36b22b4579d36b72a6df2",
+          "timestamp": 1788772635
+        },
+        {
+          "merge": "19bd337cad0760945dfe0245434d8253156ee390",
+          "parents": [
+            "8789df2cc35a4d9ddfebfa59c14f3e80e34234e1",
+            "99dec84c99d02d8259093c0d520769b28d4d2aaf"
+          ],
+          "target": "e66cade323f5c11cebb4bd0f099e634b245adccd",
+          "timestamp": 1788771578
+        },
+        {
+          "merge": "814a5a7c6e27fcb52c524ca4fe2b05108903058c",
+          "parents": [
+            "c1c25da365cf14878cf5317147e7a09b5d124df5",
+            "c5b184a052bac0e7706fe0008fdc336224815fec"
+          ],
+          "target": "e66cade323f5c11cebb4bd0f099e634b245adccd",
+          "timestamp": 1786049059
+        },
+        {
+          "merge": "8c5e87d7d7bd3ecd37cedccbf0e6110b5d1f5688",
+          "parents": [
+            "4188f13530982d8a898159c0c49888665c89fbad",
+            "30417310c870fb764a306b83d6b6aa14b527e786"
+          ],
+          "target": "29320d636a4a0c099f948d864bcb3418f638d0d7",
+          "timestamp": 1620599735
+        }
+      ],
+      "domain": "general utilities",
+      "examined_two_parent_merges": 141,
+      "head": "d31d821d56c8f7756af9c30a864077f2e5855321",
+      "id": "boltons",
+      "roots": [
+        "boltons",
+        "src/boltons"
+      ],
+      "url": "https://github.com/mahmoud/boltons.git"
+    }
+  ],
+  "selected_cases": 49,
+  "selection_rule": "All eight public development candidates, latest eight reachable two-parent merges with a unique merge-base strictly different from both parents and a Python source change, ordered by descending committer timestamp then SHA; no oracle or detector outcome enters selection. Every selected case and exclusion is retained. If fewer than five repositories are eligible, preregister a separate extension before building any extension state; never replace old results."
+}

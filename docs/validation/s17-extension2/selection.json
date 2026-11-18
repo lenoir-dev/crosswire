@@ -1,0 +1,300 @@
+{
+  "apparatus_freeze_sha256": "5e7dc0bbedbc88d55dec3fb3767322b1f2cf991d30d5b2016ecebb5e7a1e2170",
+  "extension_driver_sha256": "ff1ca00261c2e1112eb25ae019903b2236d04c2662a4f2bd81c4646a8829962f",
+  "extension_of_sha256": "506fcac5c3f1909041481eaa4e1c95f59064d8c33220c227439be2d83042e36f",
+  "policy_sha256": "c57e2bb91504730ae5c6750b4a40c91225401c2e4356f93d1868fc2d38262730",
+  "previous_selection_sha256": "ba45b49a2cca6d7d7fe389478bb3f20cbcaee4146b6c2b23948bc1261df0d3f0",
+  "repositories": [
+    {
+      "cases": [],
+      "divergent_modern_python_merges": 0,
+      "domain": "HTTP header compression",
+      "examined_two_parent_merges": 223,
+      "head": "6aa8c0b2265f558f7184047aa09dcc573e625f82",
+      "id": "hpack",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "hpack",
+        "src/hpack"
+      ],
+      "url": "https://github.com/python-hyper/hpack.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "27e859cbf8c895263db15c8adeb7ed82ba7f993e",
+          "parents": [
+            "7c90de66247b59cd59415088445552d63a1044cb",
+            "6cb3821bf3b048c7b4182c3d87432c433a5f1a57"
+          ],
+          "target": "df45180ec8b982810bd5837cf721da984e64faae",
+          "timestamp": 1599980122
+        },
+        {
+          "merge": "f8acb2ba3ff7ad750c4c73d7b0137302adf83c4f",
+          "parents": [
+            "396f19d00fa20a8fc891ab9351bee64b334aac3a",
+            "002f37dde390ab2f189c579f5fb18e191f7eed89"
+          ],
+          "target": "9cf45ebf8c9d59442e4739befeac968002510699",
+          "timestamp": 1521657613
+        },
+        {
+          "merge": "396f19d00fa20a8fc891ab9351bee64b334aac3a",
+          "parents": [
+            "9bb8722a66fe19547ea20b3896cbc3088cb0b0ab",
+            "ec0af031e646251b91c15761012ede966d455358"
+          ],
+          "target": "9cf45ebf8c9d59442e4739befeac968002510699",
+          "timestamp": 1521657181
+        },
+        {
+          "merge": "45b6467b74fa75a9ec51e97e1529e2387646b4a9",
+          "parents": [
+            "8f40e9cfeda7edf191563d9ca86b74cdf92e9d51",
+            "2c2cd33b790088da75d0e944390556cffa2447c5"
+          ],
+          "target": "9d9b8a86a42df73d3673167c3f0154633e362542",
+          "timestamp": 1515677563
+        }
+      ],
+      "divergent_modern_python_merges": 10,
+      "domain": "SQL parsing",
+      "examined_two_parent_merges": 149,
+      "head": "09dbe1eec31ed1b3cd05366748865f11ba427d32",
+      "id": "sqlparse",
+      "rejected_native_merge_failures": 6,
+      "roots": [
+        "sqlparse",
+        "src/sqlparse"
+      ],
+      "url": "https://github.com/andialbrecht/sqlparse.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "d26c5ee1b44af1f2959bb4a00535df41e126d4b5",
+          "parents": [
+            "73d9eca5714027f9272e5daf81ffd53884a55f1b",
+            "574bb08214b4d4c1ec8f9fe03dc91adcd96d80e2"
+          ],
+          "target": "414199246e4871669896756279e3460ff0364839",
+          "timestamp": 1710253232
+        },
+        {
+          "merge": "469932c75c14757f119da83b6db7c26a1a75fa2f",
+          "parents": [
+            "1533d58a8f9f9fd197a5f6b0c21ce90b5ce33d3f",
+            "40bb63128de14b98fc083e6807bdd78ee8eb487b"
+          ],
+          "target": "4b6a097f4ada716639aa1727aaaab64a829a873f",
+          "timestamp": 1547895608
+        },
+        {
+          "merge": "1533d58a8f9f9fd197a5f6b0c21ce90b5ce33d3f",
+          "parents": [
+            "74e552a64d9e0d208055104b698123a68e2addef",
+            "6d79aa121dddd5f8671ae964c12fa1c066669e3c"
+          ],
+          "target": "4b6a097f4ada716639aa1727aaaab64a829a873f",
+          "timestamp": 1547895413
+        },
+        {
+          "merge": "74e552a64d9e0d208055104b698123a68e2addef",
+          "parents": [
+            "d9f6bfb3b97e875c13fdb266dd2fcd2545253499",
+            "83f89ffeeb00c62a1af3758fc4052eedb9cd5022"
+          ],
+          "target": "4b6a097f4ada716639aa1727aaaab64a829a873f",
+          "timestamp": 1547895284
+        }
+      ],
+      "divergent_modern_python_merges": 13,
+      "domain": "Unicode transliteration",
+      "examined_two_parent_merges": 26,
+      "head": "158ec2c7e7b5d4bc7894cb2a99e050cdf3229c48",
+      "id": "unidecode",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "unidecode",
+        "src/unidecode"
+      ],
+      "url": "https://github.com/avian2/unidecode.git"
+    },
+    {
+      "cases": [],
+      "divergent_modern_python_merges": 0,
+      "domain": "interpreter compatibility",
+      "examined_two_parent_merges": 47,
+      "head": "c8e394065cd541a16c040515dc0afb85cf22a7c3",
+      "id": "six",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "six.py",
+        "src/six.py"
+      ],
+      "url": "https://github.com/benjaminp/six.git"
+    },
+    {
+      "cases": [],
+      "divergent_modern_python_merges": 0,
+      "domain": "text transliteration",
+      "examined_two_parent_merges": 6,
+      "head": "a0005d7a0b43a6aa21ce8a63f1da48c6c44f03e1",
+      "id": "text-unidecode",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "text_unidecode",
+        "src/text_unidecode"
+      ],
+      "url": "https://github.com/kmike/text-unidecode.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "35a4cec88b07a35275b2c84d80e97ccd516c7894",
+          "parents": [
+            "dc6d2e6548b9c27f298832818c981d0ebbeb8ac0",
+            "81531225f014801795d91583b6232a6533c8ac7c"
+          ],
+          "target": "39d70aa20c8676011b146c61b7026afcc4570e20",
+          "timestamp": 1677699144
+        },
+        {
+          "merge": "a627eef681674fe208d0fe431fc7ccf6e9904af5",
+          "parents": [
+            "01376062194428e286b8916cbdb7008684db0350",
+            "f8024474aad70b9be32e0b00eee283b6b6ffa426"
+          ],
+          "target": "8585c7b7215a04fa4a21ebf8ece2ce34610d3961",
+          "timestamp": 1643828220
+        },
+        {
+          "merge": "82a58b6a9b06465a488bc53f15e0ef4c9ce18800",
+          "parents": [
+            "a3f3081de2032f97ec009eb142f4a92fc84869ac",
+            "da90ce2b7ad6565e92816c6232b7aa6a164e0f3d"
+          ],
+          "target": "2f36cdbbff46d5f9142bf52b454959c06934a06b",
+          "timestamp": 1632786075
+        },
+        {
+          "merge": "e923d5172fcd9865fa7ac75f617687cde4d99ea3",
+          "parents": [
+            "a82e50dd4b3df31819ebad8cc68f689188669a17",
+            "f16d67ef96f2479a086b610bd9c05c3cf96978fc"
+          ],
+          "target": "6d0a1f4d57aa2f62d1593430bf67eea4ef6d2dae",
+          "timestamp": 1622910747
+        }
+      ],
+      "divergent_modern_python_merges": 11,
+      "domain": "configuration loading",
+      "examined_two_parent_merges": 39,
+      "head": "0573e6f96637f08fb4cb85e0552f0622d36827d4",
+      "id": "python-decouple",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "decouple.py",
+        "src/decouple.py"
+      ],
+      "url": "https://github.com/HBNetwork/python-decouple.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "7e18e1cf505f3a5d859546871e096481636fa21f",
+          "parents": [
+            "9644956fb57167bc2e91f47a34a1ee2b0b03072f",
+            "2f8412a3d8cfd9ce8df5d46066415d8de2388949"
+          ],
+          "target": "c2e1cfd3e1d01f07dfcc8b4ffeec3e06e04a4fa6",
+          "timestamp": 1546257536
+        },
+        {
+          "merge": "5992d5ee82aa2834cd0173ad4d69923cd575bf7b",
+          "parents": [
+            "d8e042ce28d9e55a46be9df98d0b88cb1ee0e01b",
+            "e6ef8afbbca2f3e777df4ef5eef528709ab697ed"
+          ],
+          "target": "e72fd3bfb24f89888f51825313de98c397641674",
+          "timestamp": 1544884897
+        },
+        {
+          "merge": "d8e042ce28d9e55a46be9df98d0b88cb1ee0e01b",
+          "parents": [
+            "54c7f343ec9132b5e760da445c0e3597524a0fcc",
+            "43ea94b161cf709a3367be07ed5c27888344986d"
+          ],
+          "target": "e72fd3bfb24f89888f51825313de98c397641674",
+          "timestamp": 1544884879
+        }
+      ],
+      "divergent_modern_python_merges": 3,
+      "domain": "data validation",
+      "examined_two_parent_merges": 120,
+      "head": "92c6bafbfe1dbad2ad0f95a104e2c680bc440252",
+      "id": "voluptuous",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "voluptuous",
+        "src/voluptuous"
+      ],
+      "url": "https://github.com/alecthomas/voluptuous.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "141734d98ac79c165ec31aa1c18dd29efc45ac49",
+          "parents": [
+            "07e30cf011056386c3dade2502a53eb2b1d4b3c1",
+            "cdb9327fd597dda1aff703e6e5b98d79503c6f4e"
+          ],
+          "target": "f06ac6a5b32f2eaa14e66b45eb07c0fcaeb3f1c6",
+          "timestamp": 1765472203
+        },
+        {
+          "merge": "07e30cf011056386c3dade2502a53eb2b1d4b3c1",
+          "parents": [
+            "f06ac6a5b32f2eaa14e66b45eb07c0fcaeb3f1c6",
+            "9170711017c2be9e3057a384e4a6061ef71bdc6f"
+          ],
+          "target": "788430922aa28e50ba435125a1f2eec5c695ad70",
+          "timestamp": 1765425475
+        },
+        {
+          "merge": "f801dd15962e714042bab34090c240f72138bced",
+          "parents": [
+            "47b4f47a9710d3045f081086e7defcadfff4289a",
+            "0c7a6dd72886151a92da3eb5b5ab88e4193e8e1a"
+          ],
+          "target": "bbe7300c60056f52413603cf3e2bcd0b6afeda3d",
+          "timestamp": 1680148300
+        },
+        {
+          "merge": "bbe7300c60056f52413603cf3e2bcd0b6afeda3d",
+          "parents": [
+            "279b117b3369f1eccfcc9fd70986eb1580646c29",
+            "75f3d2cd07d9f7496807b004c3c73e17aeb339d4"
+          ],
+          "target": "70cf143bb89eb32770d114b0ab84705970f1f8e6",
+          "timestamp": 1655494645
+        }
+      ],
+      "divergent_modern_python_merges": 13,
+      "domain": "JSON query language",
+      "examined_two_parent_merges": 155,
+      "head": "2812594e69d43098ef60f81f4efc404c071b0418",
+      "id": "jmespath",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "jmespath",
+        "src/jmespath"
+      ],
+      "url": "https://github.com/jmespath/jmespath.py.git"
+    }
+  ],
+  "selected_cases": 19,
+  "selection_rule": "All eight declared supplement-2 candidates, latest four reachable two-parent merges since 2018-01-01 UTC with one merge-base different from both parents, a Python change and a clean native textual merge. Descending committer timestamp then SHA. Structural checks only; no oracle/detector outcome selection. Retain every selected outcome and both earlier cohorts. Chosen for small stdlib-oriented production surfaces, not observed labels. Fixed dependencies and full production/test scope remain unchanged; no promise that optional test dependencies exist.",
+  "supplement2_driver_sha256": "9e6be9464b0224ff9d50abfdf43db2190509e140975a57d74bbe8a6711b44c61"
+}

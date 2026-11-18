@@ -1,0 +1,402 @@
+{
+  "apparatus_freeze_sha256": "5e7dc0bbedbc88d55dec3fb3767322b1f2cf991d30d5b2016ecebb5e7a1e2170",
+  "extension_driver_sha256": "ff1ca00261c2e1112eb25ae019903b2236d04c2662a4f2bd81c4646a8829962f",
+  "extension_of_sha256": "506fcac5c3f1909041481eaa4e1c95f59064d8c33220c227439be2d83042e36f",
+  "policy_sha256": "c57e2bb91504730ae5c6750b4a40c91225401c2e4356f93d1868fc2d38262730",
+  "repositories": [
+    {
+      "cases": [
+        {
+          "merge": "2edab5eb6d1d68d628e68b1aa0796d2388733446",
+          "parents": [
+            "6995073de5ebc58d97dc017a7c2b7c5904f4c485",
+            "2e3774328e26287780f0ae849e3cb5db2ba4e78b"
+          ],
+          "target": "012fd24a1f2fba6dba63641097e9f489f132bee7",
+          "timestamp": 1791987376
+        },
+        {
+          "merge": "87f130aa18d8fdf9c92585e72423eca7f3de727d",
+          "parents": [
+            "8242055e7a41a0a8f3cde5cde059a19383af4489",
+            "e3e34d8120aac5abbc3ac247f52390fa8eaa00a0"
+          ],
+          "target": "60b15251ee18560f781c557b6b9ef3de4d786bee",
+          "timestamp": 1791623451
+        },
+        {
+          "merge": "8242055e7a41a0a8f3cde5cde059a19383af4489",
+          "parents": [
+            "1729627bdd60eedf85af698cf6f75722dee59500",
+            "b7ee9181dbe897573d03e8686833f931defd8874"
+          ],
+          "target": "86670ff63cccaaa61a234b3cab0a4f70abfbb66b",
+          "timestamp": 1791548530
+        },
+        {
+          "merge": "1729627bdd60eedf85af698cf6f75722dee59500",
+          "parents": [
+            "86670ff63cccaaa61a234b3cab0a4f70abfbb66b",
+            "742393e78e441a6e05249237295a79f3a37dbe01"
+          ],
+          "target": "f91048bede722a546a0fc7e776231459b90af75b",
+          "timestamp": 1791544645
+        }
+      ],
+      "divergent_modern_python_merges": 70,
+      "domain": "plugin dispatch",
+      "examined_two_parent_merges": 298,
+      "head": "cd05478c8ead668f969cc0da17d85baf46bf413f",
+      "id": "pluggy",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "src/pluggy",
+        "pluggy"
+      ],
+      "url": "https://github.com/pytest-dev/pluggy.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "2502e28b194aa08825b2d52b7b089b3cd77df04f",
+          "parents": [
+            "b0074dc9f1c2bfee9250178e91191f3a7d2ce929",
+            "9741850397e6f96a242a6f37c32de548ce55bc16"
+          ],
+          "target": "316fbfaf2752d89326e1e75b45cd070f5b5ace9a",
+          "timestamp": 1794315069
+        },
+        {
+          "merge": "40d8c03a1553953350d787e45f1cb768e2c14e6a",
+          "parents": [
+            "48359c3a7c2c8648a134ea8469e802b5aa8d5030",
+            "23c9e088a909f16d0d8dc03b5090c66964c428b0"
+          ],
+          "target": "e038536fbee6b5e76b180fce6694fd54661ced12",
+          "timestamp": 1791258146
+        },
+        {
+          "merge": "30a0fa8c8061a351c906e3e663e2988f4ca37dc0",
+          "parents": [
+            "16793eaddac67de0b8d621ae4e42e05b927e8d67",
+            "e30889cdaf30b135dc8f6fa685104c3d4c172db3"
+          ],
+          "target": "9cae43103df70bac6fde7b9f35ad11a9f1be0cb4",
+          "timestamp": 1742404737
+        },
+        {
+          "merge": "6bc5528789498c360577770cbb4bb779134ffce1",
+          "parents": [
+            "74434d3d31ecd0a0f390226d6eab049f181b4dec",
+            "61efb533a02bfc4385e47ae4e87ffd2263ba2a7a"
+          ],
+          "target": "1022b07e34bdb1fd378eaedee0bef8c98d77aaf4",
+          "timestamp": 1670320290
+        }
+      ],
+      "divergent_modern_python_merges": 7,
+      "domain": "INI parsing",
+      "examined_two_parent_merges": 46,
+      "head": "e0f1ee1ccd69634acf5d127ed2ea6e628f18da31",
+      "id": "iniconfig",
+      "rejected_native_merge_failures": 1,
+      "roots": [
+        "src/iniconfig",
+        "iniconfig"
+      ],
+      "url": "https://github.com/pytest-dev/iniconfig.git"
+    },
+    {
+      "cases": [],
+      "divergent_modern_python_merges": 0,
+      "domain": "exception compatibility",
+      "examined_two_parent_merges": 0,
+      "head": "62edd3a5728caa22b668a982a6682983fe3076ba",
+      "id": "exceptiongroup",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "src/exceptiongroup",
+        "exceptiongroup"
+      ],
+      "url": "https://github.com/agronholm/exceptiongroup.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "36b1420f985a6df1e21a2c5b6579f70f27a12416",
+          "parents": [
+            "76f337f5598a2f0de0776ebe0bc80202df2c90cf",
+            "e30ee893e9bb01d4cb44a7814c5c8d5bb3d45ec8"
+          ],
+          "target": "6a3192f306ead4900a33fa8c47e5af5430e37692",
+          "timestamp": 1742634035
+        },
+        {
+          "merge": "73bc6fbb6efc60bd9452de99ddd3524fd2ad7230",
+          "parents": [
+            "684e5f04e1f11b3258615905e98ad78b3833cbd3",
+            "16d0191e8db76fc5286582bbcdacb4c21fadf8a6"
+          ],
+          "target": "6a3192f306ead4900a33fa8c47e5af5430e37692",
+          "timestamp": 1742633671
+        },
+        {
+          "merge": "c558b6064031f0de2fe2e41ef90f3056a32a9d7c",
+          "parents": [
+            "6ac2ab0a3a472fcc6a3f88ce710885f9bbbf338c",
+            "2fc73fb91489d4cd25735384f4c7c7587f0f5f49"
+          ],
+          "target": "bf6cd538bd1d4eec4b8ba735223455b55afb862f",
+          "timestamp": 1536127289
+        },
+        {
+          "merge": "6ac2ab0a3a472fcc6a3f88ce710885f9bbbf338c",
+          "parents": [
+            "66c0c869c61b386f252b302aee30ea893b7d8c52",
+            "9ed2beecad145dbbb3982a297d1007035ed2f358"
+          ],
+          "target": "f916e3d3e040909a87c4171a4192665b6d394a56",
+          "timestamp": 1536027064
+        }
+      ],
+      "divergent_modern_python_merges": 8,
+      "domain": "result containers",
+      "examined_two_parent_merges": 34,
+      "head": "03ed6218b08001877745bb1a9e180c8c5cf7c903",
+      "id": "outcome",
+      "rejected_native_merge_failures": 1,
+      "roots": [
+        "src/outcome",
+        "outcome"
+      ],
+      "url": "https://github.com/python-trio/outcome.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "114803a29ce50116dc47951c690ad4892b1a36ed",
+          "parents": [
+            "9462006f6ce4941661888228cbd4ac1ea80689b0",
+            "dff7cc397a26ed4acdedd92d1bda6c8f18a6ed9f"
+          ],
+          "target": "31e626c64e1e28db3cd73a6aa0ac057f1b915c18",
+          "timestamp": 1745464216
+        },
+        {
+          "merge": "5542487aa2ab7991eb9bec7e769670f7b95bc971",
+          "parents": [
+            "70fe3f73010604fa9321acb8976ca90f66cdfac6",
+            "41a3467dd98271529cce361c756da9e34d8e2b00"
+          ],
+          "target": "68e32dbb475d5241f077afaa278b6ef248b1f9bd",
+          "timestamp": 1597311058
+        },
+        {
+          "merge": "460b7c639e836c1eb55e039ccb4b7485f8add53a",
+          "parents": [
+            "0835ca14c350e8c9e58b227d6a27d093cb0e3adc",
+            "05891b77ec4f9059ca088c3b9eb39351812b7512"
+          ],
+          "target": "68e32dbb475d5241f077afaa278b6ef248b1f9bd",
+          "timestamp": 1596147772
+        },
+        {
+          "merge": "28777d82296ab941dab27b94312ecac4eee975fb",
+          "parents": [
+            "660b6a23366dab75a854fdc35e30217cd6fe4338",
+            "f357f0e7f50c82961abf46e5974bafdd2c3f1339"
+          ],
+          "target": "429f465220bf1a9d5ed211c70ff99df59c39d925",
+          "timestamp": 1522823489
+        }
+      ],
+      "divergent_modern_python_merges": 7,
+      "domain": "HTTP/1 protocol",
+      "examined_two_parent_merges": 43,
+      "head": "62c5068c971579d61fa1b55373390e12f25fd856",
+      "id": "h11",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "h11",
+        "src/h11"
+      ],
+      "url": "https://github.com/python-hyper/h11.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "9f0e08c762dc2b9e18a38e8dd714790a319ed836",
+          "parents": [
+            "91d193de976c927083022b4c148198cd44c5fb70",
+            "d64f5fa1fe9ee5e517cd2e6eadba224116f7cff3"
+          ],
+          "target": "22eddc191c2ae3fc152ca13cf2d6fa55ac3f1568",
+          "timestamp": 1533101956
+        }
+      ],
+      "divergent_modern_python_merges": 1,
+      "domain": "async language compatibility",
+      "examined_two_parent_merges": 9,
+      "head": "9f0e08c762dc2b9e18a38e8dd714790a319ed836",
+      "id": "async-generator",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "async_generator",
+        "src/async_generator"
+      ],
+      "url": "https://github.com/python-trio/async_generator.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "856385bc9877b336b8fa40759d35f7a6894517a7",
+          "parents": [
+            "f4e914ba6e3c1adbdb5a707697c48ecfeda61a56",
+            "e8b75b383c1d059da0d2e2e011756d806afa9d13"
+          ],
+          "target": "53c2a444657f37454c0866672bfedab018ebe8d7",
+          "timestamp": 1615071578
+        }
+      ],
+      "divergent_modern_python_merges": 2,
+      "domain": "actor concurrency",
+      "examined_two_parent_merges": 78,
+      "head": "9caec0e18e3bbf290de512752ffe91d489e2aad1",
+      "id": "pykka",
+      "rejected_native_merge_failures": 1,
+      "roots": [
+        "pykka",
+        "src/pykka"
+      ],
+      "url": "https://github.com/jodal/pykka.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "2e0897d655d6f1a2d4e8a04fdf2cb82195bf014b",
+          "parents": [
+            "48755d189fb0447d1e03a6dcaf51bdd6b349f660",
+            "cc994b39f8610a14e616ae641b540662e966eba6"
+          ],
+          "target": "925bcaa5f6e415678106b94fbadd5c0d404b48b0",
+          "timestamp": 1612739670
+        },
+        {
+          "merge": "41f88b33b8e20c8b87c0148d15f654ccea01440c",
+          "parents": [
+            "adf4aa01c7bb0aa59068fe266e99560f819de335",
+            "f6bfab34329ee9a3eebbe23d4ff0d40acd01ab7a"
+          ],
+          "target": "5d2653c28b1029f1e9ddc85cd9ef26c29a79fcea",
+          "timestamp": 1564760608
+        },
+        {
+          "merge": "5d2653c28b1029f1e9ddc85cd9ef26c29a79fcea",
+          "parents": [
+            "3108fc3194c2f3071d6e41adfd21577fc62c52fc",
+            "cbda528e1f77d0216dbfa57af0237df36b0ff6f8"
+          ],
+          "target": "efca40fb0b3b0863a83bea6b434f73d05ff6face",
+          "timestamp": 1548255736
+        },
+        {
+          "merge": "c57abf2db32003cc41c72412adae093b5fde06e1",
+          "parents": [
+            "bac8c68192aba20916d25b5ccebc7add11b98490",
+            "9e01d7fbfbdd769a0cf61279450869c38db8485c"
+          ],
+          "target": "7ab021c7d7b0f3e35bbb57b130134470283d3543",
+          "timestamp": 1547033466
+        }
+      ],
+      "divergent_modern_python_merges": 8,
+      "domain": "job scheduling",
+      "examined_two_parent_merges": 55,
+      "head": "82a43db1b938d8fdf60103bd41f329e06c8d3651",
+      "id": "schedule",
+      "rejected_native_merge_failures": 2,
+      "roots": [
+        "schedule",
+        "src/schedule"
+      ],
+      "url": "https://github.com/dbader/schedule.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "a853965f963566448b0b2db28ee5d4fbcea3d569",
+          "parents": [
+            "75afe24d01763e65884ca1aa363cb142c4d72ffa",
+            "b809210a51339a6a30b195d5bcc6f140ad72ec68"
+          ],
+          "target": "f4f0b84fd84265b296312153628cd9dbd5961664",
+          "timestamp": 1589427395
+        },
+        {
+          "merge": "c0d1fcc75026a3dbcd41ee746a6662540f07e8b0",
+          "parents": [
+            "e02a1c1a4e43e2d6bd44a1e660c2e89e3c2d2a5e",
+            "9aa18a5639a960c713a4f4ea06202256571a839b"
+          ],
+          "target": "886e55c70ab7b1a8022947e047c1ff37fbe98639",
+          "timestamp": 1531588600
+        },
+        {
+          "merge": "39ead7e0e17a57a233a994ac0587ee9f3643d086",
+          "parents": [
+            "886e55c70ab7b1a8022947e047c1ff37fbe98639",
+            "e890fbe596c31a4c4e48690e25ed926d2d1fd743"
+          ],
+          "target": "7c0ee32637e141ff688c14abff08e1e2d4eba1ce",
+          "timestamp": 1531588079
+        }
+      ],
+      "divergent_modern_python_merges": 5,
+      "domain": "TOML parsing",
+      "examined_two_parent_merges": 7,
+      "head": "65bab7582ce14c55cdeec2244c65ea23039c9e6f",
+      "id": "toml",
+      "rejected_native_merge_failures": 2,
+      "roots": [
+        "toml",
+        "src/toml"
+      ],
+      "url": "https://github.com/uiri/toml.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "52c993e00cee9dc7ed49954fe67e7be41990db21",
+          "parents": [
+            "2be28d29a5541a943460e3f6ebc41e98b0081b52",
+            "66b6bd73f83235ced6154fa2148047bbce94359e"
+          ],
+          "target": "0ac3c1a0a37e7901104305f0e2981064aefb51fb",
+          "timestamp": 1542547312
+        },
+        {
+          "merge": "66b6bd73f83235ced6154fa2148047bbce94359e",
+          "parents": [
+            "0ac3c1a0a37e7901104305f0e2981064aefb51fb",
+            "e54c5dfceaef042f5182947875daf83ad02f0435"
+          ],
+          "target": "5fdc971f3666d099f3b982834b0fd011fe8b3b53",
+          "timestamp": 1542545326
+        }
+      ],
+      "divergent_modern_python_merges": 2,
+      "domain": "parser generation",
+      "examined_two_parent_merges": 10,
+      "head": "09c2ba30df9143298ae5eef79d0baf23755d4cd9",
+      "id": "sly",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "sly",
+        "src/sly"
+      ],
+      "url": "https://github.com/dabeaz/sly.git"
+    }
+  ],
+  "selected_cases": 27,
+  "selection_rule": "All ten declared candidates, latest four reachable two-parent merges since 2018-01-01 UTC with one merge-base different from both parents, a Python change and a clean native textual merge. Descending committer timestamp then SHA. Structural checks only, no checker or detector outcomes used. Every selected case is retained. No dependency or M3 changes. Supplement the original cohort; never replace its exclusions."
+}

@@ -1,0 +1,256 @@
+{
+  "apparatus_freeze_sha256": "5e7dc0bbedbc88d55dec3fb3767322b1f2cf991d30d5b2016ecebb5e7a1e2170",
+  "extension_driver_sha256": "ff1ca00261c2e1112eb25ae019903b2236d04c2662a4f2bd81c4646a8829962f",
+  "extension_of_sha256": "506fcac5c3f1909041481eaa4e1c95f59064d8c33220c227439be2d83042e36f",
+  "policy_sha256": "c57e2bb91504730ae5c6750b4a40c91225401c2e4356f93d1868fc2d38262730",
+  "previous_selection_sha256": "a497a4a8fb8c5766a2cc33595d26f0ee5115bdcd588a0e2173a8736019614bcf",
+  "repositories": [
+    {
+      "cases": [
+        {
+          "merge": "d6c38543a95c3adec7958fc659f4081972a3f1d1",
+          "parents": [
+            "b12ad5ed88bb0ab21e922c43b6a1b897122ff76d",
+            "5cacafbd106b40afc083b9b2eb01361f6bd67467"
+          ],
+          "target": "16f212741b5cba7495ad45f448cbc5361ae9e5bd",
+          "timestamp": 1786908333
+        },
+        {
+          "merge": "024a697ba7b3cbaafba1f818fa816817553c7de0",
+          "parents": [
+            "09bd5bd5e1482ab102bc481390562bda49799621",
+            "24cec77f1a0f66983bcf43079a6f34b9438a0818"
+          ],
+          "target": "c50ba1573bd7fc863c0a04336a6eb505bfcef055",
+          "timestamp": 1754158001
+        },
+        {
+          "merge": "09bd5bd5e1482ab102bc481390562bda49799621",
+          "parents": [
+            "db26deb50a67a2efa51e4cb12578d9ea0cd15c12",
+            "f9301e4dfa829460d3ce1c066d763a48a4bdd372"
+          ],
+          "target": "c50ba1573bd7fc863c0a04336a6eb505bfcef055",
+          "timestamp": 1754156589
+        },
+        {
+          "merge": "c8e36a0614c8ed2d1c4bd340f16eb5f5268b19e9",
+          "parents": [
+            "fc2c2bad7e0c49b4bb13768e06677d292dd628be",
+            "035b52f15eb6ecca44460567d1961ab47a758c12"
+          ],
+          "target": "3d5962b3bdd019e0714a2c95ac15a0c4225e9582",
+          "timestamp": 1723208574
+        }
+      ],
+      "divergent_modern_python_merges": 35,
+      "domain": "code style checking",
+      "examined_two_parent_merges": 363,
+      "head": "b157cc3b7e73870a87d59151001b9687395c73a2",
+      "id": "pycodestyle",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "pycodestyle.py",
+        "pycodestyle",
+        "src/pycodestyle.py"
+      ],
+      "url": "https://github.com/PyCQA/pycodestyle.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "60cf21c21f8e5880f9907561c53732e80d1be400",
+          "parents": [
+            "851852240f2fa4453c226ccc5ae88bc03b467388",
+            "fa9bc755dd5190b1ec0e149491d1dbbdbb82cebd"
+          ],
+          "target": "835a5400881b7460998be51d871fd36f836db3c9",
+          "timestamp": 1701611750
+        },
+        {
+          "merge": "2d4dd9435fcb05aaa89ba0392a84cb1d30a87dc9",
+          "parents": [
+            "7c54a18f26ace8531d7ec6e60848ddfee5b2a38a",
+            "80794d37d7d3e35cf243877a396e53f70243e154"
+          ],
+          "target": "4b287e2c282606fa870d855837979a39e0b2cb0d",
+          "timestamp": 1617407377
+        },
+        {
+          "merge": "f318ade8d139a3412c29bf992f447f1f1f8b3d83",
+          "parents": [
+            "d0d361ddc9dd4dc071d2b8658ae6c6c1dc613fc5",
+            "d7ce826426230a90d7086a079f9095630e2f5cf1"
+          ],
+          "target": "763c7de7fa125e760ebe16882de4f084e1cb20a7",
+          "timestamp": 1536440664
+        },
+        {
+          "merge": "c2f5b386458cfda0aa4239f4d11b4e5e75027bda",
+          "parents": [
+            "de233b7bc6738a0e6366632ab37ec6c1fccfac1d",
+            "2a5d6ae00b7442c0c014268f82aa223c0f5ea5c3"
+          ],
+          "target": "ae9f6b9e2799daa80dad937d9462628b354dab97",
+          "timestamp": 1527727323
+        }
+      ],
+      "divergent_modern_python_merges": 4,
+      "domain": "code complexity",
+      "examined_two_parent_merges": 41,
+      "head": "7f9921b7c4eef88d3926b94d8b52f732255833db",
+      "id": "mccabe",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "mccabe.py",
+        "mccabe",
+        "src/mccabe.py"
+      ],
+      "url": "https://github.com/PyCQA/mccabe.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "4705e84ce6cb31b6df0bd6a641280617b27b66d0",
+          "parents": [
+            "55eed75c5d1337380314d03098703289e511af29",
+            "7930174f1a46961045b5bb0beba6b009f30c9dd9"
+          ],
+          "target": "b37f12f17a7c5bd376ae895451ee683fbdb5ceeb",
+          "timestamp": 1584292808
+        }
+      ],
+      "divergent_modern_python_merges": 1,
+      "domain": "atomic file updates",
+      "examined_two_parent_merges": 8,
+      "head": "4183999d9b7e81af85dee070d5311299bdf5164c",
+      "id": "atomicwrites",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "atomicwrites",
+        "src/atomicwrites"
+      ],
+      "url": "https://github.com/untitaker/python-atomicwrites.git"
+    },
+    {
+      "cases": [],
+      "divergent_modern_python_merges": 0,
+      "domain": "TLS trust data loading",
+      "examined_two_parent_merges": 35,
+      "head": "ca446ca404ff3b962a0193f36e03d1eabb231968",
+      "id": "certifi",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "certifi",
+        "src/certifi"
+      ],
+      "url": "https://github.com/certifi/python-certifi.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "c3aea90689f7adbc14f6eec8a39bc653d3f7ae41",
+          "parents": [
+            "8f132c42b14f494d2b222597946049f3da1bca98",
+            "acbb13fe5fad5e7bfa10c37fee01b55d7c4cbc8d"
+          ],
+          "target": "003595fbdd0b43f32fd47fed21252613971b9f13",
+          "timestamp": 1740413860
+        },
+        {
+          "merge": "b8dafb5ddc2caff0bc080b02ec9f90e8b28034ca",
+          "parents": [
+            "c96c9f5bb45093edbbdc0193303ef01143c60dc6",
+            "e446ee43919b0adfefd27ec04b2485a40bc77879"
+          ],
+          "target": "09c00eda9599e53f7e6b84d7c91ecd3b42f71772",
+          "timestamp": 1714236454
+        },
+        {
+          "merge": "c25f41e8fda940c529e026d520e005551eb3742d",
+          "parents": [
+            "3acd081046c26e473b07762bfa42df1f8bf9f49a",
+            "1fb750310e35b4d8780f832cbd70ca398f763a5c"
+          ],
+          "target": "52358ac842764053ffe2efaac8f3f30466c2ddfa",
+          "timestamp": 1704563922
+        },
+        {
+          "merge": "1fb750310e35b4d8780f832cbd70ca398f763a5c",
+          "parents": [
+            "e562be27bf949b948b6bc2c5499cbc6c28dcddce",
+            "ad7ec276f93c426b36254a3de3fe503d424a1670"
+          ],
+          "target": "586429f66046dd1085904a792a87cb6db3c15319",
+          "timestamp": 1704559078
+        }
+      ],
+      "divergent_modern_python_merges": 13,
+      "domain": "data validation",
+      "examined_two_parent_merges": 104,
+      "head": "310a1239b62f500284ce3bd91b7dabf70467f23e",
+      "id": "schema",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "schema",
+        "schema.py",
+        "src/schema"
+      ],
+      "url": "https://github.com/keleshev/schema.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "1b6c199f87fd547e50d7214923f84624b7cff6c2",
+          "parents": [
+            "185d9a7f0e115e99f142c5bd90282e5b8791c1c5",
+            "31f3fd29d8832f5d024d1ee35867244660f8c40f"
+          ],
+          "target": "76bc6950ca34805a2164ab0560701bbc0f957ef3",
+          "timestamp": 1545408203
+        },
+        {
+          "merge": "2eb1900832c674b85699a8b8a0e2ce8327d2e0d9",
+          "parents": [
+            "5c5999037d5f9a90012606521fab195737be3467",
+            "e80580fb1b3a7444b0daabf927f0198dfa54115a"
+          ],
+          "target": "9587709fdcc0b4af1b82dd82ac4374f93fac2810",
+          "timestamp": 1535021631
+        }
+      ],
+      "divergent_modern_python_merges": 3,
+      "domain": "repeated test execution",
+      "examined_two_parent_merges": 23,
+      "head": "a84eaa91965a00af03d8c3576e5b0f32114a06c8",
+      "id": "pytest-repeat",
+      "rejected_native_merge_failures": 1,
+      "roots": [
+        "pytest_repeat.py",
+        "pytest_repeat",
+        "src/pytest_repeat"
+      ],
+      "url": "https://github.com/pytest-dev/pytest-repeat.git"
+    },
+    {
+      "cases": [],
+      "divergent_modern_python_merges": 0,
+      "domain": "test ordering",
+      "examined_two_parent_merges": 11,
+      "head": "daa15833ed6a4ed2c8f572873b87c2faf9041256",
+      "id": "pytest-order",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "pytest_order",
+        "src/pytest_order"
+      ],
+      "url": "https://github.com/pytest-dev/pytest-order.git"
+    }
+  ],
+  "selected_cases": 15,
+  "selection_policy": "docs/validation/s17-extension4/policy.json",
+  "selection_policy_sha256": "7561c8d9d49f8dc721f035fe6aea9b178b43609ff9a96403407ceda9cbff9b45",
+  "selection_rule": "All seven available declared supplement-4 candidates, latest four reachable two-parent merges since 2018-01-01 UTC with one merge-base different from both parents, a Python change and a clean native textual merge; descending committer timestamp then SHA. Structural checks only, no oracle/detector outcome selection. Stdlib-oriented code quality, file integrity, TLS data loading, schema validation and test-control projects diversify the previous candidates. Retain every selected outcome and every earlier cohort. No dependency, M3 or scope changes.",
+  "supplement_driver_sha256": "228d2da31cc35bae9bc416fdac50ee2466ecda2156c68d4eb5c661354dfc0e01"
+}

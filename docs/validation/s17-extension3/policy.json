@@ -1,0 +1,14 @@
+{
+  "previous_selection": "docs/validation/s17-extension2/selection.json",
+  "selection_rule": "All eight declared supplement-3 candidates, latest four reachable two-parent merges since 2018-01-01 UTC with one merge-base different from both parents, a Python change and a clean native textual merge; descending committer timestamp then SHA. Structural checks only, no oracle/detector outcome selection. Selected for small modern stdlib/available-dependency-oriented code and distinct domains; no eligibility guarantee. Retain every selected outcome and all earlier cohorts. Fixed dependency environment, identities and complete production/test scope unchanged.",
+  "repositories": [
+    {"id":"tomli","github":"hukkin/tomli","domain":"TOML reader","roots":["src/tomli","tomli"]},
+    {"id":"tomli-w","github":"hukkin/tomli-w","domain":"TOML writer","roots":["src/tomli_w","tomli_w"]},
+    {"id":"jsonschema-specifications","github":"python-jsonschema/jsonschema-specifications","domain":"JSON Schema registry","roots":["jsonschema_specifications","src/jsonschema_specifications"]},
+    {"id":"contextlib2","github":"jazzband/contextlib2","domain":"context management","roots":["contextlib2","contextlib2.py","src/contextlib2"]},
+    {"id":"mypy-extensions","github":"python/mypy_extensions","domain":"typing runtime helpers","roots":["mypy_extensions.py","mypy_extensions","src/mypy_extensions.py"]},
+    {"id":"parse","github":"r1chardj0n3s/parse","domain":"format-string parsing","roots":["parse.py","parse","src/parse.py"]},
+    {"id":"shortcodes","github":"dmulholl/shortcodes","domain":"template macros","roots":["shortcodes","shortcodes.py","src/shortcodes"]},
+    {"id":"packaging","github":"pypa/packaging","domain":"distribution metadata","roots":["packaging","src/packaging"]}
+  ]
+}

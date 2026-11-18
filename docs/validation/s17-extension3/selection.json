@@ -1,0 +1,223 @@
+{
+  "apparatus_freeze_sha256": "5e7dc0bbedbc88d55dec3fb3767322b1f2cf991d30d5b2016ecebb5e7a1e2170",
+  "extension_driver_sha256": "ff1ca00261c2e1112eb25ae019903b2236d04c2662a4f2bd81c4646a8829962f",
+  "extension_of_sha256": "506fcac5c3f1909041481eaa4e1c95f59064d8c33220c227439be2d83042e36f",
+  "policy_sha256": "c57e2bb91504730ae5c6750b4a40c91225401c2e4356f93d1868fc2d38262730",
+  "previous_selection_sha256": "6c6cf142da1feee580fd5e04d5d7e445b72d1c13c17392f1ed8a659903d812bc",
+  "repositories": [
+    {
+      "cases": [],
+      "divergent_modern_python_merges": 0,
+      "domain": "TOML reader",
+      "examined_two_parent_merges": 22,
+      "head": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+      "id": "tomli",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "src/tomli",
+        "tomli"
+      ],
+      "url": "https://github.com/hukkin/tomli.git"
+    },
+    {
+      "cases": [],
+      "divergent_modern_python_merges": 0,
+      "domain": "TOML writer",
+      "examined_two_parent_merges": 7,
+      "head": "1210bb6f5708a4dc084cc3deb4a3a3e3939f4d6d",
+      "id": "tomli-w",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "src/tomli_w",
+        "tomli_w"
+      ],
+      "url": "https://github.com/hukkin/tomli-w.git"
+    },
+    {
+      "cases": [],
+      "divergent_modern_python_merges": 0,
+      "domain": "JSON Schema registry",
+      "examined_two_parent_merges": 139,
+      "head": "05ddbbbabcb9ceb6526012a5a05dbdf3a4935d2b",
+      "id": "jsonschema-specifications",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "jsonschema_specifications",
+        "src/jsonschema_specifications"
+      ],
+      "url": "https://github.com/python-jsonschema/jsonschema-specifications.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "3feaef8f910d6078d2f1b3accf65764da0b2ae88",
+          "parents": [
+            "89c5189648d7a2b59ef2d961504af196de838e86",
+            "3d2540dda14a125f51225af8df6c9dd811e1b0fd"
+          ],
+          "target": "2dc4c044928f6b05e36dc4db824fda63174ab538",
+          "timestamp": 1628848817
+        },
+        {
+          "merge": "3f6ee4d314de36bf952c382d28b7258b408bbc59",
+          "parents": [
+            "72c47e462910541fe23a8b4a2fa0d2af9054d591",
+            "77e93832f0b2c33faac955c8b369d9234263e03d"
+          ],
+          "target": "b99ed09dfdf37252434f1a7918a945c8045b1832",
+          "timestamp": 1624707951
+        }
+      ],
+      "divergent_modern_python_merges": 2,
+      "domain": "context management",
+      "examined_two_parent_merges": 36,
+      "head": "9a547a3247f5630e627b49b6971ec7a1d7ff6c23",
+      "id": "contextlib2",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "contextlib2",
+        "contextlib2.py",
+        "src/contextlib2"
+      ],
+      "url": "https://github.com/jazzband/contextlib2.git"
+    },
+    {
+      "cases": [],
+      "divergent_modern_python_merges": 0,
+      "domain": "typing runtime helpers",
+      "examined_two_parent_merges": 2,
+      "head": "df7b7054e3e978cc62717871f16659e51ea8171d",
+      "id": "mypy-extensions",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "mypy_extensions.py",
+        "mypy_extensions",
+        "src/mypy_extensions.py"
+      ],
+      "url": "https://github.com/python/mypy_extensions.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "c3ac45f6c8cbabc6397d8b1271fde92d23c41714",
+          "parents": [
+            "041ed86f2450c0bd40a92f99a90634d616d6668e",
+            "3bb414d8da8e5eddcbd5ac691b24a3b1d6f4b6f9"
+          ],
+          "target": "1007f18d1eae7638c99af18e5cd022afb28bdb3f",
+          "timestamp": 1794763584
+        },
+        {
+          "merge": "1007f18d1eae7638c99af18e5cd022afb28bdb3f",
+          "parents": [
+            "398b13043b860c76a7a9a71d18232d7fa2feea9f",
+            "7418f8dee391bb83aed677ba82b417d6e23605c1"
+          ],
+          "target": "cf27a9bb66f68a42a467484693b5343be8242197",
+          "timestamp": 1794675207
+        },
+        {
+          "merge": "d843b6b13604a14eba063e31e52dd99c05282d2e",
+          "parents": [
+            "a38727d1963151e4c4daff9dceb2faf925e849b6",
+            "bcf2f66197e51998e376498b2feb658aa569e005"
+          ],
+          "target": "0d2d28fbccf023d0485be21aaccc95de88e92eaa",
+          "timestamp": 1792530186
+        },
+        {
+          "merge": "a38727d1963151e4c4daff9dceb2faf925e849b6",
+          "parents": [
+            "0abf338be4a685a370f559ab256759f0cb985d64",
+            "f50fa73d0d767823ad90a8a86f6b396197c4b6fb"
+          ],
+          "target": "0d2d28fbccf023d0485be21aaccc95de88e92eaa",
+          "timestamp": 1792529119
+        }
+      ],
+      "divergent_modern_python_merges": 12,
+      "domain": "format-string parsing",
+      "examined_two_parent_merges": 80,
+      "head": "23ee37e87fced1d59d9e12d75cc6d934ed89b72e",
+      "id": "parse",
+      "rejected_native_merge_failures": 1,
+      "roots": [
+        "parse.py",
+        "parse",
+        "src/parse.py"
+      ],
+      "url": "https://github.com/r1chardj0n3s/parse.git"
+    },
+    {
+      "cases": [],
+      "divergent_modern_python_merges": 0,
+      "domain": "template macros",
+      "examined_two_parent_merges": 3,
+      "head": "60bc5c55a130beedcbc8a801816045a487642224",
+      "id": "shortcodes",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "shortcodes",
+        "shortcodes.py",
+        "src/shortcodes"
+      ],
+      "url": "https://github.com/dmulholl/shortcodes.git"
+    },
+    {
+      "cases": [
+        {
+          "merge": "d26543ae443b3ca9f038af11882d4fcde308c725",
+          "parents": [
+            "7cfbf62e6b14f573f7f1e3c1ea94f07888f194ff",
+            "0e5023696e68d0b728073d6a381120723c9b0eaf"
+          ],
+          "target": "55c33113681a01cbe2aace33c1c1d417837c27cf",
+          "timestamp": 1606573334
+        },
+        {
+          "merge": "bb80ca79069f29deb771697b8305deac54295be0",
+          "parents": [
+            "a59f31831164dfa085895409bba0942ad0f4df76",
+            "f1b2b2222c8832a5a01f328afb46c9f898e67a1e"
+          ],
+          "target": "8fdc92330edc817cbf076a87e6b8ece2387ce9a3",
+          "timestamp": 1572882202
+        },
+        {
+          "merge": "20e02ec8e351f2112939bfd819eff07ae857390e",
+          "parents": [
+            "a1be9018743788a1850cf302163c33d183185960",
+            "d50c55fb50b0abd63ffb481c404742a7b79a8b33"
+          ],
+          "target": "d09b0b5f2118f4b324175b7ee66e4a3c41e619a5",
+          "timestamp": 1569600476
+        },
+        {
+          "merge": "afc58478c387d7f8f32e9da4f740e30b59ee6620",
+          "parents": [
+            "46312ee5713155a07874beca106104a9a7e1dff2",
+            "b30a663864729df01880278f620d7497705b48ab"
+          ],
+          "target": "7890ca820eca8580d63fcadae727e95a70daec27",
+          "timestamp": 1569434720
+        }
+      ],
+      "divergent_modern_python_merges": 14,
+      "domain": "distribution metadata",
+      "examined_two_parent_merges": 88,
+      "head": "6a69a83d8d89c6a01d554a8ad1b420cbb45fb4bc",
+      "id": "packaging",
+      "rejected_native_merge_failures": 0,
+      "roots": [
+        "packaging",
+        "src/packaging"
+      ],
+      "url": "https://github.com/pypa/packaging.git"
+    }
+  ],
+  "selected_cases": 10,
+  "selection_policy": "docs/validation/s17-extension3/policy.json",
+  "selection_policy_sha256": "bb2d3a06f4ff7f3077045e107992169048e159d448b23c7c706fda0cf67b78ea",
+  "selection_rule": "All eight declared supplement-3 candidates, latest four reachable two-parent merges since 2018-01-01 UTC with one merge-base different from both parents, a Python change and a clean native textual merge; descending committer timestamp then SHA. Structural checks only, no oracle/detector outcome selection. Selected for small modern stdlib/available-dependency-oriented code and distinct domains; no eligibility guarantee. Retain every selected outcome and all earlier cohorts. Fixed dependency environment, identities and complete production/test scope unchanged.",
+  "supplement_driver_sha256": "228d2da31cc35bae9bc416fdac50ee2466ecda2156c68d4eb5c661354dfc0e01"
+}

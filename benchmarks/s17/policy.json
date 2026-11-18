@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "stratum": "natural-development-M3",
+  "detector_commit": "f3eaa4e80c1a3f2f3bb09e3e1c24229bcb7e78d0",
+  "checker": "pyright 1.1.407",
+  "python": "3.14.8",
+  "config": {"typeCheckingMode":"basic","pythonVersion":"3.14","pythonPlatform":"Darwin","reportMissingImports":"error","reportAttributeAccessIssue":"error","reportCallIssue":"error"},
+  "selection": "All eight public development candidates, latest eight reachable two-parent merges with a unique merge-base strictly different from both parents and a Python source change, ordered by descending committer timestamp then SHA; no oracle or detector outcome enters selection. Every selected case and exclusion is retained. If fewer than five repositories are eligible, preregister a separate extension before building any extension state; never replace old results.",
+  "limit_per_repository": 8,
+  "repositories": [
+    {"id":"blinker","url":"https://github.com/pallets-eco/blinker.git","domain":"event dispatch","roots":["src/blinker","blinker"]},
+    {"id":"itsdangerous","url":"https://github.com/pallets/itsdangerous.git","domain":"security signing","roots":["src/itsdangerous","itsdangerous"]},
+    {"id":"trove-classifiers","url":"https://github.com/pypa/trove-classifiers.git","domain":"package taxonomy","roots":["src/trove_classifiers","trove_classifiers"]},
+    {"id":"sniffio","url":"https://github.com/python-trio/sniffio.git","domain":"async runtime detection","roots":["src/sniffio","sniffio"]},
+    {"id":"hyperframe","url":"https://github.com/python-hyper/hyperframe.git","domain":"HTTP/2 framing","roots":["src/hyperframe","hyperframe"]},
+    {"id":"more-itertools","url":"https://github.com/more-itertools/more-itertools.git","domain":"iterator utilities","roots":["more_itertools","src/more_itertools"]},
+    {"id":"wcwidth","url":"https://github.com/jquast/wcwidth.git","domain":"terminal Unicode width","roots":["wcwidth","src/wcwidth"]},
+    {"id":"boltons","url":"https://github.com/mahmoud/boltons.git","domain":"general utilities","roots":["boltons","src/boltons"]}
+  ],
+  "scope": "Union of production roots and all test/tests/testing/testsuite/_tests directories plus root test*.py files across target, tips and native integration; exact same include list and environment for every state. Stub-dependent, non-UTF8, unparsable, external missing-dependency, incomplete and ambiguous states remain unlabelled.",
+  "identity": ["rule","path","symbol","occurrence","root_cause"],
+  "mapping": "Exact identity subtraction after explicit one-to-one Git rename path mapping. Occurrence is a location-free AST expression plus lexical scope. Repeated indistinguishable sites and shadowed import bindings are ambiguous. Root cause binds the checker rule, symbol, scope and defining AST/context; no error-count/message subtraction.",
+  "eligibility": "All tip deltas are empty; integrated new supported diagnostic absent from every tip is positive, no new diagnostic is control; new unsupported or uncertain evidence is unlabelled. Minimality uses presence of the same diagnostic delta, not checker exit status.",
+  "statistics": {"wilson_z":1.959963984540054,"cluster_minimum_repositories":5,"bootstrap_seed":9042026,"bootstrap_replicates":2000,"minimum_predictions":20,"minimum_positives":20},
+  "publication": "Development-only baseline-relative stratum, never a holdout or release gate; no historical exclusion relabelled. Whole corpus attempted/excluded counts, every FP/FN and unlabelled shares are retained. Zero findings/positives never passes a gate."
+}

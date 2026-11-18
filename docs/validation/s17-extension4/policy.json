@@ -1,0 +1,77 @@
+{
+  "previous_selection": "docs/validation/s17-extension3/selection.json",
+  "selection_rule": "All seven available declared supplement-4 candidates, latest four reachable two-parent merges since 2018-01-01 UTC with one merge-base different from both parents, a Python change and a clean native textual merge; descending committer timestamp then SHA. Structural checks only, no oracle/detector outcome selection. Stdlib-oriented code quality, file integrity, TLS data loading, schema validation and test-control projects diversify the previous candidates. Retain every selected outcome and every earlier cohort. No dependency, M3 or scope changes.",
+  "repositories": [
+    {
+      "id": "pycodestyle",
+      "github": "PyCQA/pycodestyle",
+      "domain": "code style checking",
+      "roots": [
+        "pycodestyle.py",
+        "pycodestyle",
+        "src/pycodestyle.py"
+      ]
+    },
+    {
+      "id": "mccabe",
+      "github": "PyCQA/mccabe",
+      "domain": "code complexity",
+      "roots": [
+        "mccabe.py",
+        "mccabe",
+        "src/mccabe.py"
+      ]
+    },
+    {
+      "id": "atomicwrites",
+      "github": "untitaker/python-atomicwrites",
+      "domain": "atomic file updates",
+      "roots": [
+        "atomicwrites",
+        "src/atomicwrites"
+      ]
+    },
+    {
+      "id": "certifi",
+      "github": "certifi/python-certifi",
+      "domain": "TLS trust data loading",
+      "roots": [
+        "certifi",
+        "src/certifi"
+      ]
+    },
+    {
+      "id": "schema",
+      "github": "keleshev/schema",
+      "domain": "data validation",
+      "roots": [
+        "schema",
+        "schema.py",
+        "src/schema"
+      ]
+    },
+    {
+      "id": "pytest-repeat",
+      "github": "pytest-dev/pytest-repeat",
+      "domain": "repeated test execution",
+      "roots": [
+        "pytest_repeat.py",
+        "pytest_repeat",
+        "src/pytest_repeat"
+      ]
+    },
+    {
+      "id": "pytest-order",
+      "github": "pytest-dev/pytest-order",
+      "domain": "test ordering",
+      "roots": [
+        "pytest_order",
+        "src/pytest_order"
+      ]
+    }
+  ],
+  "preregistration_setup_failure": {
+    "url": "https://github.com/pytest-dev/pytest-skip-slow.git",
+    "reason": "Public clone returned repository not found before selection publication and before any supplement-4 checker state; unavailable candidate removed, no label exists."
+  }
+}

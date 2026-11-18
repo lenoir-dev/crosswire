@@ -69,7 +69,7 @@ def main():
     parser.add_argument("--python-fraction", type=float, default=.1)
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--vega-scenario", action="store_true", help="R3/V4-01: 9051 files, 9000 referenced Python modules, 16 branches; all three warm budgets")
-    parser.add_argument("--baseline-ref", default="89cfd99", help="R3 immutable v0.3.1 comparison source for the same fixture")
+    parser.add_argument("--baseline-ref", default="c7e5255", help="R3 immutable v0.3.1 comparison source for the same fixture")
     args = parser.parse_args()
     from tests.helpers import RepoBuilder
     import hashlib

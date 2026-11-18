@@ -101,7 +101,7 @@ current authority. PLAN v0.4 R2 and matching M2 supersede their conflicting rows
 - Final apparatus-only focused suite: 50 passed (8.09 s). The previous broad focused
   source/contract suite passed 107 tests before the last five apparatus additions.
 
-## R3 regression follow-up (Deneb, after apparatus commit 33c2eb5)
+## R3 regression follow-up (Deneb, after apparatus commit 7d73323)
 
 - Added `tests/test_vega_v04.py` with 46 parametrized reproductions for V4-01..07:
   scoped coverage in all modes, external imports versus first-party unknowns,
@@ -129,8 +129,8 @@ current authority. PLAN v0.4 R2 and matching M2 supersede their conflicting rows
 
 ## Final frozen-source validation (Deneb, 2026-11-17)
 
-- Observed HEAD `f234bff` is a docs-only descendant of frozen `6ef67da`;
-  `git diff 6ef67da -- src pyproject.toml uv.lock README.md` is empty. Validate
+- Observed HEAD `9c8531e` is a docs-only descendant of frozen `3be5221`;
+  `git diff 3be5221 -- src pyproject.toml uv.lock README.md` is empty. Validate
   the frozen bytes without moving HEAD. No project Git mutation is authorized.
 - Verified the v2 seal with `--verify-only`; no holdout measurement or case
   inspection. R2's v0.4 prohibition remains absolute.
@@ -178,7 +178,7 @@ current authority. PLAN v0.4 R2 and matching M2 supersede their conflicting rows
   missing provenance, per-stratum/type evidence, cohort SHAs, coverage/exclusions,
   baseline/relative R3 budgets, RSS/proposals, audit status and E4-02 limitation.
   Final source and all public sealed eval inputs have an empty diff against
-  6ef67da; every measurement hash still equals current frozen bytes.
+  3be5221; every measurement hash still equals current frozen bytes.
 
 ## v0.4 release corrections (Polaris, 2026-11-18)
 
@@ -224,4 +224,4 @@ current authority. PLAN v0.4 R2 and matching M2 supersede their conflicting rows
 - Removed only ignored bytecode caches (which embed compiler-local filenames)
   after the suites; the exact requested recursive account-home grep returns no
   output (exit1:no matches). Temp/installation prefix scan is also empty.
-  Source still matches6ef67da; report links/JSON and diff whitespace checks pass.
+  Source still matches3be5221; report links/JSON and diff whitespace checks pass.

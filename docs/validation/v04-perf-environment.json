@@ -1275,7 +1275,7 @@
       "started_utc": "2026-11-17T20:40:16.498370+00:00"
     },
     {
-      "command": "PYTHONPATH=src ${CACHE_CROSSWIRE_V04_EVAL}/bin/python benchmarks/perf_matrix.py --vega-scenario --baseline-ref 89cfd99 --repeat 5 --timeout 30 --output docs/validation/v04-vega-perf.json",
+      "command": "PYTHONPATH=src ${CACHE_CROSSWIRE_V04_EVAL}/bin/python benchmarks/perf_matrix.py --vega-scenario --baseline-ref c7e5255 --repeat 5 --timeout 30 --output docs/validation/v04-vega-perf.json",
       "exit_code": 0,
       "finished_utc": "2026-11-17T20:54:45.973273+00:00",
       "observations": [

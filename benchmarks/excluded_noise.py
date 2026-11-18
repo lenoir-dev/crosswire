@@ -68,7 +68,7 @@ def main():
                'emitted_findings': len(findings), 'unlabelled_semantic_findings': len(semantic),
                'by_rule': {rule: sum(f['rule'] == rule for f in findings) for rule in sorted({f['rule'] for f in findings})},
                'detector_errors': sum('detector_error' in r for r in rows)}
-    result = {'stratum': 'public oracle-ineligible detector replay; no semantic labels', 'source_commit': '6ef67da',
+    result = {'stratum': 'public oracle-ineligible detector replay; no semantic labels', 'source_commit': '3be5221',
               'source_sha256': before, 'source_stable': before == hashes(), 'summary': summary, 'rows': rows}
     assert result['source_stable']
     args.output.write_text(json.dumps(portable(result, locations()), indent=2, sort_keys=True) + '\n')

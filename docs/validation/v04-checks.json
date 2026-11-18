@@ -50,7 +50,7 @@
       "result": "54 cells, 270 successful samples, 27 completed warmups, zero censored; source_stable true"
     },
     {
-      "command": "PYTHONPATH=src ${CACHE_CROSSWIRE_V04_EVAL}/bin/python benchmarks/perf_matrix.py --vega-scenario --baseline-ref 89cfd99 --repeat 5 --timeout 30 --output docs/validation/v04-vega-perf.json",
+      "command": "PYTHONPATH=src ${CACHE_CROSSWIRE_V04_EVAL}/bin/python benchmarks/perf_matrix.py --vega-scenario --baseline-ref c7e5255 --repeat 5 --timeout 30 --output docs/validation/v04-vega-perf.json",
       "exit_code": 0,
       "result": "R3 pass; baseline pairwise p50/p95 2.167242/2.177592 s, current 2.354558/2.381094 s; combined p95 1.884499 s, plan p95 2.475087 s; source_stable true"
     },

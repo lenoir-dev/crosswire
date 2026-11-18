@@ -11,7 +11,7 @@ explain why, and recommend a safe integration strategy — for a developer with 
 branches and for an orchestrator running dozens of coding agents. Silence is never a proof of
 correctness: crosswire reports the limits of what it checked.
 
-## 2. Where we are (gap analysis at v0.3a, commit `ed3c095`)
+## 2. Where we are (gap analysis at v0.3a, commit `0825b06`)
 
 | Vision area | State today | Gap to v1.0 |
 | --- | --- | --- |

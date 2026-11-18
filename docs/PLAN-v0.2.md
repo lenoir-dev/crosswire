@@ -60,7 +60,7 @@ def summarize(repo, label, tip, base, roots) -> BranchSummary
 ## 12.5 Verification (Sol)
 
 - S4: golden test — run all existing scenarios through `analyze` and the CLI, compare with
-  snapshots recorded from the v0.1 commit `562deeb` (build them by running the old version from a
+  snapshots recorded from the v0.1 commit `31acb87` (build them by running the old version from a
   `git worktree` in a temp dir, never in this worktree). Order invariance: permuting branch
   arguments changes only `pairs` ordering, never the finding set. Cache on/off identical.
 - S5: pick a mid-size, actively developed pure-Python project with ≥ 15 open PRs (suggested:

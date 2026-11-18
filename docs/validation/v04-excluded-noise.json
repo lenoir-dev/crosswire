@@ -4076,7 +4076,7 @@
       "stderr": ""
     }
   ],
-  "source_commit": "6ef67da",
+  "source_commit": "3be5221",
   "source_sha256": {
     "crosswire/__init__.py": "e364931a8afff672985ee99f795e6d8b20ff33c55d71d757ec211ec6689b3c19",
     "crosswire/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",

@@ -12,7 +12,7 @@ No source edit or test workaround was made.
 
 Frozen source: `6ef67da19a136f88a90b5f567255196ca78c2a94` (0.4.0).
 Observed HEAD: `f234bff69d8a7f31585361591e7ec0b9a76252e2` (docs-only descendant).
-`git diff 6ef67da -- src pyproject.toml uv.lock README.md` is empty.
+`git diff 3be5221 -- src pyproject.toml uv.lock README.md` is empty.
 All development/live/performance `source_stable` flags are true. Public sealed
 apparatus/policy/matching/toolchain/lock inputs remain unchanged.
 
@@ -112,8 +112,8 @@ per-stratum/type metrics, audit status and cohort SHAs, all present in final
 ## Release corrections (2026-11-18, v0.4-release-fixes)
 
 The final-validation sections above preserve the original measurement boundary.
-Current source is still frozen at 6ef67da; observed release-correction HEAD is
-e6f0bf4. The report now cites Vega’s completed 30/30 label audit, all three PR
+Current source is still frozen at 3be5221; observed release-correction HEAD is
+de58f1a. The report now cites Vega’s completed 30/30 label audit, all three PR
 coverage gaps, and the separate excluded-case replay:49 cases,20 with findings,
 49 unlabelled semantic findings (CW00140/CW0029),zero detector errors. Original
 labelled metrics remain unchanged. Overall emitted-candidate unlabelled share

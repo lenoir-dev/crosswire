@@ -48,3 +48,13 @@ bind the tokenised files; pre-publication and current hashes are recorded in
 `docs/validation/v04-golden-audit.json` and
 `docs/validation/v04-publication-portability.json`. This is a provenance-only
 exception, not permission to re-record or weaken historical finding assertions.
+
+## Commit IDs after the 2026-11-18 history rewrite
+
+The recordings and their integrity hashes are kept byte-for-byte, so they still name the
+pre-rewrite commit IDs. The history was rewritten once (author e-mail and local paths scrubbed before
+the repository went public); the same commits now have these IDs:
+
+| recorded | current |
+| --- | --- |
+| `562deeb` | `31acb87` |

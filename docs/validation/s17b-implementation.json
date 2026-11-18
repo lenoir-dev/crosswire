@@ -1,0 +1,42 @@
+{
+  "accepted_re_review": "R1-R5 implemented before any operational checkpoint",
+  "checks": {
+    "bf1_strict_xfailed": 4,
+    "combined_with_bf1_and_adapter_passed": 91,
+    "s17b_synthetic_passed": 76
+  },
+  "design_revision": 3,
+  "files_sha256": {
+    "benchmarks/s17/__init__.py": "07635675657c4d1b1db91344c1f17eca0baf5c307a7c15b928880fd9ce352272",
+    "benchmarks/s17/m3.py": "f9c64ecbfa9a7939303b697287a317ba84cf72d3ad23d86f17832e839f3ae5b5",
+    "benchmarks/s17b/README.md": "9af41df5c61225abb2d500883f96d5d22243257b937fed596176b6b20bb627aa",
+    "benchmarks/s17b/__init__.py": "24a0129f61bab3f48a014195428d078406893d621c917aff00f56c0de735a5ab",
+    "benchmarks/s17b/__main__.py": "fedcefad741ae0cca8bd7633b7a166f4058205eb1086b9fea5ea31898cfa4c65",
+    "benchmarks/s17b/acquire.py": "0299f144598b76f5a515fe28c47be5144c806cdf76cdce7e69c6ae0b9720398b",
+    "benchmarks/s17b/checkpoint.py": "47a107a651aa957ca170df220de1df5bcbff3937c4e209140f91213ea4f4e82c",
+    "benchmarks/s17b/collect.py": "4fe1dea0ef0480c0ec33e0cbadaada02fc64908dcf04cda130492d7500b99c8a",
+    "benchmarks/s17b/graph.py": "c88cfe423606f0727e081692bb12d7f37782e3e34fbd0fb61d96e303537ca0b0",
+    "benchmarks/s17b/pipeline.py": "265c7c6f6cff8f32d464864e28dc7be29e48b4d16c5e175a5036613089cc58a4",
+    "benchmarks/s17b/policy.json": "ce06ad7b335939d34d20592b3580027a63403e75d46700950d68288c38fab283",
+    "benchmarks/s17b/selection.py": "43e0a3bc0f79a31e93577f6a62475f4412ca195e343535a8c66726441268568c",
+    "conformance/__init__.py": "1736192e3b0221b4e70b2479ffe03cb8e562ca4b7cda8b30252090ed6b06bea4",
+    "conformance/git.py": "32a7d669a7bafe79e7eda4385d925e213b6c8b96906f92a11acfff9b5c4b0912",
+    "docs/design/s17b-concurrent-pr.md": "046d92af3a97e01b0070101f10962de754b7157be05e86699db5f0d116285895",
+    "docs/validation/s17b-impl-resume.md": "158e11465e64c4ed08f55efa4dda660078b7e47c7302a5533919940d8426867e",
+    "tests/test_s17b_acquire.py": "d8be68e520512a4994abd68673077f2e75539f24ef36fee7205a1e0ca2033507",
+    "tests/test_s17b_collect.py": "bf39d3f06798ce153fc42cd760036ee7d59c87dcca3f956f35d12bf15a11664c",
+    "tests/test_s17b_graph.py": "0c45059ef0687e4d366bcc3029bc434dc2fb92196d5c07957c6a657f4ab35ac2",
+    "tests/test_s17b_m3.py": "3435d04edc45bdc985173bdbfe0693344f5b349f6a878bb052f672601ff3c94b",
+    "tests/test_s17b_pipeline.py": "5570a51708c171317049c68e194a72d0409aa9c8a3ef9bd417b83bf47d7357e6",
+    "tests/test_s17b_selection.py": "692397ce0f1c9c4ecea79aab55be28fbccebd50a76621604bd19ed29aae708c7"
+  },
+  "git_transfer_decision": "Polaris: cumulative object-store-growth/progress proxy; unmeasurable/over-budget fetch stops cohort at ceiling",
+  "m3_sha256": "f9c64ecbfa9a7939303b697287a317ba84cf72d3ad23d86f17832e839f3ae5b5",
+  "pending": "Vega approval, explicit Polaris acquisition authorization, fixed cutoff/API/gh/detector policy pins, then durable checkpoint 1 before any API",
+  "policy_template_sha256": "ce06ad7b335939d34d20592b3580027a63403e75d46700950d68288c38fab283",
+  "real_git_fetches": 0,
+  "real_metadata_requests": 0,
+  "real_pr_labels": 0,
+  "stage": "synthetic implementation review snapshot; NOT operational checkpoint 1 or acquisition authorization",
+  "task": "v0.5-s17b-impl"
+}

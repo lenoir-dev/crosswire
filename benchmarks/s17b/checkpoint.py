@@ -30,7 +30,7 @@ def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def graph_pins():
     paths=list((ROOT/'benchmarks/s17b').glob('*.py'))+list((ROOT/'tests').glob('test_s17b_*.py'))
     paths += [ROOT/'docs/design/s17b-concurrent-pr.md',ROOT/'benchmarks/s17/m3.py',ROOT/'benchmarks/s17/__init__.py',
-              ROOT/'conformance/git.py',ROOT/'conformance/__init__.py',ROOT/'benchmarks/s17b/policy.json']
+              ROOT/'conformance/git.py',ROOT/'conformance/__init__.py',ROOT/'benchmarks/s17b/policy.json',ROOT/'benchmarks/s17b/policy-round1.json']
     return {p.relative_to(ROOT).as_posix():sha(p) for p in sorted(paths)}
 
 
@@ -46,8 +46,11 @@ def prepare(policy,destination,now=None):
     for key in ('terminal_lower','maximum_pairs','maximum_get_requests','maximum_git_bytes','maximum_measurement_seconds','repositories','per_repository_get_budget','per_repository_metadata_get_budget','per_repository_commits_get_budget','unallocated_get_allowance',
                 'metadata_filter_order','unused_repository_budget','pr_commit_order','squash_corroboration',
                 'terminal_tie','earlier_closed_unmerged','terminal_event_tolerance_seconds','terminal_event_proof',
-                'terminal_health_stop','preordering','api_allowlist','clone','patch_policy'):
+                'terminal_health_stop','preordering','api_allowlist','clone','patch_policy','round_id','apparatus'):
         if policy.get(key)!=accepted[key]:raise ValueError('Policy protocol field changed: '+key)
+    if sha(ROOT/'benchmarks/s17b/policy-round1.json')!=policy['apparatus']['round1_policy_sha256']:raise ValueError('Round-1 policy drift')
+    if {k:v for k,v in policy.items() if k not in {'round_id','apparatus'}}!=json.loads((ROOT/'benchmarks/s17b/policy-round1.json').read_text()):raise ValueError('Round-1 selection policy changed')
+    if sha(ROOT/'benchmarks/s17b/selection.py')!=policy['apparatus']['selection_source_sha256']:raise ValueError('Round-1 selection code drift')
     policy_sha=hashlib.sha256(json.dumps(policy,sort_keys=True,separators=(',',':')).encode()).hexdigest()
     data={'stage':'checkpoint-1; no metadata collected','created_at':now.isoformat(),
           'policy':policy,'policy_sha256':policy_sha,'code_sha256':graph_pins(),'m3_sha256':M3_SHA256}

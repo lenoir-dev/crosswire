@@ -174,3 +174,39 @@ def integrate_pair(graph,L,head_a,head_b,name):
     states={'L':L,'A_L':A,'B_L':B,'I_AB':AB,'I_BA':BA}
     for label,sha in states.items():graph.bind(name+'-'+label,sha)
     return states
+
+
+
+def pre_update_head(graph,head_a,head_b,D,C,earlier,default_head,pr_commits):
+    """P6 structural fallback only; unchanged B2 is mandatory on the candidate.
+
+    Find the oldest first-parent crossing into C ancestry. It must introduce C
+    through the second parent of a two-parent merge from pinned default history.
+    Never try an older/better candidate after a failed proof.
+    """
+    heads={'A':head_a,'B':head_b};later='B' if earlier=='A' else 'A'
+    final=heads[later];default=set(graph.chain(default_head))
+    if not graph.ancestor(C,final):raise Unresolved('pre-update-integration-not-contained')
+    crossing=[]
+    for commit in reversed(graph.chain(final)):
+        parents=graph.parents(commit)
+        # Every ingress of C or the earlier PR head through a side parent must
+        # itself be pinned default history. A later stacked/direct-PR merge
+        # cannot be hidden by rewinding past a legitimate default update.
+        if any((graph.ancestor(C,parent) or graph.ancestor(heads[earlier],parent)) and parent not in default for parent in parents[1:]):
+            raise Unresolved('pre-update-nondefault-contamination-ingress')
+        if not graph.ancestor(C,commit):continue
+        if not parents or graph.ancestor(C,parents[0]):continue
+        crossing.append((commit,parents))
+    if len(crossing)!=1:raise Unresolved('pre-update-crossing-ambiguous')
+    merged,parents=crossing[0]
+    if len(parents)!=2 or parents[1] not in default or not graph.ancestor(C,parents[1]):raise Unresolved('pre-update-not-default-merge')
+    candidate=parents[0]
+    if candidate not in pr_commits:raise Unresolved('pre-update-candidate-not-pr-commit')
+    heads[later]=candidate
+    bases=own_bases(graph,D,heads['A'],heads['B'])
+    proof=contamination(graph,heads['A'],heads['B'],D,C,earlier,bases)
+    if proof['reason']:raise Unresolved('pre-update-'+proof['reason']+':'+proof['test'])
+    return {'heads':heads,'bases':bases,'contamination':proof,'candidate':candidate,'adjusted_branch':later,
+            'final_head':final,'default_merge':merged,'default_parent':parents[1],
+            'head_kind':'pre-update','proof':'first first-parent C-ancestry crossing via pinned default; candidate is a PR commit; all B2 tests pass'}

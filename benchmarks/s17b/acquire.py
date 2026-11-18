@@ -6,11 +6,13 @@ from pathlib import Path
 import re
 import subprocess
 import tempfile
+import time
 from urllib.parse import urlencode,urlsplit
 
 from .checkpoint import sha
 from .selection import Ceiling,RepositoryCeiling,Incomplete,timestamp,detail_filter,timeline_filter,terminal_proof,RepositoryIncomplete
 from conformance.git import environment
+from .http import RateLimited,sanitize,parse_reply,rate_response,server_wait,connection_failure
 
 
 @dataclass
@@ -43,14 +45,41 @@ def endpoint_class(endpoint):
 
 
 class GhGet:
-    """No requests until a matching checkpoint and explicit permit verify."""
-    def __init__(self,permit,cache,runner=subprocess.run,version_reader=None):
+    """Permit-gated GETs, bounded transport attempts, durable per-attempt results."""
+    def __init__(self,permit,cache,runner=subprocess.run,version_reader=None,wait=time.sleep,clock=time.time):
         self.permit=permit;self.cache=Path(cache);self.runner=runner;self.calls=0;self.responses={};self.log=[];self.stopped=False
-        self.version_reader=version_reader;self.version_checked=False
+        self.version_reader=version_reader;self.version_checked=False;self.wait=wait;self.clock=clock;self.stop_reason=None
+
+    def _write(self,path,value):
+        fd=os.open(path,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
+        with os.fdopen(fd,'w') as stream:
+            json.dump(value,stream,sort_keys=True);stream.flush();os.fsync(stream.fileno())
+        directory=os.open(path.parent,os.O_RDONLY)
+        try:os.fsync(directory)
+        finally:os.close(directory)
+
+    def _budget(self,policy,key):
+        if self.stopped:
+            if self.stop_reason=='acquisition-incomplete-rate-limited':raise RateLimited()
+            raise Ceiling('GET ceiling')
+        if self.calls>=policy['maximum_get_requests']:raise Ceiling('GET ceiling')
+        prefix='/'.join(urlsplit(key).path.split('/')[:3])+'/'
+        requests=[r for r in self.log if urlsplit(r['endpoint']).path.rstrip('/')+'/'==prefix or urlsplit(r['endpoint']).path.startswith(prefix)]
+        if len(requests)>=policy.get('per_repository_get_budget',187):raise RepositoryCeiling('Repository GET sub-budget')
+        phase=endpoint_class(key);limit=policy.get('per_repository_'+phase+'_get_budget',60 if phase=='commits' else 127)
+        if sum(endpoint_class(r['endpoint'])==phase for r in requests)>=limit:raise RepositoryCeiling('Repository '+phase+' GET sub-budget')
+
+    def _pause(self,seconds):
+        # Bound each blocking wait so a controller can remain responsive.
+        while seconds>0:
+            step=min(60,seconds);self.wait(step);seconds-=step
+
+    def _finish(self,event,**fields):
+        event.update(fields)
+        self._write(self.cache/f'{event["request"]:06d}.result.json',event)
 
     def get(self,endpoint,**parameters):
-        policy=self.permit.verify()
-        allowed_endpoint(endpoint,policy)
+        policy=self.permit.verify();allowed_endpoint(endpoint,policy)
         if not self.version_checked:
             expected=policy.get('gh_version')
             if not expected:raise ValueError('Pinned gh version required')
@@ -60,66 +89,82 @@ class GhGet:
         key=endpoint+('?' if '?' not in endpoint else '&')+urlencode(sorted(parameters.items())) if parameters else endpoint
         if key in self.responses:return self.responses[key]
         self.cache.mkdir(parents=True,exist_ok=True,mode=0o700)
-        name=__import__('hashlib').sha256(key.encode()).hexdigest()+'.json'
-        path=self.cache/name
+        path=self.cache/(__import__('hashlib').sha256(key.encode()).hexdigest()+'.json')
         round_key=sha(self.permit.checkpoint) if hasattr(self.permit,'checkpoint') else 'synthetic-test-only'
-        records=sorted(self.cache.glob('*.request.json'))
         if not self.log:
-            self.log=[json.loads(p.read_text()) for p in records]
-            if any(r.get('checkpoint_sha256')!=round_key for r in self.log):raise Incomplete('Request cache belongs to another checkpoint')
-            self.calls=len(records)
+            for record in sorted(self.cache.glob('*.request.json')):
+                item=json.loads(record.read_text());result=record.with_name(record.name.replace('.request.json','.result.json'))
+                if result.exists():item=json.loads(result.read_text())
+                if item.get('checkpoint_sha256')!=round_key:raise Incomplete('Request cache belongs to another checkpoint')
+                self.log.append(item)
+                if item.get('outcome')=='acquisition-incomplete-rate-limited' or item.get('global_stop_reason')=='acquisition-incomplete-rate-limited':
+                    self.stopped=True;self.stop_reason='acquisition-incomplete-rate-limited'
+            self.calls=len(self.log)
         if path.exists():
             saved=json.loads(path.read_text())
             if saved.get('checkpoint_sha256')!=round_key:raise Incomplete('Cached response belongs to another checkpoint')
             page=Page(saved['body'],saved['headers'],saved['endpoint']);self.responses[key]=page
-            if saved['headers'].get('retry-after') or saved['headers'].get('x-ratelimit-remaining')=='0':self.stopped=True
-            for event in self.log:
-                if event['endpoint']==key:event.update(status='complete',response_sha256=sha(path))
             return page
         if any(r['endpoint']==key for r in self.log):raise Incomplete('Prior GET has no durable response; do not silently retry')
-        if self.stopped or self.calls>=policy['maximum_get_requests']:raise Ceiling('GET ceiling')
-        if key.startswith('repos/'):
-            prefix='/'.join(key.split('/')[:3])+'/'
-            requests=[r for r in self.log if r['endpoint'].split('?',1)[0].rstrip('/')+'/'==prefix or r['endpoint'].startswith(prefix)]
-            if len(requests)>=policy.get('per_repository_get_budget',187):raise RepositoryCeiling('Repository GET sub-budget')
-            phase=endpoint_class(key)
-            limit=policy.get('per_repository_'+phase+'_get_budget',60 if phase=='commits' else 127)
-            if sum(endpoint_class(r['endpoint'])==phase for r in requests)>=limit:
-                raise RepositoryCeiling('Repository '+phase+' GET sub-budget')
-        # Cached response files are evidence, not cross-round live cache. They
-        # cannot bypass the permit or silently refresh a prior snapshot.
-        self.calls+=1
-        event={'request':self.calls,'endpoint':key,'endpoint_class':endpoint_class(key),'status':'started','checkpoint_sha256':round_key};self.log.append(event)
-        request=self.cache/f'{self.calls:06d}.request.json'
-        fd=os.open(request,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
-        with os.fdopen(fd,'w') as stream:
-            json.dump(event,stream,sort_keys=True);stream.flush();os.fsync(stream.fileno())
-        try:
-            result=self.runner(['gh','api','--method','GET','--include','-H','Accept: application/vnd.github+json',
-                                '-H','X-GitHub-Api-Version: '+policy['api_version'],key],capture_output=True,text=True,timeout=60)
-        except (OSError,subprocess.TimeoutExpired) as error:
-            event['status']='failed';raise Incomplete('GET unavailable; acquisition incomplete') from error
-        if result.returncode:
-            event['status']='failed';raise Incomplete('GET failed; checkpoint acquisition, do not retry outcomes')
-        head,separator,body=result.stdout.replace('\r\n','\n').partition('\n\n')
-        if not separator:raise Incomplete('GET response lacks headers')
-        headers={}
-        for line in head.splitlines()[1:]:
-            if ':' in line:
-                name,value=line.split(':',1);headers[name.lower()]=value.strip()
-        if not head.splitlines() or not re.search(r'\s200(?:\s|$)',head.splitlines()[0]):raise Incomplete('Non-200 GET')
-        try:payload=json.loads(body)
-        except ValueError as error:raise Incomplete('Malformed GET body') from error
-        allowed={k:v for k,v in headers.items() if k in {'date','etag','link','retry-after'} or k.startswith('x-ratelimit-')}
-        page=Page(payload,allowed,key);self.responses[key]=page
-        with path.open('x') as stream:
-            json.dump({'endpoint':key,'headers':allowed,'body':payload,'checkpoint_sha256':round_key},stream,sort_keys=True)
-            stream.flush();os.fsync(stream.fileno())
-        event.update(status='complete',response_sha256=sha(path))
-        if headers.get('retry-after') or headers.get('x-ratelimit-remaining')=='0':
-            # Preserve the final response, but stop before making another request.
-            self.stopped=True
-        return page
+        settings=policy.get('apparatus',{}).get('transport',{})
+        maximum=settings.get('max_attempts',1)
+        if type(maximum) is not int or not 1<=maximum<=3:raise ValueError('Transport attempt cap must be 1..3')
+        for attempt in range(1,maximum+1):
+            policy=self.permit.verify();self._budget(policy,key)
+            self.calls+=1
+            event={'request':self.calls,'endpoint':key,'endpoint_class':endpoint_class(key),'operation_attempt':attempt,
+                   'status':'started','checkpoint_sha256':round_key,'started_at':self.clock()}
+            self.log.append(event);self._write(self.cache/f'{self.calls:06d}.request.json',event)
+            error=None;result=None
+            try:
+                result=self.runner(['gh','api','--method','GET','--include','-H','Accept: application/vnd.github+json',
+                    '-H','X-GitHub-Api-Version: '+policy['api_version'],key],capture_output=True,text=True,timeout=settings.get('timeout_seconds',60))
+            except (OSError,subprocess.TimeoutExpired) as failure:error=failure
+            stdout=result.stdout if result else ''
+            stderr=getattr(result,'stderr','') if result else getattr(error,'stderr',None) or str(error)
+            status,headers,body=parse_reply(stdout,stderr)
+            fields={'exit_status':result.returncode if result else None,'http_status':status,
+                    'exception':type(error).__name__ if error else None,'stderr':sanitize(stderr,self.cache),'finished_at':self.clock(),
+                    'headers':{k:v for k,v in headers.items() if k in {'date','etag','link','retry-after'} or k.startswith('x-ratelimit-')}}
+            rate=rate_response(status,headers)
+            required_wait=server_wait(headers,self.clock()) if rate else None
+            if rate and (required_wait is None or required_wait>settings.get('maximum_rate_wait_seconds',300)):
+                self.stopped=True;self.stop_reason='acquisition-incomplete-rate-limited'
+                self._finish(event,**fields,status='failed',outcome=self.stop_reason,required_wait_seconds=required_wait)
+                raise RateLimited()
+            if result and result.returncode==0 and status==200 and body is not None:
+                try:payload=json.loads(body)
+                except ValueError:
+                    self._finish(event,**fields,status='failed',outcome='malformed-body')
+                    raise Incomplete('Malformed GET body')
+                allowed={k:v for k,v in headers.items() if k in {'date','etag','link','retry-after'} or k.startswith('x-ratelimit-')}
+                self._write(path,{'endpoint':key,'headers':allowed,'body':payload,'checkpoint_sha256':round_key})
+                delay=0
+                if headers.get('retry-after') or headers.get('x-ratelimit-remaining')=='0':
+                    delay=server_wait(headers,self.clock())
+                    if not settings or delay is None or delay>settings.get('maximum_rate_wait_seconds',300):
+                        self.stopped=True;self.stop_reason='acquisition-incomplete-rate-limited'
+                self._finish(event,**fields,status='complete',outcome='success',response_sha256=sha(path),
+                             global_stop_reason=self.stop_reason,required_wait_seconds=delay)
+                if not self.stopped and delay:self._pause(delay)
+                page=Page(payload,allowed,key);self.responses[key]=page;return page
+            retryable=(rate or status is not None and 500<=status<=599 or connection_failure(error,stderr))
+            # Every other 4xx is final even if the prose resembles a connection error.
+            if status is not None and 400<=status<=499 and not rate:retryable=False
+            delay=required_wait if rate else settings.get('backoff_base_seconds',1)*settings.get('backoff_factor',2)**(attempt-1)
+            if retryable and not rate and 'retry-after' in headers:
+                hint=server_wait(headers,self.clock())
+                if hint is None or hint>settings.get('maximum_rate_wait_seconds',300):
+                    self.stopped=True;self.stop_reason='acquisition-incomplete-rate-limited'
+                    self._finish(event,**fields,status='failed',outcome=self.stop_reason,required_wait_seconds=hint);raise RateLimited()
+                delay=max(delay,hint)
+            again=bool(retryable and attempt<maximum)
+            self._finish(event,**fields,status='failed',outcome='retry' if again else 'exhausted' if retryable else 'not-retryable',
+                         retryable=bool(retryable),required_wait_seconds=required_wait,backoff_seconds=delay if again or rate else 0)
+            if rate:self._pause(delay) # respect service cooldown even on the final attempt
+            if not again:raise Incomplete('GET failed; repository acquisition incomplete')
+            if not rate:self._budget(policy,key);self._pause(delay)
+        raise AssertionError('Unreachable retry loop')
 
 
 def pages(client,endpoint,**parameters):

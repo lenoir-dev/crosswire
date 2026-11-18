@@ -1,0 +1,15 @@
+# S17b round-2 apparatus checkpoint — Deneb
+
+Task `v0.5-s17b-r2`: D-R2a–c implemented for Vega review, **no real API call, real fetch, natural checker/detector run, label, operational round-2 checkpoint, source edit or project commit**. Round-1 evidence/report remains unchanged. Existing T22 source/design/test changes belong to Altair.
+
+Current policy is round 2; exact round-1 bytes are saved as benchmarks/s17b/policy-round1.json. Removing round_id and apparatus recovers those prior bytes exactly. Selection.py and M3 are unchanged; SHA baselines verify anchor, own_bases and contamination function bytes too. Detector pin, source/window/cutoff, repositories, seed/order/caps and all budgets are unchanged. prepare enforces the old policy/source pins alongside new apparatus fields.
+
+D-R2a: at most three GET attempts, deterministic exponential backoff and per-attempt durable exit/status/exception/sanitized-stderr/header/wait records; each attempt consumes its endpoint-class budget. Tests reproduce a failed timeline request with fake transport, timeouts/connections/5xx, ordinary 4xx refusal, metadata/commit/global exhaustion, interrupted claims and restart behavior. Polaris's clarification is implemented/pinned: 429 or qualified 403 retries; Retry-After/reset honored up to 300 seconds; over-limit or unknown required wait stops globally as acquisition-incomplete-rate-limited. Every other 4xx is local and never retried. Credentials are never switched. Tests use fake clocks/waits, not real sleeps or requests. Git's existing metered fail-closed transport is unchanged.
+
+D-R2b: an ordinary repository failure retains its selection prefix and does not starve later repositories; global ceilings/rate exhaustion still stop the cohort. D-R2c: inspect only the qualifying default-history merge's first parent, require PR membership and every unchanged B2 test; preserve final/effective heads, record head_kind and separate summary strata. Tests use an iniconfig-like local DAG in both chronological label orientations, distinct final-head control, missing candidate membership, direct/stacked ingress and patch contamination. No semantic result is inspected and no alternate earlier candidate is searched.
+
+Initial red tests exposed the missing retry/wait interface; legacy-spy stderr fields and fixture journal ordering were corrected during implementation. A partial-transfer failure after HTTP 200 now qualifies as a connection failure, while any non-rate 4xx takes precedence. Final test counts and successor implementation hashes are recorded in s17b-implementation.json.
+
+Next: Vega reviews code/policy; only then may Polaris authorize a new round-2 checkpoint (1). Round 1's checkpoint and authorization do not authorize this changed apparatus. Do not write a checkpoint or call the API from this resume note.
+
+Final validation: **171 passed in 66.09 seconds** across tests/test_s17b_*.py, including 44 new P6 tests. All rate waits and network responses were injected; local Git fixtures only. Diff whitespace checks and the regenerated file-hash map pass. No background job remains from this task.

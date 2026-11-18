@@ -4,15 +4,15 @@ from collections import Counter
 
 from benchmarks.s17.m3 import delta,label,minimal_attribution
 from .selection import interval,Incomplete,Ceiling
-from .graph import anchor,own_bases,contamination,integrate_pair,Unresolved
+from .graph import anchor,own_bases,contamination,integrate_pair,Unresolved,pre_update_head
 from .acquire import fetch_head
 
 
 def prepare_pair(slot,graph,default_head,metadata,permit,budget,transport,*,integrate=False):
     result={'rank':slot['rank'],'hash':slot['hash'],'slot':slot['slot'],'A':slot['A'],'B':slot['B'],
-            'stage':'post-metadata','anchor_method':'unresolved','status':'unlabelled','reason':None}
+            'head_kind':'final-head','stage':'post-metadata','anchor_method':'unresolved','status':'unlabelled','reason':None}
     try:
-        permit.verify();details=slot['details'];heads={};commits={}
+        policy=permit.verify();details=slot['details'];heads={};commits={}
         for name in ('A','B'):
             pr=details[name]
             heads[name]=fetch_head(graph,slot[name],pr['head']['sha'],permit,budget,transport)
@@ -34,6 +34,18 @@ def prepare_pair(slot,graph,default_head,metadata,permit,budget,transport,*,inte
         bases=own_bases(graph,anchored.D,heads['A'],heads['B']);result['bases']=bases
         proof=contamination(graph,heads['A'],heads['B'],anchored.D,anchored.C,earlier,bases)
         result['contamination']=proof
+        if (proof.get('test')=='integrated-earlier-pr' and
+            policy.get('apparatus',{}).get('pre_update_heads',{}).get('enabled')):
+            other='B' if earlier=='A' else 'A'
+            result['final_heads']=dict(heads);result['final_contamination']=proof
+            try:
+                adjustment=pre_update_head(graph,heads['A'],heads['B'],anchored.D,anchored.C,earlier,default_head,commits[other])
+            except Unresolved as error:
+                result['pre_update_rejection']=str(error)
+                raise Unresolved(proof['reason']) from error
+            heads=adjustment['heads'];bases=adjustment['bases'];proof=adjustment['contamination']
+            graph.bind('pre-update-pr-'+str(slot[other]),heads[other])
+            result.update(head_kind='pre-update',heads=heads,bases=bases,contamination=proof,head_adjustment=adjustment)
         if proof['reason']:raise Unresolved(proof['reason'])
         result.update(status='ready',stage='graph-proven')
         if integrate:
@@ -70,7 +82,7 @@ def prepare_slots(slots,graph,default_head,metadata,permit,budget,transport,*,in
     for slot in slots:
         if budget.stopped or stopped:
             results.append({k:slot[k] for k in ('A','B','rank','slot','hash')} |
-                           {'status':'unattempted','reason':'ceiling','anchor_method':'unresolved','stage':'post-metadata'})
+                           {'status':'unattempted','reason':'ceiling','anchor_method':'unresolved','head_kind':'final-head','stage':'post-metadata'})
         else:
             results.append(prepare_pair(slot,graph,default_head,metadata,permit,budget,transport,integrate=integrate))
             if results[-1].get('reason')=='ceiling':stopped=True
@@ -80,7 +92,9 @@ def prepare_slots(slots,graph,default_head,metadata,permit,budget,transport,*,in
 def graph_summary(results):
     """Per-repository report cell; unattempted slots are not anchor attempts."""
     attempted=[r for r in results if r['status']!='unattempted']
-    return {'anchor_method':dict(Counter(r['anchor_method'] for r in attempted)),
+    return {'head_kind':{kind:{'pairs':sum(r.get('head_kind','final-head')==kind for r in results),
+            'ready':sum(r.get('head_kind','final-head')==kind and r['status']=='ready' for r in results)}
+            for kind in ('final-head','pre-update')},'anchor_method':dict(Counter(r['anchor_method'] for r in attempted)),
             'anchor_exclusions':sum(r['anchor_method']=='unresolved' for r in attempted),
             'contamination_exclusions':sum(str(r.get('reason') or '').startswith('contaminat') for r in attempted),
             'unattempted':len(results)-len(attempted)}

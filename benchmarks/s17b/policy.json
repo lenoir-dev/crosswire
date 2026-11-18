@@ -1,6 +1,34 @@
 {
   "api_allowlist": "policy repositories: repository detail plus pulls/issues/commits paths only; reject dot/empty/percent-encoded segments; no rate_limit",
   "api_version": "2022-11-28",
+  "apparatus": {
+    "pre_update_heads": {
+      "enabled": true,
+      "report": "head_kind final-head or pre-update; record final and effective SHAs, default-merge proof, both B2 outcomes; separate strata",
+      "rule": "only first first-parent ancestry crossing of earlier integration via a two-parent merge from pinned default first-parent chain; candidate is its first parent, in pinned PR commits; re-run all unchanged B2 tests; no search past a failed candidate"
+    },
+    "repository_isolation": true,
+    "round1_policy_sha256": "717bf08b9ea73d2feca60848f033d3e4d5bc8d2896d9de874295685067cbec80",
+    "selection_source_sha256": "ec2150b2f1cd1f3d9e8adff86010d08f4cacc8879cc292e582a08e772d84dc40",
+    "transport": {
+      "backoff_base_seconds": 1,
+      "backoff_factor": 2,
+      "git": "existing metered fail-closed Git transport unchanged; no Git retry when transfer cannot be measured",
+      "journal": "every attempt claimed durably, exit/HTTP status/exception/sanitized stderr/wait/outcome in separate durable result; all attempts charge original endpoint budget class",
+      "max_attempts": 3,
+      "maximum_rate_wait_seconds": 300,
+      "non_retryable": "all other HTTP 4xx; malformed/non-200 non-retryable output; missing executable; credential/configuration failures",
+      "rate_limit_classification": {
+        "HTTP_403": "retry only with Retry-After or x-ratelimit-remaining=0",
+        "HTTP_429": "retry within cap; required wait from Retry-After or reset",
+        "other_4xx": "never retry; repository incomplete even if a non-rate 4xx carries Retry-After",
+        "wait_over_300_or_unknown": "global acquisition-incomplete-rate-limited; no wait, no credential switch"
+      },
+      "rate_wait": "Retry-After seconds/HTTP-date, otherwise x-ratelimit-reset; unknown wait or wait>300 => global acquisition-incomplete-rate-limited; never switch credentials",
+      "retryable": "timeouts, connection failures, HTTP 5xx; rate exceptions HTTP 429 or HTTP 403 with Retry-After or x-ratelimit-remaining=0",
+      "timeout_seconds": 60
+    }
+  },
   "clone": "Permit-gated fresh temporary init and metered full default-branch-history fetch; compare pinned SHA; shared cohort GitBudget; every real fetch disables auto GC/maintenance",
   "collection_cutoff": "2026-11-18T00:00:00Z",
   "current_open_reopened_prs": "coverage hole disclosed; closed listing only",
@@ -48,6 +76,7 @@
     "pallets-eco/blinker",
     "pallets/itsdangerous"
   ],
+  "round_id": "s17b-round-2",
   "squash_corroboration": "C single-parent; negative tuple/patch matches; git cherry + for every non-merge PR commit, count equals non-merge count; C-parent..C changed-path set equals complete PR files including previous rename paths",
   "status": "ready for checkpoint 1; collection requires matching authorization",
   "stratum": "natural branches, virtual integration",

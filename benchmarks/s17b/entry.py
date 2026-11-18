@@ -67,7 +67,7 @@ def acquire(permit,root,*,runner=subprocess.run,transport=None):
     complete=(metadata['complete'] and all(row['status']=='graph-acquired' or
               not repository.get('selection',{}).get('selected') for row,repository in zip(rows,metadata['repositories'])))
     complete=complete and not any(slot['status']=='unattempted' for row in rows for slot in row.get('slots',[]))
-    result={'stage':'acquisition only; no checker/detector/labels/checkpoint-2','status':'acquired' if complete else 'acquisition-incomplete',
+    result={'stage':'acquisition only; no checker/detector/labels/checkpoint-2','status':getattr(client,'stop_reason',None) or ('acquired' if complete else 'acquisition-incomplete'),
             'metadata_complete':metadata['complete'],'repositories':rows,'get_requests':client.calls,
             'request_ledger':client.log,'git_bytes':budget.used,'git_ceiling':budget.maximum,'git_stopped':budget.stopped,
             'fetch_receipts':budget.receipts}

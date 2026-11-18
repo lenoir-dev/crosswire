@@ -102,14 +102,15 @@ def test_unset_policy_cannot_form_checkpoint(tmp_path):
 
 def test_checkpoint_no_api_and_explicit_matching_authorization(tmp_path):
     from benchmarks.s17b.checkpoint import ROOT
-    policy={**json.loads((ROOT/'benchmarks/s17b/policy.json').read_text()),**POLICY,
-            'api_version':'test-only','gh_version':'test-only','detector_commit':'a'*40}
+    # Round 2 keeps every round-1 policy value; the synthetic checkpoint lives
+    # only under tmp_path and is never used for acquisition.
+    policy=json.loads((ROOT/'benchmarks/s17b/policy.json').read_text())
     from benchmarks.s17b.checkpoint import runtime_pins,READY
     policy.update(runtime_pins(),status=READY)
-    checkpoint=tmp_path/'checkpoint.json';prepare(policy,checkpoint,datetime(2026,2,1,tzinfo=timezone.utc))
+    checkpoint=tmp_path/'checkpoint.json';prepare(policy,checkpoint,datetime(2026,11,19,tzinfo=timezone.utc))
     approval=tmp_path/'approval.json';approval.write_text('{}')
     with pytest.raises(PermissionError):Permit(checkpoint,approval).verify()
     from benchmarks.s17b.checkpoint import sha
     approval.write_text(json.dumps({'scope':'S17b read-only acquisition','approved_by':'Polaris','checkpoint_sha256':sha(checkpoint)}))
     assert Permit(checkpoint,approval).verify()==policy
-    with pytest.raises(FileExistsError):prepare(policy,checkpoint,datetime(2026,2,1,tzinfo=timezone.utc))
+    with pytest.raises(FileExistsError):prepare(policy,checkpoint,datetime(2026,11,19,tzinfo=timezone.utc))

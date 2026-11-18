@@ -246,3 +246,27 @@ as a sanitized tarball (no host user/group names, no absolute paths) attached to
 SHA-256 pinned in the committed report; committed tests that verify such evidence skip unless
 `CROSSWIRE_EVIDENCE_DIR` points at the extracted archive. Selections, policies, freezes and aggregate results
 stay in git.
+
+## Amendment P4 — decisions on Vega's S18 audit and T21 code review (Polaris, 2026-11-18)
+
+**S18 (`docs/reviews/v0.5-s18-audit-vega.md`).** The attempt is not authorized until all of the following are
+done and re-audited by Vega:
+- B1 (complement leak through `attribution_accuracy`): fixed; the successor seal and amendment hashes are
+  regenerated.
+- D1, publication rule — **option 2**: the categorical micro gate verdicts (`provisional pass` / `fail` /
+  `insufficient data`) and the attempt status are published outside the suppressed blocks; counts, ratios and
+  intervals stay suppressed when any linked count is 1–4. The preregistration states which count ranges each
+  verdict implies. Tests pin the rule.
+- M1: `permitted_scope` lists the complete change set (or the unified-diff hash) and states that the rehearsal
+  branch cannot select real data. M2: the successor eval-code hash and the exact `source_sha256` /
+  `eval_sha256` formulas are published; `eval-code.sha256` is marked superseded, not edited. M3: a private
+  `measurement-environment.json` is written at claim time (interpreter, Git, OS, sorted environment keys, locale),
+  outside the compared metadata; the authorization names the detector interpreter and Git version.
+- Minors m1–m6 are fixed or documented as Vega recommends.
+
+**T21d — adapter hardening (`docs/reviews/v0.5-t21-code-vega.md`), Altair, after T24 and before T25.** M1 the
+protocol declares every member the core calls; M2 the core no longer reads the first adapter's Python-shaped
+`legacy` summary (cache and `engine.side` become per-adapter); M3 `violations()` gets its consumer or is removed
+until Go needs it; M4 cache errors are not swallowed, exceptions are symmetric, context is computed once, the
+adapter version is derived; L1–L3 as reviewed; L4 a second fake adapter conformance test (two languages in one
+repository). T21d changes no output byte: the pinned T21 replay is rerun, and shims are removed in this step.

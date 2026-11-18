@@ -18,13 +18,13 @@ S16 templates seed real rename/delete/signature/module-move mutations and open-b
 
 Pairwise ground truth comes from every pair; combined/plan use full integration. Fix-by-third can therefore be pairwise-positive and combined/plan-control. All participating tips need empty M3 deltas; uncertain identity/scope, external dependencies, new tip errors and textual conflicts stay unlabelled. All FP/FN records below are attributable root counts, not merely scenario counts.
 
-## pairwise
+## pairwise — mutation development only
 
 Labels: {'positive': 31, 'control': 138, 'unlabelled': 23}; controls per positive: 4.451612903225806; ≥3 control requirement: **met**. Oracle-ineligible shares: 11.98%; exclusions: {'ambiguous-identity': 17, 'new-unsupported-diagnostic': 1, 'new-tip-diagnostic': 2, 'textual-conflict-or-missing-state': 3}.
 
 | Rule / type | TP / FP / FN | Precision (Wilson 95%) | Recall (Wilson 95%) | Status |
 | --- | --- | --- | --- | --- |
-| Micro | 31 / 0 / 0 | 100.00% (88.97–100.00%) | 100.00% (88.97–100.00%) | sufficient counts |
+| Micro (development only) | 31 / 0 / 0 | 100.00% (88.97–100.00%) | 100.00% (88.97–100.00%) | sufficient counts |
 | CW001 / PY-1 | 22 / 0 / 0 | 100.00% (85.13–100.00%) | 100.00% (85.13–100.00%) | sufficient counts |
 | CW001 / PY-2 | 5 / 0 / 0 | 100.00% (56.55–100.00%) | 100.00% (56.55–100.00%) | insufficient data |
 | CW001 / PY-3 | 0 / 0 / 0 | undefined (not estimable) | undefined (not estimable) | insufficient data |
@@ -56,13 +56,13 @@ Warnings (separate): {'CW003': 0, 'CW004': 0, 'CW005': 0}; resolved warnings 0; 
 Every FP/FN (one line per root):
 
 None.
-## combined
+## combined — mutation development only
 
 Labels: {'positive': 28, 'control': 141, 'unlabelled': 23}; controls per positive: 5.035714285714286; ≥3 control requirement: **met**. Oracle-ineligible shares: 11.98%; exclusions: {'ambiguous-identity': 17, 'new-unsupported-diagnostic': 1, 'new-tip-diagnostic': 2, 'textual-conflict-or-missing-state': 3}.
 
 | Rule / type | TP / FP / FN | Precision (Wilson 95%) | Recall (Wilson 95%) | Status |
 | --- | --- | --- | --- | --- |
-| Micro | 26 / 0 / 2 | 100.00% (87.13–100.00%) | 92.86% (77.35–98.02%) | sufficient counts |
+| Micro (development only) | 26 / 0 / 2 | 100.00% (87.13–100.00%) | 92.86% (77.35–98.02%) | sufficient counts |
 | CW001 / PY-1 | 18 / 0 / 0 | 100.00% (82.41–100.00%) | 100.00% (82.41–100.00%) | insufficient data |
 | CW001 / PY-2 | 3 / 0 / 2 | 100.00% (43.85–100.00%) | 60.00% (23.07–88.24%) | insufficient data |
 | CW001 / PY-3 | 0 / 0 / 0 | undefined (not estimable) | undefined (not estimable) | insufficient data |
@@ -95,13 +95,13 @@ Every FP/FN (one line per root):
 
 - `06e9c19f58ae8eff4b8b` (pytest-repeat) FN CW001/PY-2: move_module/scenario: native module removal is found pairwise as pytest_repeat.TestCase; combined omits the removed-module use of this imported/re-exported binding (zero findings; partial coverage)
 - `4f2f5550a7619ba7d1bf` (trove-classifiers) FN CW001/PY-2: move_module/scenario: native module removal is found pairwise as trove_classifiers.Dict; combined omits the removed-module use of this imported/re-exported binding (zero findings; partial coverage)
-## plan
+## plan — mutation development only
 
 Labels: {'positive': 28, 'control': 141, 'unlabelled': 23}; controls per positive: 5.035714285714286; ≥3 control requirement: **met**. Oracle-ineligible shares: 11.98%; exclusions: {'ambiguous-identity': 17, 'new-unsupported-diagnostic': 1, 'new-tip-diagnostic': 2, 'textual-conflict-or-missing-state': 3}.
 
 | Rule / type | TP / FP / FN | Precision (Wilson 95%) | Recall (Wilson 95%) | Status |
 | --- | --- | --- | --- | --- |
-| Micro | 26 / 0 / 2 | 100.00% (87.13–100.00%) | 92.86% (77.35–98.02%) | sufficient counts |
+| Micro (development only) | 26 / 0 / 2 | 100.00% (87.13–100.00%) | 92.86% (77.35–98.02%) | sufficient counts |
 | CW001 / PY-1 | 18 / 0 / 0 | 100.00% (82.41–100.00%) | 100.00% (82.41–100.00%) | insufficient data |
 | CW001 / PY-2 | 3 / 0 / 2 | 100.00% (43.85–100.00%) | 60.00% (23.07–88.24%) | insufficient data |
 | CW001 / PY-3 | 0 / 0 / 0 | undefined (not estimable) | undefined (not estimable) | insufficient data |
@@ -141,7 +141,7 @@ Execution uses the immutable installed wheel as a subprocess, pairwise/combined/
 
 ## Post-label M2 scoring audit
 
-**The inherited PY-2 scoring defect was found after labelling.** Primary metrics above implement only the predeclared M2 missing-module + use-file key. Original code, frozen labels, detector bytes and raw scores are retained; no detector or oracle run and no relabel was performed for this correction. The separately hashed/tested adapter is applied to every eligible mutation and S17 journal. Non-PY-2 matching is asserted unchanged case-by-case. Vega audit remains pending.
+**The inherited PY-2 scoring defect was found after labelling.** Primary metrics above implement only the predeclared M2 missing-module + use-file key. Original code, frozen labels, detector bytes and raw scores are retained; no detector or oracle run and no relabel was performed for this correction. The separately hashed/tested adapter is applied to every eligible mutation and S17 journal. Non-PY-2 matching is asserted unchanged case-by-case. Vega’s independent audit accepted the M2 correction; its requested minor disclosures and adapter regressions are recorded below.
 
 | Mode | Frozen raw TP / FP / FN | M2-corrected TP / FP / FN | Raw precision / recall | Corrected precision / recall |
 | --- | --- | --- | --- | --- |
@@ -160,3 +160,11 @@ Original pre-label synthetic tests passed before the frozen run; five M2 correct
 Pairwise Wilson precision lower bound is **88.97%** and combined/plan **87.13%** despite 100% point precision, so these samples do not meet the 90% lower-bound quality threshold; the stratum remains development-only. Resampling just five small, constructed repository clusters can yield degenerate precision intervals; these are descriptive and do not erase Wilson/sample limitations. PY-3 is empty, most rule/type cells are below 20 observations, and 23/192 cases remain unlabelled. Only one conjunctive PY-5 scenario is eligible. No post-label renderer or selector change was made to increase coverage.
 
 The two combined/plan misses both involve module deletion with an imported/re-exported name (`pytest_repeat.TestCase`, `trove_classifiers.Dict`): pairwise emits CW001, combined/plan emits nothing with partial coverage. These observed gaps should be handed to Altair as independent regressions; the measurement task makes no runtime fix. Pairwise attribution remains unmeasured as disclosed in the audit section.
+
+## Vega independent audit and minor dispositions
+
+**Mutation development only:** corrected headline precision/recall is pairwise **100% / 100%** and combined/plan **100% / 92.86%**. Template family × control kind largely determines the label; the oracle confirms this construction. Zero observed FP on this synthetic mix does not estimate natural/user-facing precision. External validity remains limited even though real declarations and repositories are used.
+
+Vega’s [independent audit](../reviews/v0.5-mut-vega.md), section 2, drew the first 20/192 case IDs by ascending SHA-256 of `vega-mut-v05-sample|<full case id>` (ceil 10%). Pairwise draw: 18 controls, 2 unlabelled, zero positives; the combined/plan PY-5 case is positive in that draw. Vega therefore supplemented with **every positive in any mode (32 cases)**: the union is **51 cases and 384 oracle states**. Vega reports 384/384 source/checker-state agreement and 576/576 mode-label derivation agreement, with no label errors found; these are her independent checks, not a new Deneb measurement. Full reproducible draw and supplement IDs are in [mut-v05-audit-sample.json](mut-v05-audit-sample.json). Controls outside the draw and unlabelled cases retain the audit limitations stated there.
+
+The frozen `benchmarks/s17/matching.py` still lacks the declared M2 PY-2 module/file key. Its hash is **unchanged**; it must not be reused uncorrected for a new measurement. Use the separately hashed, audited `benchmarks/mut_v05_m2_audit.py` adapter. This note is in the report rather than the frozen file. Added adapter regression tests cover two missing modules in one use file and an outside-oracle-scope finding (unlabelled, not FP). Pairwise attribution remains not evaluated and is absent from headline summaries. No labels, detector output or numerical metric totals changed for these minor disclosures/tests.

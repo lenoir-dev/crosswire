@@ -2,7 +2,7 @@
   "code_sha256": {
     "benchmarks/mut_v05_m2_audit.py": "8d093471b064dfff906dd2f0f8e175afff1af7905c52c1c6fe83a15fc901af28",
     "benchmarks/mut_v05_publish.py": "9d101be495f903addf47be9fd5946db5f0c1b8e3c0e81fea32250b351922f9a3",
-    "tests/test_mut_v05_m2_audit.py": "4d1a9da31d1fefaefa3d6046270442b7d4fd0d492d6d25acde14f764d7853c03"
+    "tests/test_mut_v05_m2_audit.py": "20ab0d48ee8427a60b0140db2b3429de3d5e35aff4bb25fb6b3fa263b9c50a06"
   },
   "contract": "matching.md M2: missing module identity + use-site file; no line/symbol/occurrence condition for PY-2",
   "matching_sha256": "2a4785ed54ca970ba33ea8065911d5ef55fa982653810f198e4375de3849fe3d",
@@ -544,5 +544,5 @@
     },
     "stratum": "natural-development-M3"
   },
-  "status": "M2-only scoring correction authorized by Polaris after labelling; Vega audit pending"
+  "status": "M2-only correction accepted by Vega with minor conditions; seven adapter tests and minor disclosures added; no score/label change"
 }

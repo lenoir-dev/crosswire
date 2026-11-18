@@ -47,3 +47,19 @@ def test_non_py2_results_are_identical_to_frozen_matcher():
     finding={'rule':'CW002','path':'use.py','line':2,'symbol':'pkg.f'}
     d=Identity('reportCallIssue','use.py','pkg.f','call','root')
     assert match([finding],[d],base,full,known)==frozen_match([finding],[d],base,full,known)
+
+
+def test_two_distinct_missing_modules_in_same_use_file_match_independently():
+    base,full,known,d,f=fixture()
+    known['other']='other.py';base['other.py']='class Thing: pass\n'
+    other=Identity('reportMissingImports','mutation_consumer.py','other','second-import','other-root')
+    result=match([f,{**f,'symbol':'other.Thing'}],[d,other],base,full,known)
+    assert (result['tp'],result['fp'],result['fn'])==(2,0,0)
+    assert {m['diagnostic'].symbol for m in result['matches']}=={'pkg','other'}
+
+
+def test_outside_oracle_scope_is_unlabelled_not_false_positive():
+    base,full,known,d,f=fixture()
+    result=match([{**f,'path':'outside.py'}],[d],base,full,known)
+    assert (result['tp'],result['fp'],result['fn'])==(0,0,1)
+    assert result['unlabelled']==[{'finding':{**f,'path':'outside.py'},'reason':'outside-oracle-scope'}]

@@ -210,6 +210,17 @@
     "storage": "local sanitized archive; release upload belongs to Polaris, not performed"
   },
   "freeze_sha256": "e5dcc02bdd6ef13f874d323d3e6d0a838c1a407e707fa1d40047d41656621a53",
+  "independent_audit": {
+    "auditor": "Vega",
+    "draw_manifest": "mut-v05-audit-sample.json",
+    "draw_manifest_sha256": "048f41d5fc76934750dc3a64253852f58b2968ff4800d14940095145e9704134",
+    "label_errors_found": 0,
+    "positive_supplement": 32,
+    "random_cases": 20,
+    "report": "../reviews/v0.5-mut-vega.md",
+    "states": 384,
+    "union_cases": 51
+  },
   "limitations": [
     "mutation prevalence is constructed, never natural or user-facing precision",
     "copied actual-module fallback baseline augmentation explicitly flagged per case",
@@ -2182,7 +2193,7 @@
     "code_sha256": {
       "benchmarks/mut_v05_m2_audit.py": "8d093471b064dfff906dd2f0f8e175afff1af7905c52c1c6fe83a15fc901af28",
       "benchmarks/mut_v05_publish.py": "9d101be495f903addf47be9fd5946db5f0c1b8e3c0e81fea32250b351922f9a3",
-      "tests/test_mut_v05_m2_audit.py": "4d1a9da31d1fefaefa3d6046270442b7d4fd0d492d6d25acde14f764d7853c03"
+      "tests/test_mut_v05_m2_audit.py": "20ab0d48ee8427a60b0140db2b3429de3d5e35aff4bb25fb6b3fa263b9c50a06"
     },
     "frozen_raw": {
       "combined": {
@@ -2298,7 +2309,7 @@
       }
     },
     "manifest": "mut-v05-m2-audit.json",
-    "manifest_sha256": "14d0bf45f6f3a4a3b375e674291c039336d2e2d51d6f6ab67cbc1999e795ec4b",
+    "manifest_sha256": "5d0bd332ac5bf851d5d5dd95ff768134b0ed9fefcf2f038eed44fd73f3e686bc",
     "method": "M2-corrected primary; frozen raw side-by-side",
     "s17_effect": "none"
   },

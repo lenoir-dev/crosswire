@@ -381,3 +381,24 @@ resolved as follows, and no ceiling is changed:
   - The order of 0.5a becomes T22 → BF1 → T22b → T23 → T24 → T21d → freeze → S14 (D-T22c) → S18 → release.
 
 T22 is committed alone; BF1 follows as its own commit after its replay.
+
+## Amendment P9 — decisions on the S19 Go corpus design (Polaris, 2026-11-19)
+
+These are decisions on [Deneb's design](design/s19-go-corpus.md). They authorize no collection.
+
+- **Roster.** The eight candidates are approved in the listed order (chi, pflag, uuid, bbolt, dns, mux, zerolog,
+  httprouter). A candidate is never replaced for low yield, a failed build or a missing dependency. Overlapping
+  domains (chi/mux/httprouter) count as separate repositories but as one domain in the "≥ 5 domains" description.
+- **Dependency preparation.** The ceilings are approved: 1 GiB cache growth, 15 minutes serial setup and 180 s per
+  context. They are a separate resource from the 2 GiB Git transfer proxy.
+- **`go vet`.** The pilot omits it. The report states `vet: not run`, and no vet coverage is claimed.
+- **Eligibility.** Green production builds are required for the own bases, the common later base and every
+  individual state. A non-green baseline is unlabelled, never subtracted.
+- **Matching.** The GO-2 specialization (module-qualified missing package path + use-site file) and the GO-4
+  specialization (unordered declaration pair) are approved as proposals. Each becomes a separately hashed adapter
+  with tests and gets Vega's review before checkpoint (1). The frozen Python M2 code is not edited.
+- **Selector.** S19 uses a separately versioned Go selector adapter with equivalence tests. `selection.py` stays
+  unchanged.
+- **Order.** S19 implementation starts after the 0.5a release and after S17b round 2 has finished acquisition,
+  so that it reuses the P7 transport as committed rather than in review. Checkpoint (2) waits for a committed Go
+  detector (T25/T26), as the design states.

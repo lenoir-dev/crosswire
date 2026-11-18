@@ -309,5 +309,9 @@ window, cutoff, seed, caps, budgets, M3, anchors, contamination tests) and chang
   through a merge of the default branch into B, the pair uses B's last first-parent commit before that merge as
   B's head, if it is a PR commit and passes every B2 test; the pair records `head_kind = pre-update`, and the
   stratum reports final-head and pre-update pairs separately. No other contamination rule changes.
-Round 2 has its own checkpoint (1) and authorization; Vega reviews the three changes before it. Round 1's records
+- **D-R2d PR-level isolation (R2-C1, accepted by Polaris):** after bounded retries, a PR-scoped detail/timeline/files failure is a cached `metadata-unavailable` stub without timestamps; unchanged `detail_filter` classifies it `invalid-metadata`, no slot. A commit-list failure makes the selected pair unlabelled and consumes its slot. Five distinct failed PRs stop only that repository. Ceilings/rate stops are never converted to PR stubs. PR-scoped request timeout is 120 s; other GETs stay 60 s. The total cohort transport-wait cap is 900 s, with excess a global rate-limit stop.
+
+Polaris's rate-limit clarification: the only 4xx retry exceptions are HTTP 429, or 403 with Retry-After or x-ratelimit-remaining: 0; wait Retry-After/reset up to 300 s, otherwise stop globally without credential switching. The round-2 report must disclose that D-R2c followed one observed graph-level exclusion whose oracle status is unknown; the rule applies to every pair. Per-repository reports include PR failures, retries by cause, waits and rescue outcomes. Pre-update search stops at the first first-parent ancestry crossing; all existing B2 checks remain mandatory.
+
+Round 2 has its own checkpoint (1) and authorization; Vega reviews these apparatus changes before it. Round 1's records
 stay published beside it.

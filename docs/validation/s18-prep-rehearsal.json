@@ -1,0 +1,79 @@
+{
+  "apparatus_sha256": {
+    "docs/validation/matching.md": "2a4785ed54ca970ba33ea8065911d5ef55fa982653810f198e4375de3849fe3d",
+    "docs/validation/v04-oracle-requirements.lock": "10c275fbb61d25711eced3afccc609ff4b4f8cc7f9977487f2c0e8cabd6b53ef",
+    "docs/validation/v04-oracle-requirements.txt": "6b1a88893923c04c9f8f579afddeb134d761037b01a9b62e63f8a3852633f5b2",
+    "eval/__init__.py": "d4b22cb16522967a365dbff9e1f6a81726e995fddd2f501db1938d9f68b29626",
+    "eval/build_development.py": "4db19a08b837d63ba1f6c37d727f2476b3722d66664f951539196c219bbe1ff0",
+    "eval/corpus.py": "4109360132c7209dc84f7d9c1f2e4eb7f06d1b842ee200627a7d4ca645f55d75",
+    "eval/extend_development.py": "64b13e0d644c770dc2a3b5a01dc4acb890875c26d5a796d3e7ca619d774169df",
+    "eval/families.py": "27e2d3fc502b67ca4013249a997172057aa2962c42e6127dc5e6ab8771973c6a",
+    "eval/integrity.py": "448fe6688b320d775a8900a212bd0b7d1ec524e9ce84f399a08fea45f4068ac5",
+    "eval/live.py": "8991882ccb359a8617b70da37e938bf0becd6abda3311c1d1d8ceb7747b95945",
+    "eval/measure.py": "83874bcd5a21ab59da853f89d278576d9f2459435939826358161f3a06597593",
+    "eval/metrics.py": "c4842806a515330cbef2c0f269a707132ce273b3f689474ad158c11d2e885821",
+    "eval/mine_history.py": "dcfc00d98d3ad7ebd926d719f1be8e4494ec1fc5352639c5c5f36cf8517d5b5c",
+    "eval/oracle.py": "595704c2cfa5bf895a58eb0d9ac729216ac6b6c938f73ba3e1ccf7628a5fea0e",
+    "eval/paths.py": "389331bd2e9ef1fd7bc24b6fbcd72f6ca5f37a93793941245da666066ca6fd64",
+    "eval/policy.json": "1d77d87520e391b8c069a15706b00b5372141797f3f158bd121d8b193ca561c5",
+    "eval/portable.py": "b3cfac6ec60d222ed7837a35b011d5ef1150706f82786bc60d70f01ba25f0b21",
+    "eval/publish.py": "f16dcd5f80dc40d6c4104460626bada388615f1c88767ee2aa4d86fd211a92a6",
+    "eval/replay.py": "613d52339ed4667ab60c4cc98eb5fc7967726f0fc06e803084cb50c5ac11a923",
+    "eval/rescreen_development.py": "a1ad612eb4bd9927b086aa4b27f6c4bef115b4d1558b082c779c2c8e30021b61",
+    "eval/revisions/r4_families.py": "bc90e09e502da912d1732906bbe2bdb9032bce17714b5089528670f79a3898b4",
+    "eval/revisions/r5_families.py": "b5fb58409e6ca839f1126c0c5354376a4d7d9e81645b598f0476f678acd6a68b",
+    "eval/run_development.py": "148195749191451349becb71c6f99fa06432e4cbd80a9fa185021ebe5aa838f6",
+    "eval/run_holdout.py": "e5d25c7d0529b0884f1d6f310735c7f8b75eb593d2613f55de9fdffcdef40d5f",
+    "eval/runtime.py": "7394d0e628d95d3a7b01ef492cdbadd5d91c84a2a9acd01162042291736d4e8c",
+    "eval/screen.py": "6f6d45aa0be597be13cd668fa40443d35eee621b83f5fa057d5e0a1fe99d61e1",
+    "eval/seal.py": "53b374074844d075f2fb59d06287c9f530ee8d00e7f7e8c75a70f32a8104fdb5",
+    "eval/toolchain.json": "c7222cdb00153b79e2fd10366439e1553e04468918b7264deaf3d8c100829e9e",
+    "eval/toolchain.py": "c4f04bef2de1f85e0789c7efda254475dd486780dccf26762ab34a71b105085a"
+  },
+  "complementary_suppression": "all linked statistical blocks withheld for a small outcome",
+  "controls": 180,
+  "fixture_location": "system temporary directory, crosswire-s18-synthetic-*; private, not committed",
+  "fixtures": 240,
+  "forced_failure": {
+    "completed": 1,
+    "detector_invocations_before_and_after_denied_rerun": 2,
+    "mechanism": "SIGKILL from second detector child",
+    "public_status": "interrupted",
+    "report_only_detector_invocations": 0,
+    "started": 2
+  },
+  "full_attempt": {
+    "detector_invocations": 240,
+    "fn": 0,
+    "fp": 0,
+    "per_rule_verdicts": "not evaluated",
+    "precision_verdict": "provisional pass",
+    "tp": 60
+  },
+  "oracle": {
+    "bundle_sha256": "2e0f74b7a4949f754e57c47fa6e049c1a1e5a57190d77024dde8daab31d03ab3",
+    "config": {
+      "include": [
+        "."
+      ],
+      "pythonVersion": "3.11",
+      "reportAttributeAccessIssue": "error",
+      "reportCallIssue": "error",
+      "reportMissingImports": "error",
+      "typeCheckingMode": "basic"
+    },
+    "node_sha256": "08bfa72a56edb0dc8e04460f79bc5b51bd7948e6d26a4a55370a31d347a0e97b",
+    "node_version": "v26.13.1",
+    "package_version": "1.1.407",
+    "python_sha256": "e401ac7a95cda75dee34a0cfe1e4faf0a6df1a501cf67887f177fb78cd4eb60a",
+    "python_version": "3.14.8 (main, Sep 30 2026, 17:55:09) [Clang 21.0.0 (clang-2100.3.34.2)]",
+    "version": "1.1.407"
+  },
+  "oracle_states_checked": 32,
+  "positives": 60,
+  "rehearsal_driver_sha256": "56a26c205d29913b86e80c22fa8e032c6641e06bee8e8e3befda907822a91924",
+  "release": "0.5a",
+  "repositories": 4,
+  "scope": "synthetic private fixtures only; real holdout never accessed",
+  "status": "pass"
+}

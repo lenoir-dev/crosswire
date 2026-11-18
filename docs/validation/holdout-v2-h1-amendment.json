@@ -1,0 +1,59 @@
+{
+  "amendment": "H1",
+  "checks": {
+    "commits": "none",
+    "focused_tests": "68 passed",
+    "forced_midrun_failure": "SIGKILL; no rerun; journal-only report",
+    "real_holdout_access": "none",
+    "src_edits": "none",
+    "synthetic_full_pipeline": "pass"
+  },
+  "labels": "untouched; no real measurement, rescreening or relabelling",
+  "next": "Vega audit and Polaris commit; later T22-T24 accepted source archive and separate explicit attempt authorization",
+  "original_seal_sha256": "90c0a799531382e07b657bed4fe85a41941bba7af0d3100fe761982a4a2253d1",
+  "permitted_scope": [
+    "durable private per-case journal",
+    "no-rerun failure policy",
+    "release 0.5a",
+    "complementary cell suppression",
+    "plan-prescribed verdict presentation"
+  ],
+  "private_pins": "identical copied public seal entries; private content never opened or hashed during preparation",
+  "release": "0.5a",
+  "sealed_public_changes": {
+    "eval/run_holdout.py": {
+      "after": "e5d25c7d0529b0884f1d6f310735c7f8b75eb593d2613f55de9fdffcdef40d5f",
+      "before": "5f0bf6d97d346559deb15db3ec7805fcd7e259d7b85786ea320c66ec89a226a1"
+    }
+  },
+  "status": "prepared; requires Polaris commit and Vega audit before real authorization",
+  "successor_seal_sha256": "2d35a0dbc42eeb6cbad82becf9321ad06e1b4b58b472cdda4ec77e718996cd69",
+  "supporting_files_sha256": {
+    "benchmarks/s18_rehearsal.py": "56a26c205d29913b86e80c22fa8e032c6641e06bee8e8e3befda907822a91924",
+    "conformance/README.md": "84384001282579d980af83c6bb6671dfb24698b8e3a37522e5d6cd9e716ddb30",
+    "conformance/__init__.py": "1736192e3b0221b4e70b2479ffe03cb8e562ca4b7cda8b30252090ed6b06bea4",
+    "conformance/git.py": "32a7d669a7bafe79e7eda4385d925e213b6c8b96906f92a11acfff9b5c4b0912",
+    "conformance/oracle.py": "42d731e566caf99034f5aaf5b8d861cd3964a0a2817dba3fce419234c88a45a9",
+    "conformance/render/__init__.py": "d295a1917f86a61e5e63c23b39dd4a6c0008cd7dcc7539a05ee2124f16f6e48a",
+    "conformance/render/python.py": "6d17cf67c6cc6b6c5dddf48c6b01abc20fe14d26e8af73fd4aebd9c936462de8",
+    "conformance/run.py": "6511fb2ea071fcdf1669d2ae97c0b758c0b2edb8885a8793514cd9fd70ccb63b",
+    "conformance/templates/arity.json": "b83598d37ba05e6e4f5a779d54fdb7e482eafc0ee5f251a4dcf129e8b9b186e9",
+    "conformance/templates/conjunctive.json": "9f6d362fd78b632c98c623f1031b57b86e658576ba3c8f1b93657dda4bdfa4ac",
+    "conformance/templates/delete.json": "62d1b87169d95e6a82c0d07a1dd122c9e32da49152deef780ed6b599c6b9d5dd",
+    "conformance/templates/fix_by_third.json": "406904981a15770513d3ac7ba39776943a78a2a3e0c005f68606a81f7af9579d",
+    "conformance/templates/move_module.json": "c0258c67d871cc98f2f239dc00c0ef0ce697647666bfa19f03eb1e4f6442855d",
+    "conformance/templates/open_dynamic.json": "1a04363b7b041834c59cc384f5cbc358baa40b59aaab2b3e242e2be7fd6ebfa6",
+    "conformance/templates/open_wildcard.json": "aed9deaf5a47396ae5ae2d607371679ab1e634786e8b068979c91e247310db4a",
+    "conformance/templates/rename.json": "866d157d802bc198e21f086ff84d8fec95f197cc756f7f1a580d9c594d3702b7",
+    "docs/PLAN-v0.5.md": "8eb016814523f92eb29f3afb102ba4f6270e51dc9fc4e5972e9f591a25db4f86",
+    "docs/QUALITY.md": "7fc14b3563b5e47c4e7ffcf0ca7b3e88906a163bea98bd816746b2ec85d8723d",
+    "docs/validation/holdout-v2-preregistration.md": "9ed61a409ac5d1b059e6707a772b2dcabb236878832936189bc5d69366a51a23",
+    "docs/validation/s18-prep-rehearsal.json": "2b33436916fd0f15ae2c59d9c2ba669455a5b9b0504a550596432dc4adf7fdae",
+    "docs/validation/s18-prep.md": "8e2314f013976e3e4e6f612ddda89c551b7cfb90b1845a5cacb7ebbce399719d",
+    "docs/validation/s18-resume.md": "6a9994f75d566a31ca35b55c9869915c56a876c407c228fa5a1065731ddc64fd",
+    "tests/test_eval.py": "48f3135b5a3b499410c27dc33f78b6bac96c87d30ac045d694e78c17b014a0fd",
+    "tests/test_eval_r2.py": "5a4df2dffc4e0a7ce342db99509db7343341b6ce66deedb6ca22c7e0e7ebade2",
+    "tests/test_holdout_h1.py": "14247ff9d9941f1c5b8b10d21acb3f7b7e9fe128fea81dc9259458b25cc926ed"
+  },
+  "unchanged_public_entries": 28
+}

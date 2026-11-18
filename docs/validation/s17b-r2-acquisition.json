@@ -1,0 +1,442 @@
+{
+  "acquisition_invocations": 1,
+  "authorization_sha256": "a5f63b4ef82c71d9cce73f9053341e43404616f3ecf960123e7617f884a3fbb6",
+  "checker_invocations": 0,
+  "checkpoint_1_sha256": "e99e8e0b99e35a89cbeef74520480c1cf7acabd7516676a78340967d70dcddb2",
+  "checkpoint_2": "~/.crosswire-evidence/s17b-r2/checkpoint-2.json",
+  "checkpoint_2_sha256": "a502806e31f851fb52fa3b02537fa8ea9abaddd79ff87cd7ec5e7f13efb7c231",
+  "checks": {
+    "all_archive_hashes_and_headers_verified": true,
+    "cache_recovery_first_access_order_matches_original_requests": true,
+    "clean_export_matches_checkpoint": true,
+    "commits": false,
+    "git_state_mutations": 0,
+    "holdout_access": false,
+    "new_requests_in_recovery": 0,
+    "oracle_1_1_407_environment_matches_original_S17": true,
+    "source_and_wheel_installed_bytes_equal": true,
+    "src_edits": false
+  },
+  "commit_requests": 0,
+  "detector_commit": "30ff34363070175160e066dd1b5743856c907a05",
+  "detector_invocations": 0,
+  "detector_wheel_sha256": "54bd04dc861e029bf92ce40975b6b51ea2b994168f03d78aa2a2a8e5c800324e",
+  "elapsed_acquisition_seconds": 166.0370590686798,
+  "evidence_archive": "~/.crosswire-evidence/s17b-r2-acquisition-evidence.tgz",
+  "evidence_archive_sha256": "74928d29e6926d58d035ff6163f39fc0297b4b5ef2e3a9cf1a1bde14c283e9d5",
+  "evidence_bytes": 2598412,
+  "evidence_members": 518,
+  "exit_status": 1,
+  "failed_http_requests": 0,
+  "failure": {
+    "all_transport_attempts": 1,
+    "cause": "GitHub next Link uses repositories/34739117/pulls; frozen allowlist accepts repos/<owner>/<name> only; ValueError escapes repository-local Incomplete handling",
+    "exception": "ValueError: GET endpoint outside policy allowlist",
+    "http_or_connection_failure": false,
+    "http_requests_successful": 145,
+    "request_transfer_or_wait_ceiling_reached": false,
+    "stage": "fourth repository, next page of pluggy PR list"
+  },
+  "get_requests": 145,
+  "git_bytes": 0,
+  "graph_pairs_evaluated": 0,
+  "graph_ready_pairs": 0,
+  "labels_produced": 0,
+  "limitations": [
+    "No original durable metadata/selected-pair output; 63 evaluated and 23 selected pairs are separately marked deterministic local cache recovery, not a resumed acquisition",
+    "Pluggy list is partial; four remaining repositories unattempted; no head retrieval, anchor/B2 proof, head_kind assignment, bundle, integration or realized scope",
+    "Zero graph-ready pairs is missing acquisition, not evidence of zero natural positives/controls or zero precision/recall",
+    "Checkpoint-2 is incomplete material for failure/environment audit, not a runnable or authorized measurement freeze",
+    "5400s driver/journal enforcement and exact virtual-state scope are not implemented/hashed; no checker/detector run permitted",
+    "D-R2c adopted after one round-1 graph-level exclusion of unknown oracle status; uniform graph rule, never semantic selection; no rescue attempted in round 2",
+    "Runtime/oracle binary and site trees hashed but not all duplicated in archive; retained local environments needed for audit"
+  ],
+  "metadata_requests": 145,
+  "next": "STOP. Acquisition consumed exactly once; no resumption, retry, substitution, graph retrieval or measurement. Vega audits incomplete checkpoint-2 material; Polaris decides any future work.",
+  "policy_sha256": "4de98b993c68daf1356327ce08f1e1c233d87c8aaa9834ea1e6217a4406f6384",
+  "repository_counts": [
+    {
+      "blocked_waits": 0,
+      "commit_limit": 60,
+      "commit_list_pr_failures": 0,
+      "commit_requests": 0,
+      "git_bytes": 0,
+      "graph_excluded_pairs": 0,
+      "graph_pairs_evaluated": 0,
+      "graph_ready_pairs": 0,
+      "head_kind": {
+        "final-head": {
+          "pairs": 0,
+          "ready": 0
+        },
+        "pre-update": {
+          "pairs": 0,
+          "ready": 0
+        }
+      },
+      "head_kind_unassigned": 13,
+      "metadata_exclusions_recovered": {
+        "default-base": 3,
+        "empty-or-invalid-diff": 3,
+        "non-python": 10,
+        "selected": 13
+      },
+      "metadata_limit": 127,
+      "metadata_pairs_evaluated_recovered": 29,
+      "metadata_pairs_ranked_recovered": 29,
+      "metadata_requests": 67,
+      "metadata_status": "metadata-recovered-from-cache",
+      "metadata_stubs": 0,
+      "pr_scoped_failures": 0,
+      "pre_update_rescues": {
+        "accepted": 0,
+        "attempted": 0,
+        "rejected": 0,
+        "rejection_reasons": {}
+      },
+      "reason": "acquisition terminated on frozen pagination allowlist before durable metadata/global graph phase",
+      "repository": "pytest-dev/iniconfig",
+      "retries": 0,
+      "retries_by_cause": {},
+      "selected_pairs_original_durable": 0,
+      "selected_pairs_recovered": 13,
+      "status": "graph-unattempted",
+      "wait_completed_seconds": 0,
+      "wait_reserved_seconds": 0,
+      "wait_unconfirmed_seconds": 0
+    },
+    {
+      "blocked_waits": 0,
+      "commit_limit": 60,
+      "commit_list_pr_failures": 0,
+      "commit_requests": 0,
+      "git_bytes": 0,
+      "graph_excluded_pairs": 0,
+      "graph_pairs_evaluated": 0,
+      "graph_ready_pairs": 0,
+      "head_kind": {
+        "final-head": {
+          "pairs": 0,
+          "ready": 0
+        },
+        "pre-update": {
+          "pairs": 0,
+          "ready": 0
+        }
+      },
+      "head_kind_unassigned": 9,
+      "metadata_exclusions_recovered": {
+        "lifecycle-or-base-changed": 2,
+        "non-python": 15,
+        "selected": 9
+      },
+      "metadata_limit": 127,
+      "metadata_pairs_evaluated_recovered": 26,
+      "metadata_pairs_ranked_recovered": 26,
+      "metadata_requests": 55,
+      "metadata_status": "metadata-recovered-from-cache",
+      "metadata_stubs": 0,
+      "pr_scoped_failures": 0,
+      "pre_update_rescues": {
+        "accepted": 0,
+        "attempted": 0,
+        "rejected": 0,
+        "rejection_reasons": {}
+      },
+      "reason": "acquisition terminated on frozen pagination allowlist before durable metadata/global graph phase",
+      "repository": "python-trio/sniffio",
+      "retries": 0,
+      "retries_by_cause": {},
+      "selected_pairs_original_durable": 0,
+      "selected_pairs_recovered": 9,
+      "status": "graph-unattempted",
+      "wait_completed_seconds": 0,
+      "wait_reserved_seconds": 0,
+      "wait_unconfirmed_seconds": 0
+    },
+    {
+      "blocked_waits": 0,
+      "commit_limit": 60,
+      "commit_list_pr_failures": 0,
+      "commit_requests": 0,
+      "git_bytes": 0,
+      "graph_excluded_pairs": 0,
+      "graph_pairs_evaluated": 0,
+      "graph_ready_pairs": 0,
+      "head_kind": {
+        "final-head": {
+          "pairs": 0,
+          "ready": 0
+        },
+        "pre-update": {
+          "pairs": 0,
+          "ready": 0
+        }
+      },
+      "head_kind_unassigned": 1,
+      "metadata_exclusions_recovered": {
+        "lifecycle-or-base-changed": 4,
+        "non-python": 3,
+        "selected": 1
+      },
+      "metadata_limit": 127,
+      "metadata_pairs_evaluated_recovered": 8,
+      "metadata_pairs_ranked_recovered": 8,
+      "metadata_requests": 20,
+      "metadata_status": "metadata-recovered-from-cache",
+      "metadata_stubs": 0,
+      "pr_scoped_failures": 0,
+      "pre_update_rescues": {
+        "accepted": 0,
+        "attempted": 0,
+        "rejected": 0,
+        "rejection_reasons": {}
+      },
+      "reason": "acquisition terminated on frozen pagination allowlist before durable metadata/global graph phase",
+      "repository": "pytest-dev/pytest-repeat",
+      "retries": 0,
+      "retries_by_cause": {},
+      "selected_pairs_original_durable": 0,
+      "selected_pairs_recovered": 1,
+      "status": "graph-unattempted",
+      "wait_completed_seconds": 0,
+      "wait_reserved_seconds": 0,
+      "wait_unconfirmed_seconds": 0
+    },
+    {
+      "blocked_waits": 0,
+      "commit_limit": 60,
+      "commit_list_pr_failures": 0,
+      "commit_requests": 0,
+      "git_bytes": 0,
+      "graph_excluded_pairs": 0,
+      "graph_pairs_evaluated": 0,
+      "graph_ready_pairs": 0,
+      "head_kind": {
+        "final-head": {
+          "pairs": 0,
+          "ready": 0
+        },
+        "pre-update": {
+          "pairs": 0,
+          "ready": 0
+        }
+      },
+      "head_kind_unassigned": 0,
+      "metadata_exclusions_recovered": {},
+      "metadata_limit": 127,
+      "metadata_pairs_evaluated_recovered": 0,
+      "metadata_pairs_ranked_recovered": null,
+      "metadata_requests": 3,
+      "metadata_status": "acquisition-incomplete",
+      "metadata_stubs": 0,
+      "pr_scoped_failures": 0,
+      "pre_update_rescues": {
+        "accepted": 0,
+        "attempted": 0,
+        "rejected": 0,
+        "rejection_reasons": {}
+      },
+      "reason": "acquisition terminated on frozen pagination allowlist before durable metadata/global graph phase",
+      "repository": "pytest-dev/pluggy",
+      "retries": 0,
+      "retries_by_cause": {},
+      "selected_pairs_original_durable": 0,
+      "selected_pairs_recovered": 0,
+      "status": "graph-unattempted",
+      "wait_completed_seconds": 0,
+      "wait_reserved_seconds": 0,
+      "wait_unconfirmed_seconds": 0
+    },
+    {
+      "blocked_waits": 0,
+      "commit_limit": 60,
+      "commit_list_pr_failures": 0,
+      "commit_requests": 0,
+      "git_bytes": 0,
+      "graph_excluded_pairs": 0,
+      "graph_pairs_evaluated": 0,
+      "graph_ready_pairs": 0,
+      "head_kind": {
+        "final-head": {
+          "pairs": 0,
+          "ready": 0
+        },
+        "pre-update": {
+          "pairs": 0,
+          "ready": 0
+        }
+      },
+      "head_kind_unassigned": 0,
+      "metadata_exclusions_recovered": {},
+      "metadata_limit": 127,
+      "metadata_pairs_evaluated_recovered": 0,
+      "metadata_pairs_ranked_recovered": null,
+      "metadata_requests": 0,
+      "metadata_status": "unattempted",
+      "metadata_stubs": 0,
+      "pr_scoped_failures": 0,
+      "pre_update_rescues": {
+        "accepted": 0,
+        "attempted": 0,
+        "rejected": 0,
+        "rejection_reasons": {}
+      },
+      "reason": "acquisition terminated on frozen pagination allowlist before durable metadata/global graph phase",
+      "repository": "python-trio/outcome",
+      "retries": 0,
+      "retries_by_cause": {},
+      "selected_pairs_original_durable": 0,
+      "selected_pairs_recovered": 0,
+      "status": "graph-unattempted",
+      "wait_completed_seconds": 0,
+      "wait_reserved_seconds": 0,
+      "wait_unconfirmed_seconds": 0
+    },
+    {
+      "blocked_waits": 0,
+      "commit_limit": 60,
+      "commit_list_pr_failures": 0,
+      "commit_requests": 0,
+      "git_bytes": 0,
+      "graph_excluded_pairs": 0,
+      "graph_pairs_evaluated": 0,
+      "graph_ready_pairs": 0,
+      "head_kind": {
+        "final-head": {
+          "pairs": 0,
+          "ready": 0
+        },
+        "pre-update": {
+          "pairs": 0,
+          "ready": 0
+        }
+      },
+      "head_kind_unassigned": 0,
+      "metadata_exclusions_recovered": {},
+      "metadata_limit": 127,
+      "metadata_pairs_evaluated_recovered": 0,
+      "metadata_pairs_ranked_recovered": null,
+      "metadata_requests": 0,
+      "metadata_status": "unattempted",
+      "metadata_stubs": 0,
+      "pr_scoped_failures": 0,
+      "pre_update_rescues": {
+        "accepted": 0,
+        "attempted": 0,
+        "rejected": 0,
+        "rejection_reasons": {}
+      },
+      "reason": "acquisition terminated on frozen pagination allowlist before durable metadata/global graph phase",
+      "repository": "python-hyper/h11",
+      "retries": 0,
+      "retries_by_cause": {},
+      "selected_pairs_original_durable": 0,
+      "selected_pairs_recovered": 0,
+      "status": "graph-unattempted",
+      "wait_completed_seconds": 0,
+      "wait_reserved_seconds": 0,
+      "wait_unconfirmed_seconds": 0
+    },
+    {
+      "blocked_waits": 0,
+      "commit_limit": 60,
+      "commit_list_pr_failures": 0,
+      "commit_requests": 0,
+      "git_bytes": 0,
+      "graph_excluded_pairs": 0,
+      "graph_pairs_evaluated": 0,
+      "graph_ready_pairs": 0,
+      "head_kind": {
+        "final-head": {
+          "pairs": 0,
+          "ready": 0
+        },
+        "pre-update": {
+          "pairs": 0,
+          "ready": 0
+        }
+      },
+      "head_kind_unassigned": 0,
+      "metadata_exclusions_recovered": {},
+      "metadata_limit": 127,
+      "metadata_pairs_evaluated_recovered": 0,
+      "metadata_pairs_ranked_recovered": null,
+      "metadata_requests": 0,
+      "metadata_status": "unattempted",
+      "metadata_stubs": 0,
+      "pr_scoped_failures": 0,
+      "pre_update_rescues": {
+        "accepted": 0,
+        "attempted": 0,
+        "rejected": 0,
+        "rejection_reasons": {}
+      },
+      "reason": "acquisition terminated on frozen pagination allowlist before durable metadata/global graph phase",
+      "repository": "pallets-eco/blinker",
+      "retries": 0,
+      "retries_by_cause": {},
+      "selected_pairs_original_durable": 0,
+      "selected_pairs_recovered": 0,
+      "status": "graph-unattempted",
+      "wait_completed_seconds": 0,
+      "wait_reserved_seconds": 0,
+      "wait_unconfirmed_seconds": 0
+    },
+    {
+      "blocked_waits": 0,
+      "commit_limit": 60,
+      "commit_list_pr_failures": 0,
+      "commit_requests": 0,
+      "git_bytes": 0,
+      "graph_excluded_pairs": 0,
+      "graph_pairs_evaluated": 0,
+      "graph_ready_pairs": 0,
+      "head_kind": {
+        "final-head": {
+          "pairs": 0,
+          "ready": 0
+        },
+        "pre-update": {
+          "pairs": 0,
+          "ready": 0
+        }
+      },
+      "head_kind_unassigned": 0,
+      "metadata_exclusions_recovered": {},
+      "metadata_limit": 127,
+      "metadata_pairs_evaluated_recovered": 0,
+      "metadata_pairs_ranked_recovered": null,
+      "metadata_requests": 0,
+      "metadata_status": "unattempted",
+      "metadata_stubs": 0,
+      "pr_scoped_failures": 0,
+      "pre_update_rescues": {
+        "accepted": 0,
+        "attempted": 0,
+        "rejected": 0,
+        "rejection_reasons": {}
+      },
+      "reason": "acquisition terminated on frozen pagination allowlist before durable metadata/global graph phase",
+      "repository": "pallets/itsdangerous",
+      "retries": 0,
+      "retries_by_cause": {},
+      "selected_pairs_original_durable": 0,
+      "selected_pairs_recovered": 0,
+      "status": "graph-unattempted",
+      "wait_completed_seconds": 0,
+      "wait_reserved_seconds": 0,
+      "wait_unconfirmed_seconds": 0
+    }
+  ],
+  "retries": 0,
+  "selected_pairs_original_durable": 0,
+  "selected_pairs_recovered": 23,
+  "source_commit": "0b47868e5c397c6fbad860c959f8f070939e4e3a",
+  "stage": "INCOMPLETE checkpoint-2 material; consumed acquisition, STOP for Vega audit and Polaris decisions",
+  "status": "published-incomplete; apparatus allowlist exception before durable metadata/global graph phase",
+  "stratum": "natural concurrent-PR replay, development only; no measurement",
+  "task": "v0.5-s17b-r2-acquire",
+  "wait_budget_used_seconds": 0,
+  "wait_completed_seconds": 0
+}

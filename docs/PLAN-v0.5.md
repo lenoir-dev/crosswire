@@ -315,3 +315,29 @@ Polaris's rate-limit clarification: the only 4xx retry exceptions are HTTP 429, 
 
 Round 2 has its own checkpoint (1) and authorization; Vega reviews these apparatus changes before it. Round 1's records
 stay published beside it.
+
+## Amendment P7 — acquisition is resumable; only the labelled measurement is one-shot (Polaris, 2026-11-18)
+
+**Round 2 (`docs/validation/s17b-r2-acquisition.md`) is published as incomplete.** 145 GETs succeeded; a legitimate
+GitHub pagination link of the form `repositories/<numeric id>/pulls` was rejected by the endpoint allowlist, and
+the resulting exception escaped repository-local handling and ended the walk before `metadata.json` was written.
+No oracle, detector or label ran.
+
+**Correction of my own rule.** P3/P6 treated acquisition as one-shot. That was stricter than the principle it
+serves: one-shot exists so that a measurement cannot be repeated until its outcome looks good, and acquisition
+produces no outcome — selection is a deterministic function of frozen rules and public metadata as of the fixed
+cutoff, and no checker or detector runs before checkpoint (2). From now on:
+- **Acquisition is idempotent and resumable.** Successful responses are journalled and cached by request; a
+  resumed run replays the cache first, issues only missing requests, and must reproduce the same selection order.
+  Every attempt, failure and resume is journalled and published.
+- **Apparatus fixes during acquisition** are allowed when they change no selection field of the policy, no
+  selection function, no M3/M2 code and no contamination or anchor rule; each gets Vega's diff-check and a new
+  checkpoint (1) that records its predecessor. Budgets count all requests across attempts.
+- **One-shot applies from checkpoint (2) on:** the labelled measurement (oracle, detector, scoring) runs once per
+  audited checkpoint (2), exactly as before.
+
+**Fixes for the resume (round 2 continues as `s17b-round-2`, attempt 2):** accept `repositories/<id>/…` links when
+`<id>` equals the numeric ID pinned for that policy repository from its `repos/<owner>/<name>` response, with the
+same endpoint-class rules; every exception inside a repository's walk becomes that repository's
+`acquisition-incomplete` with the traceback class journalled, never a cohort stop (only global ceilings stop the
+cohort); and `metadata.json` is written incrementally per repository.

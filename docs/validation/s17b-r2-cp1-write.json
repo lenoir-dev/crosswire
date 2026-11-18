@@ -1,0 +1,30 @@
+{
+  "apparatus_commit": "0b47868e5c397c6fbad860c959f8f070939e4e3a",
+  "checkpoint": "~/.crosswire-evidence/s17b-r2/checkpoint-1.json",
+  "checkpoint_sha256": "e99e8e0b99e35a89cbeef74520480c1cf7acabd7516676a78340967d70dcddb2",
+  "checks": {
+    "all_code_pins_match_authorized_commit": true,
+    "api_calls": 0,
+    "authorization_records_created": 0,
+    "git_state_mutations": 0,
+    "measurement_runs": 0,
+    "policy_exactly_committed": true,
+    "real_git_fetches": 0,
+    "round1_difference_only": [
+      "round_id",
+      "apparatus"
+    ],
+    "round1_embedded_policy_compared": true
+  },
+  "code_files_pinned": 29,
+  "committed_policy_bytes_sha256": "f8e2c6a7b0fed46d54a51981573547a211e6fd13540f9a957b8999988603bb80",
+  "created_at": "2026-11-18T18:38:00.743439+00:00",
+  "detector_commit": "30ff34363070175160e066dd1b5743856c907a05",
+  "export_location": "system temporary directory; crosswire-s17b-r2-cp1-54canv2h",
+  "mode": "0600",
+  "next": "Await Polaris authorization record and acquisition instruction. No API call, fetch or measurement.",
+  "policy_sha256": "4de98b993c68daf1356327ce08f1e1c233d87c8aaa9834ea1e6217a4406f6384",
+  "round_id": "s17b-round-2",
+  "source": "clean git archive of 0b47868; all code pins verified against committed Git blobs, excluding worktree src",
+  "task": "v0.5-s17b-r2-cp1"
+}

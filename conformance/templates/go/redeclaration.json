@@ -1,0 +1,1080 @@
+{
+  "base": {
+    "modules": {
+      "api": {
+        "declarations": [
+          {
+            "file": "direct",
+            "id": "receiver",
+            "kind": "type",
+            "name": "T"
+          }
+        ],
+        "forward": null
+      },
+      "left": {
+        "declarations": [
+          {
+            "id": "f",
+            "parameters": []
+          }
+        ],
+        "forward": null,
+        "package": "shared"
+      },
+      "right": {
+        "declarations": [
+          {
+            "id": "f",
+            "parameters": []
+          }
+        ],
+        "forward": null,
+        "package": "shared"
+      }
+    },
+    "uses": {}
+  },
+  "cases": [
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "direct",
+              "id": "a",
+              "kind": "function",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "forward",
+              "id": "b",
+              "kind": "function",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 2
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "broken"
+        },
+        "pairwise": {
+          "verdict": "broken"
+        },
+        "plan": {
+          "verdict": "broken"
+        }
+      },
+      "id": "go4-same-file-conflict",
+      "kind": "conflict",
+      "oracle": {
+        "broken_states": [
+          "A+B"
+        ],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": []
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "direct",
+              "id": "a",
+              "kind": "function",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "forward",
+              "id": "b",
+              "kind": "function",
+              "module": "api",
+              "name": "Other",
+              "op": "add_declaration",
+              "value": 2
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "valid"
+        },
+        "pairwise": {
+          "verdict": "valid"
+        },
+        "plan": {
+          "verdict": "valid"
+        }
+      },
+      "id": "go4-same-file-control",
+      "kind": "control",
+      "oracle": {
+        "broken_states": [],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": []
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "alpha",
+              "id": "a",
+              "kind": "function",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "beta",
+              "id": "b",
+              "kind": "function",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "broken"
+        },
+        "pairwise": {
+          "verdict": "broken"
+        },
+        "plan": {
+          "verdict": "broken"
+        }
+      },
+      "id": "go4-cross-file-conflict",
+      "kind": "conflict",
+      "oracle": {
+        "broken_states": [
+          "A+B"
+        ],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": []
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "alpha",
+              "id": "a",
+              "kind": "function",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "beta",
+              "id": "b",
+              "kind": "function",
+              "module": "api",
+              "name": "Other",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "valid"
+        },
+        "pairwise": {
+          "verdict": "valid"
+        },
+        "plan": {
+          "verdict": "valid"
+        }
+      },
+      "id": "go4-cross-file-control",
+      "kind": "control",
+      "oracle": {
+        "broken_states": [],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": []
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "alpha",
+              "id": "a",
+              "kind": "function",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "beta",
+              "id": "b",
+              "kind": "function",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "broken"
+        },
+        "pairwise": {
+          "verdict": "broken"
+        },
+        "plan": {
+          "verdict": "broken"
+        }
+      },
+      "id": "go4-identical-conflict",
+      "kind": "conflict",
+      "oracle": {
+        "broken_states": [
+          "A+B"
+        ],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": []
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "alpha",
+              "id": "a",
+              "kind": "function",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "beta",
+              "id": "b",
+              "kind": "function",
+              "module": "api",
+              "name": "Other",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "valid"
+        },
+        "pairwise": {
+          "verdict": "valid"
+        },
+        "plan": {
+          "verdict": "valid"
+        }
+      },
+      "id": "go4-identical-control",
+      "kind": "control",
+      "oracle": {
+        "broken_states": [],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": []
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "alpha",
+              "id": "a",
+              "kind": "type",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "beta",
+              "id": "b",
+              "kind": "type",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "broken"
+        },
+        "pairwise": {
+          "verdict": "broken"
+        },
+        "plan": {
+          "verdict": "broken"
+        }
+      },
+      "id": "go4-type-conflict",
+      "kind": "conflict",
+      "oracle": {
+        "broken_states": [
+          "A+B"
+        ],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": []
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "alpha",
+              "id": "a",
+              "kind": "type",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "beta",
+              "id": "b",
+              "kind": "type",
+              "module": "api",
+              "name": "Other",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "valid"
+        },
+        "pairwise": {
+          "verdict": "valid"
+        },
+        "plan": {
+          "verdict": "valid"
+        }
+      },
+      "id": "go4-type-control",
+      "kind": "control",
+      "oracle": {
+        "broken_states": [],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": []
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "alpha",
+              "id": "a",
+              "kind": "variable",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "beta",
+              "id": "b",
+              "kind": "variable",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "broken"
+        },
+        "pairwise": {
+          "verdict": "broken"
+        },
+        "plan": {
+          "verdict": "broken"
+        }
+      },
+      "id": "go4-variable-conflict",
+      "kind": "conflict",
+      "oracle": {
+        "broken_states": [
+          "A+B"
+        ],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": []
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "alpha",
+              "id": "a",
+              "kind": "variable",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "beta",
+              "id": "b",
+              "kind": "variable",
+              "module": "api",
+              "name": "Other",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "valid"
+        },
+        "pairwise": {
+          "verdict": "valid"
+        },
+        "plan": {
+          "verdict": "valid"
+        }
+      },
+      "id": "go4-variable-control",
+      "kind": "control",
+      "oracle": {
+        "broken_states": [],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": []
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "alpha",
+              "id": "a",
+              "kind": "constant",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "beta",
+              "id": "b",
+              "kind": "constant",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "broken"
+        },
+        "pairwise": {
+          "verdict": "broken"
+        },
+        "plan": {
+          "verdict": "broken"
+        }
+      },
+      "id": "go4-constant-conflict",
+      "kind": "conflict",
+      "oracle": {
+        "broken_states": [
+          "A+B"
+        ],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": []
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "alpha",
+              "id": "a",
+              "kind": "constant",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "beta",
+              "id": "b",
+              "kind": "constant",
+              "module": "api",
+              "name": "Other",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "valid"
+        },
+        "pairwise": {
+          "verdict": "valid"
+        },
+        "plan": {
+          "verdict": "valid"
+        }
+      },
+      "id": "go4-constant-control",
+      "kind": "control",
+      "oracle": {
+        "broken_states": [],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": []
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "alpha",
+              "id": "a",
+              "kind": "method",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "beta",
+              "id": "b",
+              "kind": "method",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "broken"
+        },
+        "pairwise": {
+          "verdict": "broken"
+        },
+        "plan": {
+          "verdict": "broken"
+        }
+      },
+      "id": "go4-method-conflict",
+      "kind": "conflict",
+      "oracle": {
+        "broken_states": [
+          "A+B"
+        ],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": []
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "alpha",
+              "id": "a",
+              "kind": "method",
+              "module": "api",
+              "name": "Name",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "beta",
+              "id": "b",
+              "kind": "method",
+              "module": "api",
+              "name": "Other",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "valid"
+        },
+        "pairwise": {
+          "verdict": "valid"
+        },
+        "plan": {
+          "verdict": "valid"
+        }
+      },
+      "id": "go4-method-control",
+      "kind": "control",
+      "oracle": {
+        "broken_states": [],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": []
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "direct",
+              "from_module": "left",
+              "id": "a",
+              "kind": "import",
+              "module": "api",
+              "name": "shared",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "forward",
+              "from_module": "right",
+              "id": "b",
+              "kind": "import",
+              "module": "api",
+              "name": "shared",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "broken"
+        },
+        "pairwise": {
+          "verdict": "broken"
+        },
+        "plan": {
+          "verdict": "broken"
+        }
+      },
+      "id": "go4-duplicate-import-conflict",
+      "kind": "conflict",
+      "oracle": {
+        "broken_states": [
+          "A+B"
+        ],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": [
+          "UnusedImport"
+        ]
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "direct",
+              "from_module": "left",
+              "id": "a",
+              "kind": "import",
+              "module": "api",
+              "name": "shared",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "forward",
+              "from_module": "right",
+              "id": "b",
+              "kind": "import",
+              "module": "api",
+              "name": "other",
+              "op": "add_declaration",
+              "value": 1
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "valid"
+        },
+        "pairwise": {
+          "verdict": "valid"
+        },
+        "plan": {
+          "verdict": "valid"
+        }
+      },
+      "id": "go4-duplicate-import-control",
+      "kind": "control",
+      "oracle": {
+        "broken_states": [],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": [
+          "UnusedImport"
+        ]
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "alpha",
+              "id": "a",
+              "kind": "variable",
+              "module": "api",
+              "name": "_",
+              "op": "add_declaration"
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "beta",
+              "id": "b",
+              "kind": "variable",
+              "module": "api",
+              "name": "_",
+              "op": "add_declaration"
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "valid"
+        },
+        "pairwise": {
+          "verdict": "valid"
+        },
+        "plan": {
+          "verdict": "valid"
+        }
+      },
+      "id": "go4-blank-exempt",
+      "kind": "control",
+      "oracle": {
+        "broken_states": [],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": []
+      },
+      "proof": "closed"
+    },
+    {
+      "branches": [
+        {
+          "edits": [
+            {
+              "file": "alpha",
+              "id": "a",
+              "kind": "initializer",
+              "module": "api",
+              "name": "init",
+              "op": "add_declaration"
+            }
+          ],
+          "id": "A",
+          "parent": "target"
+        },
+        {
+          "edits": [
+            {
+              "file": "beta",
+              "id": "b",
+              "kind": "initializer",
+              "module": "api",
+              "name": "init",
+              "op": "add_declaration"
+            }
+          ],
+          "id": "B",
+          "parent": "target"
+        }
+      ],
+      "expected": {
+        "combined": {
+          "verdict": "valid"
+        },
+        "pairwise": {
+          "verdict": "valid"
+        },
+        "plan": {
+          "verdict": "valid"
+        }
+      },
+      "id": "go4-init-exempt",
+      "kind": "control",
+      "oracle": {
+        "broken_states": [],
+        "declaration_pair": [
+          "a",
+          "b"
+        ],
+        "secondary_categories": []
+      },
+      "proof": "closed"
+    }
+  ],
+  "contracts": {
+    "go": {
+      "id": "GO-4",
+      "scope": "supported"
+    },
+    "python": {
+      "id": null,
+      "scope": "no-counterpart; CW003 warnings are separately tested"
+    }
+  },
+  "id": "go_redeclaration",
+  "version": 1
+}

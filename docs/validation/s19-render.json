@@ -1,0 +1,971 @@
+{
+  "apparatus_sha256": {
+    "GO.md": "286e48276ee1694d0a9ec69a6bb12e7f78b8a33660adea09d556f49a117d43af",
+    "README.md": "84384001282579d980af83c6bb6671dfb24698b8e3a37522e5d6cd9e716ddb30",
+    "__init__.py": "1736192e3b0221b4e70b2479ffe03cb8e562ca4b7cda8b30252090ed6b06bea4",
+    "git.py": "32a7d669a7bafe79e7eda4385d925e213b6c8b96906f92a11acfff9b5c4b0912",
+    "go_categories.go": "49e4f4170e88a9e5772d8b7c2df918e1e6fec245ceffa2a8207edc63dc18d309",
+    "go_oracle.py": "89d2736ae793a1990c3b1e65ddc485d6e6239aad194c2ada0a13cc546c3bf31f",
+    "go_run.py": "27f1541f9cd0355f60599125271154207f9f3fee8a3bf99ce5f7ee70bfe6bce3",
+    "oracle.py": "42d731e566caf99034f5aaf5b8d861cd3964a0a2817dba3fce419234c88a45a9",
+    "render/__init__.py": "d295a1917f86a61e5e63c23b39dd4a6c0008cd7dcc7539a05ee2124f16f6e48a",
+    "render/go.py": "2476ec70872abd2925f55eabcc41e9b0f19aa7d996005562e540b2022fcf9be8",
+    "render/python.py": "6d17cf67c6cc6b6c5dddf48c6b01abc20fe14d26e8af73fd4aebd9c936462de8",
+    "run.py": "6511fb2ea071fcdf1669d2ae97c0b758c0b2edb8885a8793514cd9fd70ccb63b",
+    "templates/arity.json": "b83598d37ba05e6e4f5a779d54fdb7e482eafc0ee5f251a4dcf129e8b9b186e9",
+    "templates/conjunctive.json": "9f6d362fd78b632c98c623f1031b57b86e658576ba3c8f1b93657dda4bdfa4ac",
+    "templates/delete.json": "62d1b87169d95e6a82c0d07a1dd122c9e32da49152deef780ed6b599c6b9d5dd",
+    "templates/fix_by_third.json": "406904981a15770513d3ac7ba39776943a78a2a3e0c005f68606a81f7af9579d",
+    "templates/go/redeclaration.json": "9f1c0126212886fc06678ae46bec5f5f56be9486504a6f10740eda731327d5a6",
+    "templates/move_module.json": "c0258c67d871cc98f2f239dc00c0ef0ce697647666bfa19f03eb1e4f6442855d",
+    "templates/open_dynamic.json": "1a04363b7b041834c59cc384f5cbc358baa40b59aaab2b3e242e2be7fd6ebfa6",
+    "templates/open_wildcard.json": "aed9deaf5a47396ae5ae2d607371679ab1e634786e8b068979c91e247310db4a",
+    "templates/rename.json": "866d157d802bc198e21f086ff84d8fec95f197cc756f7f1a580d9c594d3702b7"
+  },
+  "checks": "44 passed",
+  "development_failures": [
+    "initial cache-directory creation rejected pre-existing empty TemporaryDirectory; fixed",
+    "first full run agreed on all states but stability guard rejected concurrent Deneb location-metadata edits; final complete run stable"
+  ],
+  "files_sha256": {
+    "conformance/GO.md": "286e48276ee1694d0a9ec69a6bb12e7f78b8a33660adea09d556f49a117d43af",
+    "conformance/go_categories.go": "49e4f4170e88a9e5772d8b7c2df918e1e6fec245ceffa2a8207edc63dc18d309",
+    "conformance/go_oracle.py": "89d2736ae793a1990c3b1e65ddc485d6e6239aad194c2ada0a13cc546c3bf31f",
+    "conformance/go_run.py": "27f1541f9cd0355f60599125271154207f9f3fee8a3bf99ce5f7ee70bfe6bce3",
+    "conformance/render/go.py": "2476ec70872abd2925f55eabcc41e9b0f19aa7d996005562e540b2022fcf9be8",
+    "conformance/templates/go/redeclaration.json": "9f1c0126212886fc06678ae46bec5f5f56be9486504a6f10740eda731327d5a6",
+    "tests/test_conformance_go.py": "3631a1f723a3bd90314593f54837b4206cb5d9bb8c556bce390b9e124eaa4c40"
+  },
+  "limitations": [
+    "detector: not available; zero product mode checks",
+    "CI has no Go; compiler test skips there",
+    "GOOS=darwin GOARCH=arm64 only",
+    "No conjunctive/open Go counterpart",
+    "Duplicate-import UnusedImport is retained as a declared dependent diagnostic at the same import site"
+  ],
+  "oracle_provenance": {
+    "build": [
+      "go",
+      "build",
+      "-gcflags=-e",
+      "./..."
+    ],
+    "codes_sha256": "0297a4ff31da233b3f50e2874e5c62aa5ac3a904db536dda6183ab35c461361c",
+    "compiler_sha256": "da10adfefec48f7681707909e213b24c423f5f5aa7efebfcede7eabb1c3b4156",
+    "dependencies": "none; dependency-free generated modules; downloads disabled",
+    "environment": {
+      "CGO_ENABLED": "0",
+      "GOARCH": "arm64",
+      "GOCACHE": "${CACHE}/gocache",
+      "GOENV": "off",
+      "GOFLAGS": "-mod=readonly",
+      "GOMAXPROCS": "2",
+      "GOMODCACHE": "${CACHE}/modules",
+      "GONOPROXY": "",
+      "GONOSUMDB": "",
+      "GOOS": "darwin",
+      "GOPATH": "${CACHE}/gopath",
+      "GOPRIVATE": "",
+      "GOPROXY": "off",
+      "GOSUMDB": "off",
+      "GOTELEMETRY": "off",
+      "GOTOOLCHAIN": "local",
+      "GOVCS": "*:off",
+      "GOWORK": "off"
+    },
+    "go_sha256": "548608a910c46de32c65a3934f461b1787acf6ddd371044826068d8503b8509b",
+    "helper_binary_sha256": "045c202c39130bf70a12be040ccf4a3f87daa7fa963a6d79dc21533b3e69e85b",
+    "helper_source_sha256": "49e4f4170e88a9e5772d8b7c2df918e1e6fec245ceffa2a8207edc63dc18d309",
+    "target": {
+      "GOARCH": "arm64",
+      "GOOS": "darwin"
+    },
+    "version": "go1.27.1",
+    "vet": "not run; separate non-label channel"
+  },
+  "python_compatibility_checks": "27 passed, 1 installed-product test deliberately deselected; existing Python conformance files unchanged",
+  "stratum": "synthetic conformance only; no corpus measurement",
+  "summary": {
+    "case_count": 34,
+    "cases": [
+      {
+        "contract": {
+          "id": "GO-3",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "culprits": [
+              "A"
+            ],
+            "owner": "B",
+            "rule": "CW002",
+            "verdict": "broken"
+          },
+          "pairwise": {
+            "rule": "CW002",
+            "verdict": "broken"
+          },
+          "plan": {
+            "verdict": "broken"
+          }
+        },
+        "id": "arity-conflict",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "broken",
+          "pairwise": "broken",
+          "plan": "broken"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-3",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "valid"
+          },
+          "pairwise": {
+            "verdict": "valid"
+          },
+          "plan": {
+            "verdict": "valid"
+          }
+        },
+        "id": "arity-control",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "valid",
+          "pairwise": "valid",
+          "plan": "valid"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": null,
+          "status": "unsupported-or-deferred"
+        },
+        "detector": "not available",
+        "id": "conjunctive-conflict",
+        "status": "no Go counterpart"
+      },
+      {
+        "contract": {
+          "id": null,
+          "status": "unsupported-or-deferred"
+        },
+        "detector": "not available",
+        "id": "conjunctive-control",
+        "status": "no Go counterpart"
+      },
+      {
+        "contract": {
+          "id": "GO-1",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "culprits": [
+              "A"
+            ],
+            "owner": "B",
+            "rule": "CW001",
+            "verdict": "broken"
+          },
+          "pairwise": {
+            "rule": "CW001",
+            "verdict": "broken"
+          },
+          "plan": {
+            "verdict": "broken"
+          }
+        },
+        "id": "delete-conflict",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "broken",
+          "pairwise": "broken",
+          "plan": "broken"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-1",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "valid"
+          },
+          "pairwise": {
+            "verdict": "valid"
+          },
+          "plan": {
+            "verdict": "valid"
+          }
+        },
+        "id": "delete-control",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "valid",
+          "pairwise": "valid",
+          "plan": "valid"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-1",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "culprits": [
+              "A"
+            ],
+            "owner": "B",
+            "resolved_by": [
+              "C"
+            ],
+            "rule": "CW001",
+            "verdict": "valid"
+          },
+          "pairwise": {
+            "rule": "CW001",
+            "verdict": "broken"
+          },
+          "plan": {
+            "verdict": "valid"
+          }
+        },
+        "id": "fix_by_third-conflict",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "valid",
+          "pairwise": "broken",
+          "plan": "valid"
+        },
+        "oracle_states": 8,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-1",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "valid"
+          },
+          "pairwise": {
+            "verdict": "valid"
+          },
+          "plan": {
+            "verdict": "valid"
+          }
+        },
+        "id": "fix_by_third-control",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "valid",
+          "pairwise": "valid",
+          "plan": "valid"
+        },
+        "oracle_states": 8,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-2",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "culprits": [
+              "A"
+            ],
+            "owner": "B",
+            "rule": "CW001",
+            "verdict": "broken"
+          },
+          "pairwise": {
+            "rule": "CW001",
+            "verdict": "broken"
+          },
+          "plan": {
+            "verdict": "broken"
+          }
+        },
+        "id": "move_module-conflict",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "broken",
+          "pairwise": "broken",
+          "plan": "broken"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-2",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "valid"
+          },
+          "pairwise": {
+            "verdict": "valid"
+          },
+          "plan": {
+            "verdict": "valid"
+          }
+        },
+        "id": "move_module-control",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "valid",
+          "pairwise": "valid",
+          "plan": "valid"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": null,
+          "status": "unsupported-or-deferred"
+        },
+        "detector": "not available",
+        "id": "open_dynamic-boundary",
+        "status": "no Go counterpart"
+      },
+      {
+        "contract": {
+          "id": null,
+          "status": "unsupported-or-deferred"
+        },
+        "detector": "not available",
+        "id": "open_dynamic-control",
+        "status": "no Go counterpart"
+      },
+      {
+        "contract": {
+          "id": null,
+          "status": "unsupported-or-deferred"
+        },
+        "detector": "not available",
+        "id": "open_wildcard-boundary",
+        "status": "no Go counterpart"
+      },
+      {
+        "contract": {
+          "id": null,
+          "status": "unsupported-or-deferred"
+        },
+        "detector": "not available",
+        "id": "open_wildcard-control",
+        "status": "no Go counterpart"
+      },
+      {
+        "contract": {
+          "id": "GO-1",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "culprits": [
+              "A"
+            ],
+            "owner": "B",
+            "rule": "CW001",
+            "verdict": "broken"
+          },
+          "pairwise": {
+            "rule": "CW001",
+            "verdict": "broken"
+          },
+          "plan": {
+            "verdict": "broken"
+          }
+        },
+        "id": "rename-conflict",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "broken",
+          "pairwise": "broken",
+          "plan": "broken"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-1",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "valid"
+          },
+          "pairwise": {
+            "verdict": "valid"
+          },
+          "plan": {
+            "verdict": "valid"
+          }
+        },
+        "id": "rename-control",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "valid",
+          "pairwise": "valid",
+          "plan": "valid"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "broken"
+          },
+          "pairwise": {
+            "verdict": "broken"
+          },
+          "plan": {
+            "verdict": "broken"
+          }
+        },
+        "id": "go4-same-file-conflict",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "broken",
+          "pairwise": "broken",
+          "plan": "broken"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "valid"
+          },
+          "pairwise": {
+            "verdict": "valid"
+          },
+          "plan": {
+            "verdict": "valid"
+          }
+        },
+        "id": "go4-same-file-control",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "valid",
+          "pairwise": "valid",
+          "plan": "valid"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "broken"
+          },
+          "pairwise": {
+            "verdict": "broken"
+          },
+          "plan": {
+            "verdict": "broken"
+          }
+        },
+        "id": "go4-cross-file-conflict",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "broken",
+          "pairwise": "broken",
+          "plan": "broken"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "valid"
+          },
+          "pairwise": {
+            "verdict": "valid"
+          },
+          "plan": {
+            "verdict": "valid"
+          }
+        },
+        "id": "go4-cross-file-control",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "valid",
+          "pairwise": "valid",
+          "plan": "valid"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "broken"
+          },
+          "pairwise": {
+            "verdict": "broken"
+          },
+          "plan": {
+            "verdict": "broken"
+          }
+        },
+        "id": "go4-identical-conflict",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "broken",
+          "pairwise": "broken",
+          "plan": "broken"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "valid"
+          },
+          "pairwise": {
+            "verdict": "valid"
+          },
+          "plan": {
+            "verdict": "valid"
+          }
+        },
+        "id": "go4-identical-control",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "valid",
+          "pairwise": "valid",
+          "plan": "valid"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "broken"
+          },
+          "pairwise": {
+            "verdict": "broken"
+          },
+          "plan": {
+            "verdict": "broken"
+          }
+        },
+        "id": "go4-type-conflict",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "broken",
+          "pairwise": "broken",
+          "plan": "broken"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "valid"
+          },
+          "pairwise": {
+            "verdict": "valid"
+          },
+          "plan": {
+            "verdict": "valid"
+          }
+        },
+        "id": "go4-type-control",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "valid",
+          "pairwise": "valid",
+          "plan": "valid"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "broken"
+          },
+          "pairwise": {
+            "verdict": "broken"
+          },
+          "plan": {
+            "verdict": "broken"
+          }
+        },
+        "id": "go4-variable-conflict",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "broken",
+          "pairwise": "broken",
+          "plan": "broken"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "valid"
+          },
+          "pairwise": {
+            "verdict": "valid"
+          },
+          "plan": {
+            "verdict": "valid"
+          }
+        },
+        "id": "go4-variable-control",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "valid",
+          "pairwise": "valid",
+          "plan": "valid"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "broken"
+          },
+          "pairwise": {
+            "verdict": "broken"
+          },
+          "plan": {
+            "verdict": "broken"
+          }
+        },
+        "id": "go4-constant-conflict",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "broken",
+          "pairwise": "broken",
+          "plan": "broken"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "valid"
+          },
+          "pairwise": {
+            "verdict": "valid"
+          },
+          "plan": {
+            "verdict": "valid"
+          }
+        },
+        "id": "go4-constant-control",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "valid",
+          "pairwise": "valid",
+          "plan": "valid"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "broken"
+          },
+          "pairwise": {
+            "verdict": "broken"
+          },
+          "plan": {
+            "verdict": "broken"
+          }
+        },
+        "id": "go4-method-conflict",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "broken",
+          "pairwise": "broken",
+          "plan": "broken"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "valid"
+          },
+          "pairwise": {
+            "verdict": "valid"
+          },
+          "plan": {
+            "verdict": "valid"
+          }
+        },
+        "id": "go4-method-control",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "valid",
+          "pairwise": "valid",
+          "plan": "valid"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "broken"
+          },
+          "pairwise": {
+            "verdict": "broken"
+          },
+          "plan": {
+            "verdict": "broken"
+          }
+        },
+        "id": "go4-duplicate-import-conflict",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "broken",
+          "pairwise": "broken",
+          "plan": "broken"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "valid"
+          },
+          "pairwise": {
+            "verdict": "valid"
+          },
+          "plan": {
+            "verdict": "valid"
+          }
+        },
+        "id": "go4-duplicate-import-control",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "valid",
+          "pairwise": "valid",
+          "plan": "valid"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "valid"
+          },
+          "pairwise": {
+            "verdict": "valid"
+          },
+          "plan": {
+            "verdict": "valid"
+          }
+        },
+        "id": "go4-blank-exempt",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "valid",
+          "pairwise": "valid",
+          "plan": "valid"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      },
+      {
+        "contract": {
+          "id": "GO-4",
+          "scope": "supported"
+        },
+        "detector": "not available",
+        "expected_modes": {
+          "combined": {
+            "verdict": "valid"
+          },
+          "pairwise": {
+            "verdict": "valid"
+          },
+          "plan": {
+            "verdict": "valid"
+          }
+        },
+        "id": "go4-init-exempt",
+        "mode_checks": 0,
+        "oracle": "verified",
+        "oracle_derived_modes": {
+          "combined": "valid",
+          "pairwise": "valid",
+          "plan": "valid"
+        },
+        "oracle_states": 4,
+        "status": "oracle verified; detector not available"
+      }
+    ],
+    "detector": "not available",
+    "mode_checks": 0,
+    "no_counterpart": 6,
+    "oracle_states": 120,
+    "selection": "full",
+    "status": "oracle verified; detector not available"
+  },
+  "task": "v0.5-s19-render"
+}

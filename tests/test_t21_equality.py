@@ -194,3 +194,34 @@ def test_package_entry_point_regression_and_namespace_contention_are_detected(tm
             t21.acquire_lock()
     finally:
         handle.close()
+
+
+def test_capture_archives_omit_host_owner_and_timestamp_metadata(tmp_path):
+    from types import SimpleNamespace
+    capture_spec = importlib.util.spec_from_file_location("t21_capture", Path(__file__).parents[1] / "benchmarks/t21_capture.py")
+    capture = importlib.util.module_from_spec(capture_spec)
+    capture_spec.loader.exec_module(capture)
+    fixtures = tmp_path / "fixtures"
+    repo = fixtures / "case/repo"
+    repo.mkdir(parents=True)
+    (repo / "file.py").write_bytes(b"value = 1\n")
+    (repo / "link").symlink_to("file.py")
+    output = tmp_path / "artifacts"
+    collector = capture.Collector(output, fixtures)
+    state = collector.capture(SimpleNamespace(path=repo))
+    with tarfile.open(output / state["archive"]) as stream:
+        members = stream.getmembers()
+        assert members and any(m.issym() for m in members)
+        for member in members:
+            assert (member.uid, member.gid, member.uname, member.gname, member.mtime) == (0, 0, "", "", 0)
+            assert not set(member.pax_headers) & {"uid", "gid", "uname", "gname", "mtime", "atime", "ctime"}
+        assert stream.extractfile("./repo/file.py").read() == b"value = 1\n"
+    extended = tarfile.TarInfo("file")
+    extended.pax_headers = {"uname": "host-user", "gname": "host-group", "mtime": "123.4", "path": "file"}
+    assert collector.archive_filter(extended).pax_headers == {"path": "file"}
+
+
+def test_artifact_directory_option_is_exposed_without_recording(tmp_path):
+    result = subprocess.run([__import__("sys").executable, str(Path(t21.__file__)), "--help"], capture_output=True, text=True)
+    assert result.returncode == 0 and "--artifacts ARTIFACTS" in result.stdout
+    assert "external private location" in " ".join(result.stdout.split())

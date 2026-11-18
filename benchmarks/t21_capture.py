@@ -37,6 +37,18 @@ class Collector:
             parts[i:i + 2] == ("crosswire", "cache") for i in range(len(parts) - 1)
         )
 
+    def archive_filter(self, info):
+        """Keep fixture bytes/modes, omit host identity and wall-clock metadata."""
+        if self.excluded(Path(info.name)):
+            return None
+        info.uid = info.gid = 0
+        info.uname = info.gname = ""
+        info.mtime = 0
+        # Extended headers override ordinary tar fields when present.
+        for key in ("uid", "gid", "uname", "gname", "mtime", "atime", "ctime"):
+            info.pax_headers.pop(key, None)
+        return info
+
     def capture(self, builder):
         root = builder.path.parent.resolve()
         if not root.is_relative_to(self.fixture_root) or not root.exists():
@@ -62,7 +74,7 @@ class Collector:
             archive = self.output / "fixtures" / (identity + ".tar.gz")
             archive.parent.mkdir(parents=True, exist_ok=True)
             with tarfile.open(archive, "w:gz", compresslevel=6) as stream:
-                stream.add(root, arcname=".", filter=lambda info: None if self.excluded(Path(info.name)) else info)
+                stream.add(root, arcname=".", filter=self.archive_filter)
             self.states[identity] = {
                 "id": identity, "root": str(root), "repo": str(builder.path),
                 "archive": str(archive.relative_to(self.output)),

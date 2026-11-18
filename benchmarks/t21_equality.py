@@ -443,7 +443,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--baseline", required=True, type=Path)
     parser.add_argument("--candidate", required=True, type=Path)
-    parser.add_argument("--artifacts", type=Path, default=ARTIFACTS)
+    parser.add_argument("--artifacts", type=Path, default=ARTIFACTS,
+                        help="Baseline directory, including an external private location (default: docs/validation/t21-baseline)")
     parser.add_argument("--output", type=Path, default=ROOT / "docs/validation/t21-self-check.json")
     parser.add_argument("--record-baseline", action="store_true")
     parser.add_argument("--resume-harvest", action="store_true", help="Finalize complete input harvest only; refuses any existing expectations")

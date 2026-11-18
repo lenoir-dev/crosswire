@@ -90,8 +90,8 @@ def test_interrupted_reserved_wait_still_counts_on_restart(tmp_path):
     with pytest.raises(KeyboardInterrupt):client.get('repos/example/repo/pulls/1')
     restored=client_at(tmp_path,lambda *a,**kw:response())
     restored.get('repos/other/repo/pulls')
-    assert restored.wait_budget_used==300 and restored.total_wait_seconds==0
-    assert restored.wait_events[0]['status']=='unconfirmed'
+    assert restored.wait_budget_used==300 and restored.total_wait_seconds==300
+    assert restored.wait_events[0]['status']=='complete' and restored.wait_events[0]['resumed']
 
 
 def test_pre_update_search_does_not_walk_old_default_history(monkeypatch):

@@ -20,14 +20,14 @@ def retry_cause(event):
 
 
 def repository_report(client,repository,slots=()):
-    events=[e for e in getattr(client,'log',[]) if belongs(e.get('endpoint'),repository)]
+    events=[e for e in getattr(client,'log',[]) if belongs(e.get('canonical_endpoint',e.get('endpoint')),repository)]
     causes=Counter()
     for event in events:
         if event.get('operation_attempt',1)>1:
             prior=[e for e in events if e['request']<event['request'] and e['endpoint']==event['endpoint']]
             causes[retry_cause(max(prior,key=lambda e:e['request'])) if prior else 'unknown']+=1
     failures=getattr(client,'pr_failures',{}).get(repository,{})
-    waits=[v for v in getattr(client,'wait_events',[]) if belongs(v.get('endpoint'),repository)]
+    waits=[v for v in getattr(client,'wait_events',[]) if belongs(v.get('canonical_endpoint',v.get('endpoint')),repository)]
     rescues=[s for s in slots if 'head_adjustment' in s or 'pre_update_rejection' in s]
     return {'pr_scoped_failures':len(failures),'pr_failures':failures,
             'retries':sum(causes.values()),'retries_by_cause':dict(causes),

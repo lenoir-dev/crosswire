@@ -31,24 +31,30 @@ def next_page(page):
     return url.path.lstrip('/')+('?' + url.query if url.query else '')
 
 
-def allowed_endpoint(endpoint,policy):
+def allowed_endpoint(endpoint,policy,repository_ids=None):
     if not isinstance(endpoint,str) or '%' in endpoint or '\\' in endpoint or any(ord(c)<33 or ord(c)==127 for c in endpoint):raise ValueError('GET endpoint outside policy allowlist')
     url=urlsplit(endpoint);parts=url.path.split('/')
     if url.scheme or url.netloc or url.fragment or any(p in {'','.', '..'} or not re.fullmatch(r'[A-Za-z0-9_.-]+',p) for p in parts):raise ValueError('GET endpoint outside policy allowlist')
+    if parts[0]=='repositories':
+        if len(parts)<3 or not re.fullmatch(r'[1-9][0-9]*',parts[1]):raise ValueError('GET endpoint outside policy allowlist')
+        repositories=[name for name,number in (repository_ids or {}).items() if number==int(parts[1]) and name in policy['repositories']]
+        if len(repositories)!=1:raise ValueError('Unpinned numeric repository ID')
+        parts=['repos',*repositories[0].split('/'),*parts[2:]]
     if len(parts)<3 or parts[0]!='repos' or '/'.join(parts[1:3]) not in policy['repositories']:raise ValueError('GET endpoint outside policy allowlist')
     if len(parts)>3 and parts[3] not in {'pulls','issues','commits'}:raise ValueError('GET endpoint outside policy allowlist')
+    return '/'.join(parts)+('?' + url.query if url.query else '')
 
 
 def endpoint_class(endpoint):
     """Pagination/query parameters do not change a request's budget class."""
-    return 'commits' if re.fullmatch(r'repos/[^/]+/[^/]+/pulls/[1-9][0-9]*/commits',urlsplit(endpoint).path) else 'metadata'
+    return 'commits' if re.fullmatch(r'(?:repos/[^/]+/[^/]+|repositories/[1-9][0-9]*)/pulls/[1-9][0-9]*/commits',urlsplit(endpoint).path) else 'metadata'
 
 
 class GhGet:
     """Permit-gated GETs, bounded transport attempts, durable per-attempt results."""
     def __init__(self,permit,cache,runner=subprocess.run,version_reader=None,wait=time.sleep,clock=time.time):
         self.permit=permit;self.cache=Path(cache);self.runner=runner;self.calls=0;self.responses={};self.log=[];self.stopped=False
-        self.version_reader=version_reader;self.version_checked=False;self.wait=wait;self.clock=clock;self.stop_reason=None;self.wait_budget_used=0;self.total_wait_seconds=0;self.wait_events=[]
+        self.version_reader=version_reader;self.version_checked=False;self.wait=wait;self.clock=clock;self.stop_reason=None;self.wait_budget_used=0;self.total_wait_seconds=0;self.wait_events=[];self.restored=False;self.repository_ids={};self.replay_order=[]
 
     def _write(self,path,value):
         fd=os.open(path,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
@@ -63,17 +69,17 @@ class GhGet:
             if self.stop_reason=='acquisition-incomplete-rate-limited':raise RateLimited()
             raise Ceiling('GET ceiling')
         if self.calls>=policy['maximum_get_requests']:raise Ceiling('GET ceiling')
-        prefix='/'.join(urlsplit(key).path.split('/')[:3])+'/'
-        requests=[r for r in self.log if urlsplit(r['endpoint']).path.rstrip('/')+'/'==prefix or urlsplit(r['endpoint']).path.startswith(prefix)]
+        prefix='/'.join(urlsplit(allowed_endpoint(key,policy,self.repository_ids)).path.split('/')[:3])+'/'
+        requests=[r for r in self.log if urlsplit(allowed_endpoint(r['endpoint'],policy,self.repository_ids)).path.rstrip('/')+'/'==prefix or urlsplit(allowed_endpoint(r['endpoint'],policy,self.repository_ids)).path.startswith(prefix)]
         if len(requests)>=policy.get('per_repository_get_budget',187):raise RepositoryCeiling('Repository GET sub-budget')
         phase=endpoint_class(key);limit=policy.get('per_repository_'+phase+'_get_budget',60 if phase=='commits' else 127)
         if sum(endpoint_class(r['endpoint'])==phase for r in requests)>=limit:raise RepositoryCeiling('Repository '+phase+' GET sub-budget')
 
-    def _pause(self,seconds):
+    def _pause(self,seconds,event=None,journal_key=None):
         if seconds<=0:return
         limit=self.permit.verify().get('apparatus',{}).get('transport',{}).get('maximum_total_wait_seconds',900)
-        event=self.log[-1]
-        wait={'request':event['request'],'endpoint':event['endpoint'],'checkpoint_sha256':event['checkpoint_sha256'],
+        event=event or self.log[-1]
+        wait={'request':event['request'],'endpoint':event['endpoint'],'checkpoint_sha256':event['checkpoint_sha256'],'canonical_endpoint':event.get('canonical_endpoint',event['endpoint']),
               'planned_seconds':seconds,'waited_seconds':0,'status':'started'}
         if self.wait_budget_used+seconds>limit:
             self.stopped=True;self.stop_reason='acquisition-incomplete-rate-limited'
@@ -82,72 +88,158 @@ class GhGet:
             self.wait_events.append({**wait,'status':'blocked-total-wait-ceiling'})
             raise RateLimited()
         self.wait_budget_used+=seconds
-        self._write(self.cache/f'{event["request"]:06d}.wait-started.json',wait)
+        journal_key=journal_key or f'{event["request"]:06d}'
+        self._write(self.cache/f'{journal_key}.wait-started.json',wait)
         self.wait_events.append(wait)
+        self._complete_wait(wait,seconds,journal_key)
+
+    def _complete_wait(self,wait,seconds,journal_key):
+        """Finish a logical wait against its existing, once-charged reservation."""
         while seconds>0:
             step=min(60,seconds);self.wait(step);seconds-=step
             wait['waited_seconds']+=step;self.total_wait_seconds+=step
         wait['status']='complete'
-        self._write(self.cache/f'{event["request"]:06d}.wait-result.json',wait)
+        self._write(self.cache/f'{journal_key}.wait-result.json',wait)
 
     def _finish(self,event,**fields):
         event.update(fields)
         self._write(self.cache/f'{event["request"]:06d}.result.json',event)
 
+    def _remember_repository(self,key,body,policy):
+        path=urlsplit(key).path
+        if path not in {'repos/'+name for name in policy['repositories']}:return
+        if not isinstance(body,dict) or body.get('private') is not False:return
+        number=body.get('id');name=path.removeprefix('repos/')
+        if type(number) is not int or number<=0:raise ValueError('Invalid pinned repository ID')
+        if body.get('full_name',name).lower()!=name.lower():raise ValueError('Repository detail identity mismatch')
+        if name in self.repository_ids and self.repository_ids[name]!=number:raise ValueError('Repository ID changed')
+        self.repository_ids[name]=number
+
+    def _restore(self,policy,round_key):
+        if self.restored:return
+        try:self._load_journal(policy,round_key)
+        except Exception as error:
+            self.stopped=True
+            raise Ceiling('Unmeasurable or foreign checkpoint request journal: '+str(error)) from error
+        self.restored=True
+
+    def _load_journal(self,policy,round_key):
+        self.cache.mkdir(parents=True,exist_ok=True,mode=0o700)
+        approved={round_key}
+        if hasattr(self.permit,'cache_checkpoints') and (not hasattr(self.permit,'checkpoint') or self.permit.checkpoint.is_file()):approved=self.permit.cache_checkpoints()
+        self.approved_checkpoints=approved
+        for record in sorted(self.cache.glob('*.request.json')):
+            item=json.loads(record.read_text());result=record.with_name(record.name.replace('.request.json','.result.json'))
+            if result.exists():
+                finished=json.loads(result.read_text())
+                for name in ('request','endpoint','checkpoint_sha256','operation_attempt'):
+                    if finished.get(name)!=item.get(name):raise ValueError('Request/result identity drift')
+                item=finished
+            if item.get('checkpoint_sha256') not in approved:raise Incomplete('Request cache belongs to another checkpoint')
+            if item['request']!=len(self.log)+1:raise Ceiling('Unmeasurable request journal sequence')
+            self.log.append(item)
+            if item.get('outcome')=='acquisition-incomplete-rate-limited' or item.get('global_stop_reason')=='acquisition-incomplete-rate-limited':
+                self.stopped=True;self.stop_reason='acquisition-incomplete-rate-limited'
+        self.calls=len(self.log)
+        # Repository identity comes exclusively from a named successful response.
+        for name in policy['repositories']:
+            key='repos/'+name;path=self.cache/(__import__('hashlib').sha256(key.encode()).hexdigest()+'.json')
+            if path.is_file():
+                saved=json.loads(path.read_text())
+                self._validate_cached(path,saved,key)
+                self._remember_repository(key,saved['body'],policy)
+        for started in sorted(self.cache.glob('*.wait-started.json')):
+            value=json.loads(started.read_text())
+            if value['checkpoint_sha256'] not in approved:raise Incomplete('Wait journal belongs to another checkpoint')
+            self.wait_budget_used+=value['planned_seconds']
+            result=started.with_name(started.name.replace('.wait-started.json','.wait-result.json'))
+            if result.exists():
+                value=json.loads(result.read_text());self.total_wait_seconds+=value['waited_seconds']
+            else:value.update(status='unconfirmed',waited_seconds=0)
+            self.wait_events.append(value)
+        if (self.cache/'cohort-stop.json').exists():
+            value=json.loads((self.cache/'cohort-stop.json').read_text())
+            if value['checkpoint_sha256'] not in approved:raise Incomplete('Stop journal belongs to another checkpoint')
+            self.stopped=True;self.stop_reason='acquisition-incomplete-rate-limited'
+            self.wait_events.append({**value,'status':'blocked-total-wait-ceiling'})
+
+    def _replay(self,key,page):
+        self.replay_order.append(key)
+        with (self.cache/'replays.jsonl').open('a') as stream:
+            stream.write(json.dumps({'endpoint':key,'checkpoint_sha256':self.round_key,'event':'cache-replay'},sort_keys=True)+'\n');stream.flush();os.fsync(stream.fileno())
+        return page
+
+    def _validate_cached(self,path,saved,key):
+        if saved.get('endpoint')!=key or saved.get('checkpoint_sha256') not in self.approved_checkpoints:raise Ceiling('Cached response identity/checkpoint drift')
+        claims=[event for event in self.log if event['endpoint']==key]
+        if not claims:raise Ceiling('Cached response has no request claim')
+        matching=[event for event in claims if event.get('response_sha256')==sha(path)]
+        # A kill between durable response and result is safe to replay; the
+        # started claim remains visible and charged, never a second GET.
+        if not matching and claims[-1].get('status')!='started':raise Ceiling('Cached response hash drift')
+
+    def _resume_cooldowns(self):
+        for event in self.log:
+            delay=event.get('backoff_seconds') or event.get('required_wait_seconds') or 0
+            if delay<=0:continue
+            waits=[wait for wait in self.wait_events if wait['request']==event['request']]
+            if any(wait['status']=='complete' for wait in waits):continue
+            remaining=max(0,event.get('finished_at',self.clock())+delay-self.clock())
+            if not remaining:continue
+            if waits:
+                wait=waits[0]
+                started=self.cache/f'{event["request"]:06d}.wait-started.json'
+                if not started.exists():raise Ceiling('Missing original cooldown reservation')
+                if remaining>wait['planned_seconds']:raise Ceiling('Cooldown reservation does not cover remainder')
+                wait['resumed']=True
+                self._complete_wait(wait,remaining,f'{event["request"]:06d}')
+            else:self._pause(remaining,event)
+
     def get(self,endpoint,**parameters):
-        policy=self.permit.verify();allowed_endpoint(endpoint,policy)
+        policy=self.permit.verify()
+        round_key=sha(self.permit.checkpoint) if hasattr(self.permit,'checkpoint') else 'synthetic-test-only'
+        self.round_key=round_key;self._restore(policy,round_key)
+        canonical=allowed_endpoint(endpoint,policy,self.repository_ids)
+        active=getattr(self,'active_repository',None)
+        if endpoint.startswith('repositories/') and active and '/'.join(canonical.split('/')[1:3])!=active:raise ValueError('Numeric pagination belongs to another repository walk')
+        key=endpoint+('?' if '?' not in endpoint else '&')+urlencode(sorted(parameters.items())) if parameters else endpoint
+        if key in self.responses:return self._replay(key,self.responses[key])
+        path=self.cache/(__import__('hashlib').sha256(key.encode()).hexdigest()+'.json')
+        if path.exists():
+            saved=json.loads(path.read_text())
+            self._validate_cached(path,saved,key)
+            self._remember_repository(key,saved['body'],policy)
+            page=Page(saved['body'],saved['headers'],saved['endpoint']);self.responses[key]=page
+            return self._replay(key,page)
         if not self.version_checked:
             expected=policy.get('gh_version')
             if not expected:raise ValueError('Pinned gh version required')
             actual=self.version_reader() if self.version_reader else self.runner(['gh','--version'],capture_output=True,text=True,timeout=30).stdout.splitlines()[0]
             if actual!=expected:raise ValueError('gh version differs from checkpoint')
             self.version_checked=True
-        key=endpoint+('?' if '?' not in endpoint else '&')+urlencode(sorted(parameters.items())) if parameters else endpoint
-        if key in self.responses:return self.responses[key]
-        self.cache.mkdir(parents=True,exist_ok=True,mode=0o700)
-        path=self.cache/(__import__('hashlib').sha256(key.encode()).hexdigest()+'.json')
-        round_key=sha(self.permit.checkpoint) if hasattr(self.permit,'checkpoint') else 'synthetic-test-only'
-        if not self.log:
-            for record in sorted(self.cache.glob('*.request.json')):
-                item=json.loads(record.read_text());result=record.with_name(record.name.replace('.request.json','.result.json'))
-                if result.exists():item=json.loads(result.read_text())
-                if item.get('checkpoint_sha256')!=round_key:raise Incomplete('Request cache belongs to another checkpoint')
-                self.log.append(item)
-                if item.get('outcome')=='acquisition-incomplete-rate-limited' or item.get('global_stop_reason')=='acquisition-incomplete-rate-limited':
-                    self.stopped=True;self.stop_reason='acquisition-incomplete-rate-limited'
-            self.calls=len(self.log)
-            for started in sorted(self.cache.glob('*.wait-started.json')):
-                value=json.loads(started.read_text())
-                if value['checkpoint_sha256']!=round_key:raise Incomplete('Wait journal belongs to another checkpoint')
-                self.wait_budget_used+=value['planned_seconds']
-                result=started.with_name(started.name.replace('.wait-started.json','.wait-result.json'))
-                if result.exists():
-                    value=json.loads(result.read_text());self.total_wait_seconds+=value['waited_seconds']
-                else:value.update(status='unconfirmed',waited_seconds=0)
-                self.wait_events.append(value)
-            if (self.cache/'cohort-stop.json').exists():
-                value=json.loads((self.cache/'cohort-stop.json').read_text())
-                if value['checkpoint_sha256']!=round_key:raise Incomplete('Stop journal belongs to another checkpoint')
-                self.stopped=True;self.stop_reason='acquisition-incomplete-rate-limited'
-        if path.exists():
-            saved=json.loads(path.read_text())
-            if saved.get('checkpoint_sha256')!=round_key:raise Incomplete('Cached response belongs to another checkpoint')
-            page=Page(saved['body'],saved['headers'],saved['endpoint']);self.responses[key]=page
-            return page
-        if any(r['endpoint']==key for r in self.log):raise Incomplete('Prior GET has no durable response; do not silently retry')
         settings=policy.get('apparatus',{}).get('transport',{})
         maximum=settings.get('max_attempts',1)
         if type(maximum) is not int or not 1<=maximum<=3:raise ValueError('Transport attempt cap must be 1..3')
-        for attempt in range(1,maximum+1):
+        prior=[item for item in self.log if item['endpoint']==key]
+        resumable=policy.get('apparatus',{}).get('resume',{}).get('enabled',False)
+        if prior:
+            last=prior[-1]
+            if not resumable or len(prior)>=maximum or last.get('outcome') not in {None,'retry','interrupted-unconfirmed'}:
+                raise Incomplete('Prior GET has no durable response; request attempt allowance consumed')
+            if last.get('status')=='started':
+                self._finish(last,status='failed',outcome='interrupted-unconfirmed',exit_status=None,http_status=None,exception='ProcessInterrupted',stderr='No durable transport result')
+        self._budget(policy,key)
+        self._resume_cooldowns()
+        for attempt in range(len(prior)+1,maximum+1):
             policy=self.permit.verify();self._budget(policy,key)
             self.calls+=1
-            event={'request':self.calls,'endpoint':key,'endpoint_class':endpoint_class(key),'operation_attempt':attempt,
+            event={'request':self.calls,'endpoint':key,'canonical_endpoint':canonical,'repository':'/'.join(canonical.split('/')[1:3]),'endpoint_class':endpoint_class(key),'operation_attempt':attempt,
                    'status':'started','checkpoint_sha256':round_key,'started_at':self.clock()}
             self.log.append(event);self._write(self.cache/f'{self.calls:06d}.request.json',event)
             error=None;result=None
             try:
                 result=self.runner(['gh','api','--method','GET','--include','-H','Accept: application/vnd.github+json',
-                    '-H','X-GitHub-Api-Version: '+policy['api_version'],key],capture_output=True,text=True,timeout=settings.get('pr_timeout_seconds',120) if pr_scoped(key) else settings.get('timeout_seconds',60))
+                    '-H','X-GitHub-Api-Version: '+policy['api_version'],key],capture_output=True,text=True,timeout=settings.get('pr_timeout_seconds',120) if pr_scoped(canonical) else settings.get('timeout_seconds',60))
             except (OSError,subprocess.TimeoutExpired) as failure:error=failure
             stdout=result.stdout if result else ''
             stderr=getattr(result,'stderr','') if result else getattr(error,'stderr',None) or str(error)
@@ -167,6 +259,7 @@ class GhGet:
                     self._finish(event,**fields,status='failed',outcome='malformed-body')
                     raise Incomplete('Malformed GET body')
                 allowed={k:v for k,v in headers.items() if k in {'date','etag','link','retry-after'} or k.startswith('x-ratelimit-')}
+                self._remember_repository(key,payload,policy)
                 self._write(path,{'endpoint':key,'headers':allowed,'body':payload,'checkpoint_sha256':round_key})
                 delay=0
                 if headers.get('retry-after') or headers.get('x-ratelimit-remaining')=='0':
@@ -309,6 +402,10 @@ class Metadata:
 
     def _failure(self,n,stage,error,begin):
         attempts=[dict(v) for v in getattr(self.client,'log',[])[begin:]]
+        if not attempts:
+            suffix=f'issues/{n}/timeline' if stage=='timeline' else f'pulls/{n}'+('/'+stage if stage in {'files','commits'} else '')
+            target='repos/'+self.repository+'/'+suffix
+            attempts=[dict(v) for v in getattr(self.client,'log',[]) if urlsplit(v.get('canonical_endpoint',v['endpoint'])).path==target]
         last=attempts[-1] if attempts else {}
         record={'number':n,'stage':stage,'status':'metadata-unavailable','reason':sanitize(str(error),getattr(self.client,'cache',Path.cwd())),
                 'endpoint':last.get('endpoint'),'http_status':last.get('http_status'),'exit_status':last.get('exit_status'),'attempts':attempts}
@@ -416,6 +513,7 @@ class GitBudget:
     @property
     def remaining(self):return self.maximum-self.used
     def account(self,receipt):
+        if getattr(receipt,'replayed',False):return
         if type(receipt.transferred_bytes) is not int or receipt.transferred_bytes<0:
             self.stopped=True;raise Ceiling('Unmeasurable fetch; acquisition incomplete at ceiling')
         self.receipts.append({'commit':receipt.commit,'transferred_bytes':receipt.transferred_bytes,'error':receipt.error})
@@ -464,13 +562,19 @@ def prepare_clone(directory,repository,branch,expected,permit,budget,transport=N
     if budget.stopped or budget.remaining<=0:raise Ceiling('Git transfer ceiling')
     if not any(directory.is_relative_to(p.resolve()) for p in (Path('/')/'tmp',Path(tempfile.gettempdir()))):raise ValueError('Clone requires disposable temporary directory')
     if any(p in {'','.', '..'} or not re.fullmatch(r'[A-Za-z0-9_.-]+',p) for p in branch.split('/')):raise ValueError('Invalid default branch')
-    directory.mkdir(parents=True) # exclusive fresh directory, never an existing clone
+    existing=directory.exists()
+    if existing and not (getattr(transport,'supports_resume',False) and (directory/'.git').is_dir()):raise Incomplete('Interrupted clone initialization; no unmetered refetch')
+    directory.mkdir(parents=True,exist_ok=existing)
     def local(*args):
         try:r=runner(['git',*args],cwd=directory,env=environment(),capture_output=True,timeout=60)
         except (OSError,subprocess.TimeoutExpired) as e:raise Incomplete('Disposable clone initialization failed') from e
         if r.returncode:raise Incomplete('Disposable clone initialization failed')
-    local('init','--quiet')
-    local('remote','add','origin','https://github.com/'+repository+'.git')
+    if not existing:
+        local('init','--quiet')
+        local('remote','add','origin','https://github.com/'+repository+'.git')
+    else:
+        origin=runner(['git','remote','get-url','origin'],cwd=directory,env=environment(),capture_output=True,text=True,timeout=60)
+        if origin.returncode or origin.stdout.strip()!='https://github.com/'+repository+'.git':raise ValueError('Resumed clone origin drift')
     transport=transport or ObjectStoreTransport(permit,runner)
     try:receipt=transport(['git','fetch','--no-tags','origin','refs/heads/'+branch],cwd=directory,maximum_bytes=budget.remaining)
     except Ceiling:budget.stopped=True;raise

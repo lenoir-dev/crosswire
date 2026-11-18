@@ -24,6 +24,7 @@ def adapters(monkeypatch,root,*,budget_limit=30,fail_default=False):
     # Substitute only the round's checkpoint digest; no checkpoint/auth file is
     # manufactured. Real response-file hashes still use the actual helper.
     monkeypatch.setattr('benchmarks.s17b.acquire.sha',lambda path:checkpoint.sha(path) if path.exists() else 'f'*64)
+    monkeypatch.setattr(entry,'sha',lambda path:checkpoint.sha(path) if path.exists() else 'f'*64)
     def runner(args,**kwargs):
         calls.append(args)
         if args==['gh','--version']:return SimpleNamespace(returncode=0,stdout='gh version synthetic\n',stderr='')

@@ -214,14 +214,16 @@ def test_rate_retry_after_http_date_and_primary_reset(tmp_path):
     client.get('repos/example/repo/pulls');assert len(calls)==2 and waits==[5]
 
 
-def test_retry_journal_still_exists_after_unhandled_process_failure(tmp_path):
+def test_retry_journal_still_exists_and_p7_resumes_with_remaining_allowance(tmp_path):
     calls=[]
     def crash(*a,**kw):calls.append(1);raise KeyboardInterrupt()
     client=GhGet(Permit(),tmp_path,crash,version_reader=lambda:'synthetic gh',wait=lambda n:None)
     with pytest.raises(KeyboardInterrupt):client.get('repos/example/repo/pulls')
     assert len(list(tmp_path.glob('*.request.json')))==1 and not list(tmp_path.glob('*.result.json'))
-    restored=GhGet(Permit(),tmp_path,lambda *a,**kw:pytest.fail('Never silently retry an interrupted operation'),version_reader=lambda:'synthetic gh')
-    with pytest.raises(Incomplete):restored.get('repos/example/repo/pulls')
+    restored=GhGet(Permit(),tmp_path,lambda *a,**kw:response(),version_reader=lambda:'synthetic gh')
+    restored.get('repos/example/repo/pulls')
+    assert restored.calls==2 and restored.log[-1]['operation_attempt']==2
+    assert restored.log[0]['exception']=='ProcessInterrupted'
 
 
 def test_global_rate_limit_stops_collector_but_local_page_failure_does_not(monkeypatch):

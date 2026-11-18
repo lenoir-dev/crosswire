@@ -18,6 +18,15 @@
       "search": "walk newest first; stop at first C-ancestry crossing/non-containing first parent; do not scan old default history; all unchanged B2 tests still mandatory"
     },
     "repository_isolation": true,
+    "resume": {
+      "attempts": "every acquisition/resume and request attempt durable; cumulative original endpoint budgets and max 3 transport attempts per request, never reset at resume",
+      "enabled": true,
+      "isolation": "all Exception subclasses inside repository walk become acquisition-incomplete with traceback class; only global ceilings stop cohort; process interrupts propagate and preserve journals",
+      "lineage": "successor checkpoint-1 embeds exact predecessor bytes and hash; cached journal accepted only along verified same-round, identical non-apparatus policy lineage",
+      "metadata": "atomic metadata.json after each repository; immutable snapshots retained per acquisition attempt; replay frozen selection from responses on resume",
+      "numeric_pagination": "repositories/<id>/pulls|issues|commits only for positive numeric ID pinned from cached/successful named policy repository detail response; same canonical repository and endpoint-class budgets",
+      "policy": "P7; replay successful cache first, only missing responses may request, selection order unchanged; no checker/detector/label"
+    },
     "round1_policy_sha256": "717bf08b9ea73d2feca60848f033d3e4d5bc8d2896d9de874295685067cbec80",
     "selection_source_sha256": "ec2150b2f1cd1f3d9e8adff86010d08f4cacc8879cc292e582a08e772d84dc40",
     "transport": {

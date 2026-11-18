@@ -1,7 +1,7 @@
 # crosswire v0.5 — plan: one core, many languages (Python behind an adapter, then Go)
 
-Status: DRAFT (Polaris, 2026-11-18) for review by Altair, Deneb and Vega; becomes binding with their
-amendments. Inputs: `docs/design/v0.5-inputs.md`, `docs/VISION-v1.md` (V3, V5, V10), PLAN-v0.4 acceptance
+Status: **APPROVED for 0.5a** with Amendments P1 and P2 (Polaris, 2026-11-18; reviewed by Altair, Deneb and
+Vega). The 0.5b Go rule set is frozen after the S19a census. Where the sections below and P1/P2 differ, P1/P2 win. Inputs: `docs/design/v0.5-inputs.md`, `docs/VISION-v1.md` (V3, V5, V10), PLAN-v0.4 acceptance
 decisions. Two releases, so a refactor can never hide behind a feature:
 
 | Release | User value | Gate |

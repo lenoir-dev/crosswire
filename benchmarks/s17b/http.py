@@ -6,7 +6,7 @@ from pathlib import Path
 import re
 import subprocess
 
-from .selection import Ceiling
+from .selection import Ceiling,Incomplete
 
 
 class RateLimited(Ceiling):
@@ -64,3 +64,16 @@ def connection_failure(error,stderr):
     if isinstance(error,OSError):return error.errno in {errno.ECONNRESET,errno.ECONNREFUSED,errno.ETIMEDOUT,errno.ENETUNREACH,errno.EHOSTUNREACH,errno.ENETDOWN,errno.EPIPE}
     if isinstance(stderr,bytes):stderr=stderr.decode('utf-8','replace')
     return bool(re.search(r'(?i)connection (?:reset|refused|aborted)|(?:i/o|TLS handshake) timeout|network (?:is )?unreachable|no route to host|temporary failure in name resolution|no such host|failed to connect|error connecting to',stderr or ''))
+
+
+
+class PRMetadataUnavailable(Incomplete):
+    def __init__(self,record):
+        self.record=record
+        super().__init__('metadata-unavailable: PR '+str(record['number'])+' '+record['stage'])
+
+
+def pr_scoped(endpoint):
+    from urllib.parse import urlsplit
+    path=urlsplit(endpoint).path
+    return bool(re.fullmatch(r'repos/[^/]+/[^/]+/(?:pulls/[1-9][0-9]*(?:/(?:files|commits))?|issues/[1-9][0-9]*/timeline)',path))

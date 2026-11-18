@@ -24,7 +24,7 @@ def collect_metadata(client,policy):
             total+=len(selected['selected'])
             if total>policy['maximum_pairs']:raise ValueError('Global pair cap exceeded')
             rows.append({'repository':repository,'repository_id':repo_id,'default_branch':branch,'default_sha':default,
-                         'status':'acquisition-incomplete' if selected['stop_reason']=='repository-acquisition-incomplete' or isolated and selected['stop_reason']=='acquisition-incomplete' else 'metadata-only','list':listing,'selection':selected,'metadata_pages':metadata.ledger,'terminal_health':metadata.terminal_health,'acquisition_complete':selected['stop_reason'] not in {'repository-acquisition-incomplete','acquisition-incomplete'}})
+                         'status':'acquisition-incomplete' if selected['stop_reason']=='repository-acquisition-incomplete' or isolated and selected['stop_reason']=='acquisition-incomplete' else 'metadata-only','list':listing,'selection':selected,'metadata_pages':metadata.ledger,'pr_failures':metadata.failures,'terminal_health':metadata.terminal_health,'acquisition_complete':selected['stop_reason'] not in {'repository-acquisition-incomplete','acquisition-incomplete'}})
             if selected['stop_reason']=='request-ceiling' or not isolated and selected['stop_reason']=='acquisition-incomplete':stopped=True
         except RepositoryIncomplete as error:
             rows.append({'repository':repository,'status':'acquisition-incomplete','reason':str(error)});continue

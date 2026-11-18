@@ -6,6 +6,7 @@ from benchmarks.s17.m3 import delta,label,minimal_attribution
 from .selection import interval,Incomplete,Ceiling
 from .graph import anchor,own_bases,contamination,integrate_pair,Unresolved,pre_update_head
 from .acquire import fetch_head
+from .http import PRMetadataUnavailable
 
 
 def prepare_pair(slot,graph,default_head,metadata,permit,budget,transport,*,integrate=False):
@@ -53,6 +54,8 @@ def prepare_pair(slot,graph,default_head,metadata,permit,budget,transport,*,inte
             result['stage']='virtual-integration'
     except Ceiling:
         result.update(status='unattempted',reason='ceiling')
+    except PRMetadataUnavailable as error:
+        result.update(status='unlabelled',reason=str(error),pr_failure=error.record)
     except (Incomplete,Unresolved,KeyError,ValueError,TypeError) as error:
         result.update(status='unlabelled',reason=str(error))
     return result
@@ -80,9 +83,10 @@ def prepare_slots(slots,graph,default_head,metadata,permit,budget,transport,*,in
     """Preserve selected slots after ceiling; never replace failed acquisitions."""
     results=[];stopped=False
     for slot in slots:
-        if budget.stopped or stopped:
+        health=getattr(metadata,'pr_failure_health_stopped',False)
+        if budget.stopped or stopped or health:
             results.append({k:slot[k] for k in ('A','B','rank','slot','hash')} |
-                           {'status':'unattempted','reason':'ceiling','anchor_method':'unresolved','head_kind':'final-head','stage':'post-metadata'})
+                           {'status':'unattempted','reason':'repository-pr-failure-health-stop' if health else 'ceiling','anchor_method':'unresolved','head_kind':'final-head','stage':'post-metadata'})
         else:
             results.append(prepare_pair(slot,graph,default_head,metadata,permit,budget,transport,integrate=integrate))
             if results[-1].get('reason')=='ceiling':stopped=True

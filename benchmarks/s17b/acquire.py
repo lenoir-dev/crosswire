@@ -12,7 +12,7 @@ from urllib.parse import urlencode,urlsplit
 from .checkpoint import sha
 from .selection import Ceiling,RepositoryCeiling,Incomplete,timestamp,detail_filter,timeline_filter,terminal_proof,RepositoryIncomplete
 from conformance.git import environment
-from .http import RateLimited,sanitize,parse_reply,rate_response,server_wait,connection_failure
+from .http import RateLimited,sanitize,parse_reply,rate_response,server_wait,connection_failure,PRMetadataUnavailable,pr_scoped
 
 
 @dataclass
@@ -48,7 +48,7 @@ class GhGet:
     """Permit-gated GETs, bounded transport attempts, durable per-attempt results."""
     def __init__(self,permit,cache,runner=subprocess.run,version_reader=None,wait=time.sleep,clock=time.time):
         self.permit=permit;self.cache=Path(cache);self.runner=runner;self.calls=0;self.responses={};self.log=[];self.stopped=False
-        self.version_reader=version_reader;self.version_checked=False;self.wait=wait;self.clock=clock;self.stop_reason=None
+        self.version_reader=version_reader;self.version_checked=False;self.wait=wait;self.clock=clock;self.stop_reason=None;self.wait_budget_used=0;self.total_wait_seconds=0;self.wait_events=[]
 
     def _write(self,path,value):
         fd=os.open(path,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
@@ -70,9 +70,25 @@ class GhGet:
         if sum(endpoint_class(r['endpoint'])==phase for r in requests)>=limit:raise RepositoryCeiling('Repository '+phase+' GET sub-budget')
 
     def _pause(self,seconds):
-        # Bound each blocking wait so a controller can remain responsive.
+        if seconds<=0:return
+        limit=self.permit.verify().get('apparatus',{}).get('transport',{}).get('maximum_total_wait_seconds',900)
+        event=self.log[-1]
+        wait={'request':event['request'],'endpoint':event['endpoint'],'checkpoint_sha256':event['checkpoint_sha256'],
+              'planned_seconds':seconds,'waited_seconds':0,'status':'started'}
+        if self.wait_budget_used+seconds>limit:
+            self.stopped=True;self.stop_reason='acquisition-incomplete-rate-limited'
+            self._write(self.cache/'cohort-stop.json',{**wait,'status':self.stop_reason,'reason':'total-wait-ceiling',
+                                                    'wait_budget_used':self.wait_budget_used,'limit_seconds':limit})
+            self.wait_events.append({**wait,'status':'blocked-total-wait-ceiling'})
+            raise RateLimited()
+        self.wait_budget_used+=seconds
+        self._write(self.cache/f'{event["request"]:06d}.wait-started.json',wait)
+        self.wait_events.append(wait)
         while seconds>0:
             step=min(60,seconds);self.wait(step);seconds-=step
+            wait['waited_seconds']+=step;self.total_wait_seconds+=step
+        wait['status']='complete'
+        self._write(self.cache/f'{event["request"]:06d}.wait-result.json',wait)
 
     def _finish(self,event,**fields):
         event.update(fields)
@@ -100,6 +116,19 @@ class GhGet:
                 if item.get('outcome')=='acquisition-incomplete-rate-limited' or item.get('global_stop_reason')=='acquisition-incomplete-rate-limited':
                     self.stopped=True;self.stop_reason='acquisition-incomplete-rate-limited'
             self.calls=len(self.log)
+            for started in sorted(self.cache.glob('*.wait-started.json')):
+                value=json.loads(started.read_text())
+                if value['checkpoint_sha256']!=round_key:raise Incomplete('Wait journal belongs to another checkpoint')
+                self.wait_budget_used+=value['planned_seconds']
+                result=started.with_name(started.name.replace('.wait-started.json','.wait-result.json'))
+                if result.exists():
+                    value=json.loads(result.read_text());self.total_wait_seconds+=value['waited_seconds']
+                else:value.update(status='unconfirmed',waited_seconds=0)
+                self.wait_events.append(value)
+            if (self.cache/'cohort-stop.json').exists():
+                value=json.loads((self.cache/'cohort-stop.json').read_text())
+                if value['checkpoint_sha256']!=round_key:raise Incomplete('Stop journal belongs to another checkpoint')
+                self.stopped=True;self.stop_reason='acquisition-incomplete-rate-limited'
         if path.exists():
             saved=json.loads(path.read_text())
             if saved.get('checkpoint_sha256')!=round_key:raise Incomplete('Cached response belongs to another checkpoint')
@@ -118,7 +147,7 @@ class GhGet:
             error=None;result=None
             try:
                 result=self.runner(['gh','api','--method','GET','--include','-H','Accept: application/vnd.github+json',
-                    '-H','X-GitHub-Api-Version: '+policy['api_version'],key],capture_output=True,text=True,timeout=settings.get('timeout_seconds',60))
+                    '-H','X-GitHub-Api-Version: '+policy['api_version'],key],capture_output=True,text=True,timeout=settings.get('pr_timeout_seconds',120) if pr_scoped(key) else settings.get('timeout_seconds',60))
             except (OSError,subprocess.TimeoutExpired) as failure:error=failure
             stdout=result.stdout if result else ''
             stderr=getattr(result,'stderr','') if result else getattr(error,'stderr',None) or str(error)
@@ -230,8 +259,15 @@ def list_closed(client,repository,lower):
 
 class Metadata:
     def __init__(self,client,repository,policy=None,default_branch=None):
-        self.client=client;self.repository=repository;self.cache={};self.ledger={};self.policy=policy;self.default_branch=default_branch;self.terminal_health=[];self.health_stopped=False
-    def load(self,n):
+        self.client=client;self.repository=repository;self.cache={};self.ledger={};self.policy=policy;self.default_branch=default_branch;self.terminal_health=[];self.health_stopped=False;self.stages={};self.commit_cache={}
+        if not hasattr(client,'pr_failures'):client.pr_failures={}
+        self.failures=client.pr_failures.setdefault(repository,{})
+        if not hasattr(client,'pr_metadata_cache'):client.pr_metadata_cache={}
+        if not hasattr(client,'pr_commit_cache'):client.pr_commit_cache={}
+        self.cache=client.pr_metadata_cache.setdefault(repository,{})
+        self.commit_cache=client.pr_commit_cache.setdefault(repository,{})
+    def _load(self,n):
+        self.stages[n]='detail';self.ledger.setdefault(n,{})
         if self.health_stopped:raise RepositoryIncomplete('Terminal-event health stop: first 10 merged PR proofs failed')
         if n in self.cache:return self.cache[n]
         prefix=f'repos/{self.repository}/pulls/{n}'
@@ -239,6 +275,7 @@ class Metadata:
         if not isinstance(detail,dict) or detail.get('number')!=n:raise Incomplete('PR detail mismatch')
         value={**detail,'_metadata_stage':'detail','_files_complete':False,'_timeline_complete':False}
         if self.policy and detail_filter(value,self.default_branch,self.policy):self.cache[n]=value;return value
+        self.stages[n]='timeline'
         timeline,time_pages=pages(self.client,f'repos/{self.repository}/issues/{n}/timeline',per_page=100)
         value.update(_metadata_stage='timeline',_timeline=timeline,_timeline_complete=True)
         self.ledger[n]={'timeline_pages':time_pages}
@@ -250,15 +287,65 @@ class Metadata:
             if len(self.terminal_health)==10 and all(x['reason'] for x in self.terminal_health):
                 self.health_stopped=True;raise RepositoryIncomplete('Terminal-event health stop: first 10 merged PR proofs failed')
         if self.policy and proof['reason']:self.cache[n]=value;return value
+        self.stages[n]='files'
         files,file_pages=pages(self.client,prefix+'/files',per_page=100)
         value.update(_metadata_stage='files',_files=files,_files_complete=len(files)==detail.get('changed_files'))
         self.cache[n]=value;self.ledger[n].update(file_pages=file_pages)
         return value
-    def commits(self,n,count):
+    def _commits(self,n,count):
         values,ledger=pages(self.client,f'repos/{self.repository}/pulls/{n}/commits',per_page=100)
         ids=[v['sha'] for v in values]
         if len(ids)!=count or len(set(ids))!=count:raise Incomplete('PR commit list incomplete')
         return ids,ledger
+
+
+    @property
+    def pr_failure_health_stopped(self):
+        settings=(self.policy or {}).get('apparatus',{}).get('pr_isolation',{})
+        return bool(settings.get('enabled') and len(self.failures)>=settings['maximum_failed_prs_per_repository'])
+
+    def _health_check(self):
+        if self.pr_failure_health_stopped:raise RepositoryIncomplete('PR failure health stop: five distinct PRs unavailable')
+
+    def _failure(self,n,stage,error,begin):
+        attempts=[dict(v) for v in getattr(self.client,'log',[])[begin:]]
+        last=attempts[-1] if attempts else {}
+        record={'number':n,'stage':stage,'status':'metadata-unavailable','reason':sanitize(str(error),getattr(self.client,'cache',Path.cwd())),
+                'endpoint':last.get('endpoint'),'http_status':last.get('http_status'),'exit_status':last.get('exit_status'),'attempts':attempts}
+        self.failures.setdefault(n,[]).append(record)
+        self.ledger.setdefault(n,{})['metadata_unavailable']=record
+        return record
+
+    def load(self,n):
+        self._health_check()
+        if n in self.cache:return self.cache[n]
+        begin=len(getattr(self.client,'log',[]))
+        try:return self._load(n)
+        except (Ceiling,RepositoryIncomplete):raise
+        except Incomplete as error:
+            if not (self.policy or {}).get('apparatus',{}).get('pr_isolation',{}).get('enabled'):raise
+            record=self._failure(n,self.stages.get(n,'detail'),error,begin)
+            stub={'number':n,'_metadata_status':'metadata-unavailable','_metadata_stage':record['stage'],'_metadata_unavailable':record}
+            self.cache[n]=stub
+            self._health_check()
+            return stub
+
+    def commits(self,n,count):
+        self._health_check()
+        if n in self.commit_cache:
+            saved=self.commit_cache[n]
+            if isinstance(saved,PRMetadataUnavailable):raise saved
+            if saved[0]!=count:raise Incomplete('PR commit count changed')
+            return saved[1]
+        begin=len(getattr(self.client,'log',[]))
+        try:
+            result=self._commits(n,count);self.commit_cache[n]=(count,result);return result
+        except (Ceiling,RepositoryIncomplete):raise
+        except Incomplete as error:
+            if not (self.policy or {}).get('apparatus',{}).get('pr_isolation',{}).get('enabled'):raise
+            failure=PRMetadataUnavailable(self._failure(n,'commits',error,begin))
+            self.commit_cache[n]=failure
+            raise failure from error
 
 
 @dataclass(frozen=True)

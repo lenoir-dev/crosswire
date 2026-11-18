@@ -14,6 +14,7 @@ from .collect import collect_metadata
 from .pipeline import prepare_slots,graph_summary
 from .selection import Ceiling,Incomplete
 from .graph import Unresolved
+from .reporting import repository_report
 
 
 def write_record(path,value):
@@ -46,6 +47,11 @@ def acquire(permit,root,*,runner=subprocess.run,transport=None):
         slots=repository.get('selection',{}).get('selected',[])
         if not slots:
             row['reason']=repository.get('reason') or repository.get('selection',{}).get('stop_reason','no-selected-slots')
+        elif (policy.get('apparatus',{}).get('pr_isolation',{}).get('enabled') and
+              len(getattr(client,'pr_failures',{}).get(repository['repository'],{}))>=policy['apparatus']['pr_isolation']['maximum_failed_prs_per_repository']):
+            row['reason']='repository-pr-failure-health-stop'
+            row['slots']=[{k:slot[k] for k in ('A','B','rank','hash','slot')} |
+                          {'status':'unattempted','reason':row['reason'],'anchor_method':'unresolved'} for slot in slots]
         elif budget.stopped or budget.remaining<=0 or client.stopped or client.calls>=policy['maximum_get_requests']:
             row['reason']='acquisition-incomplete-at-ceiling'
             row['slots']=[{k:slot[k] for k in ('A','B','rank','hash','slot')} |
@@ -62,6 +68,7 @@ def acquire(permit,root,*,runner=subprocess.run,transport=None):
                 row.update(status='acquisition-incomplete',reason=str(error).replace(str(root),'${ACQUISITION}'))
                 row['slots']=[{k:slot[k] for k in ('A','B','rank','hash','slot')} |
                               {'status':'unattempted','reason':row['reason'],'anchor_method':'unresolved'} for slot in slots]
+        row['apparatus_report']=repository_report(client,repository['repository'],row.get('slots',[]))
         rows.append(row)
         write_record(root/f'repository-{index+1:02d}.json',row)
     complete=(metadata['complete'] and all(row['status']=='graph-acquired' or
@@ -70,6 +77,8 @@ def acquire(permit,root,*,runner=subprocess.run,transport=None):
     result={'stage':'acquisition only; no checker/detector/labels/checkpoint-2','status':getattr(client,'stop_reason',None) or ('acquired' if complete else 'acquisition-incomplete'),
             'metadata_complete':metadata['complete'],'repositories':rows,'get_requests':client.calls,
             'request_ledger':client.log,'git_bytes':budget.used,'git_ceiling':budget.maximum,'git_stopped':budget.stopped,
-            'fetch_receipts':budget.receipts}
+            'fetch_receipts':budget.receipts,'wait_budget_used_seconds':getattr(client,'wait_budget_used',0),
+            'wait_completed_seconds':getattr(client,'total_wait_seconds',0),
+            'apparatus_report':{r['repository']:r['apparatus_report'] for r in rows}}
     write_record(root/'acquisition.json',result)
     return result

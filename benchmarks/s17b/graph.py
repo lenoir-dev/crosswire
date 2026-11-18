@@ -188,16 +188,16 @@ def pre_update_head(graph,head_a,head_b,D,C,earlier,default_head,pr_commits):
     final=heads[later];default=set(graph.chain(default_head))
     if not graph.ancestor(C,final):raise Unresolved('pre-update-integration-not-contained')
     crossing=[]
-    for commit in reversed(graph.chain(final)):
+    for commit in graph.chain(final):
+        if not graph.ancestor(C,commit):break
         parents=graph.parents(commit)
         # Every ingress of C or the earlier PR head through a side parent must
         # itself be pinned default history. A later stacked/direct-PR merge
         # cannot be hidden by rewinding past a legitimate default update.
         if any((graph.ancestor(C,parent) or graph.ancestor(heads[earlier],parent)) and parent not in default for parent in parents[1:]):
             raise Unresolved('pre-update-nondefault-contamination-ingress')
-        if not graph.ancestor(C,commit):continue
-        if not parents or graph.ancestor(C,parents[0]):continue
-        crossing.append((commit,parents))
+        if parents and graph.ancestor(C,parents[0]):continue
+        crossing.append((commit,parents));break
     if len(crossing)!=1:raise Unresolved('pre-update-crossing-ambiguous')
     merged,parents=crossing[0]
     if len(parents)!=2 or parents[1] not in default or not graph.ancestor(C,parents[1]):raise Unresolved('pre-update-not-default-merge')

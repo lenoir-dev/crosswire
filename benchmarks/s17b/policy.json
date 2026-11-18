@@ -2,10 +2,20 @@
   "api_allowlist": "policy repositories: repository detail plus pulls/issues/commits paths only; reject dot/empty/percent-encoded segments; no rate_limit",
   "api_version": "2022-11-28",
   "apparatus": {
+    "pr_isolation": {
+      "ceilings": "never turn request/transfer/rate ceilings or terminal health stop into PR stubs",
+      "commits": "failed pinned PR commit list is cached; selected pair unlabelled with consumed slot; no replacement",
+      "enabled": true,
+      "health": "five distinct failed PRs across metadata and commits stop that repository as acquisition-incomplete",
+      "maximum_failed_prs_per_repository": 5,
+      "metadata": "detail/timeline/files Incomplete after retries => cached metadata-unavailable stub without timestamps; unchanged detail_filter emits invalid-metadata, no slot"
+    },
     "pre_update_heads": {
+      "disclosure": "adopted after one round-1 integrated-earlier-pr graph exclusion; oracle status unknown; rule applies uniformly to every pair, not that case",
       "enabled": true,
       "report": "head_kind final-head or pre-update; record final and effective SHAs, default-merge proof, both B2 outcomes; separate strata",
-      "rule": "only first first-parent ancestry crossing of earlier integration via a two-parent merge from pinned default first-parent chain; candidate is its first parent, in pinned PR commits; re-run all unchanged B2 tests; no search past a failed candidate"
+      "rule": "only first first-parent ancestry crossing of earlier integration via a two-parent merge from pinned default first-parent chain; candidate is its first parent, in pinned PR commits; re-run all unchanged B2 tests; no search past a failed candidate",
+      "search": "walk newest first; stop at first C-ancestry crossing/non-containing first parent; do not scan old default history; all unchanged B2 tests still mandatory"
     },
     "repository_isolation": true,
     "round1_policy_sha256": "717bf08b9ea73d2feca60848f033d3e4d5bc8d2896d9de874295685067cbec80",
@@ -17,7 +27,9 @@
       "journal": "every attempt claimed durably, exit/HTTP status/exception/sanitized stderr/wait/outcome in separate durable result; all attempts charge original endpoint budget class",
       "max_attempts": 3,
       "maximum_rate_wait_seconds": 300,
+      "maximum_total_wait_seconds": 900,
       "non_retryable": "all other HTTP 4xx; malformed/non-200 non-retryable output; missing executable; credential/configuration failures",
+      "pr_timeout_seconds": 120,
       "rate_limit_classification": {
         "HTTP_403": "retry only with Retry-After or x-ratelimit-remaining=0",
         "HTTP_429": "retry within cap; required wait from Retry-After or reset",
@@ -26,7 +38,8 @@
       },
       "rate_wait": "Retry-After seconds/HTTP-date, otherwise x-ratelimit-reset; unknown wait or wait>300 => global acquisition-incomplete-rate-limited; never switch credentials",
       "retryable": "timeouts, connection failures, HTTP 5xx; rate exceptions HTTP 429 or HTTP 403 with Retry-After or x-ratelimit-remaining=0",
-      "timeout_seconds": 60
+      "timeout_seconds": 60,
+      "total_wait_policy": "900s across cohort, including backoff and cooldown; reserve before sleeping, interrupted reserved waits count conservatively on restart; excess global acquisition-incomplete-rate-limited"
     }
   },
   "clone": "Permit-gated fresh temporary init and metered full default-branch-history fetch; compare pinned SHA; shared cohort GitBudget; every real fetch disables auto GC/maintenance",

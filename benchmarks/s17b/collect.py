@@ -1,6 +1,6 @@
 """Bounded metadata orchestration for an injected authorized read-only client.
 
-No function is called at import; the package CLI has no collection command.
+No function is called at import; the separately authorized entry wires this phase.
 This phase never invokes Git, any oracle, the detector or mutation machinery.
 """
 from .acquire import Metadata,list_closed

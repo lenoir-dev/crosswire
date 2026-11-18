@@ -146,7 +146,7 @@ def test_m7_git_operational_failure_is_not_textual_conflict():
 def test_m6_template_status_cannot_form_checkpoint(tmp_path):
     policy=json.loads((checkpoint.ROOT/'benchmarks/s17b/policy.json').read_text())
     policy.update(POLICY,api_version='test',gh_version='test',detector_commit='a'*40)
-    policy.update(checkpoint.runtime_pins())
+    policy.update(checkpoint.runtime_pins(),status='implementation for review only; collection not authorized')
     with pytest.raises(ValueError,match='ready status'):checkpoint.prepare(policy,tmp_path/'checkpoint')
     assert not (tmp_path/'checkpoint').exists()
 

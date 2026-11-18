@@ -1,35 +1,13 @@
 """Evidence-based finding advice and reproduction commands."""
 
-import re
 import shlex
 
 
 def hint(finding):
-    """Give actionable advice only where the finding provides evidence."""
-    rule = finding.rule
-    symbol = finding.symbol
-    culprits = getattr(finding, 'culprits', ()) or ()
-    other = getattr(finding, 'other_branch', None)
-    resolved = getattr(finding, 'resolved_by', None)
-    if rule in ('CW001', 'CW002') and resolved:
-        return f"merge {', '.join(resolved)} first"
-    if rule == 'CW001':
-        renamed = re.search(r'\(renamed to `([^`]+)`\?\)', finding.message)
-        if renamed:
-            return f'use `{renamed.group(1)}`'
-        if symbol:
-            return f'restore or re-export `{symbol}`'
-    if rule == 'CW003':
-        return 'keep one definition'
-    if rule == 'CW004' and 'Alembic' in finding.message:
-        return 'add a merge revision'
-    if rule == 'CW005':
-        causes = culprits or ((other,) if other else ())
-        if causes:
-            return f"rebase {finding.branch} onto {', '.join(causes)}"
-    if rule == 'CW006' and culprits:
-        return f"merge {', '.join(culprits)} together with a compatibility shim"
-    return None
+    """Compatibility facade for language-owned remediation advice."""
+    from .lang import adapters_for
+    return next((advice for adapter in adapters_for(None).values()
+                 if (advice := adapter.hint(finding))), None)
 
 
 def finding_limitations(finding, bound_hit=False):
@@ -65,22 +43,8 @@ def reproduction(finding, target, branches, src, repo=None):
 
 
 def migration_hint(repo, rev, finding):
-    """Calculate a free Django migration number from an actual Git tree."""
-    if finding.rule != 'CW004' or 'Alembic' in finding.message:
-        return None
-    match = re.fullmatch(r'(.*(?:^|/)migrations)/(\d{4})_([^/]+\.py)', finding.path)
-    if not match:
-        return None
-    directory, number, suffix = match.groups()
-    from . import git
-    existing = set()
-    for path in git.list_files(repo, rev, directory):
-        other = re.fullmatch(re.escape(directory) + r'/(\d{4})_[^/]+\.py', path)
-        if other:
-            existing.add(int(other.group(1)))
-    next_number = int(number) + 1
-    while next_number in existing:
-        next_number += 1
-    if next_number > 9999:
-        return None
-    return f'renumber `{finding.path}` to `{directory}/{next_number:04d}_{suffix}`'
+    """Compatibility name for adapter-owned state-dependent advice."""
+    from .lang import adapters_for
+    from .lang.base import Snapshot
+    return next((advice for adapter in adapters_for(repo).values()
+                 if (advice := adapter.state_hint(Snapshot(repo, rev), finding))), None)

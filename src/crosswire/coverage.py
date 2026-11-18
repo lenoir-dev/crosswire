@@ -1,53 +1,9 @@
 """Collect deterministic coverage gaps from user-visible Git states."""
 
-import ast
-from functools import lru_cache
-
 from . import git
-from .parsing import PARSE_ERRORS
-from .python_analyzer import cached_references, module_name_for_path, open_module
+from .lang.base import Reason, Source
+from .lang.python.coverage import _sites  # T21 compatibility hook
 
-
-@lru_cache(maxsize=16384)
-def _sites(source, module, path):
-    """Extract state-independent gaps and references once for each source blob."""
-    gaps = []
-    try:
-        tree = ast.parse(source)
-        refs = cached_references(source, module, path, path.endswith('/__init__.py')) if module else ()
-        if open_module(tree):
-            gaps.append(('open-module', 1, 'open module exports'))
-        for node in ast.walk(tree):
-            if isinstance(node, ast.ImportFrom) and any(x.name == '*' for x in node.names):
-                gaps.append(('unsupported', node.lineno, 'star import'))
-            elif isinstance(node, ast.If):
-                guard = ast.unparse(node.test)
-                construct = 'type-only import' if 'TYPE_CHECKING' in guard else 'conditional import'
-                for child in ast.walk(node):
-                    if isinstance(child, (ast.Import, ast.ImportFrom)):
-                        gaps.append(('unsupported', child.lineno, construct))
-            elif isinstance(node, (ast.Assign, ast.AnnAssign, ast.AugAssign)):
-                targets = node.targets if isinstance(node, ast.Assign) else [node.target]
-                for target in targets:
-                    if isinstance(target, (ast.Attribute, ast.Subscript)):
-                        gaps.append(('unsupported', node.lineno, 'runtime attribute or item mutation'))
-            elif isinstance(node, ast.Call):
-                if any(isinstance(a, ast.Starred) for a in node.args) or any(k.arg is None for k in node.keywords):
-                    gaps.append(('splatted_call', node.lineno, 'splatted call'))
-                if isinstance(node.func, ast.Name) and node.func.id in ('getattr', '__import__'):
-                    gaps.append(('unsupported', node.lineno, node.func.id))
-                elif (isinstance(node.func, ast.Attribute) and isinstance(node.func.value, ast.Name)
-                      and node.func.value.id == 'importlib'):
-                    gaps.append(('unsupported', node.lineno, 'importlib'))
-                elif isinstance(node.func, ast.Attribute):
-                    # Imported module attributes are handled by the reference resolver.
-                    if not any(ref.line == node.lineno and ref.call is not None for ref in refs):
-                        gaps.append(('unsupported', node.lineno, 'method or dynamic call'))
-            elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)) and node.decorator_list:
-                gaps.append(('unsupported', node.lineno, 'decorated definition'))
-        return tuple(gaps), refs
-    except PARSE_ERRORS:
-        return (('parse_failure', 1, 'parse failure'),), ()
 
 
 def inspect(repo, commits, roots=None, analysis=None):
@@ -70,9 +26,9 @@ def inspect(repo, commits, roots=None, analysis=None):
         # are outside the supported analysis, rather than evidence of a gap.
         unresolved = []
         for ref in sorted(refs, key=lambda r: (r.path, r.line, r.module, r.name, repr(r.call))):
-            result = index.resolve(ref.module, ref.name)
-            if result.status == 'unknown' and result.reason not in ('third-party', 'stdlib'):
-                unresolved.append((ref, result.reason or 'unsupported'))
+            result = index.resolve_use(ref)
+            if result.status == 'unknown' and result.reason != Reason.EXTERNAL:
+                unresolved.append((ref, index.adapter.coverage_reason(result)))
         paths = (analysis.changed.get((commit, source_roots), set())
                  | analysis.consulted.get((commit, source_roots), set())
                  | analysis.candidates.get((commit, source_roots), set())
@@ -86,11 +42,9 @@ def inspect(repo, commits, roots=None, analysis=None):
             if entry[0] == '160000':
                 add('submodule', path, 1, 'submodule not analyzed')
                 continue
-            if path.endswith('.pyi'):
-                if path in analysis.changed_paths:
-                    add('unsupported', path, 1, 'stub file')
-                continue
-            if not path.endswith('.py'):
+            for gap in index.adapter.path_gaps(path, path in analysis.changed_paths):
+                add(gap.category, gap.span.path, gap.span.line, gap.detail)
+            if not index.adapter.claims(path):
                 continue
             try:
                 source = git.read_blob(repo, entry[1])
@@ -99,8 +53,10 @@ def inspect(repo, commits, roots=None, analysis=None):
                 continue
             if source is None:
                 continue
-            module = module_name_for_path(path, source_roots)
-            gaps, present_refs = _sites(source, module, path)
+            namespaces = index.adapter.namespaces_of(path, index.context)
+            module = namespaces[0] if namespaces else None
+            gaps, present_refs = index.adapter.coverage_sites(Source(path, source, module),
+                                                             index.context, extractor=_sites)
             file_refs[path] = present_refs
             for category, line, construct in gaps:
                 if category not in ('parse_failure', 'non_utf8') and path not in analysis.changed_paths:

@@ -1,79 +1,34 @@
 from ..model import Finding
+from collections import defaultdict
 RULE_ID = 'CW002'
 SEVERITY = 'error'
 
 
-def binding_error(call, params):
-    """Binding error."""
-    positional = [p for p in params if p.kind in ('posonly', 'pos')]
-    vararg = any(p.kind == 'vararg' for p in params)
-    varkw = any(p.kind == 'varkw' for p in params)
-    if call.positional > len(positional) and not vararg:
-        return 'too many positional arguments'
-    assigned = {p.name for p in positional[:call.positional]}
-    named = {
-        p.name: p for p in params if p.kind in (
-            'posonly',
-            'pos',
-            'kwonly')}
-    seen = set()
-    for kw in call.keywords:
-        if kw in seen:
-            return f'duplicate value for {kw}'
-        seen.add(kw)
-        p = named.get(kw)
-        if p and p.kind == 'posonly':
-            if varkw:
-                continue
-            return f'positional-only argument passed as keyword: {kw}'
-        if p is None:
-            if not varkw:
-                return f'unknown keyword argument: {kw}'
-        elif kw in assigned:
-            return f'duplicate value for {kw}'
-        else:
-            assigned.add(kw)
-    for p in params:
-        if p.kind in ('posonly', 'pos',
-                      'kwonly') and not p.has_default and p.name not in assigned:
-            return f'missing required argument: {p.name}'
-    return None
-
-
-def keyword_hint(reason, params):
-    """Advise a keyword only when the new signature accepts it."""
-    prefix = 'missing required argument: '
-    if reason.startswith(prefix):
-        name = reason[len(prefix):]
-        if any(p.name == name and p.kind in ('pos', 'kwonly') for p in params):
-            return f'pass `{name}=`'
-    return None
+# Retained import facades; the core checks calls only through the adapter.
+from ..lang.python.calls import binding_error, keyword_hint
 
 
 def check(ctx):
     """Check."""
     out = []
     for cause, affected in ((ctx.a, ctx.b), (ctx.b, ctx.a)):
-        for ref in affected.references:
-            if not ref.call or ref.call.has_star or ref.call.has_starstar:
-                continue
-            for change in cause.api.get(ref.module, []):
-                if change.kind != 'signature_changed' or change.qualname != ref.name or '.' in change.qualname:
+        for data in affected.semantics:
+            adapter = ctx.analysis.adapters[data.language]
+            changes = defaultdict(list)
+            for change in ctx.analysis.semantic(cause, data.language).api:
+                changes[change.identity].append(change)
+            for ref in data.uses:
+                if ref.call is None:
                     continue
-                if binding_error(ref.call, change.old.params):
-                    continue
-                reason = binding_error(ref.call, change.new.params)
-                if reason:
-                    symbol = f'{ref.module}.{ref.name}'
-                    out.append(
-                        Finding(
-                            RULE_ID,
-                            SEVERITY,
-                            f'`{symbol}` call is incompatible with {cause.label}: {reason}',
-                            affected.label,
-                            cause.label,
-                            ref.path,
-                            ref.line,
-                            symbol,
-                            hint=keyword_hint(reason, change.new.params)))
+                for change in changes.get(ref.target, ()):
+                    if (change.kind != 'signature_changed' or change.identity != ref.target
+                            or not adapter.member_resolvable(change.identity)):
+                        continue
+                    verdict = adapter.check_call(ref, change.old, change.new)
+                    if verdict.status == 'broken':
+                        symbol = f'{ref.module}.{ref.name}'
+                        out.append(Finding(RULE_ID, SEVERITY,
+                            f'`{symbol}` call is incompatible with {cause.label}: {verdict.detail}',
+                            affected.label, cause.label, ref.path, ref.line, symbol,
+                            hint=adapter.call_hint(verdict, change.new)))
     return out

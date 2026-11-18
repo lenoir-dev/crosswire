@@ -1,0 +1,16 @@
+{
+  "manifest_sha256": "98fb360c5a07e8a2cec9dfcc359b6ca92d276a8a8e177f3d07f431fc269c692c",
+  "counts": {
+    "records": 43726,
+    "exit:0": 19717,
+    "exit:1": 17843,
+    "exit:2": 6166
+  },
+  "decoded_bytes": {
+    "stdout": 26900458,
+    "stderr": 358867
+  },
+  "duplicate_ids": [],
+  "internal_error_records": [],
+  "fixtures": 334
+}

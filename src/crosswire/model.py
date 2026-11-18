@@ -1,10 +1,11 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Literal, TYPE_CHECKING
 
 if TYPE_CHECKING:
     from .git import FileChange
+    from .lang.base import LanguageSummary
 
 ParamKind = Literal['posonly', 'pos', 'vararg', 'kwonly', 'varkw']
 SymbolKind = Literal['function', 'class', 'method', 'variable']
@@ -44,6 +45,11 @@ class Reference:
     module: str
     name: str
     call: CallShape | None
+
+    @property
+    def language(self):
+        """Language of this retained Python reference facade (not a report field)."""
+        return 'python'
 
 
 @dataclass(frozen=True, slots=True)
@@ -94,3 +100,4 @@ class BranchSummary:
     migrations: dict[str, str]
     touched_modules: frozenset[str]
     referenced_modules: frozenset[str]
+    semantics: tuple[LanguageSummary, ...] = field(default=(), repr=False, compare=False)

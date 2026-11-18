@@ -1,0 +1,10 @@
+{
+  "tag": "v0.4.0",
+  "tag_object": "b97f209f364580fa1cfcf8a93827ac8e95fb5763",
+  "tag_object_type": "tag",
+  "tag_object_sha256": "914f6cbe01fa9d034193c4b4c907bc0b95497ef677afc08edb633f5f81efb8d6",
+  "peeled_commit": "9bcce0fe75100712b1b34b91b48afa891019fdbe",
+  "release_src_tree": "f13d87399ec2a60b2e82deda3bfbcdc276c39beb",
+  "head_snapshot": "2cb3a06cf2084292d9732fc44c03891de636d866",
+  "head_snapshot_src_tree": "f13d87399ec2a60b2e82deda3bfbcdc276c39beb"
+}

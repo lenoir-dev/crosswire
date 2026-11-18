@@ -4,3 +4,5 @@ __pycache__/
 .pytest_cache/
 dist/
 .DS_Store
+# T21 recorded baseline: local artefact, not committed (tar headers carry host metadata); manifest hash pinned in docs/validation/t21a.md
+docs/validation/t21-baseline/

@@ -1,7 +1,4 @@
-from .parsing import PARSE_ERRORS
-import hashlib
 import itertools
-import sys
 from dataclasses import dataclass, replace
 from pathlib import Path
 from . import git
@@ -10,11 +7,10 @@ from .findings import consolidate
 from .diagnostics import hint, migration_hint, finding_limitations
 from .integrate import integrate
 from .coverage import inspect
-from .diffing import added_references, api_changes
-from .python_analyzer import module_name_for_path, extract_symbols, cached_references, definition_dumps
 from .model import BranchSummary, Report
-from .rules import cw001, cw002, cw003, cw004, cw005
-from .state import StateIndex
+from .rules import cw001, cw002, cw003, cw005
+from .lang import adapters_for
+from .lang.base import ADAPTER_API_VERSION, NamespaceId, Scope, Snapshot, Span, SymbolId, Use
 
 
 @dataclass
@@ -28,35 +24,103 @@ class PairContext:
     analysis: object
 
     def definition_dump(self, side, module, name):
-        """Return a normalized AST for a definition at a branch tip."""
+        """Compatibility hook; definition comparison is adapter-owned."""
+        adapter = self.analysis.adapters['python']
         symbol = side.definitions[module][name]
-        parsed = self.analysis.parse(side.tip, symbol.path, module, side.roots)
+        parsed = adapter.parse(side.tip, symbol.path, module, side.roots)
         return parsed[2].get(name) if parsed is not None else None
+
+    def definitions_equal(self, left, right, identity):
+        adapter = self.analysis.adapters[identity.namespace.language]
+        old = self.analysis.semantic(left, adapter.name).definitions[identity]
+        new = self.analysis.semantic(right, adapter.name).definitions[identity]
+        snap = self.analysis.snapshot(left.tip, left.roots)
+        return adapter.definitions_equal(snap, old,
+            self.analysis.snapshot(right.tip, right.roots), new, adapter.context(snap))
+
+
+class AdapterIndex:
+    """Caller-aware resolution facade with run-scoped adapter context."""
+
+    def __init__(self, adapter, snapshot, context):
+        self.adapter = adapter
+        self.snapshot = snapshot
+        self.context = context
+        self.repo, self.commit = snapshot.repo, snapshot.commit
+
+    def resolve_use(self, ref):
+        if not isinstance(ref, Use):
+            namespaces = self.adapter.namespaces_of(ref.path, self.context)
+            caller = NamespaceId(self.adapter.name, namespaces[0]) if namespaces else None
+            ref = Use(SymbolId(NamespaceId(self.adapter.name, ref.module), ref.name),
+                      Span(ref.path, ref.line), ref.call, caller)
+        return self.adapter.resolve(self.snapshot, ref, self.context)
+
+    def resolve(self, module, name):
+        return self.resolve_use(Use(SymbolId(NamespaceId(self.adapter.name, module), name), Span('', 0)))
 
 
 class _Analysis:
     def __init__(self, repo):
         self.repo = repo
-        self.cache = {}
-        self.warned = set()
-        self.parse_failures = 0
-        self.module_cache = {}
+        self.adapters = adapters_for(repo)
+        self.contexts = {}
         self.indexes = {}
         self.changed_paths = set()
         self.changed = {}
         self.consulted = {}
         self.observed = {}
         self.candidates = {}
+        self.invariants = {}
 
-    def index(self, sha, roots, *, track=True):
-        """Share state indexes and a run-sized blob cache without LRU eviction."""
-        key = (sha, tuple(roots))
-        if not track:
-            return StateIndex(self.repo, sha, roots, self.module_cache)
+    @property
+    def parse_failures(self):
+        return sum(adapter.parse_failures for adapter in self.adapters.values())
+
+    def snapshot(self, sha, roots, *, track=True):
+        return Snapshot(self.repo, sha, tuple(roots), track)
+
+    def context(self, sha, roots, language='python'):
+        adapter = self.adapters[language]
+        key = (sha, tuple(roots), ADAPTER_API_VERSION, language, adapter.version)
+        if key not in self.contexts:
+            self.contexts[key] = adapter.context(self.snapshot(sha, roots))
+        return self.contexts[key]
+
+    def semantic(self, summary, language='python'):
+        return next(item for item in summary.semantics if item.language == language)
+
+    def roots_for(self, sha, configured=None):
+        # --src and the legacy source-root heuristic belong to Python (P2).
+        return self.adapters['python'].source_roots(self.snapshot(sha, ('.',)), configured)
+
+    def index(self, sha, roots, *, track=True, language='python'):
+        adapter = self.adapters[language]
+        ctx = self.context(sha, roots, language)
+        snap = self.snapshot(sha, roots, track=track)
+        key = (sha, adapter.cache_identity(ctx), track)
         if key not in self.indexes:
-            consulted = self.consulted.setdefault(key, set())
-            self.indexes[key] = StateIndex(self.repo, sha, roots, self.module_cache, consulted)
+            consulted = self.consulted.setdefault((sha, tuple(roots)), set()) if track else None
+            adapter.index(snap, ctx, consulted)
+            self.indexes[key] = AdapterIndex(adapter, snap, ctx)
         return self.indexes[key]
+
+    def namespaces(self, sha, path, roots, language='python'):
+        adapter = self.adapters[language]
+        return tuple(NamespaceId(language, name) for name in
+                     adapter.namespaces_of(path, self.context(sha, roots, language)))
+
+    def violations(self, sha, roots, paths):
+        """Evaluate state invariants independently of branch deltas and trials."""
+        found = []
+        for name, adapter in self.adapters.items():
+            ctx = self.context(sha, roots, name)
+            scope = Scope(tuple(sorted(set(paths))), ctx)
+            key = (sha, adapter.cache_identity(ctx), scope.paths)
+            if key not in self.invariants:
+                self.invariants[key] = tuple(adapter.violations(self.snapshot(sha, roots), scope))
+            found.extend(self.invariants[key])
+        return found
 
     def observe(self, sha, roots, ref):
         """Record a user-state reference evaluated by the semantic analysis."""
@@ -84,142 +148,29 @@ class _Analysis:
                     paths.add(change.old_path)
 
     def warn_parse(self, path, sha):
-        """Warn once for a file in a revision, shared with coverage collection."""
-        entry = git.tree_entries(str(self.repo), sha).get(path)
-        identity = (path, entry[1] if entry else sha)
-        if identity not in self.warned:
-            print(f'crosswire: warning: cannot parse {path}@{sha[:7]}', file=sys.stderr)
-            self.warned.add(identity)
+        return self.adapters['python'].warn_parse(path, sha)
 
     def parse(self, sha, path, module, roots):
-        """Parse."""
-        try:
-            source = git.read_file(self.repo, sha, path)
-        except git.SkippedBlob:
-            self.parse_failures += 1
-            return None
-        if source is None:
-            return {}, [], {}
-        key = (
-            hashlib.sha256(
-                source.encode()).digest(),
-            module,
-            path,
-            tuple(roots))
-        if key not in self.cache:
-            try:
-                self.cache[key] = (
-                    extract_symbols(
-                        source,
-                        module,
-                        path),
-                    cached_references(
-                        source,
-                        module,
-                        path,
-                        path.endswith('/__init__.py') or path == '__init__.py'),
-                    definition_dumps(source))
-            except PARSE_ERRORS:
-                self.cache[key] = None
-        value = self.cache[key]
-        if value is None:
-            self.parse_failures += 1
-            self.warn_parse(path, sha)
-            return None
-        return value
+        """Retained 0.4 hook; parsing is implemented by the Python adapter."""
+        return self.adapters['python'].parse(sha, path, module, roots)
 
-    def references(self, sha, path, module, *, quiet=False):
-        """Get cached references without extracting symbols or AST dumps."""
-        try:
-            source = git.read_file(self.repo, sha, path)
-        except git.SkippedBlob:
-            self.parse_failures += 1
-            return None
-        if source is None:
-            return ()
-        try:
-            return cached_references(source, module, path,
-                                     path.endswith('/__init__.py') or path == '__init__.py')
-        except PARSE_ERRORS:
-            self.parse_failures += 1
-            if not quiet:
-                self.warn_parse(path, sha)
-            return None
+    def references(self, sha, path, module, *, quiet=False, roots=('.',)):
+        """Retained reference hook used by target-candidate discovery."""
+        return self.adapters['python'].references(sha, path, module, quiet=quiet, roots=roots)
 
     def side(self, label, sha, base, roots):
-        """Side."""
         changes = git.changed_files(self.repo, base, sha)
-        tip_index = self.index(sha, roots)
-        api, refs, defs, dumps, modules, migrations, redefined = {}, [], {}, {}, {}, {}, set()
-        for c in changes:
-            oldpath = c.old_path if c.status == 'R' else c.path
-            oldmod = module_name_for_path(oldpath, roots)
-            newmod = module_name_for_path(c.path, roots)
-            old_result = self.parse(
-                base,
-                oldpath,
-                oldmod,
-                roots) if oldmod and c.status != 'A' else (
-                {},
-                [],
-                {})
-            new_result = self.parse(
-                sha,
-                c.path,
-                newmod,
-                roots) if newmod and c.status != 'D' else (
-                {},
-                [],
-                {})
-            if old_result is None or new_result is None:
-                continue
-            oldsyms, oldrefs, olddumps = old_result
-            newsyms, newrefs, newdumps = new_result
-            renamed_refs = oldrefs
-            if oldmod and (c.status in ('D', 'R') or oldmod != newmod):
-                replacement = tip_index._module(oldmod)
-                replacement_result = self.parse(sha, replacement[0], oldmod, roots) if replacement else ({}, [], {})
-                if replacement_result is not None:
-                    api.setdefault(oldmod, []).extend(api_changes(oldsyms, replacement_result[0]))
-                oldsyms, oldrefs = {}, []
-            if newmod:
-                if c.status != 'D':
-                    modules[newmod] = newsyms
-                    redefined.update((newmod, name) for name in newsyms if name not in oldsyms or olddumps.get(
-                        name) != newdumps.get(name))
-                if c.status not in ('D', 'R'):
-                    api.setdefault(
-                        newmod, []).extend(
-                        api_changes(
-                            oldsyms, newsyms))
-                if c.status == 'R':
-                    # Compare occurrences across a rename using the new path.
-                    oldrefs = [replace(r, path=c.path) for r in renamed_refs]
-                refs.extend(added_references(oldrefs, newrefs))
-                additions = {k: v for k,
-                             v in newsyms.items() if k not in oldsyms}
-                if additions:
-                    defs.setdefault(newmod, {}).update(additions)
-                dumps[newmod] = newdumps
-            if c.status == 'A' and c.path.endswith('.py') and (cw004._DJANGO.match(c.path) or 'versions' in c.path.split('/')[:-1]):
-                try:
-                    source = git.read_file(self.repo, sha, c.path)
-                except git.SkippedBlob:
-                    source = None
-                if source is not None:
-                    migrations[c.path] = source
-        api = {module: [change for change in items
-                        if change.kind != 'removed' or (not tip_index.is_open(module)
-                            and tip_index.resolve(module, change.qualname).status != 'valid')]
-               for module, items in api.items()}
-        return BranchSummary(
-            label, sha, base, tuple(roots), tuple(changes),
-            {module: tuple(items)
-             for module, items in api.items()}, tuple(refs),
-            defs, frozenset(redefined), migrations,
-            frozenset(module for module, items in api.items() if items),
-            frozenset(ref.module for ref in refs),
-        )
+        # Register tracked state before the adapter resolves replacement bindings.
+        self.index(sha, roots)
+        for name in self.adapters:
+            self.context(base, roots, name)
+        paths = {path for change in changes for path in (change.path, change.old_path) if path}
+        self.violations(base, roots, paths)
+        self.violations(sha, roots, paths)
+        summaries = tuple(adapter.summarize(self.snapshot(base, roots), self.snapshot(sha, roots),
+                          changes, self.context(sha, roots, name))
+                          for name, adapter in self.adapters.items())
+        return replace(summaries[0].legacy, label=label, semantics=summaries)
 
 
 def summarize(repo, label, tip, base, roots):
@@ -247,7 +198,7 @@ def analyze(repo, branches, base=None, src=None, textual=True, target=None, cach
             if target_bases[sha] is None:
                 raise git.GitError(f'no merge base for {label} and {target}')
     analysis = _Analysis(repo)
-    disk_cache = SummaryCache(git.common_dir(repo)) if cache else None
+    disk_cache = SummaryCache(git.common_dir(repo), analysis.adapters, repo) if cache else None
     pairs, findings = {}, []
     summaries = {}
     roots_by_base = {}
@@ -271,10 +222,7 @@ def analyze(repo, branches, base=None, src=None, textual=True, target=None, cach
             branch_base = target_bases[tip] if target_sha else common
             if src is None:
                 if branch_base not in roots_by_base:
-                    files = git.list_files(repo, branch_base)
-                    roots_by_base[branch_base] = (
-                        ('src', '.') if any(p.startswith('src/') for p in files) else ('.',)
-                    )
+                    roots_by_base[branch_base] = analysis.roots_for(branch_base)
                 roots = roots_by_base[branch_base]
             else:
                 roots = tuple(src)
@@ -303,12 +251,15 @@ def analyze(repo, branches, base=None, src=None, textual=True, target=None, cach
             conflicts,
             analysis)
         if interacts(left, right):
-            for rule in (cw001, cw002, cw003, cw004):
-                results = rule.check(ctx)
-                if rule is cw004 and results:
+            for rule in (cw001, cw002, cw003):
+                findings.extend(rule.check(ctx))
+            for adapter in analysis.adapters.values():
+                results = adapter.pairwise_rules(ctx)
+                if results:
                     merged = integrate(repo, asha, [(b, bsha)])
                     if not merged.skipped:
-                        results = [replace(f, hint=hint(f) or migration_hint(repo, merged.commit, f)) for f in results]
+                        results = [replace(f, hint=hint(f) or adapter.state_hint(
+                            analysis.snapshot(merged.commit, left.roots), f)) for f in results]
                 findings.extend(results)
         findings.extend(cw005.check(ctx))
     ordered = sorted(
@@ -327,8 +278,14 @@ def analyze(repo, branches, base=None, src=None, textual=True, target=None, cach
 
 
 def interacts(left, right):
-    """Return whether two branch summaries can interact semantically."""
-    return bool(left.touched_modules & right.referenced_modules
-                or right.touched_modules & left.referenced_modules
-                or left.definitions.keys() & right.definitions.keys()
-                or (left.migrations and right.migrations))
+    """Compare language-qualified namespaces and adapter rule payloads."""
+    for a in left.semantics:
+        for b in right.semantics:
+            if a.language != b.language:
+                continue
+            if (a.touched_namespaces & b.referenced_namespaces
+                    or b.touched_namespaces & a.referenced_namespaces
+                    or {key.namespace for key in a.definitions} & {key.namespace for key in b.definitions}
+                    or (a.rule_data and b.rule_data)):
+                return True
+    return False

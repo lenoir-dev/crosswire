@@ -1,6 +1,5 @@
 """Analyze the integrated state of an ordered set of branches."""
 
-from .parsing import PARSE_ERRORS
 import itertools
 from dataclasses import dataclass, replace
 from collections import Counter
@@ -12,9 +11,8 @@ from .findings import consolidate
 from .diagnostics import hint, reproduction, migration_hint, finding_limitations
 from .coverage import inspect
 from .integrate import integrate
-from .python_analyzer import cached_references, module_name_for_path, valid_syntax
-from .rules import cw001, cw002, cw003, cw004
-from .state import StateIndex
+from .rules import cw001, cw002, cw003
+from .lang.base import NamespaceId, Reason, Verdict
 
 
 @dataclass(frozen=True, slots=True)
@@ -52,56 +50,24 @@ class CombinedReport:
 
 
 def _broken(ref, tip, final, final_index):
-    if final.status == 'unknown' and tip.files:
-        if final.reason not in ('third-party', 'stdlib'):
-            return None
-        # Syntax errors remain unknown even if another previously consulted file was removed.
-        for path in final.files:
-            try:
-                source = git.read_file(final_index.repo, final_index.commit, path)
-            except git.SkippedBlob:
-                return None
-            if source is not None:
-                if not valid_syntax(source):
-                    return None
-        # A module that existed at the reference's tip and was removed is in-repo.
-        try:
-            if any(git.read_file(final_index.repo, final_index.commit, p) is None for p in tip.files):
-                return 'undefined'
-        except git.SkippedBlob:
-            return None
-    if final.status == 'broken':
-        return 'undefined'
-    if final.status != 'valid':
-        return None
-    if (ref.call is not None and not ref.call.has_star and not ref.call.has_starstar
-            and tip.symbol is not None and final.symbol is not None
-            and tip.symbol.params is not None and final.symbol.params is not None
-            and cw002.binding_error(ref.call, tip.symbol.params) is None):
-        return cw002.binding_error(ref.call, final.symbol.params)
-    return None
+    verdict = final_index.adapter.breakage(ref, tip, final,
+                                          final_index.snapshot, final_index.context)
+    return verdict.detail if verdict.status == 'broken' else None
 
 
-def _location(repo, commit, ref, roots):
-    try:
-        source = git.read_file(repo, commit, ref.path)
-    except git.SkippedBlob:
-        return None
-    if source is None:
-        return ref.line, 'branch'
-    module = module_name_for_path(ref.path, roots)
-    if module is None:
-        return None
-    try:
-        found = cached_references(source, module, ref.path,
-                                   ref.path.endswith('/__init__.py') or ref.path == '__init__.py')
-    except PARSE_ERRORS:
-        return None
-    matching = [r for r in found if (r.module, r.name, r.call) == (ref.module, ref.name, ref.call)]
-    if not matching:
-        return None
-    chosen = min(matching, key=lambda r: (abs(r.line - ref.line), r.line))
-    return chosen.line, 'integrated'
+def _invalid_call(ref, resolution, index):
+    return (ref.call is not None and index.adapter.check_call(
+        ref, resolution.binding, resolution.binding).reason == Reason.INVALID_BASELINE)
+
+
+def _call_hint(reason, resolution, index):
+    return index.adapter.call_hint(Verdict('broken', Reason.INCOMPATIBLE_CALL, reason), resolution.binding)
+
+
+def _location(repo, commit, ref, roots, analysis):
+    adapter = analysis.adapters[ref.language]
+    return adapter.locate(analysis.snapshot(commit, roots), ref,
+                          analysis.context(commit, roots, adapter.name))
 
 
 def _changed_paths(summary):
@@ -133,14 +99,13 @@ class AnalysisRun:
             raise git.GitError('branches must resolve to distinct commits')
         ordered = list(zip(branches, shas))
         analysis = _Analysis(repo)
-        disk = SummaryCache(git.common_dir(repo)) if cache else None
+        disk = SummaryCache(git.common_dir(repo), analysis.adapters, repo) if cache else None
         summaries = {}
         for label, sha in ordered:
             base = git.merge_base(repo, sha, target_sha)
             if base is None:
                 raise git.GitError(f'no merge base for {label} and {target}')
-            files = git.list_files(repo, base) if src is None else ()
-            roots = tuple(src) if src is not None else (('src', '.') if any(p.startswith('src/') for p in files) else ('.',))
+            roots = analysis.roots_for(base, src)
             summary = disk.get(label, base, sha, roots) if disk else None
             if summary is None:
                 failures = analysis.parse_failures
@@ -156,8 +121,7 @@ class AnalysisRun:
         self.summaries = summaries
         self.analysis = analysis
         self.ancestors = git.ancestor_relations(repo, shas)
-        target_files = git.list_files(repo, target_sha)
-        self.roots = tuple(src) if src is not None else (('src', '.') if any(p.startswith('src/') for p in target_files) else ('.',))
+        self.roots = analysis.roots_for(target_sha, src)
         self._reverse = None
 
     def index(self, commit, roots):
@@ -170,17 +134,18 @@ class AnalysisRun:
             self._reverse = {}
             target_index = self.analysis.index(self.target_sha, self.roots, track=False)
             for path in git.list_files(self.repo, self.target_sha):
-                module = module_name_for_path(path, self.roots)
-                if module is None:
+                namespaces = self.analysis.namespaces(self.target_sha, path, self.roots)
+                if not namespaces:
                     continue
-                refs = self.analysis.references(self.target_sha, path, module, quiet=True)
+                refs = self.analysis.references(self.target_sha, path, namespaces[0].name, quiet=True, roots=self.roots)
                 for ref in refs or ():
-                    modules = {ref.module}
-                    modules.update(module_name_for_path(p, self.roots)
-                                   for p in target_index.resolve(ref.module, ref.name).files)
+                    modules = {NamespaceId(ref.language, ref.module)}
+                    modules.update(namespace for p in target_index.resolve_use(ref).files
+                                   for namespace in self.analysis.namespaces(self.target_sha, p, self.roots))
                     for imported in modules:
                         self._reverse.setdefault(imported, set()).add(path)
-        changed_modules = {module_name_for_path(path, self.roots) for path in changed_paths}
+        changed_modules = {namespace for path in changed_paths
+                           for namespace in self.analysis.namespaces(self.target_sha, path, self.roots)}
         return sorted({path for module in changed_modules if module is not None
                        for path in self._reverse.get(module, ())})
 
@@ -194,10 +159,11 @@ def _rename_hint(finding, run, commit):
     cause = run.summaries.get(finding.culprits[0])
     if cause is None:
         return None
-    for module, changes in cause.api.items():
-        for change in changes:
+    for data in cause.semantics:
+        for change in data.api:
+            module, name = change.identity.namespace.name, change.identity.name
             if (change.kind == 'removed' and change.rename_hint
-                    and f'{module}.{change.qualname}' == finding.symbol
+                    and f'{module}.{name}' == finding.symbol
                     and run.index(commit, cause.roots).resolve(module, change.rename_hint).status == 'valid'):
                 return f'use `{module}.{change.rename_hint}`'
     return None
@@ -216,12 +182,19 @@ def analyze_combined(repo, branches, target, src=None, cache=True, min_branches=
     analysis = run.analysis
     summaries = run.summaries
     merged = integrate(repo, target_sha, ordered)
+    invariant_paths = set().union(*(_changed_paths(summaries[label]) for label in branches))
+    analysis.violations(target_sha, run.roots, invariant_paths)
+    for label, sha in ordered:
+        analysis.violations(sha, summaries[label].roots, invariant_paths)
+    analysis.violations(merged.commit, run.roots, invariant_paths)
     integrated = set(merged.integrated)
     live = [(label, sha) for label, sha in ordered if label in integrated]
     index = run.index
     def trial(labels):
         selected = [(label, sha) for label, sha in live if label in labels]
         result = integrate(repo, target_sha, selected)
+        if not result.skipped:
+            analysis.violations(result.commit, run.roots, invariant_paths)
         return None if result.skipped else result.commit
     findings = []
     limits_hit = set()
@@ -239,6 +212,8 @@ def analyze_combined(repo, branches, target, src=None, cache=True, min_branches=
                 prior = [(other, other_sha) for other, other_sha in ordered
                          if other in subset_set]
                 attempt = integrate(repo, target_sha, prior + [(label, sha)])
+                if not attempt.skipped:
+                    analysis.violations(attempt.commit, run.roots, invariant_paths)
                 if (label in dict(attempt.skipped)
                         and all(other in attempt.integrated for other in subset)):
                     culprits, exact = subset or (target,), True
@@ -257,18 +232,16 @@ def analyze_combined(repo, branches, target, src=None, cache=True, min_branches=
         roots = summary.roots
         tip_index = index(sha, roots)
         final_index = index(merged.commit, roots)
-        for ref in summary.references:
+        for ref in analysis.semantic(summary).uses:
             analysis.observe(merged.commit, roots, ref)
-            tip = tip_index.resolve(ref.module, ref.name)
+            tip = tip_index.resolve_use(ref)
             if tip.status != 'valid':
                 continue
-            if (ref.call is not None and not ref.call.has_star and not ref.call.has_starstar
-                    and tip.symbol is not None and tip.symbol.params is not None
-                    and cw002.binding_error(ref.call, tip.symbol.params) is not None):
+            if _invalid_call(ref, tip, tip_index):
                 continue
-            final = final_index.resolve(ref.module, ref.name)
+            final = final_index.resolve_use(ref)
             reason = _broken(ref, tip, final, final_index)
-            location = _location(repo, merged.commit, ref, roots)
+            location = _location(repo, merged.commit, ref, roots, analysis)
             if reason is None or location is None:
                 continue
             relevant = set(tip.files) | set(final.files)
@@ -280,7 +253,7 @@ def analyze_combined(repo, branches, target, src=None, cache=True, min_branches=
                 if commit is None:
                     continue
                 trial_index = index(commit, roots)
-                if _broken(ref, tip, trial_index.resolve(ref.module, ref.name), trial_index) is not None:
+                if _broken(ref, tip, trial_index.resolve_use(ref), trial_index) is not None:
                     culprits, exact = subset or (target,), True
                     break
             if not exact and len(candidates) > 3:
@@ -296,7 +269,7 @@ def analyze_combined(repo, branches, target, src=None, cache=True, min_branches=
             findings.append(CombinedFinding(rule, 'error', message, label, tuple(culprits), exact, None,
                                             ref.path, location[0], location[1], symbol,
                                             hint=(f'rebase {label} onto {target}' if culprits == (target,) else
-                                                  cw002.keyword_hint(reason, final.symbol.params) if rule == 'CW002' and final.symbol and final.symbol.params else None)))
+                                                  _call_hint(reason, final, final_index) if rule == 'CW002' else None)))
     # Recheck occurrences already present on the target against the integrated state.
     roots = run.roots
     changed_paths = {path for change in git.changed_files(repo, target_sha, merged.commit)
@@ -307,13 +280,13 @@ def analyze_combined(repo, branches, target, src=None, cache=True, min_branches=
     analysis.candidates.setdefault((target_sha, roots), set()).update(candidates)
     analysis.candidates.setdefault((merged.commit, roots), set()).update(candidates)
     for path in candidates:
-        module = module_name_for_path(path, roots)
-        old = analysis.references(target_sha, path, module)
-        new = analysis.references(merged.commit, path, module)
+        module = analysis.namespaces(target_sha, path, roots)[0].name
+        old = analysis.references(target_sha, path, module, roots=roots)
+        new = analysis.references(merged.commit, path, module, roots=roots)
         if old is None or new is None:
             continue
         def ref_key(ref):
-            return ref.path, ref.module, ref.name, ref.call
+            return ref.language, ref.path, ref.module, ref.name, ref.call
         remaining = Counter(ref_key(ref) for ref in old)
         for ref in sorted(new, key=lambda item: item.line):
             key = ref_key(ref)
@@ -322,14 +295,12 @@ def analyze_combined(repo, branches, target, src=None, cache=True, min_branches=
             remaining[key] -= 1
             analysis.observe(target_sha, roots, ref)
             analysis.observe(merged.commit, roots, ref)
-            tip = target_index.resolve(ref.module, ref.name)
+            tip = target_index.resolve_use(ref)
             if tip.status != 'valid':
                 continue
-            if (ref.call is not None and not ref.call.has_star and not ref.call.has_starstar
-                    and tip.symbol is not None and tip.symbol.params is not None
-                    and cw002.binding_error(ref.call, tip.symbol.params) is not None):
+            if _invalid_call(ref, tip, target_index):
                 continue
-            final = final_index.resolve(ref.module, ref.name)
+            final = final_index.resolve_use(ref)
             relevant = set(tip.files) | set(final.files)
             if not (relevant & changed_paths):
                 continue
@@ -344,7 +315,7 @@ def analyze_combined(repo, branches, target, src=None, cache=True, min_branches=
                 if commit is None:
                     continue
                 check_index = index(commit, roots)
-                if _broken(ref, tip, check_index.resolve(ref.module, ref.name), check_index) is not None:
+                if _broken(ref, tip, check_index.resolve_use(ref), check_index) is not None:
                     culprits, exact = subset or (target,), True
                     break
             if not exact and len(candidates) > 3:
@@ -359,7 +330,7 @@ def analyze_combined(repo, branches, target, src=None, cache=True, min_branches=
                 message = f'`{symbol}` is broken after merging {{{", ".join(culprits)}}}: {reason}; no single branch causes it'
             findings.append(CombinedFinding(rule, 'error', message, target, tuple(culprits), exact,
                                             None, ref.path, ref.line, 'integrated', symbol,
-                                            hint=cw002.keyword_hint(reason, final.symbol.params) if rule == 'CW002' and final.symbol and final.symbol.params else None))
+                                            hint=_call_hint(reason, final, final_index) if rule == 'CW002' else None))
     # Explain pairwise breakages repaired by another integrated branch.
     for (a, _), (b, _) in itertools.combinations(live, 2):
         if not interacts(summaries[a], summaries[b]):
@@ -373,32 +344,30 @@ def analyze_combined(repo, branches, target, src=None, cache=True, min_branches=
             roots = summary.roots
             tip_index = index(summary.tip, roots)
             final_index = index(merged.commit, roots)
-            refs = [r for r in summary.references
+            refs = [r for r in analysis.semantic(summary).uses
                     if r.path == finding.path and r.line == finding.line
                     and f'{r.module}.{r.name}' == finding.symbol]
             for ref in refs:
-                tip = tip_index.resolve(ref.module, ref.name)
+                tip = tip_index.resolve_use(ref)
                 if tip.status != 'valid':
                     continue
-                if (ref.call is not None and not ref.call.has_star and not ref.call.has_starstar
-                        and tip.symbol is not None and tip.symbol.params is not None
-                        and cw002.binding_error(ref.call, tip.symbol.params) is not None):
+                if _invalid_call(ref, tip, tip_index):
                     continue
-                final = final_index.resolve(ref.module, ref.name)
-                location = _location(repo, merged.commit, ref, roots)
+                final = final_index.resolve_use(ref)
+                location = _location(repo, merged.commit, ref, roots, analysis)
                 if final.status != 'valid' or _broken(ref, tip, final, final_index) is not None or location is None:
                     continue
                 initial = trial({owner, cause})
                 if initial is None:
                     continue
                 initial_index = index(initial, roots)
-                if _broken(ref, tip, initial_index.resolve(ref.module, ref.name), initial_index) is None:
+                if _broken(ref, tip, initial_index.resolve_use(ref), initial_index) is None:
                     continue
                 message = finding.message
                 owner_commit = trial({owner})
                 if owner_commit is not None:
                     owner_index = index(owner_commit, roots)
-                    target_reason = _broken(ref, tip, owner_index.resolve(ref.module, ref.name), owner_index)
+                    target_reason = _broken(ref, tip, owner_index.resolve_use(ref), owner_index)
                     if target_reason is not None:
                         cause = target
                         message = (f'`{finding.symbol}` is used here but was removed in {target}'
@@ -415,7 +384,7 @@ def analyze_combined(repo, branches, target, src=None, cache=True, min_branches=
                         if commit is None:
                             continue
                         fixed_index = index(commit, roots)
-                        fixed = fixed_index.resolve(ref.module, ref.name)
+                        fixed = fixed_index.resolve_use(ref)
                         if fixed.status == 'valid' and _broken(ref, tip, fixed, fixed_index) is None:
                             resolved = subset
                             exact = True
@@ -430,17 +399,19 @@ def analyze_combined(repo, branches, target, src=None, cache=True, min_branches=
                                                     finding.path, location[0], location[1],
                                                     finding.symbol,
                                                     limitations=('call signature unknown in integrated state',)
-                                                    if ref.call and (final.symbol is None or final.symbol.params is None) else ()))
+                                                    if ref.call and (not final_index.adapter.signature_known(final.binding)) else ()))
     # Retain pairwise duplicate definitions and migration collisions.
     for (a, _), (b, _) in itertools.combinations(live, 2):
         if not interacts(summaries[a], summaries[b]):
             continue
         context = PairContext(repo, target_sha, summaries[a], summaries[b], False, [], analysis)
-        for rule in (cw003, cw004):
-            for f in rule.check(context):
-                findings.append(CombinedFinding(f.rule, f.severity, f.message, f.branch,
-                                                (f.other_branch,), True, None, f.path, f.line,
-                                                'integrated', f.symbol))
+        phase_findings = cw003.check(context)
+        for adapter in analysis.adapters.values():
+            phase_findings.extend(adapter.pairwise_rules(context))
+        for f in phase_findings:
+            findings.append(CombinedFinding(f.rule, f.severity, f.message, f.branch,
+                                            (f.other_branch,), True, None, f.path, f.line,
+                                            'integrated', f.symbol))
     # D8: only the earliest containing branch owns a shared visible use site.
     identities = {(f.branch, f.rule, f.path, f.line, f.symbol, f.culprits) for f in findings}
     findings = [f for f in findings if not any(

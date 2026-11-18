@@ -7,7 +7,7 @@ from . import git
 from .combined import AnalysisRun, CombinedFinding, analyze_combined
 from .diagnostics import hint, migration_hint, reproduction
 from .coverage import inspect
-from .rules.cw004 import _DJANGO, revisions
+from .lang import adapters_for
 
 
 def _key(finding):
@@ -22,58 +22,12 @@ def _describe(finding):
 
 
 def _migration_findings(repo, target, state, labels, summaries=None, ancestors=None):
-    """Find collisions in the state involving at least one added migration."""
+    """Retained compatibility hook for adapter-owned integrated-state rules."""
     if summaries is None:
         run = AnalysisRun(repo, labels, target, cache=False)
-        summaries = run.summaries
-        ancestors = run.ancestors
-    if ancestors is None:
-        ancestors = git.ancestor_relations(repo, [summaries[label].tip for label in labels])
-    changes = git.changed_files(repo, target, state)
-    added = {change.path for change in changes if change.status == 'A'}
-    if not added:
-        return []
-    files = [path for path in git.list_files(repo, state) if path.endswith('.py')]
-    django = [(path, _DJANGO.match(path)) for path in files]
-    django = [(path, match) for path, match in django if match]
-    alembic = []
-    for path in files:
-        if 'versions' in path.split('/')[:-1]:
-            try:
-                source = git.read_file(repo, state, path)
-            except git.SkippedBlob:
-                continue
-            alembic.append((path, revisions(path, source or '')))
-    owners = {}
-    for label in labels:
-        for path in summaries[label].migrations:
-            owners.setdefault(path, []).append(label)
-    for path, names in owners.items():
-        owners[path] = [name for name in names if not any(
-            (summaries[other].tip, summaries[name].tip) in ancestors for other in names)]
-
-    def attribution(a, b):
-        causes = set(owners.get(a, ())) | set(owners.get(b, ()))
-        owner = next((label for label in reversed(labels) if label in causes), '')
-        return owner, tuple(sorted(causes))
-
-    findings = []
-    for (a, am), (b, bm) in itertools.combinations(django, 2):
-        if (a in added or b in added) and am.groups() == bm.groups():
-            path = b if b in added else a
-            owner, causes = attribution(a, b)
-            findings.append(CombinedFinding('CW004', 'error', f'migration number {am.group(2)} collides with {a if path == b else b}',
-                                            owner, causes, True, None,
-                                            path, 1, 'integrated', None))
-    for (a, av), (b, bv) in itertools.combinations(alembic, 2):
-        common = av & bv
-        if common and (a in added or b in added):
-            path = b if b in added else a
-            owner, causes = attribution(a, b)
-            findings.append(CombinedFinding('CW004', 'error', f'Alembic revisions share down_revision {", ".join(sorted(common))}',
-                                            owner, causes, True, None,
-                                            path, 1, 'integrated', None))
-    return findings
+        summaries, ancestors = run.summaries, run.ancestors
+    return [finding for adapter in adapters_for(repo).values()
+            for finding in adapter.state_rules(repo, target, state, labels, summaries, ancestors)]
 
 
 def plan(repo, branches, target, src=None, cache=True, repro_repo=None):
@@ -104,7 +58,9 @@ def plan(repo, branches, target, src=None, cache=True, repro_repo=None):
             extra = _migration_findings(repo, target_sha, report.commit, labels, run.summaries, run.ancestors)
             extra = [replace(f, hint=hint(f) or migration_hint(repo, report.commit, f),
                              repro=reproduction(f, target, labels, src, repro_repo)) for f in extra]
-            findings = [f for f in report.findings if f.rule != 'CW004'] + extra
+            state_rules = {rule.id for adapter in run.analysis.adapters.values()
+                           for rule in adapter.rules() if rule.phase == 'state'}
+            findings = [f for f in report.findings if f.rule not in state_rules] + extra
             states[key] = report, findings
             hit.update(report.limits['hit'])
         return states[key]

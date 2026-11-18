@@ -155,6 +155,12 @@ class AttemptJournal:
     @classmethod
     def claim(cls, private, metadata, detector_python=sys.executable, source=None):
         journal=cls(private)
+        if (journal.private/'measurement-attempt.json').exists():
+            raise AttemptConsumed('Attempt consumed; report-only is permitted, detector rerun is not')
+        # N1: a missing/timed-out/malformed interpreter or Git probe is a
+        # preflight failure, not an attempted measurement. The exclusive marker
+        # remains the final race-safe claim AFTER this probe succeeds.
+        environment_record=_measurement_environment(detector_python,source)
         journal.private.chmod(0o700)
         try:
             _write_private(journal.private/'measurement-attempt.json',metadata)
@@ -162,7 +168,7 @@ class AttemptJournal:
             raise AttemptConsumed('Attempt consumed; report-only is permitted, detector rerun is not') from error
         journal.directory.mkdir(mode=0o700)
         _directory_sync(journal.private)
-        _write_private(journal.private/'measurement-environment.json',_measurement_environment(detector_python,source))
+        _write_private(journal.private/'measurement-environment.json',environment_record)
         journal.state('running')
         return journal
 
@@ -363,6 +369,7 @@ def main():
         parser.error('A custom seal is permitted only for a synthetic rehearsal')
     successor=args.rehearsal_seal or root/'docs/validation/holdout-v2-apparatus.sha256'
     if args.verify_only:
+        _measurement_environment(args.detector_python,root/'src')
         verify_h1_amendment(root,successor,rehearsal=args.rehearsal)
         verify_seal(args.private_dir,root,successor)
         print(json.dumps({'status':'seal verified; not measured'}));return

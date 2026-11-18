@@ -2,14 +2,16 @@
   "amendment": "H1",
   "checks": {
     "commits": "none",
-    "focused_tests": "76 passed",
+    "focused_tests": "78 passed",
     "forced_midrun_failure": "SIGKILL; no rerun; journal-only report",
     "minor_dispositions": "m1-m3,m5 fixed; m4,m6 explicitly documented and m4 regression-tested",
     "p4": "categorical micro gates survive numeric suppression; environment and row chain verified",
+    "prior_synthetic_driver_timeout": "300-second driver timeout under concurrent T22 load; consumed journal retained, never resumed; fresh synthetic-only rehearsal with 1200-second driver ceiling passed",
     "real_holdout_access": "none",
     "src_edits": "none",
-    "synthetic_full_pipeline": "pass",
-    "vega_b1": "2/60 and 1/20 reproduced before fix; numeric complements hidden afterwards"
+    "synthetic_full_pipeline": "pass; fresh synthetic fixtures; 240 completed, SIGKILL two starts/one result, reruns refused, journal-only report without evaluation",
+    "vega_b1": "2/60 and 1/20 reproduced before fix; numeric complements hidden afterwards",
+    "vega_n1": "nonexistent interpreter reproduced before fix; unclaimed failure and same verify-only probe after fix"
   },
   "labels": "untouched; no real measurement, rescreening or relabelling",
   "next": "Vega audit and Polaris commit; later T22-T24 accepted source archive and separate explicit attempt authorization",
@@ -28,12 +30,13 @@
     "private claim-time interpreter/Git/OS/environment-key/locale record outside compared metadata; no arbitrary secret environment values",
     "stale replace scratch recovery never replaces marker; ignored dot journal files; unknown non-dot records fail closed",
     "explicit export-failed status distinguishing completed/interrupted evaluation; all-results-but-unmarked remains interrupted",
-    "aggregate key/value allowlist and finite-number export guards"
+    "aggregate key/value allowlist and finite-number export guards",
+    "N1: compute the environment probe before exclusive attempt-marker creation; verify-only runs the same probe; pre-existing markers refuse without a probe"
   ],
   "private_pins": "identical copied public seal entries; private content never opened or hashed during preparation",
   "provenance_formulas": {
     "canonical": "SHA256(json.dumps(mapping, sort_keys=True, separators=(\",\", \":\")).encode(\"utf-8\")); ensure_ascii=True",
-    "environment": "private measurement-environment.json at claim time, intentionally outside compared metadata",
+    "environment": "probe before marker; private measurement-environment.json written at claim time, intentionally outside compared metadata",
     "eval_sha256": "canonical hash of eval.integrity.apparatus(root): original public apparatus paths mapped to SHA256(file bytes), including amended runner",
     "manifest_sha256": "SHA256(exact private manifest bytes)",
     "source_sha256": "canonical hash of _source_hashes(root): repo-relative src files excluding __pycache__ and .pyc mapped to SHA256(file bytes)"
@@ -43,17 +46,17 @@
   "runner_unified_diff": {
     "baseline": "2cb3a06:eval/run_holdout.py",
     "format": "difflib.unified_diff with keepends=True, context=3, a/eval/run_holdout.py and b/eval/run_holdout.py, UTF-8",
-    "sha256": "2c21f7f50b77c7b30dffaea9af543c61f45e632f6fd36b4e9d33213250269842"
+    "sha256": "126fc28b62f1c8af5d53376b02291baeacdf7a7030a9a9beeada59ecf5a92e0b"
   },
   "sealed_public_changes": {
     "eval/run_holdout.py": {
-      "after": "ed15ff88cbab7641e9537d155b18aa83e887c7f439cfbe51e0c8eb1199d05799",
+      "after": "333306a4973d19505f81de5435ced767fe1f3fdde3156f56dcff78d810e1c27f",
       "before": "5f0bf6d97d346559deb15db3ec7805fcd7e259d7b85786ea320c66ec89a226a1"
     }
   },
-  "status": "P4 fixes prepared; Vega re-audit and Polaris authorization still required; real attempt not run",
-  "successor_eval_sha256": "0ac92cc192d46d8191e6a939791ca7eb1d9d6c582d2c795d17106842389d1eea",
-  "successor_seal_sha256": "e00b74b7ce4944e38cf30d84ca0a75d47f05f7881b5f84c679616813e9d5d8f6",
+  "status": "N1 code fix and synthetic rehearsal complete; Vega diff-check and Polaris authorization required; real attempt not run",
+  "successor_eval_sha256": "b5676319362a8ba8c531c62bf119d4c2a52c69440a6605b60ca3c915705bdff6",
+  "successor_seal_sha256": "a63394e6921f326accd6f19f7f6c05f4b6dddf1d6db5891d0e2c9c9f4022b15b",
   "superseded": {
     "docs/validation/eval-code.sha256": {
       "file_sha256": "4c4d03135e95d47fe83722addcb9506230715e530d12a3192e69168e0ee12c6f",
@@ -61,7 +64,7 @@
     }
   },
   "supporting_files_sha256": {
-    "benchmarks/s18_rehearsal.py": "e18118731dcba671e60b58d871b8724a66f0198fb1a64512030d8f7479dcaaed",
+    "benchmarks/s18_rehearsal.py": "ed8bde87c71387754074dd16914eaf9dbffff189b1ca8e061805501098b9859a",
     "conformance/README.md": "84384001282579d980af83c6bb6671dfb24698b8e3a37522e5d6cd9e716ddb30",
     "conformance/__init__.py": "1736192e3b0221b4e70b2479ffe03cb8e562ca4b7cda8b30252090ed6b06bea4",
     "conformance/git.py": "32a7d669a7bafe79e7eda4385d925e213b6c8b96906f92a11acfff9b5c4b0912",
@@ -77,17 +80,17 @@
     "conformance/templates/open_dynamic.json": "1a04363b7b041834c59cc384f5cbc358baa40b59aaab2b3e242e2be7fd6ebfa6",
     "conformance/templates/open_wildcard.json": "aed9deaf5a47396ae5ae2d607371679ab1e634786e8b068979c91e247310db4a",
     "conformance/templates/rename.json": "866d157d802bc198e21f086ff84d8fec95f197cc756f7f1a580d9c594d3702b7",
-    "docs/PLAN-v0.5.md": "3d2562ae81c57a52485de391f01737abab649406f4aaf8dbe833c13ee3d7bd9c",
+    "docs/PLAN-v0.5.md": "ebd809880b5170048cab56a40ecc76a757605f30ef382ccfee57cc0531d6cf4b",
     "docs/QUALITY.md": "7fc14b3563b5e47c4e7ffcf0ca7b3e88906a163bea98bd816746b2ec85d8723d",
-    "docs/reviews/v0.5-s18-audit-vega.md": "57bbb04121f0392c65e4b9f62a8cabc172054177b092f56c4818585e942620c3",
-    "docs/validation/holdout-v2-eval-code.sha256": "d44eeabdd2e0d36f85f0d2d46cf967686a4c23a5f81d7ea1055998cbcda58c2a",
-    "docs/validation/holdout-v2-preregistration.md": "0282b64ab0acd09829a321ea2f083e636ae4cd84d9206a581fec769f86bb6e87",
-    "docs/validation/s18-prep-rehearsal.json": "ed00238acde007e4f900805231faabebf93525bf1b047f323c756a62a6957582",
-    "docs/validation/s18-prep.md": "af5390f459343ed36fa17292f5a09b7d4ba58b938c481dbe42487a6e4d5004ed",
-    "docs/validation/s18-resume.md": "8d61c07d2cf8f9a442044d78767dd17b1dee912f623ea50d7fea981301df23aa",
+    "docs/reviews/v0.5-s18-audit-vega.md": "df54acc148667ec6695ed0a31befa6e3d5e910f63d17395e3357aa3f91e00575",
+    "docs/validation/holdout-v2-eval-code.sha256": "a869976fe26b610f56f80dd0958ef4959febe3e2f1480ca5ca489240bf2b0646",
+    "docs/validation/holdout-v2-preregistration.md": "23eef6dc86953a4325e82e6c1ff87c8509f0320de54a35feb784f56fa7183f2b",
+    "docs/validation/s18-prep-rehearsal.json": "7c3bb358ca0f98a0f50f2d93cbded9d5a562c4521a543bb9c0567516d009eeb2",
+    "docs/validation/s18-prep.md": "09dfd198302b6de8b66f4437dc0a0c38b0fb99133052b35428ee545b19453811",
+    "docs/validation/s18-resume.md": "ffcfb759b30fcadeaf56dff1ac74316224d4be795360592eab0988eba0d78adb",
     "tests/test_eval.py": "48f3135b5a3b499410c27dc33f78b6bac96c87d30ac045d694e78c17b014a0fd",
     "tests/test_eval_r2.py": "5a4df2dffc4e0a7ce342db99509db7343341b6ce66deedb6ca22c7e0e7ebade2",
-    "tests/test_holdout_h1.py": "d6f817e4dacb1993a9aec064b156ee2c536feaaa841595a3174a92214056c6eb"
+    "tests/test_holdout_h1.py": "e9b26b3ee9bad3695b423838627201f810fc69fd821bc373997061d3e813878a"
   },
   "unchanged_public_entries": 28
 }

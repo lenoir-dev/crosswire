@@ -215,3 +215,21 @@ def test_all_results_without_completion_marker_remain_interrupted(tmp_path):
     assert json.loads((tmp_path/'measurement-state.json').read_text())['status']=='running'
     summary=h1.holdout_report(recorded,interrupted=True)
     assert summary['micro_gates']=={'precision_gate':'insufficient data','recall_gate':'insufficient data'}
+
+
+def test_vega_n1_bad_interpreter_does_not_consume_attempt(tmp_path):
+    bad=str(Path(os.sep)/'nonexistent'/'python')
+    with pytest.raises(FileNotFoundError):
+        h1.AttemptJournal.claim(tmp_path,{'n':1,'release':'0.5a'},detector_python=bad)
+    assert not (tmp_path/'measurement-attempt.json').exists()
+    assert list(tmp_path.iterdir())==[]
+
+
+def test_vega_n1_verify_only_runs_same_probe_before_private_seal(tmp_path,monkeypatch):
+    import sys
+    monkeypatch.setattr(sys,'argv',['run_holdout','--verify-only','--private-dir',str(tmp_path),
+                                  '--detector-python',str(Path(os.sep)/'nonexistent'/'python')])
+    monkeypatch.setattr(h1,'verify_h1_amendment',lambda *a,**kw:None)
+    monkeypatch.setattr(h1,'verify_seal',lambda *a,**kw:pytest.fail('Bad probe must fail before seal inspection'))
+    with pytest.raises(FileNotFoundError):h1.main()
+    assert list(tmp_path.iterdir())==[]

@@ -121,7 +121,7 @@ def invoke(archive,private,seal,freeze,detector,*,report_only=False):
              '--rehearsal-seal',str(seal),'--release','0.5a','--source-freeze-manifest',str(freeze),
              '--detector-python',str(detector),'--output',str(output)]
     if report_only:command.append('--report-only')
-    return subprocess.run(command,cwd=archive,env=git.environment(),capture_output=True,timeout=300),output
+    return subprocess.run(command,cwd=archive,env=git.environment(),capture_output=True,timeout=1200),output
 
 
 def run(output,oracle_python):
@@ -191,6 +191,8 @@ def run(output,oracle_python):
             'p4_checks':{'attribution_complements':'2/60 and 1/20 suppressed','categorical_micro_gates':'published outside suppressed statistics',
                          'measurement_environment':'private at claim time, not compared metadata','journal_chain':'per-row and completed-row hash verified'},
             'apparatus_sha256':apparatus(immutable),'rehearsal_driver_sha256':digest(Path(__file__)),
+            'driver_timeout_seconds':1200,
+            'prior_synthetic_attempt':'driver timed out at 300 seconds under concurrent T22 load; retained consumed journal, never resumed; fresh synthetic-only fixtures used',
             'fixture_location':'system temporary directory, crosswire-s18-synthetic-*; private, not committed'}
     write(output,result)
     print(json.dumps({'status':'pass','fixtures':240,'forced_failure':'no rerun; report-only verified'}))

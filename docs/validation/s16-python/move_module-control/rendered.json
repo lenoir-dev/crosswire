@@ -1,0 +1,101 @@
+{
+  "case": {
+    "branches": [
+      {
+        "edits": [
+          {
+            "module": "api",
+            "op": "move_module",
+            "to": "moved"
+          }
+        ],
+        "id": "A",
+        "parent": "target"
+      },
+      {
+        "edits": [
+          {
+            "arguments": [
+              1
+            ],
+            "file": "consumer",
+            "module": "stable",
+            "op": "add_use",
+            "site": "call",
+            "symbol": "f"
+          }
+        ],
+        "id": "B",
+        "parent": "target"
+      }
+    ],
+    "expected": {
+      "combined": {
+        "verdict": "valid"
+      },
+      "pairwise": {
+        "verdict": "valid"
+      },
+      "plan": {
+        "verdict": "valid"
+      }
+    },
+    "id": "move_module-control",
+    "kind": "control",
+    "oracle": {
+      "broken_states": [],
+      "categories": [
+        "reportMissingImports"
+      ],
+      "identity": "module",
+      "runtime": "same-as-checker",
+      "site": "call"
+    },
+    "proof": "closed"
+  },
+  "rendered": {
+    "base": {
+      "api.py": "def f(value: int) -> int:\n    return value\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\n",
+      "fallback.py": "def f(value: int) -> int:\n    return value\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\n",
+      "stable.py": "def f(value: int) -> int:\n    return value\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\n"
+    },
+    "branches": [
+      {
+        "files": {
+          "api.py": null,
+          "moved.py": "def f(value: int) -> int:\n    return value\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\n"
+        },
+        "id": "A",
+        "parent": "target"
+      },
+      {
+        "files": {
+          "consumer.py": "import stable\nassert stable.f(1) == 1\n"
+        },
+        "id": "B",
+        "parent": "target"
+      }
+    ],
+    "contract": {
+      "id": "PY-2",
+      "scope": "supported"
+    },
+    "language": "python",
+    "sites": {
+      "call": {
+        "end_line": 2,
+        "known_modules": [
+          "api",
+          "fallback",
+          "stable"
+        ],
+        "module": "stable",
+        "path": "consumer.py",
+        "start_line": 1,
+        "symbol": "stable.f"
+      }
+    }
+  },
+  "template": "move_module",
+  "template_sha256": "c0258c67d871cc98f2f239dc00c0ef0ce697647666bfa19f03eb1e4f6442855d"
+}

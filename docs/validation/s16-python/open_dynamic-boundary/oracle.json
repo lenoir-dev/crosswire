@@ -1,0 +1,83 @@
+{
+  "pin": "1.1.407",
+  "states": {
+    "A": {
+      "checker_stderr": "",
+      "commit": "883e7294a811c2fb31480630e662fd49cee57a63",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 3,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "api.py": "e0dd57af22fd5c603c90d55be022002e82fef41c71e3d7d6781b1e966e4ddcb1",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    },
+    "A+B": {
+      "checker_stderr": "",
+      "commit": "41bf201641284f102b7c1bc702f42f60cfe8bf41",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 4,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "api.py": "e0dd57af22fd5c603c90d55be022002e82fef41c71e3d7d6781b1e966e4ddcb1",
+        "consumer.py": "f2a9ae24a1954ae46d23c3f5b802039bcca8ab648bd2e18a78004b664d132fd9",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    },
+    "B": {
+      "checker_stderr": "",
+      "commit": "37c3ad6fcd0a509e010577b9fecfbb30095bf0b8",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 4,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "api.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "consumer.py": "f2a9ae24a1954ae46d23c3f5b802039bcca8ab648bd2e18a78004b664d132fd9",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    },
+    "target": {
+      "checker_stderr": "",
+      "commit": "ab2f18cd30d4563b93fc606a7d98a3c5423f0914",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 3,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "api.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    }
+  }
+}

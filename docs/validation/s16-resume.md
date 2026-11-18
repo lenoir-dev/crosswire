@@ -1,0 +1,11 @@
+# Deneb S16 handoff
+
+Task `v0.5-s16`: complete. Report: [s16.md](s16.md). Full kit evidence: [s16-python/summary.json](s16-python/summary.json); independent evidence/package audit: [s16-checks.json](s16-checks.json).
+
+- Eight neutral templates, 16 cases, Python renderer; all three modes. Full run passed 80 independently checked subset states and 48 installed-product invocations. Template/oracle disagreement fails as a kit bug; product outputs never supply expectations. Source/checker/apparatus stayed stable. No Go implementation, corpus/holdout measurement, product-source edit or commit was performed.
+- Final targeted suite: 59 tests passed (28 conformance, 17 comparator, 14 census). The conformance subset in ordinary CI uses the eval group and checks eight oracle states/six product invocations. An offline sdist build includes the kit, eight templates and current test file; `pyproject.toml` changes only the sdist include list.
+- The instrument's PY-2 identity check was corrected to M2 module+file matching; a new regression test prevents literal qualified-symbol matching from rejecting a correct missing-module finding. This changed no scenario edits, expected verdicts or oracle truth. Intermediate instrument evidence remains outside the repository; final `s16-python` evidence uses the corrected matcher.
+- Keep `conformance/`, `tests/test_conformance.py`, CI eval-group change, sdist include change and `docs/validation/s16*` together for review. Other workers' `benchmarks/t24_blocked_plan.py`, `tests/test_t24_fixture.py`, T24 baseline documents and T22 design work were observed and left untouched.
+- Frozen Go review notes were sent to Polaris: Python CW003 was warning-only, not measured semantics; S19 must map duplicate import bindings to supported GO-4 under D-Go1, while the zero-count census mapper used candidate GO-7. No frozen contract was edited.
+
+The separate `v0.5-t21a-replay-doc` item is complete: `t21a.md` gives the exact `d01d5e6` archived comparator/collector setup and replay command against `~/.crosswire-t21-baseline`. Three-fixture smoke: 369 records per source, zero mismatches, source/toolchain stable; intentionally `partial`. Full T22 equality remains a separate gate. Neither baseline bytes nor the manifest pin `98fb360c…` was changed.

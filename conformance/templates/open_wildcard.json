@@ -1,0 +1,173 @@
+{
+  "version": 1,
+  "id": "open_wildcard",
+  "contracts": {
+    "python": {
+      "id": "PY-1",
+      "scope": "unsupported-open-namespace"
+    },
+    "go": {
+      "id": null,
+      "status": "unsupported-or-deferred"
+    }
+  },
+  "base": {
+    "modules": {
+      "api": {
+        "declarations": [
+          {
+            "id": "f",
+            "parameters": [
+              {
+                "name": "value",
+                "required": true
+              }
+            ]
+          }
+        ],
+        "forward": null
+      },
+      "fallback": {
+        "declarations": [
+          {
+            "id": "f",
+            "parameters": [
+              {
+                "name": "value",
+                "required": true
+              }
+            ]
+          }
+        ],
+        "forward": null
+      },
+      "stable": {
+        "declarations": [
+          {
+            "id": "f",
+            "parameters": [
+              {
+                "name": "value",
+                "required": true
+              }
+            ]
+          }
+        ],
+        "forward": null
+      }
+    },
+    "uses": {}
+  },
+  "cases": [
+    {
+      "id": "open_wildcard-boundary",
+      "kind": "boundary",
+      "branches": [
+        {
+          "id": "A",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "open_namespace",
+              "module": "api",
+              "from_module": "fallback",
+              "mechanism": "wildcard"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "add_use",
+              "site": "call",
+              "file": "consumer",
+              "module": "api",
+              "symbol": "f",
+              "arguments": [
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "proof": "open",
+      "expected": {
+        "pairwise": {
+          "verdict": "unknown"
+        },
+        "combined": {
+          "verdict": "unknown"
+        },
+        "plan": {
+          "verdict": "unknown"
+        }
+      },
+      "oracle": {
+        "broken_states": [],
+        "categories": [
+          "reportAttributeAccessIssue"
+        ],
+        "runtime": "same-as-checker",
+        "site": "call",
+        "identity": "symbol"
+      }
+    },
+    {
+      "id": "open_wildcard-control",
+      "kind": "control",
+      "branches": [
+        {
+          "id": "A",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "open_namespace",
+              "module": "api",
+              "from_module": "fallback",
+              "mechanism": "wildcard"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "add_use",
+              "site": "call",
+              "file": "consumer",
+              "module": "stable",
+              "symbol": "f",
+              "arguments": [
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "proof": "open",
+      "expected": {
+        "pairwise": {
+          "verdict": "unknown"
+        },
+        "combined": {
+          "verdict": "unknown"
+        },
+        "plan": {
+          "verdict": "unknown"
+        }
+      },
+      "oracle": {
+        "broken_states": [],
+        "categories": [
+          "reportAttributeAccessIssue"
+        ],
+        "runtime": "same-as-checker",
+        "site": "call",
+        "identity": "symbol"
+      }
+    }
+  ]
+}

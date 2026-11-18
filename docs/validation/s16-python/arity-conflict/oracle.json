@@ -1,0 +1,100 @@
+{
+  "pin": "1.1.407",
+  "states": {
+    "A": {
+      "checker_stderr": "",
+      "commit": "913a20026c2b0cfc6863c0cab5ba22d0c6dd6ef2",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 3,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "api.py": "a91ab9ea74baa394421071f0984bf03a15708634c37a042f89ef778a83f44bc4",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    },
+    "A+B": {
+      "checker_stderr": "",
+      "commit": "e1f50b08aa0ecd89e1b22e44e99d4e702b26c42e",
+      "diagnostics": [
+        {
+          "file": "consumer.py",
+          "message": "Argument missing for parameter \"extra\"",
+          "range": {
+            "end": {
+              "character": 15,
+              "line": 1
+            },
+            "start": {
+              "character": 7,
+              "line": 1
+            }
+          },
+          "rule": "reportCallIssue",
+          "severity": "error"
+        }
+      ],
+      "exit": 1,
+      "files_analyzed": 4,
+      "runtime": {
+        "exit": 1,
+        "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"<string>\", line 1, in <listcomp>\n  File \"<frozen runpy>\", line 291, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"${CASE}/oracle/A+B/consumer.py\", line 2, in <module>\n    assert api.f(1) == 1\n           ^^^^^^^^\nTypeError: f() missing 1 required positional argument: 'extra'\n",
+        "stdout": "",
+        "verdict": "broken"
+      },
+      "source_sha256": {
+        "api.py": "a91ab9ea74baa394421071f0984bf03a15708634c37a042f89ef778a83f44bc4",
+        "consumer.py": "f2a9ae24a1954ae46d23c3f5b802039bcca8ab648bd2e18a78004b664d132fd9",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "broken"
+    },
+    "B": {
+      "checker_stderr": "",
+      "commit": "37c3ad6fcd0a509e010577b9fecfbb30095bf0b8",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 4,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "api.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "consumer.py": "f2a9ae24a1954ae46d23c3f5b802039bcca8ab648bd2e18a78004b664d132fd9",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    },
+    "target": {
+      "checker_stderr": "",
+      "commit": "ab2f18cd30d4563b93fc606a7d98a3c5423f0914",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 3,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "api.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    }
+  }
+}

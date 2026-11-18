@@ -1,0 +1,185 @@
+{
+  "case_count": 16,
+  "cases": [
+    {
+      "contract": {
+        "id": "PY-4",
+        "scope": "supported"
+      },
+      "failures": [],
+      "id": "arity-conflict",
+      "modes": 3,
+      "oracle_states": 4,
+      "status": "pass"
+    },
+    {
+      "contract": {
+        "id": "PY-4",
+        "scope": "supported"
+      },
+      "failures": [],
+      "id": "arity-control",
+      "modes": 3,
+      "oracle_states": 4,
+      "status": "pass"
+    },
+    {
+      "contract": {
+        "id": "PY-5",
+        "scope": "supported"
+      },
+      "failures": [],
+      "id": "conjunctive-conflict",
+      "modes": 3,
+      "oracle_states": 8,
+      "status": "pass"
+    },
+    {
+      "contract": {
+        "id": "PY-5",
+        "scope": "supported"
+      },
+      "failures": [],
+      "id": "conjunctive-control",
+      "modes": 3,
+      "oracle_states": 8,
+      "status": "pass"
+    },
+    {
+      "contract": {
+        "id": "PY-1",
+        "scope": "supported"
+      },
+      "failures": [],
+      "id": "delete-conflict",
+      "modes": 3,
+      "oracle_states": 4,
+      "status": "pass"
+    },
+    {
+      "contract": {
+        "id": "PY-1",
+        "scope": "supported"
+      },
+      "failures": [],
+      "id": "delete-control",
+      "modes": 3,
+      "oracle_states": 4,
+      "status": "pass"
+    },
+    {
+      "contract": {
+        "id": "PY-1",
+        "scope": "supported"
+      },
+      "failures": [],
+      "id": "fix_by_third-conflict",
+      "modes": 3,
+      "oracle_states": 8,
+      "status": "pass"
+    },
+    {
+      "contract": {
+        "id": "PY-1",
+        "scope": "supported"
+      },
+      "failures": [],
+      "id": "fix_by_third-control",
+      "modes": 3,
+      "oracle_states": 8,
+      "status": "pass"
+    },
+    {
+      "contract": {
+        "id": "PY-2",
+        "scope": "supported"
+      },
+      "failures": [],
+      "id": "move_module-conflict",
+      "modes": 3,
+      "oracle_states": 4,
+      "status": "pass"
+    },
+    {
+      "contract": {
+        "id": "PY-2",
+        "scope": "supported"
+      },
+      "failures": [],
+      "id": "move_module-control",
+      "modes": 3,
+      "oracle_states": 4,
+      "status": "pass"
+    },
+    {
+      "contract": {
+        "id": "PY-1",
+        "scope": "unsupported-open-namespace"
+      },
+      "failures": [],
+      "id": "open_dynamic-boundary",
+      "modes": 3,
+      "oracle_states": 4,
+      "status": "pass"
+    },
+    {
+      "contract": {
+        "id": "PY-1",
+        "scope": "unsupported-open-namespace"
+      },
+      "failures": [],
+      "id": "open_dynamic-control",
+      "modes": 3,
+      "oracle_states": 4,
+      "status": "pass"
+    },
+    {
+      "contract": {
+        "id": "PY-1",
+        "scope": "unsupported-open-namespace"
+      },
+      "failures": [],
+      "id": "open_wildcard-boundary",
+      "modes": 3,
+      "oracle_states": 4,
+      "status": "pass"
+    },
+    {
+      "contract": {
+        "id": "PY-1",
+        "scope": "unsupported-open-namespace"
+      },
+      "failures": [],
+      "id": "open_wildcard-control",
+      "modes": 3,
+      "oracle_states": 4,
+      "status": "pass"
+    },
+    {
+      "contract": {
+        "id": "PY-1",
+        "scope": "supported"
+      },
+      "failures": [],
+      "id": "rename-conflict",
+      "modes": 3,
+      "oracle_states": 4,
+      "status": "pass"
+    },
+    {
+      "contract": {
+        "id": "PY-1",
+        "scope": "supported"
+      },
+      "failures": [],
+      "id": "rename-control",
+      "modes": 3,
+      "oracle_states": 4,
+      "status": "pass"
+    }
+  ],
+  "mode_checks": 48,
+  "oracle_states": 80,
+  "source_stable": true,
+  "status": "pass"
+}

@@ -1,0 +1,110 @@
+{
+  "case": {
+    "branches": [
+      {
+        "edits": [
+          {
+            "module": "api",
+            "name": "extra",
+            "op": "add_parameter",
+            "required": true,
+            "symbol": "f"
+          }
+        ],
+        "id": "A",
+        "parent": "target"
+      },
+      {
+        "edits": [
+          {
+            "arguments": [
+              1
+            ],
+            "file": "consumer",
+            "module": "api",
+            "op": "add_use",
+            "site": "call",
+            "symbol": "f"
+          }
+        ],
+        "id": "B",
+        "parent": "target"
+      }
+    ],
+    "expected": {
+      "combined": {
+        "culprits": [
+          "A"
+        ],
+        "owner": "B",
+        "rule": "CW002",
+        "verdict": "broken"
+      },
+      "pairwise": {
+        "rule": "CW002",
+        "verdict": "broken"
+      },
+      "plan": {
+        "verdict": "broken"
+      }
+    },
+    "id": "arity-conflict",
+    "kind": "conflict",
+    "oracle": {
+      "broken_states": [
+        "A+B"
+      ],
+      "categories": [
+        "reportCallIssue"
+      ],
+      "identity": "symbol",
+      "runtime": "same-as-checker",
+      "site": "call"
+    },
+    "proof": "closed"
+  },
+  "rendered": {
+    "base": {
+      "api.py": "def f(value: int) -> int:\n    return value\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\n",
+      "fallback.py": "def f(value: int) -> int:\n    return value\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\n",
+      "stable.py": "def f(value: int) -> int:\n    return value\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\n"
+    },
+    "branches": [
+      {
+        "files": {
+          "api.py": "def f(value: int, extra: int) -> int:\n    return value\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\n"
+        },
+        "id": "A",
+        "parent": "target"
+      },
+      {
+        "files": {
+          "consumer.py": "import api\nassert api.f(1) == 1\n"
+        },
+        "id": "B",
+        "parent": "target"
+      }
+    ],
+    "contract": {
+      "id": "PY-4",
+      "scope": "supported"
+    },
+    "language": "python",
+    "sites": {
+      "call": {
+        "end_line": 2,
+        "known_modules": [
+          "api",
+          "fallback",
+          "stable"
+        ],
+        "module": "api",
+        "path": "consumer.py",
+        "start_line": 1,
+        "symbol": "api.f"
+      }
+    }
+  },
+  "template": "arity",
+  "template_sha256": "b83598d37ba05e6e4f5a779d54fdb7e482eafc0ee5f251a4dcf129e8b9b186e9"
+}

@@ -1,0 +1,181 @@
+{
+  "version": 1,
+  "id": "rename",
+  "contracts": {
+    "python": {
+      "id": "PY-1",
+      "scope": "supported"
+    },
+    "go": {
+      "id": "GO-1",
+      "status": "future-renderer"
+    }
+  },
+  "base": {
+    "modules": {
+      "api": {
+        "declarations": [
+          {
+            "id": "f",
+            "parameters": [
+              {
+                "name": "value",
+                "required": true
+              }
+            ]
+          }
+        ],
+        "forward": null
+      },
+      "fallback": {
+        "declarations": [
+          {
+            "id": "f",
+            "parameters": [
+              {
+                "name": "value",
+                "required": true
+              }
+            ]
+          }
+        ],
+        "forward": null
+      },
+      "stable": {
+        "declarations": [
+          {
+            "id": "f",
+            "parameters": [
+              {
+                "name": "value",
+                "required": true
+              }
+            ]
+          }
+        ],
+        "forward": null
+      }
+    },
+    "uses": {}
+  },
+  "cases": [
+    {
+      "id": "rename-conflict",
+      "kind": "conflict",
+      "branches": [
+        {
+          "id": "A",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "rename",
+              "module": "api",
+              "symbol": "f",
+              "to": "renamed"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "add_use",
+              "site": "call",
+              "file": "consumer",
+              "module": "api",
+              "symbol": "f",
+              "arguments": [
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "proof": "closed",
+      "expected": {
+        "pairwise": {
+          "verdict": "broken",
+          "rule": "CW001"
+        },
+        "combined": {
+          "verdict": "broken",
+          "rule": "CW001",
+          "owner": "B",
+          "culprits": [
+            "A"
+          ]
+        },
+        "plan": {
+          "verdict": "broken"
+        }
+      },
+      "oracle": {
+        "broken_states": [
+          "A+B"
+        ],
+        "categories": [
+          "reportAttributeAccessIssue"
+        ],
+        "runtime": "same-as-checker",
+        "site": "call",
+        "identity": "symbol"
+      }
+    },
+    {
+      "id": "rename-control",
+      "kind": "control",
+      "branches": [
+        {
+          "id": "A",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "rename",
+              "module": "api",
+              "symbol": "f",
+              "to": "renamed"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "add_use",
+              "site": "call",
+              "file": "consumer",
+              "module": "stable",
+              "symbol": "f",
+              "arguments": [
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "proof": "closed",
+      "expected": {
+        "pairwise": {
+          "verdict": "valid"
+        },
+        "combined": {
+          "verdict": "valid"
+        },
+        "plan": {
+          "verdict": "valid"
+        }
+      },
+      "oracle": {
+        "broken_states": [],
+        "categories": [
+          "reportAttributeAccessIssue"
+        ],
+        "runtime": "same-as-checker",
+        "site": "call",
+        "identity": "symbol"
+      }
+    }
+  ]
+}

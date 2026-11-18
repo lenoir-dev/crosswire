@@ -1,0 +1,178 @@
+{
+  "pin": "1.1.407",
+  "states": {
+    "A": {
+      "checker_stderr": "",
+      "commit": "e2e6c3e011c8db79e3ab65b0ae95dd8a72c02e3a",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 3,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "api.py": "b3014af5ebae783386fc9b9062b80bcc64e2fa54a8a505bdefb14164d1393cf0",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    },
+    "A+B": {
+      "checker_stderr": "",
+      "commit": "2d52fb9aacf02dd06c8278cf60bda3dab3dddae5",
+      "diagnostics": [
+        {
+          "file": "consumer.py",
+          "message": "\"f\" is not a known attribute of module \"api\"",
+          "range": {
+            "end": {
+              "character": 12,
+              "line": 1
+            },
+            "start": {
+              "character": 11,
+              "line": 1
+            }
+          },
+          "rule": "reportAttributeAccessIssue",
+          "severity": "error"
+        }
+      ],
+      "exit": 1,
+      "files_analyzed": 4,
+      "runtime": {
+        "exit": 1,
+        "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"<string>\", line 1, in <listcomp>\n  File \"<frozen runpy>\", line 291, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"${CASE}/oracle/A+B/consumer.py\", line 2, in <module>\n    assert api.f(1) == 1\n           ^^^^^\nAttributeError: module 'api' has no attribute 'f'\n",
+        "stdout": "",
+        "verdict": "broken"
+      },
+      "source_sha256": {
+        "api.py": "b3014af5ebae783386fc9b9062b80bcc64e2fa54a8a505bdefb14164d1393cf0",
+        "consumer.py": "f2a9ae24a1954ae46d23c3f5b802039bcca8ab648bd2e18a78004b664d132fd9",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "broken"
+    },
+    "A+B+C": {
+      "checker_stderr": "",
+      "commit": "89e4cd3f788d538c3bcf66bd15a03eccd9aa4853",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 4,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "api.py": "0632a043cac192958bde5acd8c8e22916ce7d75d783135c7076e29ccf921fd6b",
+        "consumer.py": "f2a9ae24a1954ae46d23c3f5b802039bcca8ab648bd2e18a78004b664d132fd9",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    },
+    "A+C": {
+      "checker_stderr": "",
+      "commit": "400dd7590976c1fcc5942cee1200f15282741f45",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 3,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "api.py": "0632a043cac192958bde5acd8c8e22916ce7d75d783135c7076e29ccf921fd6b",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    },
+    "B": {
+      "checker_stderr": "",
+      "commit": "37c3ad6fcd0a509e010577b9fecfbb30095bf0b8",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 4,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "api.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "consumer.py": "f2a9ae24a1954ae46d23c3f5b802039bcca8ab648bd2e18a78004b664d132fd9",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    },
+    "B+C": {
+      "checker_stderr": "",
+      "commit": "80360aece4965f46fcfe23d6bb33277aab2fc4c0",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 4,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "api.py": "d4bcd0e4fd359f01b9f6fded278e0e3cbea405d3ba7547c272054ee8e61d9f81",
+        "consumer.py": "f2a9ae24a1954ae46d23c3f5b802039bcca8ab648bd2e18a78004b664d132fd9",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    },
+    "C": {
+      "checker_stderr": "",
+      "commit": "ce7b0bef0d0b3f7fa50eacb5bc5d0f025ebb03d9",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 3,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "api.py": "d4bcd0e4fd359f01b9f6fded278e0e3cbea405d3ba7547c272054ee8e61d9f81",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    },
+    "target": {
+      "checker_stderr": "",
+      "commit": "ab2f18cd30d4563b93fc606a7d98a3c5423f0914",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 3,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "api.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    }
+  }
+}

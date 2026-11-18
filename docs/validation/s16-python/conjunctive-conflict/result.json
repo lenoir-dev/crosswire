@@ -1,0 +1,11 @@
+{
+  "contract": {
+    "id": "PY-5",
+    "scope": "supported"
+  },
+  "failures": [],
+  "id": "conjunctive-conflict",
+  "modes": 3,
+  "oracle_states": 8,
+  "status": "pass"
+}

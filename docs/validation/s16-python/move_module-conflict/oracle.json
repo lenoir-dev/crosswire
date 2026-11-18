@@ -1,0 +1,100 @@
+{
+  "pin": "1.1.407",
+  "states": {
+    "A": {
+      "checker_stderr": "",
+      "commit": "dc83e2d83a455616b0f5be8633e38e7d14e5096f",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 3,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "moved.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    },
+    "A+B": {
+      "checker_stderr": "",
+      "commit": "96cea2a043edbcf304f3ac59b8089737c81c8378",
+      "diagnostics": [
+        {
+          "file": "consumer.py",
+          "message": "Import \"api\" could not be resolved",
+          "range": {
+            "end": {
+              "character": 10,
+              "line": 0
+            },
+            "start": {
+              "character": 7,
+              "line": 0
+            }
+          },
+          "rule": "reportMissingImports",
+          "severity": "error"
+        }
+      ],
+      "exit": 1,
+      "files_analyzed": 4,
+      "runtime": {
+        "exit": 1,
+        "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"<string>\", line 1, in <listcomp>\n  File \"<frozen runpy>\", line 291, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"${CASE}/oracle/A+B/consumer.py\", line 1, in <module>\n    import api\nModuleNotFoundError: No module named 'api'\n",
+        "stdout": "",
+        "verdict": "broken"
+      },
+      "source_sha256": {
+        "consumer.py": "f2a9ae24a1954ae46d23c3f5b802039bcca8ab648bd2e18a78004b664d132fd9",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "moved.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "broken"
+    },
+    "B": {
+      "checker_stderr": "",
+      "commit": "37c3ad6fcd0a509e010577b9fecfbb30095bf0b8",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 4,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "api.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "consumer.py": "f2a9ae24a1954ae46d23c3f5b802039bcca8ab648bd2e18a78004b664d132fd9",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    },
+    "target": {
+      "checker_stderr": "",
+      "commit": "ab2f18cd30d4563b93fc606a7d98a3c5423f0914",
+      "diagnostics": [],
+      "exit": 0,
+      "files_analyzed": 3,
+      "runtime": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "",
+        "verdict": "valid"
+      },
+      "source_sha256": {
+        "api.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "fallback.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48",
+        "stable.py": "7a4223a0fffbe3b122d7a640c6f8bf260b1b9d7b28b83b046cdf6ebfca688b48"
+      },
+      "verdict": "valid"
+    }
+  }
+}

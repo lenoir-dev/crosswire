@@ -1,0 +1,11 @@
+{
+  "contract": {
+    "id": "PY-1",
+    "scope": "supported"
+  },
+  "failures": [],
+  "id": "delete-control",
+  "modes": 3,
+  "oracle_states": 4,
+  "status": "pass"
+}

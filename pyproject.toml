@@ -38,7 +38,7 @@ Changelog = "https://github.com/lenoir-dev/crosswire/blob/main/CHANGELOG.md"
 crosswire = "crosswire.cli:main"
 
 [tool.hatch.build.targets.sdist]
-include = ["/src", "/tests", "/README.md", "/LICENSE", "/CHANGELOG.md", "/pyproject.toml", "/uv.lock"]
+include = ["/src", "/tests", "/conformance", "/README.md", "/LICENSE", "/CHANGELOG.md", "/pyproject.toml", "/uv.lock"]
 
 [dependency-groups]
 dev = ["pytest>=8", "jsonschema==4.25.1"]

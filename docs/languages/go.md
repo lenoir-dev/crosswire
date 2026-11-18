@@ -49,8 +49,8 @@ with divergent parents; control cases and synthetic smoke cases are never promot
 ## Candidates (not supported in 0.5b)
 
 GO-5 conjunctive removal across build-tag variants (deferred until a declared build-context matrix exists);
-GO-6 result-count change vs a syntactic multi-assignment; GO-7 per-file imports after a clean merge (unused,
-missing, duplicate); GO-8 import cycles; GO-9 same-package unqualified references. All were verified against the
+GO-6 result-count change vs a syntactic multi-assignment; GO-7 per-file imports after a clean merge (unused or
+missing; a duplicate import name is GO-4); GO-8 import cycles; GO-9 same-package unqualified references. All were verified against the
 compiler by Vega; the S19a apparatus classifies them, so S19 counts them as observations without scoring them.
 
 ## Unsupported (coverage gaps, never conflicts)

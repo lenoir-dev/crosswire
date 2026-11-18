@@ -20,5 +20,5 @@ jobs:
       - uses: astral-sh/setup-uv@v6
         with:
           python-version: ${{ matrix.python }}
-      - run: uv sync --locked
-      - run: uv run pytest -q
+      - run: uv sync --locked --group eval
+      - run: uv run --group eval pytest -q

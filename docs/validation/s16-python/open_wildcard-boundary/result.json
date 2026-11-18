@@ -1,0 +1,11 @@
+{
+  "contract": {
+    "id": "PY-1",
+    "scope": "unsupported-open-namespace"
+  },
+  "failures": [],
+  "id": "open_wildcard-boundary",
+  "modes": 3,
+  "oracle_states": 4,
+  "status": "pass"
+}

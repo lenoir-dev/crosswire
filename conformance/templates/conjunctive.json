@@ -1,0 +1,203 @@
+{
+  "version": 1,
+  "id": "conjunctive",
+  "contracts": {
+    "python": {
+      "id": "PY-5",
+      "scope": "supported"
+    },
+    "go": {
+      "id": null,
+      "status": "unsupported-or-deferred"
+    }
+  },
+  "base": {
+    "modules": {
+      "api": {
+        "declarations": [
+          {
+            "id": "f",
+            "parameters": [
+              {
+                "name": "value",
+                "required": true
+              }
+            ]
+          }
+        ],
+        "forward": {
+          "module": "fallback",
+          "symbol": "f",
+          "guarded": true
+        }
+      },
+      "fallback": {
+        "declarations": [
+          {
+            "id": "f",
+            "parameters": [
+              {
+                "name": "value",
+                "required": true
+              }
+            ]
+          }
+        ],
+        "forward": null
+      },
+      "stable": {
+        "declarations": [
+          {
+            "id": "f",
+            "parameters": [
+              {
+                "name": "value",
+                "required": true
+              }
+            ]
+          }
+        ],
+        "forward": null
+      }
+    },
+    "uses": {}
+  },
+  "cases": [
+    {
+      "id": "conjunctive-conflict",
+      "kind": "conflict",
+      "branches": [
+        {
+          "id": "A",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "remove_definition",
+              "module": "api",
+              "symbol": "f"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "remove_forward",
+              "module": "api"
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "add_use",
+              "site": "call",
+              "file": "consumer",
+              "module": "api",
+              "symbol": "f",
+              "arguments": [
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "proof": "closed",
+      "expected": {
+        "pairwise": {
+          "verdict": "valid"
+        },
+        "combined": {
+          "verdict": "broken",
+          "rule": "CW006",
+          "owner": "C",
+          "culprits": [
+            "A",
+            "B"
+          ]
+        },
+        "plan": {
+          "verdict": "broken"
+        }
+      },
+      "oracle": {
+        "broken_states": [
+          "A+B+C"
+        ],
+        "categories": [
+          "reportAttributeAccessIssue"
+        ],
+        "runtime": "same-as-checker",
+        "site": "call",
+        "identity": "symbol"
+      }
+    },
+    {
+      "id": "conjunctive-control",
+      "kind": "control",
+      "branches": [
+        {
+          "id": "A",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "remove_definition",
+              "module": "api",
+              "symbol": "f"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "preserve_forward",
+              "module": "api"
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "add_use",
+              "site": "call",
+              "file": "consumer",
+              "module": "api",
+              "symbol": "f",
+              "arguments": [
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "proof": "closed",
+      "expected": {
+        "pairwise": {
+          "verdict": "valid"
+        },
+        "combined": {
+          "verdict": "valid"
+        },
+        "plan": {
+          "verdict": "valid"
+        }
+      },
+      "oracle": {
+        "broken_states": [],
+        "categories": [
+          "reportAttributeAccessIssue"
+        ],
+        "runtime": "same-as-checker",
+        "site": "call",
+        "identity": "symbol"
+      }
+    }
+  ]
+}

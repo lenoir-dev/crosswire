@@ -1,0 +1,125 @@
+{
+  "case": {
+    "branches": [
+      {
+        "edits": [
+          {
+            "module": "api",
+            "op": "remove_definition",
+            "symbol": "f"
+          }
+        ],
+        "id": "A",
+        "parent": "target"
+      },
+      {
+        "edits": [
+          {
+            "module": "api",
+            "op": "remove_forward"
+          }
+        ],
+        "id": "B",
+        "parent": "target"
+      },
+      {
+        "edits": [
+          {
+            "arguments": [
+              1
+            ],
+            "file": "consumer",
+            "module": "api",
+            "op": "add_use",
+            "site": "call",
+            "symbol": "f"
+          }
+        ],
+        "id": "C",
+        "parent": "target"
+      }
+    ],
+    "expected": {
+      "combined": {
+        "culprits": [
+          "A",
+          "B"
+        ],
+        "owner": "C",
+        "rule": "CW006",
+        "verdict": "broken"
+      },
+      "pairwise": {
+        "verdict": "valid"
+      },
+      "plan": {
+        "verdict": "broken"
+      }
+    },
+    "id": "conjunctive-conflict",
+    "kind": "conflict",
+    "oracle": {
+      "broken_states": [
+        "A+B+C"
+      ],
+      "categories": [
+        "reportAttributeAccessIssue"
+      ],
+      "identity": "symbol",
+      "runtime": "same-as-checker",
+      "site": "call"
+    },
+    "proof": "closed"
+  },
+  "rendered": {
+    "base": {
+      "api.py": "def f(value: int) -> int:\n    return value\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\ntry:\n    from fallback import f as f\nexcept ImportError:\n    pass\n",
+      "fallback.py": "def f(value: int) -> int:\n    return value\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\n",
+      "stable.py": "def f(value: int) -> int:\n    return value\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\n"
+    },
+    "branches": [
+      {
+        "files": {
+          "api.py": "# direct binding absent\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\ntry:\n    from fallback import f as f\nexcept ImportError:\n    pass\n"
+        },
+        "id": "A",
+        "parent": "target"
+      },
+      {
+        "files": {
+          "api.py": "def f(value: int) -> int:\n    return value\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\n"
+        },
+        "id": "B",
+        "parent": "target"
+      },
+      {
+        "files": {
+          "consumer.py": "import api\nassert api.f(1) == 1\n"
+        },
+        "id": "C",
+        "parent": "target"
+      }
+    ],
+    "contract": {
+      "id": "PY-5",
+      "scope": "supported"
+    },
+    "language": "python",
+    "sites": {
+      "call": {
+        "end_line": 2,
+        "known_modules": [
+          "api",
+          "fallback",
+          "stable"
+        ],
+        "module": "api",
+        "path": "consumer.py",
+        "start_line": 1,
+        "symbol": "api.f"
+      }
+    }
+  },
+  "template": "conjunctive",
+  "template_sha256": "9f6d362fd78b632c98c623f1031b57b86e658576ba3c8f1b93657dda4bdfa4ac"
+}

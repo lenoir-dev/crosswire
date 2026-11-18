@@ -1,0 +1,11 @@
+{
+  "contract": {
+    "id": "PY-4",
+    "scope": "supported"
+  },
+  "failures": [],
+  "id": "arity-conflict",
+  "modes": 3,
+  "oracle_states": 4,
+  "status": "pass"
+}

@@ -1,0 +1,17 @@
+{
+  "combined": {
+    "exit": 0,
+    "stderr": "",
+    "stdout": "{\n  \"coverage\": \"complete\",\n  \"findings\": [],\n  \"integrated\": [\n    \"A\",\n    \"B\"\n  ],\n  \"limitations\": {},\n  \"limits\": {\n    \"group_search_max_remaining\": 8,\n    \"hit\": [],\n    \"max_candidates\": 6,\n    \"max_group\": 3\n  },\n  \"mode\": \"combined\",\n  \"skipped\": [],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"target\": \"ab2f18cd30d4563b93fc606a7d98a3c5423f0914\",\n  \"tool\": \"crosswire\",\n  \"version\": 2\n}\n"
+  },
+  "pairwise": {
+    "exit": 0,
+    "stderr": "",
+    "stdout": "{\n  \"coverage\": \"complete\",\n  \"findings\": [],\n  \"limitations\": {},\n  \"pairs\": [\n    {\n      \"a\": \"A\",\n      \"b\": \"B\",\n      \"base\": \"ab2f18cd30d4563b93fc606a7d98a3c5423f0914\"\n    }\n  ],\n  \"summary\": {\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"tool\": \"crosswire\",\n  \"version\": 1\n}\n"
+  },
+  "plan": {
+    "exit": 0,
+    "stderr": "",
+    "stdout": "{\n  \"blocked\": [],\n  \"contained_in\": {\n    \"A\": [],\n    \"B\": []\n  },\n  \"coverage\": \"complete\",\n  \"limitations\": {},\n  \"limits\": {\n    \"group_search_max_remaining\": 8,\n    \"hit\": [],\n    \"max_candidates\": 6,\n    \"max_group\": 3\n  },\n  \"mode\": \"plan\",\n  \"steps\": [\n    {\n      \"branches\": [\n        \"A\"\n      ],\n      \"reason\": \"no new errors in the integrated state\",\n      \"together\": false\n    },\n    {\n      \"branches\": [\n        \"B\"\n      ],\n      \"reason\": \"no new errors in the integrated state\",\n      \"together\": false\n    }\n  ],\n  \"summary\": {\n    \"blocked\": 0,\n    \"placed\": 2\n  },\n  \"target\": \"ab2f18cd30d4563b93fc606a7d98a3c5423f0914\",\n  \"tool\": \"crosswire\",\n  \"version\": 2\n}\n"
+  }
+}

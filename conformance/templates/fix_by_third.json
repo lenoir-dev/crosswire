@@ -1,0 +1,206 @@
+{
+  "version": 1,
+  "id": "fix_by_third",
+  "contracts": {
+    "python": {
+      "id": "PY-1",
+      "scope": "supported"
+    },
+    "go": {
+      "id": "GO-1",
+      "status": "future-renderer"
+    }
+  },
+  "base": {
+    "modules": {
+      "api": {
+        "declarations": [
+          {
+            "id": "f",
+            "parameters": [
+              {
+                "name": "value",
+                "required": true
+              }
+            ]
+          }
+        ],
+        "forward": null
+      },
+      "fallback": {
+        "declarations": [
+          {
+            "id": "f",
+            "parameters": [
+              {
+                "name": "value",
+                "required": true
+              }
+            ]
+          }
+        ],
+        "forward": null
+      },
+      "stable": {
+        "declarations": [
+          {
+            "id": "f",
+            "parameters": [
+              {
+                "name": "value",
+                "required": true
+              }
+            ]
+          }
+        ],
+        "forward": null
+      }
+    },
+    "uses": {}
+  },
+  "cases": [
+    {
+      "id": "fix_by_third-conflict",
+      "kind": "conflict",
+      "branches": [
+        {
+          "id": "A",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "delete",
+              "module": "api",
+              "symbol": "f"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "add_use",
+              "site": "call",
+              "file": "consumer",
+              "module": "api",
+              "symbol": "f",
+              "arguments": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "add_forward",
+              "module": "api",
+              "from_module": "fallback",
+              "symbol": "f"
+            }
+          ]
+        }
+      ],
+      "proof": "closed",
+      "expected": {
+        "pairwise": {
+          "verdict": "broken",
+          "rule": "CW001"
+        },
+        "combined": {
+          "verdict": "valid",
+          "rule": "CW001",
+          "resolved_by": [
+            "C"
+          ],
+          "owner": "B",
+          "culprits": [
+            "A"
+          ]
+        },
+        "plan": {
+          "verdict": "valid"
+        }
+      },
+      "oracle": {
+        "broken_states": [
+          "A+B"
+        ],
+        "categories": [
+          "reportAttributeAccessIssue"
+        ],
+        "runtime": "same-as-checker",
+        "site": "call",
+        "identity": "symbol"
+      }
+    },
+    {
+      "id": "fix_by_third-control",
+      "kind": "control",
+      "branches": [
+        {
+          "id": "A",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "delete",
+              "module": "api",
+              "symbol": "f"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "add_use",
+              "site": "call",
+              "file": "consumer",
+              "module": "stable",
+              "symbol": "f",
+              "arguments": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "parent": "target",
+          "edits": [
+            {
+              "op": "add_forward",
+              "module": "api",
+              "from_module": "fallback",
+              "symbol": "f"
+            }
+          ]
+        }
+      ],
+      "proof": "closed",
+      "expected": {
+        "pairwise": {
+          "verdict": "valid"
+        },
+        "combined": {
+          "verdict": "valid"
+        },
+        "plan": {
+          "verdict": "valid"
+        }
+      },
+      "oracle": {
+        "broken_states": [],
+        "categories": [
+          "reportAttributeAccessIssue"
+        ],
+        "runtime": "same-as-checker",
+        "site": "call",
+        "identity": "symbol"
+      }
+    }
+  ]
+}

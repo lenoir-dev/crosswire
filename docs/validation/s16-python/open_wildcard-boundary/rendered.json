@@ -1,0 +1,101 @@
+{
+  "case": {
+    "branches": [
+      {
+        "edits": [
+          {
+            "from_module": "fallback",
+            "mechanism": "wildcard",
+            "module": "api",
+            "op": "open_namespace"
+          }
+        ],
+        "id": "A",
+        "parent": "target"
+      },
+      {
+        "edits": [
+          {
+            "arguments": [
+              1
+            ],
+            "file": "consumer",
+            "module": "api",
+            "op": "add_use",
+            "site": "call",
+            "symbol": "f"
+          }
+        ],
+        "id": "B",
+        "parent": "target"
+      }
+    ],
+    "expected": {
+      "combined": {
+        "verdict": "unknown"
+      },
+      "pairwise": {
+        "verdict": "unknown"
+      },
+      "plan": {
+        "verdict": "unknown"
+      }
+    },
+    "id": "open_wildcard-boundary",
+    "kind": "boundary",
+    "oracle": {
+      "broken_states": [],
+      "categories": [
+        "reportAttributeAccessIssue"
+      ],
+      "identity": "symbol",
+      "runtime": "same-as-checker",
+      "site": "call"
+    },
+    "proof": "open"
+  },
+  "rendered": {
+    "base": {
+      "api.py": "def f(value: int) -> int:\n    return value\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\n",
+      "fallback.py": "def f(value: int) -> int:\n    return value\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\n",
+      "stable.py": "def f(value: int) -> int:\n    return value\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\n"
+    },
+    "branches": [
+      {
+        "files": {
+          "api.py": "from fallback import *\n# stable integration separator 00\n# stable integration separator 01\n# stable integration separator 02\n# stable integration separator 03\n# stable integration separator 04\n# stable integration separator 05\n# stable integration separator 06\n# stable integration separator 07\n# stable integration separator 08\n# stable integration separator 09\n# stable integration separator 10\n# stable integration separator 11\n# stable integration separator 12\n# stable integration separator 13\n# stable integration separator 14\n# stable integration separator 15\n# forwarding slot\n"
+        },
+        "id": "A",
+        "parent": "target"
+      },
+      {
+        "files": {
+          "consumer.py": "import api\nassert api.f(1) == 1\n"
+        },
+        "id": "B",
+        "parent": "target"
+      }
+    ],
+    "contract": {
+      "id": "PY-1",
+      "scope": "unsupported-open-namespace"
+    },
+    "language": "python",
+    "sites": {
+      "call": {
+        "end_line": 2,
+        "known_modules": [
+          "api",
+          "fallback",
+          "stable"
+        ],
+        "module": "api",
+        "path": "consumer.py",
+        "start_line": 1,
+        "symbol": "api.f"
+      }
+    }
+  },
+  "template": "open_wildcard",
+  "template_sha256": "aed9deaf5a47396ae5ae2d607371679ab1e634786e8b068979c91e247310db4a"
+}

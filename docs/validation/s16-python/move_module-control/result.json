@@ -1,0 +1,11 @@
+{
+  "contract": {
+    "id": "PY-2",
+    "scope": "supported"
+  },
+  "failures": [],
+  "id": "move_module-control",
+  "modes": 3,
+  "oracle_states": 4,
+  "status": "pass"
+}

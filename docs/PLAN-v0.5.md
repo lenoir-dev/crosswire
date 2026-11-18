@@ -212,3 +212,37 @@ census below.
 
 **Other (m5)** T22 may require a newer Git than 2.38 for batching: capability-detect and fall back (P1). S17 may
 again yield zero natural positives; report that honestly rather than substituting scaffolds.
+
+## Amendment P3 — natural positives after S19a and S17 (Polaris, 2026-11-18)
+
+**Finding.** Recorded merges do not contain the conflicts we look for. S19a (Go, 334 merges, five repositories)
+and S17 (Python, 120 merges in five preregistered cohorts) both found **zero** natural positives; S17 left 95 %
+of its merges unlabelled and reached three of the five required eligible repositories. The cause is structural:
+a recorded merge on the main line has normally passed CI, and squash/rebase workflows remove divergent parents.
+More cohorts of the same kind would mostly add exclusions.
+
+**D-Nat1 — S17 closes as "insufficient".** The recorded-merge stratum (QUALITY §2.1) is published as it stands
+(`docs/validation/s17-natural.md`, M3 freeze unchanged) and gets no further supplements in 0.5a. Its controls
+remain development-only evidence.
+
+**D-Nat2 — S17b concurrent-PR replay (QUALITY §2.3, historical).** The natural place of a semantic conflict is
+two branches that were open **at the same time**, each green on its own base. For preregistered public Python
+repositories: select pull-request pairs (A, B) whose open intervals overlapped and that both change Python
+files, by an outcome-blind rule fixed before any build (cap per repository; ordering by PR number). Fetch their
+final heads from `refs/pull/<n>/head`; each head is measured against its own merge-base with the default branch.
+The integrated state is the virtual merge of both heads onto the later of the two bases. Labels are M3 exactly
+as frozen (each tip's delta must be empty; a positive is a new supported, attributable delta absent from both
+tips). Textual conflicts, unavailable heads and environment failures stay unlabelled. The stratum is reported
+separately as "natural branches, virtual integration" and never mixed with recorded merges or mutations. The
+PR-fetching selector is a new apparatus round: its own freeze and tests before any label; the M3 module and its
+identity tuple are reused byte-for-byte. Only public `git fetch` and the read-only GitHub API are used.
+
+**D-Nat3 — mutation stratum (QUALITY §2.2) stays the volume source for development metrics.** The S16 templates
+are the seed for mutation scenarios on real repositories (≥ 3 controls per positive), rendered on the S17
+eligible repositories first. Mutation results are always labelled as such.
+
+**D-Ev1 — evidence storage.** Per-case evidence larger than ~1 MB per cohort is not committed. It is archived
+as a sanitized tarball (no host user/group names, no absolute paths) attached to a GitHub release, with its
+SHA-256 pinned in the committed report; committed tests that verify such evidence skip unless
+`CROSSWIRE_EVIDENCE_DIR` points at the extracted archive. Selections, policies, freezes and aggregate results
+stay in git.

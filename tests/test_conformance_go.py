@@ -1,6 +1,7 @@
-"""Go S16 contract fixtures; actual toolchain tests skip if Go is absent in CI."""
+"""Go S16 fixtures; CI requires the pinned compiler and runs a fast subset."""
 from copy import deepcopy
 import json
+import os
 import shutil
 from pathlib import Path
 import subprocess
@@ -13,6 +14,21 @@ from conformance.render.go import NoCounterpart,render,MODULE
 
 CASES=go_run.load_cases()
 GO=shutil.which('go')
+CI_CASES=('rename-conflict','move_module-conflict','arity-conflict','arity-control',
+          'go4-same-file-conflict','go4-cross-file-conflict','go4-method-conflict',
+          'go4-duplicate-import-conflict')
+
+
+def require_go(binary):
+    if binary is None:
+        if os.environ.get('CROSSWIRE_REQUIRE_GO')=='1':
+            pytest.fail('CROSSWIRE_REQUIRE_GO=1 requires Go 1.27.1 on PATH')
+        pytest.skip('Go absent locally; pinned Go 1.27.1 required for compiler checks')
+    return binary
+
+
+@pytest.fixture
+def go_binary():return require_go(GO)
 
 
 def named(name):return next(item for item in CASES if item[2]['id']==name)
@@ -74,19 +90,36 @@ def test_no_counterpart_cannot_be_a_detector_pass(tmp_path):
     assert not (tmp_path/'case/oracle.json').exists()
 
 
-@pytest.mark.skipif(GO is None,reason='CI has no Go; pinned Go 1.27.1 required for compiler checks')
-def test_full_go_oracle_kit_no_detector_pass(tmp_path,monkeypatch):
+def test_go_oracle_kit_no_detector_pass(tmp_path,monkeypatch,go_binary):
     from conformance import run
     monkeypatch.setattr(run,"invoke_detector",lambda *a,**kw:pytest.fail("Go detector is unavailable"))
     output=tmp_path/'kit'
-    code=go_run.main(['--go',GO,'--output',str(output)])
+    required=os.environ.get('CROSSWIRE_REQUIRE_GO')=='1'
+    selection=[arg for case in CI_CASES for arg in ('--case',case)] if required else []
+    code=go_run.main(['--go',go_binary,'--output',str(output),*selection])
     summary=json.loads((output/'summary.json').read_text())
     assert code==0,(summary.get('reason'),[(r['id'],r.get('reason')) for r in summary['cases'] if r['status']=='kit-bug'])
     assert summary['status']=='oracle verified; detector not available'
     assert summary['detector']=='not available' and summary['mode_checks']==0
-    assert summary['case_count']==34 and summary['no_counterpart']==6 and summary['oracle_states']==120
+    assert summary['selection']==('partial' if required else 'full')
+    assert summary['case_count']==(8 if required else 34)
+    assert summary['no_counterpart']==(0 if required else 6)
+    assert summary['oracle_states']==(32 if required else 120)
+    if required:assert {row['id'] for row in summary['cases']}==set(CI_CASES)
     for row in summary['cases']:
         assert row['detector']=='not available' and row['status']!='pass'
+
+
+def test_missing_go_fails_when_required_in_ci(monkeypatch):
+    monkeypatch.setenv('CROSSWIRE_REQUIRE_GO','1')
+    with pytest.raises(pytest.fail.Exception,match='requires Go 1.27.1'):
+        require_go(None)
+
+
+def test_missing_go_skips_locally(monkeypatch):
+    monkeypatch.delenv('CROSSWIRE_REQUIRE_GO',raising=False)
+    with pytest.raises(pytest.skip.Exception,match='Go absent locally'):
+        require_go(None)
 
 
 def test_missing_subset_is_a_kit_bug():

@@ -100,13 +100,14 @@ def test_unset_policy_cannot_form_checkpoint(tmp_path):
     assert not (tmp_path/'checkpoint.json').exists()
 
 
-def test_checkpoint_no_api_and_explicit_matching_authorization(tmp_path):
+def test_checkpoint_no_api_and_explicit_matching_authorization(tmp_path,monkeypatch):
     from benchmarks.s17b.checkpoint import ROOT
     # Round 2 keeps every round-1 policy value; the synthetic checkpoint lives
     # only under tmp_path and is never used for acquisition.
     policy=json.loads((ROOT/'benchmarks/s17b/policy.json').read_text())
-    from benchmarks.s17b.checkpoint import runtime_pins,READY
-    policy.update(runtime_pins(),status=READY)
+    from benchmarks.s17b import checkpoint as checkpoint_module
+    pinned_runtime={key:policy[key] for key in ('python_version','git_version')}
+    monkeypatch.setattr(checkpoint_module,'runtime_pins',lambda:pinned_runtime)
     checkpoint=tmp_path/'checkpoint.json';prepare(policy,checkpoint,datetime(2026,11,19,tzinfo=timezone.utc))
     approval=tmp_path/'approval.json';approval.write_text('{}')
     with pytest.raises(PermissionError):Permit(checkpoint,approval).verify()

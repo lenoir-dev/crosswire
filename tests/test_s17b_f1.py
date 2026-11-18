@@ -95,9 +95,11 @@ def test_metadata_walk_ceiling_preserves_selected_slot_commit_lists(tmp_path,mon
 
 @pytest.mark.parametrize('field,value',[
     ('per_repository_metadata_get_budget',126),('per_repository_commits_get_budget',61)])
-def test_checkpoint_refuses_changed_sub_budget_protocol_fields(tmp_path,field,value):
+def test_checkpoint_refuses_changed_sub_budget_protocol_fields(tmp_path,monkeypatch,field,value):
     from pathlib import Path
     policy=json.loads((checkpoint.ROOT/'benchmarks/s17b/policy.json').read_text())
+    pinned_runtime={key:policy[key] for key in ('python_version','git_version')}
+    monkeypatch.setattr(checkpoint,'runtime_pins',lambda:pinned_runtime)
     policy[field]=value
     with pytest.raises(ValueError,match='Policy protocol field changed: '+field):
         checkpoint.prepare(policy,tmp_path/'unwritten-checkpoint')

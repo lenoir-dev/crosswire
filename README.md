@@ -2,9 +2,17 @@
 
 Find likely semantic conflicts between Python changes on parallel Git branches before merging.
 
+> **Status: alpha (0.4).** Python only. Precision-first: unresolved or dynamic code is reported as a
+> coverage gap, never as a conflict. Measured quality so far is a development-data pilot, not a
+> release gate — see [docs/validation/v0.4.md](https://github.com/lenoir-dev/crosswire/blob/main/docs/validation/v0.4.md).
+
+```sh
+uv tool install crosswire        # or: pipx install crosswire / uvx crosswire --help
+```
+
 ## Quickstart (about two minutes)
 
-From this checkout, with [uv](https://docs.astral.sh/uv/), Python 3.11+ and Git 2.38+ installed:
+From PyPI (above) or from this checkout, with [uv](https://docs.astral.sh/uv/), Python 3.11+ and Git 2.38+ installed:
 
 ```sh
 uv tool install .
@@ -47,12 +55,16 @@ A clean Git merge only means the edits do not conflict textually. One branch can
 function while another adds a call to it, leaving the combined code broken. Crosswire compares
 branch pairs before integration and points to the added code and the branch that changed its API.
 
-Crosswire compares every pair of branches, so work grows quadratically with branch count. It
+In pairwise mode crosswire compares every pair of branches, so work grows quadratically with branch
+count; `--combined` and `plan` integrate the branches once and are usually faster for many branches. It
 requires Python 3.11+ and Git 2.38+; runtime dependencies are limited to the Python standard library.
 
 ```sh
 uv sync
 uv run crosswire check [--repo PATH] [--base REF | --target REF] [--src DIR]... [--format text|json|github|sarif] [--no-textual] [--no-cache] BRANCH BRANCH [BRANCH...]
+uv run crosswire check --target REF --combined [--repo PATH] [--src DIR]... [--format ...] BRANCH...
+uv run crosswire plan --target REF [--repo PATH] [--src DIR]... [--format text|json] BRANCH...
+uv run crosswire schema --version 1|2 [--mode check|plan]
 ```
 
 The default source roots are `src` followed by the repository root when `src/` exists at the
@@ -72,6 +84,7 @@ Git's merge-tree operation may write objects, but does not change refs, HEAD, th
 | CW003 | warning | Different definitions of the same name added in both branches. |
 | CW004 | error | Colliding Django migration numbers or literal Alembic `down_revision` values. |
 | CW005 | error | Textual Git merge conflicts; disable with `--no-textual`. |
+| CW006 | error | A reference that breaks only when several branches are combined (`--combined`, `plan`); reports the minimal culprit set. |
 
 ## Target and caching
 
@@ -133,7 +146,8 @@ Use `--format json` for machine-readable output. For example (the SHA is illustr
 ## GitHub Actions
 
 The following workflow fetches the head of every open pull request, including PRs from forks,
-then checks each distinct commit against the others. It uses GitHub annotations for findings.
+then checks each distinct commit against the others (pairwise mode; `--combined` and `plan` are
+available from the CLI). It uses GitHub annotations for findings.
 It skips the check when fewer than two distinct PR heads exist. For a scheduled workflow,
 the check appears on the scheduled run rather than on individual pull requests.
 

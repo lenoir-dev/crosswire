@@ -5,14 +5,40 @@ build-backend = "hatchling.build"
 [project]
 name = "crosswire"
 version = "0.4.0"
-description = "Detect semantic conflicts between parallel Git branches"
+description = "Detect semantic conflicts between parallel Git branches before they are merged"
+readme = "README.md"
 license = "Apache-2.0"
 license-files = ["LICENSE"]
 requires-python = ">=3.11"
 dependencies = []
+authors = [{ name = "The crosswire authors" }]
+keywords = ["git", "merge", "merge-conflict", "static-analysis", "code-review", "ci", "ai-agents"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Version Control :: Git",
+]
+
+[project.urls]
+Homepage = "https://github.com/lenoir-dev/crosswire"
+Repository = "https://github.com/lenoir-dev/crosswire"
+Issues = "https://github.com/lenoir-dev/crosswire/issues"
+Changelog = "https://github.com/lenoir-dev/crosswire/blob/main/CHANGELOG.md"
 
 [project.scripts]
 crosswire = "crosswire.cli:main"
+
+[tool.hatch.build.targets.sdist]
+include = ["/src", "/tests", "/README.md", "/LICENSE", "/CHANGELOG.md", "/pyproject.toml", "/uv.lock"]
 
 [dependency-groups]
 dev = ["pytest>=8", "jsonschema==4.25.1"]

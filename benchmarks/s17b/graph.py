@@ -73,7 +73,7 @@ class Graph:
         self.git('update-ref','refs/s17b/'+name,self.commit(sha))
 
 
-def anchor(graph,pr,default_head,pr_commits,source_base=None):
+def anchor(graph,pr,default_head,pr_commits):
     C=pr.get('merge_commit_sha');n=pr.get('commits')
     unresolved=lambda reason:Anchor('unresolved',C=C,n=n if type(n) is int else 0,reason=reason)
     try:
@@ -107,7 +107,9 @@ def anchor(graph,pr,default_head,pr_commits,source_base=None):
         linear=len(pr_nonmerge)==n and len(end_nonmerge)==n
         if linear and meta==end_meta:
             return proven('rebase-proven',graph.parents(candidates[0])[0],'author-date-subject')
-        try:pids=[graph.patch_id(c) for c in pr_nonmerge];end_pids=[graph.patch_id(c) for c in end_nonmerge]
+        try:
+            pids=[graph.patch_id(c) for c in pr_nonmerge]
+            end_pids=[graph.patch_id(c) if graph.changed_paths(graph.parents(c)[0],c) else None for c in end_nonmerge]
         except Unresolved:return unresolved('patch-proof-unavailable')
         if linear and pids==end_pids:
             return proven('rebase-proven',graph.parents(candidates[0])[0],'stable-patch-sequence')
@@ -156,7 +158,8 @@ def contamination(graph,head_a,head_b,D,C,earlier,bases):
 
 def native_merge(graph,left,right):
     merged=graph.git('merge-tree','--write-tree',graph.commit(left),graph.commit(right),check=False)
-    if merged.returncode:raise Unresolved('textual-conflict')
+    if merged.returncode==1:raise Unresolved('textual-conflict')
+    if merged.returncode:raise Unresolved('merge-tree-operational-failure')
     tree=merged.stdout.decode().splitlines()[0]
     return graph.git('-c','commit.gpgSign=false','commit-tree',tree,'-p',left,'-p',right,input=b'S17b virtual integration\n').stdout.decode().strip()
 

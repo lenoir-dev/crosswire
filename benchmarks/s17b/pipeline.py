@@ -12,14 +12,11 @@ def prepare_pair(slot,graph,default_head,metadata,permit,budget,transport,*,inte
     result={'rank':slot['rank'],'hash':slot['hash'],'slot':slot['slot'],'A':slot['A'],'B':slot['B'],
             'stage':'post-metadata','anchor_method':'unresolved','status':'unlabelled','reason':None}
     try:
-        permit.verify();details=slot['details'];heads={};commits={};source_bases={}
+        permit.verify();details=slot['details'];heads={};commits={}
         for name in ('A','B'):
             pr=details[name]
             heads[name]=fetch_head(graph,slot[name],pr['head']['sha'],permit,budget,transport)
             commits[name],_=metadata.commits(slot[name],pr['commits'])
-            parents=graph.parents(commits[name][0])
-            if len(parents)!=1:raise Unresolved('source-range-boundary-unresolved')
-            source_bases[name]=parents[0]
         ends={name:interval(pr)[1] for name,pr in details.items()}
         earlier='A' if ends['A']<ends['B'] else 'B'
         if ends['A']==ends['B']:
@@ -31,7 +28,7 @@ def prepare_pair(slot,graph,default_head,metadata,permit,budget,transport,*,inte
                 if cs[0]==cs[1] or any(c not in chain for c in cs):raise Unresolved('terminal-tie-anchor-unresolved')
                 earlier='A' if chain.index(cs[0])>chain.index(cs[1]) else 'B'
             else:raise Unresolved('terminal-tie-anchor-unresolved')
-        anchored=anchor(graph,details[earlier],default_head,commits[earlier],source_bases[earlier])
+        anchored=anchor(graph,details[earlier],default_head,commits[earlier])
         result.update(anchor=asdict(anchored),anchor_method=anchored.method,earlier=earlier,heads=heads)
         if anchored.method=='unresolved':raise Unresolved(anchored.reason or 'default-anchor-unresolved')
         bases=own_bases(graph,anchored.D,heads['A'],heads['B']);result['bases']=bases

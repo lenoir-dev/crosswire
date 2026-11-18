@@ -104,6 +104,8 @@ def test_checkpoint_no_api_and_explicit_matching_authorization(tmp_path):
     from benchmarks.s17b.checkpoint import ROOT
     policy={**json.loads((ROOT/'benchmarks/s17b/policy.json').read_text()),**POLICY,
             'api_version':'test-only','gh_version':'test-only','detector_commit':'a'*40}
+    from benchmarks.s17b.checkpoint import runtime_pins,READY
+    policy.update(runtime_pins(),status=READY)
     checkpoint=tmp_path/'checkpoint.json';prepare(policy,checkpoint,datetime(2026,2,1,tzinfo=timezone.utc))
     approval=tmp_path/'approval.json';approval.write_text('{}')
     with pytest.raises(PermissionError):Permit(checkpoint,approval).verify()

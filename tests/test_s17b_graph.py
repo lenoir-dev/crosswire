@@ -24,10 +24,10 @@ def detail(H,C,n,merged=True):
 def test_true_merge_parent_and_off_chain_rejection(repo):
     g,D,H,commits=setup(repo)
     repo.git('merge','--no-ff','--no-edit','A');C=repo.git('rev-parse','HEAD').stdout.decode().strip()
-    result=anchor(g,detail(H,C,3),C,commits,D)
+    result=anchor(g,detail(H,C,3),C,commits)
     assert result.method=='merge' and result.D==D
-    assert anchor(g,detail(H,C,3),D,commits,D).method=='unresolved'
-    assert anchor(g,detail(H,C,3,False),C,commits,D).method=='unresolved'
+    assert anchor(g,detail(H,C,3),D,commits).method=='unresolved'
+    assert anchor(g,detail(H,C,3,False),C,commits).method=='unresolved'
 
 
 @pytest.mark.parametrize('mode',['squash','rebase'])
@@ -36,14 +36,14 @@ def test_single_commit_anchor_needs_no_merge_method(repo,mode):
     repo.write('default-only','drift');repo.commit('drift')
     if mode=='squash':repo.git('merge','--squash','A');C=repo.commit('combined')
     else:repo.git('cherry-pick',H);C=repo.git('rev-parse','HEAD').stdout.decode().strip()
-    result=anchor(g,detail(H,C,1),C,commits,D)
+    result=anchor(g,detail(H,C,1),C,commits)
     assert result.method=='squash-n1' and result.D==g.parents(C)[0]
 
 
 def test_three_commit_squash_negative_match_and_all_plus(repo):
     g,D,H,commits=setup(repo)
     repo.git('merge','--squash','A');C=repo.commit('unconventional arbitrary subject')
-    result=anchor(g,detail(H,C,3),C,commits,D)
+    result=anchor(g,detail(H,C,3),C,commits)
     assert (result.method,result.D)==('squash-proven',D)
 
 
@@ -64,7 +64,7 @@ def test_three_commit_rebase_proof_and_pre_range_anchor(repo,proof):
             if proof=='conflict-resolved-metadata' and i==2:
                 repo.write('a.txt','resolved differently\n');repo.git('add','a.txt');repo.git('commit','--amend','--no-edit')
     C=repo.git('rev-parse','HEAD').stdout.decode().strip()
-    result=anchor(g,detail(H,C,3),C,commits,D)
+    result=anchor(g,detail(H,C,3),C,commits)
     assert result.method=='rebase-proven' and result.D==later
     assert result.proof==('stable-patch-sequence' if proof=='patch-id' else 'author-date-subject')
 
@@ -72,8 +72,8 @@ def test_three_commit_rebase_proof_and_pre_range_anchor(repo,proof):
 def test_partial_match_and_copied_subject_never_false_rebase(repo):
     g,D,H,commits=setup(repo)
     repo.git('merge','--squash','A');C=repo.commit('PR item 0')
-    assert anchor(g,detail(H,C,3),C,commits,D).method=='unresolved'
-    assert anchor(g,detail(H,C,3),C,commits[:2],D).reason=='commit-list-incomplete'
+    assert anchor(g,detail(H,C,3),C,commits).method=='unresolved'
+    assert anchor(g,detail(H,C,3),C,commits[:2]).reason=='commit-list-incomplete'
 
 
 def independent(repo):
@@ -131,7 +131,7 @@ def test_normalized_raw_shas_accepted_by_product_combined_mode(repo):
 
 def test_missing_head_object_fails_closed(repo):
     g,D,H,commits=setup(repo)
-    assert anchor(g,detail('f'*40,D,3),D,commits,D).method=='unresolved'
+    assert anchor(g,detail('f'*40,D,3),D,commits).method=='unresolved'
 
 
 @pytest.mark.parametrize('mode',['incomparable','multiple','contained'])
@@ -170,7 +170,7 @@ def test_pr_containing_default_merge_uses_nonmerge_cherry_count(repo,mode):
     if mode=='squash':repo.git('merge','--squash','A');C=repo.commit('aggregate unrelated subject')
     else:
         repo.git('cherry-pick',first,last);C=g.text('rev-parse','HEAD')
-    result=anchor(g,detail(last,C,3),C,pr_commits,D)
+    result=anchor(g,detail(last,C,3),C,pr_commits)
     assert result.method==('squash-proven' if mode=='squash' else 'unresolved')
     if mode=='squash':assert result.D==drift and result.source_base==drift
 
@@ -178,7 +178,7 @@ def test_pr_containing_default_merge_uses_nonmerge_cherry_count(repo,mode):
 def test_reversed_pr_sequence_never_becomes_rebase_proof(repo):
     g,D,H,commits=setup(repo)
     repo.write('drift','main');repo.commit('drift');repo.git('cherry-pick',*commits);C=g.text('rev-parse','HEAD')
-    assert anchor(g,detail(H,C,3),C,list(reversed(commits)),D).reason=='commit-order-mismatch'
+    assert anchor(g,detail(H,C,3),C,list(reversed(commits))).reason=='commit-order-mismatch'
 
 
 def test_rewritten_rebase_tail_cannot_pass_squash_changed_path_check(repo):
@@ -191,10 +191,19 @@ def test_rewritten_rebase_tail_cannot_pass_squash_changed_path_check(repo):
     for n,path in enumerate(['a.txt','b.txt','a.txt']):repo.write(path,'rewritten '+str(n)+'\n');repo.commit('robot '+str(n))
     g=Graph(repo.path);C=g.text('rev-parse','HEAD');pr=detail(H,C,3)
     pr['_files']=[{'filename':'a.txt'},{'filename':'b.txt'}]
-    assert anchor(g,pr,C,commits,D).reason=='squash-path-mismatch'
+    assert anchor(g,pr,C,commits).reason=='squash-path-mismatch'
 
 
 def test_changed_path_sets_include_both_rename_paths(repo):
     g,D,H,commits=setup(repo,1)
     repo.checkout('main');repo.rename('a.txt','renamed.txt');C=repo.commit('rename')
     assert g.changed_paths(D,C)=={'a.txt','renamed.txt'}
+
+
+def test_m1_squash_accepts_empty_default_chain_commit(repo):
+    g,D,H,commits=setup(repo)
+    repo.git('commit','--quiet','--allow-empty','-m','empty unrelated default commit')
+    later=g.text('rev-parse','HEAD')
+    repo.git('merge','--squash','A');C=repo.commit('squashed with arbitrary subject')
+    result=anchor(g,detail(H,C,3),C,commits)
+    assert result.method=='squash-proven' and result.D==later

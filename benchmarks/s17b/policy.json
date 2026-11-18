@@ -1,5 +1,7 @@
 {
+  "api_allowlist": "policy repositories: repository detail plus pulls/issues/commits paths only; reject dot/empty/percent-encoded segments; no rate_limit",
   "api_version": null,
+  "clone": "Permit-gated fresh temporary init and metered full default-branch-history fetch; compare pinned SHA; shared cohort GitBudget; every real fetch disables auto GC/maintenance",
   "collection_cutoff": null,
   "current_open_reopened_prs": "coverage hole disclosed; closed listing only",
   "detector_commit": null,
@@ -13,7 +15,7 @@
   "earlier_closed_unmerged": "remains post-metadata default-anchor-unresolved; consumes slot",
   "gh_version": null,
   "git_transfer_accounting": "Polaris: object-store growth (.git/objects including packs once), plus progress bytes when available; conservative max per fetch; unmeasurable or over-budget fetch stops acquisition incomplete at ceiling, no next fetch",
-  "global_get_headroom": 4,
+  "git_version": null,
   "maximum_get_requests": 1500,
   "maximum_git_bytes": 2147483648,
   "maximum_measurement_seconds": 5400,
@@ -29,9 +31,11 @@
   ],
   "pair_order_seed": "s17b-v1",
   "pairs_per_repository": 20,
-  "patch_policy": "Stable patch-id for every nonempty single-parent commit; merges, empty patches and unavailable objects are unresolved, never an empty independence proof",
+  "patch_policy": "PR merge/empty patches remain contamination-proof-unavailable; absent patches in default-chain squash corroboration are non-matches",
   "per_repository_get_budget": 187,
   "pr_commit_order": "API source sequence oldest-to-newest; reverse default first-parent last-n list to oldest-to-newest; reversed source sequence never matches",
+  "preordering": "drop provable list non-overlap and terminal-window failures; uncertain records remain ranked",
+  "python_version": null,
   "repositories": [
     "pytest-dev/iniconfig",
     "python-trio/sniffio",
@@ -45,6 +49,9 @@
   "squash_corroboration": "C single-parent; negative tuple/patch matches; git cherry + for every non-merge PR commit, count equals non-merge count; C-parent..C changed-path set equals complete PR files including previous rename paths",
   "status": "implementation for review only; collection not authorized",
   "stratum": "natural branches, virtual integration",
+  "terminal_event_proof": "required event exists, is last terminal timestamp, absolute skew <=60 seconds; signed skew recorded",
+  "terminal_event_tolerance_seconds": 60,
+  "terminal_health_stop": "first 10 merged PRs with complete detail and timeline, all failing terminal/lifecycle proof: repository acquisition-incomplete; stop before files/next request",
   "terminal_lower": "2022-01-01T00:00:00Z",
   "terminal_tie": "one merged: merged PR is E; both merged: first-parent order; same C or neither proven: unresolved",
   "test_vectors": {
@@ -52,6 +59,7 @@
     "s17b-v1|1|1|2": "b6da358de0571c50d09606c27f6035a34683751287fe297c8aa2c5baf074ce10",
     "s17b-v1|1|2|3": "20ac85bfa6ed7b2292f5327fce2f207647775a8a0957053997bf6d7a52293322"
   },
+  "unallocated_get_allowance": 4,
   "unused_repository_budget": "never rolled forward",
   "version": 3
 }

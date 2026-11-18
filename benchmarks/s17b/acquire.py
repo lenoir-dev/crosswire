@@ -9,7 +9,7 @@ import tempfile
 from urllib.parse import urlencode,urlsplit
 
 from .checkpoint import sha
-from .selection import Ceiling,RepositoryCeiling,Incomplete,timestamp,detail_filter,timeline_filter
+from .selection import Ceiling,RepositoryCeiling,Incomplete,timestamp,detail_filter,timeline_filter,terminal_proof,RepositoryIncomplete
 from conformance.git import environment
 
 
@@ -29,6 +29,14 @@ def next_page(page):
     return url.path.lstrip('/')+('?' + url.query if url.query else '')
 
 
+def allowed_endpoint(endpoint,policy):
+    if not isinstance(endpoint,str) or '%' in endpoint or '\\' in endpoint or any(ord(c)<33 or ord(c)==127 for c in endpoint):raise ValueError('GET endpoint outside policy allowlist')
+    url=urlsplit(endpoint);parts=url.path.split('/')
+    if url.scheme or url.netloc or url.fragment or any(p in {'','.', '..'} or not re.fullmatch(r'[A-Za-z0-9_.-]+',p) for p in parts):raise ValueError('GET endpoint outside policy allowlist')
+    if len(parts)<3 or parts[0]!='repos' or '/'.join(parts[1:3]) not in policy['repositories']:raise ValueError('GET endpoint outside policy allowlist')
+    if len(parts)>3 and parts[3] not in {'pulls','issues','commits'}:raise ValueError('GET endpoint outside policy allowlist')
+
+
 class GhGet:
     """No requests until a matching checkpoint and explicit permit verify."""
     def __init__(self,permit,cache,runner=subprocess.run,version_reader=None):
@@ -37,14 +45,13 @@ class GhGet:
 
     def get(self,endpoint,**parameters):
         policy=self.permit.verify()
+        allowed_endpoint(endpoint,policy)
         if not self.version_checked:
             expected=policy.get('gh_version')
             if not expected:raise ValueError('Pinned gh version required')
             actual=self.version_reader() if self.version_reader else self.runner(['gh','--version'],capture_output=True,text=True,timeout=30).stdout.splitlines()[0]
             if actual!=expected:raise ValueError('gh version differs from checkpoint')
             self.version_checked=True
-        if endpoint.startswith('/') or urlsplit(endpoint).scheme or not endpoint.startswith(('repos/','rate_limit')):
-            raise ValueError('Relative allowlisted GET endpoint required')
         key=endpoint+('?' if '?' not in endpoint else '&')+urlencode(sorted(parameters.items())) if parameters else endpoint
         if key in self.responses:return self.responses[key]
         self.cache.mkdir(parents=True,exist_ok=True,mode=0o700)
@@ -70,8 +77,6 @@ class GhGet:
             prefix='/'.join(key.split('/')[:3])+'/'
             prior=sum(r['endpoint'].split('?',1)[0].rstrip('/')+'/'==prefix or r['endpoint'].startswith(prefix) for r in self.log)
             if prior>=policy.get('per_repository_get_budget',187):raise RepositoryCeiling('Repository GET sub-budget')
-        elif sum(not r['endpoint'].startswith('repos/') for r in self.log)>=policy.get('global_get_headroom',4):
-            raise Ceiling('Global probe headroom exhausted')
         # Cached response files are evidence, not cross-round live cache. They
         # cannot bypass the permit or silently refresh a prior snapshot.
         self.calls+=1
@@ -122,7 +127,7 @@ def pages(client,endpoint,**parameters):
 def list_closed(client,repository,lower):
     """Only list endpoints here; exactly one additional full tail page sampled."""
     endpoint=f'repos/{repository}/pulls';parameters={'state':'closed','sort':'updated','direction':'desc','per_page':100}
-    result={};ledger=[];tail_remaining=0;tail_violations=0;sampled_tail=False;force_end=False
+    result={};ledger=[];duplicates=[];tail_remaining=0;tail_violations=0;sampled_tail=False;force_end=False
     previous=None
     while endpoint:
         page=client.get(endpoint,**parameters);parameters={}
@@ -141,8 +146,17 @@ def list_closed(client,repository,lower):
                     sub_bound=True
                     if end is not None and end>=timestamp(lower):tail_violations+=1;force_end=True
             n=pr['number']
-            if n in result and result[n]!=pr:raise Incomplete('PR moved/changed during pagination')
-            result[n]=pr
+            if n in result:
+                old=result[n]
+                if any(old.get(k)!=pr.get(k) for k in ('created_at','closed_at','merged_at','state')):raise Incomplete('Contradictory terminal data during pagination')
+                # Equal-time edits are retained deterministically, not by page order.
+                key=lambda value:(timestamp(value['updated_at']),json.dumps(value,sort_keys=True))
+                kept=max((old,pr),key=key)
+                duplicates.append({'number':n,'previous_updated_at':old['updated_at'],'seen_updated_at':pr['updated_at'],
+                    'kept_updated_at':kept['updated_at'],'previous_sha256':__import__('hashlib').sha256(json.dumps(old,sort_keys=True).encode()).hexdigest(),
+                    'seen_sha256':__import__('hashlib').sha256(json.dumps(pr,sort_keys=True).encode()).hexdigest()})
+                result[n]=kept
+            else:result[n]=pr
         following=next_page(page)
         ledger.append({'endpoint':page.endpoint or endpoint,'link':page.headers.get('link'),'items':len(page.body),'sub_bound':sub_bound})
         if tail_remaining:
@@ -155,15 +169,16 @@ def list_closed(client,repository,lower):
         endpoint=following
     return {'items':list(result.values()),'pages':ledger,'total_pages':len(ledger),
             'final_link':ledger[-1]['link'] if ledger else None,'tail_sampled':sampled_tail,
-            'tail_violations':tail_violations,'exhausted':not following if ledger else True,
+            'tail_violations':tail_violations,'duplicates':duplicates,'exhausted':not following if ledger else True,
             'consistency_assumption':'unseen updated>=terminal tail is assumed, not proven',
             'coverage_hole':'currently-open reopened PRs absent; final closure after cutoff excluded'}
 
 
 class Metadata:
     def __init__(self,client,repository,policy=None,default_branch=None):
-        self.client=client;self.repository=repository;self.cache={};self.ledger={};self.policy=policy;self.default_branch=default_branch
+        self.client=client;self.repository=repository;self.cache={};self.ledger={};self.policy=policy;self.default_branch=default_branch;self.terminal_health=[];self.health_stopped=False
     def load(self,n):
+        if self.health_stopped:raise RepositoryIncomplete('Terminal-event health stop: first 10 merged PR proofs failed')
         if n in self.cache:return self.cache[n]
         prefix=f'repos/{self.repository}/pulls/{n}'
         detail=self.client.get(prefix).body
@@ -173,7 +188,14 @@ class Metadata:
         timeline,time_pages=pages(self.client,f'repos/{self.repository}/issues/{n}/timeline',per_page=100)
         value.update(_metadata_stage='timeline',_timeline=timeline,_timeline_complete=True)
         self.ledger[n]={'timeline_pages':time_pages}
-        if self.policy and timeline_filter(value):self.cache[n]=value;return value
+        proof=terminal_proof(value);value['_terminal_event_proof']=proof;self.ledger[n]['terminal_event_proof']=proof
+        # Fully loaded for this proof means detail plus every timeline page;
+        # R2 still short-circuits before unrelated file GETs on a failed proof.
+        if value.get('merged_at') and len(self.terminal_health)<10:
+            self.terminal_health.append({'number':n,'reason':proof['reason']})
+            if len(self.terminal_health)==10 and all(x['reason'] for x in self.terminal_health):
+                self.health_stopped=True;raise RepositoryIncomplete('Terminal-event health stop: first 10 merged PR proofs failed')
+        if self.policy and proof['reason']:self.cache[n]=value;return value
         files,file_pages=pages(self.client,prefix+'/files',per_page=100)
         value.update(_metadata_stage='files',_files=files,_files_complete=len(files)==detail.get('changed_files'))
         self.cache[n]=value;self.ledger[n].update(file_pages=file_pages)
@@ -229,7 +251,7 @@ class ObjectStoreTransport:
         before=self.store_size(objects)
         if before is None:raise Ceiling('Unmeasurable fetch; acquisition incomplete at ceiling')
         if maximum_bytes<=0:raise Ceiling('Git transfer ceiling')
-        try:r=self.runner([*args[:2],'--progress',*args[2:]],cwd=cwd,env=environment(),capture_output=True,text=True,timeout=180)
+        try:r=self.runner(['git','-c','gc.auto=0','-c','maintenance.auto=false','fetch','--progress',*args[2:]],cwd=cwd,env=environment(),capture_output=True,text=True,timeout=180)
         except (OSError,subprocess.TimeoutExpired) as error:raise Ceiling('Unmeasurable fetch; acquisition incomplete at ceiling') from error
         after=self.store_size(objects)
         if after is None or after<before:raise Ceiling('Unmeasurable fetch; acquisition incomplete at ceiling')
@@ -247,12 +269,15 @@ class ObjectStoreTransport:
 
 
 class GitBudget:
-    def __init__(self,maximum=2147483648):self.maximum=maximum;self.used=0;self.stopped=False
+    def __init__(self,maximum=2147483648):self.maximum=maximum;self.used=0;self.stopped=False;self.head_cache={};self.receipts=[]
+    @classmethod
+    def from_policy(cls,permit):return cls(permit.verify()['maximum_git_bytes'])
     @property
     def remaining(self):return self.maximum-self.used
     def account(self,receipt):
         if type(receipt.transferred_bytes) is not int or receipt.transferred_bytes<0:
             self.stopped=True;raise Ceiling('Unmeasurable fetch; acquisition incomplete at ceiling')
+        self.receipts.append({'commit':receipt.commit,'transferred_bytes':receipt.transferred_bytes,'error':receipt.error})
         already_stopped=self.stopped
         self.used+=receipt.transferred_bytes
         if already_stopped or self.used>self.maximum:
@@ -261,15 +286,57 @@ class GitBudget:
 
 def fetch_head(graph,number,expected,permit,budget,transport):
     """Inject an authorized object-growth transport, or synthetic test receipt."""
-    permit.verify()
+    policy=permit.verify()
+    if budget.maximum>policy.get('maximum_git_bytes',budget.maximum):raise ValueError('Git budget exceeds pinned policy')
     if type(number) is not int or number<1:raise ValueError('Invalid PR number')
     if budget.stopped or budget.remaining<=0:raise Ceiling('Git transfer ceiling')
+    key=(str(Path(graph.repo).resolve()),number,expected)
+    if key in budget.head_cache:
+        saved=budget.head_cache[key]
+        if saved.get('error'):raise Incomplete(saved['error'])
+        return graph.commit(saved['commit'])
     try:
         receipt=transport(['git','fetch','--no-tags','origin',f'refs/pull/{number}/head'],cwd=graph.repo,maximum_bytes=budget.remaining)
     except Ceiling:
         budget.stopped=True;raise
     budget.account(receipt)
-    if receipt.error:raise Incomplete(receipt.error)
-    if receipt.commit!=expected:raise Incomplete('Unavailable or stale final head')
+    if receipt.error:
+        budget.head_cache[key]={'error':receipt.error};raise Incomplete(receipt.error)
+    if receipt.commit!=expected:
+        budget.head_cache[key]={'error':'Unavailable or stale final head'};raise Incomplete('Unavailable or stale final head')
     commit=graph.commit(receipt.commit);graph.bind('pr-'+str(number),commit)
+    budget.head_cache[key]={'commit':commit}
     return commit
+
+
+def prepare_clone(directory,repository,branch,expected,permit,budget,transport=None,runner=subprocess.run):
+    """No network clone command: gated local init + metered full-history fetch.
+
+    One cohort-wide policy-sized GitBudget must be shared with all PR fetches.
+    The complete pinned branch history is fetched, without depth/filter shortcuts.
+    """
+    from .graph import Graph,SHA
+    policy=permit.verify();directory=Path(directory).resolve()
+    if repository not in policy['repositories']:raise ValueError('Repository outside policy')
+    if not isinstance(expected,str) or not SHA.fullmatch(expected):raise ValueError('Invalid pinned default SHA')
+    if budget.maximum>policy['maximum_git_bytes']:raise ValueError('Git budget exceeds pinned policy')
+    if budget.stopped or budget.remaining<=0:raise Ceiling('Git transfer ceiling')
+    if not any(directory.is_relative_to(p.resolve()) for p in (Path('/')/'tmp',Path(tempfile.gettempdir()))):raise ValueError('Clone requires disposable temporary directory')
+    if any(p in {'','.', '..'} or not re.fullmatch(r'[A-Za-z0-9_.-]+',p) for p in branch.split('/')):raise ValueError('Invalid default branch')
+    directory.mkdir(parents=True) # exclusive fresh directory, never an existing clone
+    def local(*args):
+        try:r=runner(['git',*args],cwd=directory,env=environment(),capture_output=True,timeout=60)
+        except (OSError,subprocess.TimeoutExpired) as e:raise Incomplete('Disposable clone initialization failed') from e
+        if r.returncode:raise Incomplete('Disposable clone initialization failed')
+    local('init','--quiet')
+    local('remote','add','origin','https://github.com/'+repository+'.git')
+    transport=transport or ObjectStoreTransport(permit,runner)
+    try:receipt=transport(['git','fetch','--no-tags','origin','refs/heads/'+branch],cwd=directory,maximum_bytes=budget.remaining)
+    except Ceiling:budget.stopped=True;raise
+    budget.account(receipt)
+    if receipt.error:raise Incomplete(receipt.error)
+    if receipt.commit!=expected:raise Incomplete('Pinned default SHA changed during acquisition')
+    graph=Graph(directory,runner);commit=graph.commit(receipt.commit);graph.bind('default',commit)
+    local('checkout','--quiet','-B',branch,commit)
+    return graph,{'repository':repository,'default_branch':branch,'expected_default_sha':expected,
+                  'fetched_default_sha':commit,'transferred_bytes':receipt.transferred_bytes,'cumulative_git_bytes':budget.used}

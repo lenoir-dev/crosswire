@@ -62,7 +62,7 @@ def test_pr_commit_truncation_is_post_metadata_unresolved():
 
 
 class Permit:
-    def verify(self):return {'maximum_get_requests':1,'api_version':'synthetic-only','gh_version':'synthetic gh'}
+    def verify(self):return {'repositories':['example/repo'],'maximum_get_requests':1,'api_version':'synthetic-only','gh_version':'synthetic gh'}
 
 
 def test_get_is_explicit_get_cached_and_limited_without_real_gh(tmp_path):
@@ -80,7 +80,7 @@ def test_get_is_explicit_get_cached_and_limited_without_real_gh(tmp_path):
 
 def test_gh_version_mismatch_precedes_get(tmp_path):
     with pytest.raises(ValueError,match='version differs'):
-        GhGet(Permit(),tmp_path,lambda *a,**kw:pytest.fail('GET forbidden'),version_reader=lambda:'different gh').get('rate_limit')
+        GhGet(Permit(),tmp_path,lambda *a,**kw:pytest.fail('GET forbidden'),version_reader=lambda:'different gh').get('repos/example/repo/pulls')
 
 
 def test_request_budget_and_cached_response_survive_client_restart(tmp_path):
@@ -96,7 +96,7 @@ def test_bad_authorization_fails_before_any_transport(tmp_path):
     class Deny:
         def verify(self):raise PermissionError('not authorized')
     def forbidden(*a,**kw):pytest.fail('Network command must not be reached')
-    with pytest.raises(PermissionError):GhGet(Deny(),tmp_path,forbidden).get('rate_limit')
+    with pytest.raises(PermissionError):GhGet(Deny(),tmp_path,forbidden).get('repos/example/repo/pulls')
 
 
 def test_fetch_command_uses_only_final_head_and_requires_metered_receipt():
@@ -149,14 +149,15 @@ def test_real_transport_accounting_with_fake_git_process_only(tmp_path):
         if args[1:]==['remote','get-url','origin']:value='https://github.com/example/repo.git'
         elif args[1:]==['rev-parse','--git-path','objects']:value='objects'
         elif args[1:]==['rev-parse','FETCH_HEAD^{commit}']:value='a'*40
-        elif args[1]=='fetch':
+        elif 'fetch' in args:
             (objects/'new').write_bytes(b'x'*12)
             return SimpleNamespace(returncode=0,stdout='',stderr='Receiving objects: 100% (1/1), 20 bytes, done.\n')
         else:raise AssertionError(args)
         return SimpleNamespace(returncode=0,stdout=value,stderr='')
     receipt=ObjectStoreTransport(Allowed(),runner)(['git','fetch','--no-tags','origin','refs/pull/7/head'],cwd=tmp_path,maximum_bytes=30)
     assert receipt==FetchReceipt('a'*40,20) # max(growth=12, progress=20), not sum
-    assert any('--progress' in args for args in calls)
+    fetch=next(args for args in calls if 'fetch' in args)
+    assert fetch[:6]==['git','-c','gc.auto=0','-c','maintenance.auto=false','fetch'] and '--progress' in fetch
 
 
 def test_shrinking_store_is_unmeasurable_and_stops(tmp_path,monkeypatch):
@@ -174,15 +175,15 @@ def test_get_timeout_keeps_request_claim_and_never_retries(tmp_path):
     import subprocess
     def timeout(*a,**kw):raise subprocess.TimeoutExpired('synthetic gh',60)
     client=GhGet(Permit(),tmp_path,timeout,version_reader=lambda:'synthetic gh')
-    with pytest.raises(Incomplete):client.get('rate_limit')
+    with pytest.raises(Incomplete):client.get('repos/example/repo/pulls')
     retry=GhGet(Permit(),tmp_path,lambda *a,**kw:pytest.fail('No retry after incomplete request'),version_reader=lambda:'synthetic gh')
-    with pytest.raises(Incomplete):retry.get('rate_limit')
+    with pytest.raises(Incomplete):retry.get('repos/example/repo/pulls')
 
 
 def test_nonrolling_repository_get_budget_does_not_starve_next_repository(tmp_path):
     from benchmarks.s17b.selection import RepositoryCeiling
     class Allocated:
-        def verify(self):return {'maximum_get_requests':1500,'per_repository_get_budget':1,'gh_version':'synthetic gh','api_version':'test'}
+        def verify(self):return {'repositories':['one/repo','two/repo'],'maximum_get_requests':1500,'per_repository_get_budget':1,'gh_version':'synthetic gh','api_version':'test'}
     client=GhGet(Allocated(),tmp_path,lambda *a,**kw:SimpleNamespace(returncode=0,stdout='HTTP/2.0 200 OK\n\n[]'),version_reader=lambda:'synthetic gh')
     client.get('repos/one/repo/pulls')
     with pytest.raises(RepositoryCeiling):client.get('repos/one/repo/pulls/1')

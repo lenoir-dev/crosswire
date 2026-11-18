@@ -8,6 +8,7 @@ import re
 class Incomplete(RuntimeError):pass
 class Ceiling(Incomplete):pass
 class RepositoryCeiling(Ceiling):pass
+class RepositoryIncomplete(Incomplete):pass
 
 
 def timestamp(value):
@@ -37,12 +38,20 @@ def interval(pr):
     return start,end
 
 
-def enumerate_pairs(items,repo_id,seed='s17b-v1'):
+def enumerate_pairs(items,repo_id,seed='s17b-v1',policy=None):
     by_number={};uncertainties=[]
     for pr in items:
         number=int(decimal(pr['number']))
         if number in by_number and by_number[number]!=pr:raise Incomplete('moving/contradictory list record')
         by_number[number]=pr
+    outside=[]
+    if policy:
+        for n,pr in list(by_number.items()):
+            try:
+                # Only a proven terminal field removes a PR before ranking.
+                _,end=interval(pr)
+                if not timestamp(policy['terminal_lower'])<=end<timestamp(policy['collection_cutoff']):outside.append(n);del by_number[n]
+            except (ValueError,TypeError):pass
     values=sorted(by_number)
     candidates=[];nonoverlap=0
     for i,a in enumerate(values):
@@ -55,7 +64,7 @@ def enumerate_pairs(items,repo_id,seed='s17b-v1'):
             candidates.append({'A':a,'B':b,'hash':pair_hash(repo_id,a,b,seed),'list_uncertain':unknown})
     candidates.sort(key=lambda p:(p['hash'],p['A'],p['B']))
     for rank,pair in enumerate(candidates,1):pair['rank']=rank
-    return candidates,{'pr_count':len(values),'provably_nonoverlapping_pairs':nonoverlap,'uncertain_pairs':uncertainties}
+    return candidates,{'pr_count':len(values),'provably_nonoverlapping_pairs':nonoverlap,'uncertain_pairs':uncertainties,'terminal_window_exclusions':sorted(outside)}
 
 
 def detail_filter(pr,default_branch,policy):
@@ -71,18 +80,26 @@ def detail_filter(pr,default_branch,policy):
     return None
 
 
-def timeline_filter(pr):
+def terminal_proof(pr):
+    """Complete terminal timeline only; equal-time events share last position."""
     try:
         start,end=interval(pr)
-        if not pr.get('_timeline_complete'):return 'incomplete-metadata'
+        if not pr.get('_timeline_complete'):return {'reason':'incomplete-metadata'}
         events=pr['_timeline']
-        if any(e.get('event') in {'reopened','base_ref_changed','base_ref_renamed'} for e in events):return 'lifecycle-or-base-changed'
-        if any(e.get('event') in {'closed','merged'} and timestamp(e['created_at'])<start for e in events):return 'lifecycle-inconsistent'
-        required_event='merged' if pr.get('merged_at') else 'closed'
-        terminal_events=[timestamp(e['created_at']) for e in events if e.get('event')==required_event]
-        if not terminal_events or max(terminal_events)!=end:return 'lifecycle-terminal-unproven'
-    except (ValueError,KeyError,TypeError):return 'invalid-metadata'
-    return None
+        if any(e.get('event') in {'reopened','base_ref_changed','base_ref_renamed'} for e in events):return {'reason':'lifecycle-or-base-changed'}
+        terminal=[(e['event'],timestamp(e['created_at'])) for e in events if e.get('event') in {'closed','merged'}]
+        if any(t<start for _,t in terminal):return {'reason':'lifecycle-inconsistent'}
+        required='merged' if pr.get('merged_at') else 'closed'
+        candidates=[t for event,t in terminal if event==required]
+        if not candidates:return {'reason':'lifecycle-terminal-unproven','required_event':required}
+        event=max(candidates);last=max(t for _,t in terminal);skew=(event-end).total_seconds()
+        return {'reason':None if event==last and abs(skew)<=60 else 'lifecycle-terminal-unproven',
+                'required_event':required,'event_at':event.isoformat(),'field_at':end.isoformat(),
+                'last_terminal_at':last.isoformat(),'skew_seconds':skew,'tolerance_seconds':60}
+    except (ValueError,KeyError,TypeError):return {'reason':'invalid-metadata'}
+
+
+def timeline_filter(pr):return terminal_proof(pr)['reason']
 
 
 def files_filter(pr):
@@ -101,7 +118,7 @@ def metadata_filter(pr,default_branch,policy):
 
 
 def select_pairs(items,repo_id,default_branch,policy,load_metadata):
-    ordered,counts=enumerate_pairs(items,repo_id,policy['pair_order_seed'])
+    ordered,counts=enumerate_pairs(items,repo_id,policy['pair_order_seed'],policy)
     cache={};selected=[];ledger=[];reason='order-exhausted'
     for candidate in ordered:
         if len(selected)>=policy['pairs_per_repository']:reason='cap';break
@@ -112,6 +129,9 @@ def select_pairs(items,repo_id,default_branch,policy,load_metadata):
                 if n not in cache:cache[n]=load_metadata(n)
                 details[label]=cache[n];outcomes[label]=metadata_filter(cache[n],default_branch,policy)
                 if outcomes[label]:break # R2: A failure never triggers B metadata.
+        except RepositoryIncomplete as error:
+            ledger.append({**candidate,'metadata_outcomes':outcomes,'stage':'metadata','outcome':'unattempted-acquisition-incomplete','reason':str(error)})
+            reason='repository-acquisition-incomplete';break
         except RepositoryCeiling:
             ledger.append({**candidate,'metadata_outcomes':outcomes,'stage':'metadata','outcome':'unattempted-repository-ceiling'})
             reason='repository-request-ceiling';break

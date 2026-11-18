@@ -45,3 +45,21 @@ def test_repository_ceiling_continues_next_allocation(monkeypatch):
     assert not answer['complete']
     assert answer['repositories'][1]['status']=='metadata-only'
     assert calls[-1]=='repos/two/repo/commits/main'
+
+
+def test_terminal_health_stop_is_repository_local(monkeypatch):
+    class Client:
+        calls=0;log=[]
+        def get(self,endpoint):
+            if '/commits/' in endpoint:return SimpleNamespace(body={'sha':'a'*40})
+            return SimpleNamespace(body={'private':False,'id':1,'default_branch':'main'})
+    monkeypatch.setattr(collect,'list_closed',lambda *a:{'items':[]})
+    count=[]
+    def selected(*args):
+        count.append(1)
+        return {'selected':[],'stop_reason':'repository-acquisition-incomplete' if len(count)==1 else 'order-exhausted'}
+    monkeypatch.setattr(collect,'select_pairs',selected)
+    answer=collect.collect_metadata(Client(),{'repositories':['one/repo','two/repo'],'terminal_lower':'2022-01-01T00:00:00Z','maximum_pairs':40})
+    assert not answer['complete'] and len(count)==2
+    assert answer['repositories'][0]['status']=='acquisition-incomplete'
+    assert answer['repositories'][1]['status']=='metadata-only'

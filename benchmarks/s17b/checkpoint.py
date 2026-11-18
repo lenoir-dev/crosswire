@@ -43,7 +43,7 @@ def prepare(policy,destination,now=None):
     if sha(ROOT/'benchmarks/s17/m3.py')!=M3_SHA256:raise ValueError('M3 changed')
     if policy['pair_order_seed']!='s17b-v1' or policy['pairs_per_repository']!=20:raise ValueError('Policy differs from accepted protocol')
     accepted=json.loads((ROOT/'benchmarks/s17b/policy.json').read_text())
-    for key in ('terminal_lower','maximum_pairs','maximum_get_requests','maximum_git_bytes','maximum_measurement_seconds','repositories','per_repository_get_budget','unallocated_get_allowance',
+    for key in ('terminal_lower','maximum_pairs','maximum_get_requests','maximum_git_bytes','maximum_measurement_seconds','repositories','per_repository_get_budget','per_repository_metadata_get_budget','per_repository_commits_get_budget','unallocated_get_allowance',
                 'metadata_filter_order','unused_repository_budget','pr_commit_order','squash_corroboration',
                 'terminal_tie','earlier_closed_unmerged','terminal_event_tolerance_seconds','terminal_event_proof',
                 'terminal_health_stop','preordering','api_allowlist','clone','patch_policy'):

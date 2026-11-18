@@ -37,6 +37,11 @@ def allowed_endpoint(endpoint,policy):
     if len(parts)>3 and parts[3] not in {'pulls','issues','commits'}:raise ValueError('GET endpoint outside policy allowlist')
 
 
+def endpoint_class(endpoint):
+    """Pagination/query parameters do not change a request's budget class."""
+    return 'commits' if re.fullmatch(r'repos/[^/]+/[^/]+/pulls/[1-9][0-9]*/commits',urlsplit(endpoint).path) else 'metadata'
+
+
 class GhGet:
     """No requests until a matching checkpoint and explicit permit verify."""
     def __init__(self,permit,cache,runner=subprocess.run,version_reader=None):
@@ -75,12 +80,16 @@ class GhGet:
         if self.stopped or self.calls>=policy['maximum_get_requests']:raise Ceiling('GET ceiling')
         if key.startswith('repos/'):
             prefix='/'.join(key.split('/')[:3])+'/'
-            prior=sum(r['endpoint'].split('?',1)[0].rstrip('/')+'/'==prefix or r['endpoint'].startswith(prefix) for r in self.log)
-            if prior>=policy.get('per_repository_get_budget',187):raise RepositoryCeiling('Repository GET sub-budget')
+            requests=[r for r in self.log if r['endpoint'].split('?',1)[0].rstrip('/')+'/'==prefix or r['endpoint'].startswith(prefix)]
+            if len(requests)>=policy.get('per_repository_get_budget',187):raise RepositoryCeiling('Repository GET sub-budget')
+            phase=endpoint_class(key)
+            limit=policy.get('per_repository_'+phase+'_get_budget',60 if phase=='commits' else 127)
+            if sum(endpoint_class(r['endpoint'])==phase for r in requests)>=limit:
+                raise RepositoryCeiling('Repository '+phase+' GET sub-budget')
         # Cached response files are evidence, not cross-round live cache. They
         # cannot bypass the permit or silently refresh a prior snapshot.
         self.calls+=1
-        event={'request':self.calls,'endpoint':key,'status':'started','checkpoint_sha256':round_key};self.log.append(event)
+        event={'request':self.calls,'endpoint':key,'endpoint_class':endpoint_class(key),'status':'started','checkpoint_sha256':round_key};self.log.append(event)
         request=self.cache/f'{self.calls:06d}.request.json'
         fd=os.open(request,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
         with os.fdopen(fd,'w') as stream:

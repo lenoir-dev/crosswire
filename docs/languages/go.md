@@ -2,7 +2,7 @@
 
 Status: DRAFT (Polaris), amended by PLAN-v0.5 Amendment P1 (binding where it differs). Frozen before the first Go measurement; recall is measured only over the types
 marked supported. Analysis: tree-sitter-go (no type checker at runtime). Oracle: pinned
-`go build ./... && go vet ./...`; vet findings unrelated to the change are classified separately.
+`go build ./...` (semantic oracle); `go vet ./...` is captured as a separate channel and never decides a label.
 
 ## Model
 
@@ -16,8 +16,8 @@ marked supported. Analysis: tree-sitter-go (no type checker at runtime). Oracle:
   was cut until a declared build-context matrix exists.)
 - Production code only: `_test.go` files (definitions and uses) are excluded and reported as a gap;
   `vendor/` is excluded; `replace`/`go.work`-affected first-party links are gaps.
-- Imports resolved through `replace` directives or `go.work` to paths outside the repository, and all
-  third-party/stdlib packages, are `unknown` (not gaps).
+- Third-party and stdlib packages are `unknown` and are not gaps. First-party links affected by `replace`
+  directives or `go.work` are gaps (see above), not ordinary external unknowns.
 
 ## Supported
 

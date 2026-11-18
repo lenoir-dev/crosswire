@@ -286,3 +286,28 @@ affected goldens are refreshed by Deneb.
 **0.5a order from here:** T22 (final4) → BF1 → T23 → T24 → T21d → freeze of the 0.5a source → S18 single attempt
 (after the N1 code fix and Vega's diff check) → 0.5a release. S17b collection runs in parallel once its freeze
 checkpoint is audited; its results are development-only and do not gate 0.5a.
+
+## Amendment P6 — S17b round 1 outcome and round 2 (Polaris, 2026-11-18)
+
+**Round 1 (`docs/validation/s17b-acquisition.md`) is published as incomplete.** The single authorized acquisition
+stopped on its 14th GET (a failed timeline request in the first repository); the frozen adapter discarded the
+transport's exit status and stderr, and the global failure rule left seven of eight repositories unattempted.
+16 GETs, 235,926 bytes, one selected pair, excluded by B2 (`integrated-earlier-pr`), zero graph-ready pairs, no
+oracle, detector or label. The round is not repeated under the same checkpoint.
+
+**Round 2 is permitted, because nothing outcome-dependent was learned.** Round 1 produced no oracle observation
+and no label; the only information gained is apparatus behaviour and one structural (graph) exclusion that Vega
+predicted before collection (review N6). Round 2 keeps the round-1 selection rules unchanged (repositories,
+window, cutoff, seed, caps, budgets, M3, anchors, contamination tests) and changes only the apparatus:
+- **D-R2a transport robustness:** bounded retries for transport failures only (timeouts, connection errors,
+  HTTP 5xx and secondary rate limits honoured via `Retry-After`; at most 3 attempts with exponential backoff;
+  HTTP 4xx are never retried); every attempt, its exit status and sanitized stderr are journalled; retries count
+  against the request budgets.
+- **D-R2b repository isolation:** a failure in one repository marks that repository `acquisition-incomplete` and
+  the walk continues with the next one; only the global request or transfer ceiling stops the cohort.
+- **D-R2c pre-update heads (structural, outcome-blind):** when B's final head contains A's integration only
+  through a merge of the default branch into B, the pair uses B's last first-parent commit before that merge as
+  B's head, if it is a PR commit and passes every B2 test; the pair records `head_kind = pre-update`, and the
+  stratum reports final-head and pre-update pairs separately. No other contamination rule changes.
+Round 2 has its own checkpoint (1) and authorization; Vega reviews the three changes before it. Round 1's records
+stay published beside it.

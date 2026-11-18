@@ -1,0 +1,34 @@
+{
+  "apparatus_commit": "89df44070c7dfe2b39b05343d3884461359aba58",
+  "authorization": {
+    "additional_fields": "not validated",
+    "authority": "unsigned procedural record; Polaris creates it, Deneb did not",
+    "path_constraint": "Permit accepts the file supplied by --authorization; no fixed path enforced",
+    "required_fields": {
+      "approved_by": "Polaris",
+      "checkpoint_sha256": "e49aad0afda805aa3b29536ccacd35f25f0ed8002c748fbd489381c88fa37603",
+      "scope": "S17b read-only acquisition"
+    },
+    "suggested_path": "~/.crosswire-evidence/s17b/authorization.json"
+  },
+  "checkpoint": "~/.crosswire-evidence/s17b/checkpoint-1.json",
+  "checkpoint_sha256": "e49aad0afda805aa3b29536ccacd35f25f0ed8002c748fbd489381c88fa37603",
+  "checks": {
+    "api_calls": 0,
+    "authorization_records_created": 0,
+    "committed_pins_verified": true,
+    "git_state_mutations": 0,
+    "m3_unchanged": true,
+    "measurement_runs": 0,
+    "policy_exactly_committed": true
+  },
+  "code_files_pinned": 24,
+  "created_at": "2026-11-18T17:36:24.903646+00:00",
+  "detector_commit": "30ff34363070175160e066dd1b5743856c907a05",
+  "export_location": "system temporary directory; crosswire-s17b-cp1-bml8errv",
+  "mode": "0600",
+  "next": "Await Polaris authorization record and acquisition instruction; no API or fetch has run.",
+  "policy_sha256": "f2f4b309d858a43013c32be0eb777a005317af5c7e084bc348d96eca07191e96",
+  "source": "clean git archive of authorized HEAD; code map excludes src and matches committed files and current acquisition apparatus",
+  "task": "v0.5-s17b-cp1-write"
+}

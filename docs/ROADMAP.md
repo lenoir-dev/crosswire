@@ -11,7 +11,7 @@ solid analysis of ≥ 5 branches; measured quality per `docs/QUALITY.md`).
 | v0.2 | Harden pairwise: per-branch summaries, `--target`, cache, SARIF, GitHub Action | ✅ accepted (`21613d5`, 218 tests; 20 httpx PRs: 7 TP / 0 FP, all textual) |
 | v0.3a | N-way: virtual integration, `check --combined`, CW006 with minimal culprit sets | ✅ accepted (`0825b06`, 257 tests) |
 | v0.3b | Safe merge order for many Python branches: `plan`, target refs, precision fixes, batched git I/O | ✅ accepted (288 tests; warm 30-branch run 4.5 s → 0.64 s). v0.3.1: Django 5 heads cold `--combined` > 180 s → 8.5 s |
-| v0.4 | Trustworthy numbers: evaluation harness, labelled Python corpus + holdout, perf baseline 5/10/30, remediation hints, JSON Schema, quickstart | planned |
+| v0.4 | Trustworthy numbers: evaluation harness, labelled Python corpus + holdout, perf baseline 5/10/30, remediation hints, JSON Schema, quickstart | ✅ **released as 0.4.0 on PyPI (2026-11-18), first public release (alpha)**; development pilot TP 44 / FP 0 / FN 0, holdout sealed for 0.5 |
 | v0.5 | Second language with the same guarantees: `LanguageAdapter` core refactor + Go | planned |
 | v0.6 | TypeScript / JavaScript adapter | planned |
 | v0.7 | Java adapter | planned |

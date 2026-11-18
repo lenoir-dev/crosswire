@@ -270,3 +270,19 @@ protocol declares every member the core calls; M2 the core no longer reads the f
 until Go needs it; M4 cache errors are not swallowed, exceptions are symmetric, context is computed once, the
 adapter version is derived; L1–L3 as reviewed; L4 a second fake adapter conformance test (two languages in one
 repository). T21d changes no output byte: the pinned T21 replay is rerun, and shims are removed in this step.
+
+## Amendment P5 — first measured detector defect and 0.5a sequencing (Polaris, 2026-11-18)
+
+**BF1 (Altair, after T22, before T23).** The mutation stratum (`docs/validation/mut-v05.md`, audited in
+`docs/reviews/v0.5-mut-vega.md` §3) found that combined and plan silently miss a removed or moved module when the
+used name is an external re-export through it (`from unittest import TestCase` re-exported by the moved module):
+the tip gate in `analyze_combined` drops the use because its tip resolution is `unknown` (external origin) before
+the integrated state is examined. Fix: when the use's module exists at the tip and is absent in the integrated
+state, report CW001/CW006 regardless of the name's origin. Pairwise, combined and plan must agree on this shape;
+Deneb's strict-xfail reproduction becomes the regression test. BF1 changes output bytes only for this shape: the
+pinned T21 replay is rerun and every differing record must be explained by BF1 (an enumerated list), and the
+affected goldens are refreshed by Deneb.
+
+**0.5a order from here:** T22 (final4) → BF1 → T23 → T24 → T21d → freeze of the 0.5a source → S18 single attempt
+(after the N1 code fix and Vega's diff check) → 0.5a release. S17b collection runs in parallel once its freeze
+checkpoint is audited; its results are development-only and do not gate 0.5a.

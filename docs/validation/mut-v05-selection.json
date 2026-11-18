@@ -1,0 +1,2901 @@
+{
+  "cases": [
+    {
+      "control": "scenario",
+      "family": "rename",
+      "id": "bcbabfc91859d2d35210",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "rename",
+      "id": "77b43491ab67edba16d4",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "rename",
+      "id": "30d32a8a26181ee722e8",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "rename",
+      "id": "6c3113824b61a1629156",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "delete",
+      "id": "a2c3512a258fbb3de115",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "delete",
+      "id": "c81adbfd5c152e95e02a",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "delete",
+      "id": "a45b47d68f43b54c816e",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "delete",
+      "id": "32bbc180c2ca33065dd4",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "arity",
+      "id": "b1bc9f692e5bca3ee259",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "arity",
+      "id": "b45c44a77af58e5c7d3e",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "arity",
+      "id": "43e149f500e46f169d9b",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "arity",
+      "id": "3d3d5f705e23e5e16a73",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "conjunctive",
+      "id": "e106694f7c986786b369",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "conjunctive",
+      "id": "61149eea7ae48188c02e",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "conjunctive",
+      "id": "f493de9dd44fb17f0cad",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "conjunctive",
+      "id": "9dd3309d89f8fbc0db1f",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "fix_by_third",
+      "id": "f2744fea184c9e1753b1",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "fix_by_third",
+      "id": "afde48144e8e2f9ff980",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "fix_by_third",
+      "id": "b80d14c178089e85d148",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "fix_by_third",
+      "id": "8654168b63d45d474f30",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "five_mix",
+      "id": "424e7e21906c27881190",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "five_mix",
+      "id": "204edee04e08d506100a",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "five_mix",
+      "id": "b873b401b27b036cc2f7",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "five_mix",
+      "id": "350bf25a82909bf03b88",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "open_dynamic",
+      "id": "3663e880a6f29dade1f0",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "open_dynamic",
+      "id": "7d880be9356626fec5b5",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "open_dynamic",
+      "id": "96b2c56bd31c3342b1f5",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "open_dynamic",
+      "id": "bb23c33e2544dc4c61bd",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "open_wildcard",
+      "id": "e0bab833fee4bf20b4d1",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "open_wildcard",
+      "id": "dac405bf1017800b2acf",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "open_wildcard",
+      "id": "fc6e4bbba19e08b5438d",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "open_wildcard",
+      "id": "1d896fb9c6bd1328d38a",
+      "repository": "sniffio",
+      "site": {
+        "kind": "function",
+        "line": 25,
+        "module": "sniffio._impl",
+        "name": "current_async_library",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "rename",
+      "id": "10fb587328791afb29a4",
+      "repository": "sniffio",
+      "site": {
+        "kind": "class",
+        "line": 21,
+        "module": "sniffio._impl",
+        "name": "AsyncLibraryNotFoundError",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "29c083979aa9fdcd946053d6e9b9e1c8269f1770bdc6561c464546eba5bfd707"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "rename",
+      "id": "d03a8b19e5917c84babb",
+      "repository": "sniffio",
+      "site": {
+        "kind": "class",
+        "line": 21,
+        "module": "sniffio._impl",
+        "name": "AsyncLibraryNotFoundError",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "29c083979aa9fdcd946053d6e9b9e1c8269f1770bdc6561c464546eba5bfd707"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "rename",
+      "id": "d81d3cb65c35b310cca8",
+      "repository": "sniffio",
+      "site": {
+        "kind": "class",
+        "line": 21,
+        "module": "sniffio._impl",
+        "name": "AsyncLibraryNotFoundError",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "29c083979aa9fdcd946053d6e9b9e1c8269f1770bdc6561c464546eba5bfd707"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "rename",
+      "id": "35d197c7144a74dadd7f",
+      "repository": "sniffio",
+      "site": {
+        "kind": "class",
+        "line": 21,
+        "module": "sniffio._impl",
+        "name": "AsyncLibraryNotFoundError",
+        "path": "sniffio/_impl.py",
+        "rank_sha256": "29c083979aa9fdcd946053d6e9b9e1c8269f1770bdc6561c464546eba5bfd707"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "move_module",
+      "id": "3c77f6df2f50caedbcf9",
+      "repository": "sniffio",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "sniffio",
+        "name": "sniffio",
+        "path": "sniffio/__init__.py",
+        "rank_sha256": "007a242c6f64c29cc4c621d13adeb4a3d5e37f19cdb656009ecb41d4803e3aa7"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "move_module",
+      "id": "c8b78cf29abed56aada9",
+      "repository": "sniffio",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "sniffio",
+        "name": "sniffio",
+        "path": "sniffio/__init__.py",
+        "rank_sha256": "007a242c6f64c29cc4c621d13adeb4a3d5e37f19cdb656009ecb41d4803e3aa7"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "move_module",
+      "id": "80545c435a316729b315",
+      "repository": "sniffio",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "sniffio",
+        "name": "sniffio",
+        "path": "sniffio/__init__.py",
+        "rank_sha256": "007a242c6f64c29cc4c621d13adeb4a3d5e37f19cdb656009ecb41d4803e3aa7"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "move_module",
+      "id": "bd5d7201afc5f04b405e",
+      "repository": "sniffio",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "sniffio",
+        "name": "sniffio",
+        "path": "sniffio/__init__.py",
+        "rank_sha256": "007a242c6f64c29cc4c621d13adeb4a3d5e37f19cdb656009ecb41d4803e3aa7"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "rename",
+      "id": "48963475c4fa120172d7",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "rename",
+      "id": "58e0c432180cb1e3e835",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "rename",
+      "id": "f87200ee81e3504e2dab",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "rename",
+      "id": "2ad6fcb3ab3ff31ef33d",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "delete",
+      "id": "05c69622f0b875001cc9",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "delete",
+      "id": "ce879ec24e22a8e21819",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "delete",
+      "id": "5d85a2707efa9f3a3419",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "delete",
+      "id": "facdecff601a694e408c",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "arity",
+      "id": "06ca58bb5d5009eb0c10",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "arity",
+      "id": "eaa3f1d6febc3b3d2a04",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "arity",
+      "id": "4647aeb27d7cd51b58a7",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "arity",
+      "id": "7e22736abe93611e0d4d",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "conjunctive",
+      "id": "6a0b78d62f75fe41aaf2",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "conjunctive",
+      "id": "9dd3a48f94238e1a4960",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "conjunctive",
+      "id": "875579ef1853ab9abfde",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "conjunctive",
+      "id": "6e275e25275c21551a61",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "fix_by_third",
+      "id": "217d80308e62864bd311",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "fix_by_third",
+      "id": "445e90d14598ba667783",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "fix_by_third",
+      "id": "9bf1b1d25e75a8325034",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "fix_by_third",
+      "id": "f741fe4b361f3972389a",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "five_mix",
+      "id": "eaeeb89c6f3ef7c0230a",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "five_mix",
+      "id": "364fbd1ddb4f1d4bbcf2",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "five_mix",
+      "id": "0416956c0abcf8553f04",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "five_mix",
+      "id": "dd351ed5d60f02053b84",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "open_dynamic",
+      "id": "78ee8879f00b2320c021",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "open_dynamic",
+      "id": "41a83cb53c82dc13349b",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "open_dynamic",
+      "id": "3b0962bc8aaa5d6a230b",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "open_dynamic",
+      "id": "5f58a45ded44f522a6a5",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "open_wildcard",
+      "id": "4fc3b62b7ca120156b00",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "open_wildcard",
+      "id": "a3c30bfe9c165e44b05f",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "open_wildcard",
+      "id": "c4be8bac15b7f0ede520",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "open_wildcard",
+      "id": "fb1a36c59fa8b7f6bc86",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "function",
+        "line": 158,
+        "module": "iniconfig._parse",
+        "name": "iscommentline",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "rename",
+      "id": "8817202c05fa353866a6",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "class",
+        "line": 11,
+        "module": "iniconfig._parse",
+        "name": "ParsedLine",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "085edf7f8d1580733e0fe3d47992501574fb78ebac9dd4f2088994b82dfd9217"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "rename",
+      "id": "fc0dd1c5d9f05c1ee8d1",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "class",
+        "line": 11,
+        "module": "iniconfig._parse",
+        "name": "ParsedLine",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "085edf7f8d1580733e0fe3d47992501574fb78ebac9dd4f2088994b82dfd9217"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "rename",
+      "id": "37d13c5326b71613a23c",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "class",
+        "line": 11,
+        "module": "iniconfig._parse",
+        "name": "ParsedLine",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "085edf7f8d1580733e0fe3d47992501574fb78ebac9dd4f2088994b82dfd9217"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "rename",
+      "id": "d50c6dd270284e91255b",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "class",
+        "line": 11,
+        "module": "iniconfig._parse",
+        "name": "ParsedLine",
+        "path": "src/iniconfig/_parse.py",
+        "rank_sha256": "085edf7f8d1580733e0fe3d47992501574fb78ebac9dd4f2088994b82dfd9217"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "move_module",
+      "id": "eaff8595b6551b542111",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "iniconfig",
+        "name": "iniconfig",
+        "path": "src/iniconfig/__init__.py",
+        "rank_sha256": "0704c1e25d1f09c32e52b06cbf2a7c1c8f551502ba45139633c201827eafe53e"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "move_module",
+      "id": "040d2c92f1dde891f182",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "iniconfig",
+        "name": "iniconfig",
+        "path": "src/iniconfig/__init__.py",
+        "rank_sha256": "0704c1e25d1f09c32e52b06cbf2a7c1c8f551502ba45139633c201827eafe53e"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "move_module",
+      "id": "c2b9a9b13edd1c6c157d",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "iniconfig",
+        "name": "iniconfig",
+        "path": "src/iniconfig/__init__.py",
+        "rank_sha256": "0704c1e25d1f09c32e52b06cbf2a7c1c8f551502ba45139633c201827eafe53e"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "move_module",
+      "id": "53472f37a31f4de51771",
+      "repository": "iniconfig",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "iniconfig",
+        "name": "iniconfig",
+        "path": "src/iniconfig/__init__.py",
+        "rank_sha256": "0704c1e25d1f09c32e52b06cbf2a7c1c8f551502ba45139633c201827eafe53e"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "rename",
+      "id": "f4c83fa610ef9f9ca4a0",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "rename",
+      "id": "36e59821f2ea6016f016",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "rename",
+      "id": "7eab8f331a536ee92d60",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "rename",
+      "id": "7eb82b7477e2da450076",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "delete",
+      "id": "6d04cda42122acca8e74",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "delete",
+      "id": "3e5e25658f9a99002cea",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "delete",
+      "id": "47767f4950d4c34ad768",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "delete",
+      "id": "bf27b0b1a3fc1dbf8533",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "arity",
+      "id": "b14518a951db1ee65527",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "arity",
+      "id": "16cef1f996c3c278c268",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "arity",
+      "id": "f696211413ac0ddedeac",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "arity",
+      "id": "5b922e17eb464cc63488",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "conjunctive",
+      "id": "3496bf290d73846ba265",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "conjunctive",
+      "id": "90841b12b1e218eef4c8",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "conjunctive",
+      "id": "0266ea92fdae5aefd5f2",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "conjunctive",
+      "id": "b12241fec23c6adee5cd",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "fix_by_third",
+      "id": "b337f5259d5b964af382",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "fix_by_third",
+      "id": "aa0582a3f6bb6d6d1435",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "fix_by_third",
+      "id": "f9e3f3df9d1359a55fd2",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "fix_by_third",
+      "id": "dd5b6b880753c7133114",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "five_mix",
+      "id": "108c5f6fc004a7f3962c",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "five_mix",
+      "id": "af111d6eac33479e5462",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "five_mix",
+      "id": "fcb984f441c436c101bd",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "five_mix",
+      "id": "50be742085e616d21c7b",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "open_dynamic",
+      "id": "9379aa00a51a0a85a229",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "open_dynamic",
+      "id": "e6472b4d722528b5a86b",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "open_dynamic",
+      "id": "0b5a09b223e8a57b7d27",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "open_dynamic",
+      "id": "5fbb86eadccfd55f8369",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "open_wildcard",
+      "id": "ddbe65ed66de33784b2f",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "open_wildcard",
+      "id": "9abb45d497c5b26f4b56",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "open_wildcard",
+      "id": "45c6e80bbae7437d66ff",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "open_wildcard",
+      "id": "9e630d09db5325c2b27a",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "function",
+        "line": 27,
+        "module": "pytest_repeat",
+        "name": "pytest_configure",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "rename",
+      "id": "cb7c287050badd736f9b",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "class",
+        "line": 33,
+        "module": "pytest_repeat",
+        "name": "UnexpectedError",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "9e61bfc71ba236a246df33cd09a03bdee3eb09463a65d3af1480776b50db9954"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "rename",
+      "id": "5bc75ed607d6ffe4ad34",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "class",
+        "line": 33,
+        "module": "pytest_repeat",
+        "name": "UnexpectedError",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "9e61bfc71ba236a246df33cd09a03bdee3eb09463a65d3af1480776b50db9954"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "rename",
+      "id": "1e5e1102930364edf64a",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "class",
+        "line": 33,
+        "module": "pytest_repeat",
+        "name": "UnexpectedError",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "9e61bfc71ba236a246df33cd09a03bdee3eb09463a65d3af1480776b50db9954"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "rename",
+      "id": "3b245e20615822a62c05",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "class",
+        "line": 33,
+        "module": "pytest_repeat",
+        "name": "UnexpectedError",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "9e61bfc71ba236a246df33cd09a03bdee3eb09463a65d3af1480776b50db9954"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "move_module",
+      "id": "06e9c19f58ae8eff4b8b",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "pytest_repeat",
+        "name": "pytest_repeat",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "c997f18f8c8a88646070a2f2ce1bd3d73747d81072a546be25efdba35a26a27a"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "move_module",
+      "id": "7bd2371cbb87ff6bb0a2",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "pytest_repeat",
+        "name": "pytest_repeat",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "c997f18f8c8a88646070a2f2ce1bd3d73747d81072a546be25efdba35a26a27a"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "move_module",
+      "id": "b758103115965ff990dc",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "pytest_repeat",
+        "name": "pytest_repeat",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "c997f18f8c8a88646070a2f2ce1bd3d73747d81072a546be25efdba35a26a27a"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "move_module",
+      "id": "86a20073fc1ca38375d3",
+      "repository": "pytest-repeat",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "pytest_repeat",
+        "name": "pytest_repeat",
+        "path": "pytest_repeat.py",
+        "rank_sha256": "c997f18f8c8a88646070a2f2ce1bd3d73747d81072a546be25efdba35a26a27a"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "rename",
+      "id": "c5738107265a56650b7f",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "rename",
+      "id": "d207d7514295af0884f1",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "rename",
+      "id": "6d092457aa9ad35e45dd",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "rename",
+      "id": "37da1d61ddbd9f5c8bd4",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "delete",
+      "id": "ac7f157c1ea4215ce40a",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "delete",
+      "id": "11f0e96e64d43d404838",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "delete",
+      "id": "1ad0937d53cefd65d79a",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "delete",
+      "id": "33717e433a9a84ba9dce",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "arity",
+      "id": "f2f291ed3399d4769eaa",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "arity",
+      "id": "fc82b8c4f1c882efccd7",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "arity",
+      "id": "2ffe9484cced06e959b0",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "arity",
+      "id": "e3f00340625cdd51e951",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "conjunctive",
+      "id": "f013fbbb7a39acb830da",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "conjunctive",
+      "id": "de3fac4a9adfee6f7a82",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "conjunctive",
+      "id": "bfd33f069e555f0eaf5d",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "conjunctive",
+      "id": "6cdc0009986b8ea3a3be",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "fix_by_third",
+      "id": "1ecbc3fdd80b45009c89",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "fix_by_third",
+      "id": "7a9f46258faa4e4c7ddf",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "fix_by_third",
+      "id": "26ebc49ef706cc0ecbd4",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "fix_by_third",
+      "id": "ea125d61b78e3b93c7ed",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "five_mix",
+      "id": "62835f9630bc3d69d8f6",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "five_mix",
+      "id": "55104e882a542af4e343",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "five_mix",
+      "id": "eab9343af9251489008f",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "five_mix",
+      "id": "d945452c1f2daa6acc5d",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "open_dynamic",
+      "id": "180b5e95f18039f51c36",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "open_dynamic",
+      "id": "18fa4b7edbcf02e70ebc",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "open_dynamic",
+      "id": "049271e6afcb001f0b2a",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "open_dynamic",
+      "id": "d7c699eca07e0a70aec8",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "open_wildcard",
+      "id": "3c66cf364f0d605b35fb",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "open_wildcard",
+      "id": "c813d53cfb0b00c4b1de",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "open_wildcard",
+      "id": "3142e23c63b3676f9170",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "open_wildcard",
+      "id": "aa68f0f271a97fc0f985",
+      "repository": "certifi",
+      "site": {
+        "kind": "function",
+        "line": 10,
+        "module": "certifi.core",
+        "name": "exit_cacert_ctx",
+        "path": "certifi/core.py",
+        "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "move_module",
+      "id": "6ce12bcc110000ea54f8",
+      "repository": "certifi",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "certifi.__main__",
+        "name": "certifi.__main__",
+        "path": "certifi/__main__.py",
+        "rank_sha256": "3085ca8d8077dc6c6e37a3efa4c41f2a091df976ecb6b7c0105b9971062da19c"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "move_module",
+      "id": "cfbc1dd92c9f5e1e2a5c",
+      "repository": "certifi",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "certifi.__main__",
+        "name": "certifi.__main__",
+        "path": "certifi/__main__.py",
+        "rank_sha256": "3085ca8d8077dc6c6e37a3efa4c41f2a091df976ecb6b7c0105b9971062da19c"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "move_module",
+      "id": "6108389900255766ba4b",
+      "repository": "certifi",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "certifi.__main__",
+        "name": "certifi.__main__",
+        "path": "certifi/__main__.py",
+        "rank_sha256": "3085ca8d8077dc6c6e37a3efa4c41f2a091df976ecb6b7c0105b9971062da19c"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "move_module",
+      "id": "8c2bb130b52694b2769e",
+      "repository": "certifi",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "certifi.__main__",
+        "name": "certifi.__main__",
+        "path": "certifi/__main__.py",
+        "rank_sha256": "3085ca8d8077dc6c6e37a3efa4c41f2a091df976ecb6b7c0105b9971062da19c"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "rename",
+      "id": "711ea42dff076c3dba5a",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "rename",
+      "id": "155d8ca77b1d23cf7720",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "rename",
+      "id": "d35e3f33ecb9912f9e54",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "rename",
+      "id": "f171443f3c31c9b8c3d1",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "delete",
+      "id": "30009898c31ce69bcd42",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "delete",
+      "id": "8a272bf1c5cefa71d667",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "delete",
+      "id": "c5e141a7c6644f95c977",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "delete",
+      "id": "5040367592472ae9b08a",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "arity",
+      "id": "9dcd7f2d95b5ff72a67d",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "arity",
+      "id": "34ba574c84b5931db7ec",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "arity",
+      "id": "0d3b30c2b650d1a8feb8",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "arity",
+      "id": "7cb6cd46735ee59f861a",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "conjunctive",
+      "id": "6cfb71d519dbc90b41b8",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "conjunctive",
+      "id": "89d59d7bd5e2b2943e9d",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "conjunctive",
+      "id": "e9d17cbaa07ff7021daf",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "conjunctive",
+      "id": "eaeb7514a7c9a20705e7",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "fix_by_third",
+      "id": "2ec1806d1db1a48a657b",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "fix_by_third",
+      "id": "4d678e0a1b9eafb3efc0",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "fix_by_third",
+      "id": "f341dc326fecbf3dd132",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "fix_by_third",
+      "id": "e0e5a436cd6693fdd702",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "five_mix",
+      "id": "22ced2fdbf4acce9b6f9",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "five_mix",
+      "id": "ffa61a2dac69a6da6811",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "five_mix",
+      "id": "2814f532b3c5a3b07240",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "five_mix",
+      "id": "c4f12c5c057c833c6bf8",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "open_dynamic",
+      "id": "e5ddf2c1158e0e7b1880",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "open_dynamic",
+      "id": "ba6d68049eabe88bde50",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "open_dynamic",
+      "id": "037d739726df4ccbedbe",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "open_dynamic",
+      "id": "e50b10316e86659e1082",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "open_wildcard",
+      "id": "b2b1689fd81491b90ba2",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "open_wildcard",
+      "id": "e9b3b0433e03017b421a",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "open_wildcard",
+      "id": "628ce0eed83fe4ee83b1",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "open_wildcard",
+      "id": "146e64ec84de25c5a6ce",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "function",
+        "line": 4,
+        "module": "trove_classifiers.__main__",
+        "name": "cli",
+        "path": "src/trove_classifiers/__main__.py",
+        "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+      }
+    },
+    {
+      "control": "scenario",
+      "family": "move_module",
+      "id": "4f2f5550a7619ba7d1bf",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "trove_classifiers",
+        "name": "trove_classifiers",
+        "path": "src/trove_classifiers/__init__.py",
+        "rank_sha256": "b988980b7651de8f716148d893836926334d1ba95d9a5a1e71115fea74a39e9b"
+      }
+    },
+    {
+      "control": "compatible",
+      "family": "move_module",
+      "id": "73d564be7a478048e73b",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "trove_classifiers",
+        "name": "trove_classifiers",
+        "path": "src/trove_classifiers/__init__.py",
+        "rank_sha256": "b988980b7651de8f716148d893836926334d1ba95d9a5a1e71115fea74a39e9b"
+      }
+    },
+    {
+      "control": "unrelated",
+      "family": "move_module",
+      "id": "5702a20a5c74c68ddd6e",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "trove_classifiers",
+        "name": "trove_classifiers",
+        "path": "src/trove_classifiers/__init__.py",
+        "rank_sha256": "b988980b7651de8f716148d893836926334d1ba95d9a5a1e71115fea74a39e9b"
+      }
+    },
+    {
+      "control": "coordinated",
+      "family": "move_module",
+      "id": "c8b8f1e5e2da1f168cd7",
+      "repository": "trove-classifiers",
+      "site": {
+        "kind": "module",
+        "line": 0,
+        "module": "trove_classifiers",
+        "name": "trove_classifiers",
+        "path": "src/trove_classifiers/__init__.py",
+        "rank_sha256": "b988980b7651de8f716148d893836926334d1ba95d9a5a1e71115fea74a39e9b"
+      }
+    }
+  ],
+  "policy_sha256": "de43b781467de8c85934f637cf0f9df3e9051e219f7f4081c8734ae29159be7b",
+  "repositories": [
+    {
+      "domain": "async runtime detection",
+      "id": "sniffio",
+      "python_files_sha256": {
+        "docs/source/conf.py": "ba213e319ff4bce56afa4132c8d0ae4bcbdf6106a09e474b2eb7928d2a41872f",
+        "setup.py": "7d4893de6806a8400ab566e401e917d2c922d93df757ca81cd016bff7fc32ff9",
+        "sniffio/__init__.py": "6aabfc74fa177167b5b2fa5fe4bf0ba66086c768d0412a0b26faada772b973ae",
+        "sniffio/_impl.py": "526505319a62b8eadc8e7b8786e62260cc5e08d59faaef6406568f7f4c64e97f",
+        "sniffio/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sniffio/_tests/test_sniffio.py": "16163a17a3ed1698cbd6004c8413d90ee44104ae682f09ae8c471a7f18443903",
+        "sniffio/_version.py": "00c6c7ef823fb2e3d44872f0bceba5811c95db23213bda0999f1ef207b6400b8"
+      },
+      "roots": [
+        "sniffio"
+      ],
+      "sha": "22387baf7d5417842c0c2030ef860cae7c8f3a7a",
+      "sites": [
+        {
+          "kind": "function",
+          "line": 25,
+          "module": "sniffio._impl",
+          "name": "current_async_library",
+          "path": "sniffio/_impl.py",
+          "rank_sha256": "fbf65c9df49d0a25fb115fe02315f24e570c0d3dd13d0a4b1efe248ff2f6adff"
+        },
+        {
+          "kind": "class",
+          "line": 21,
+          "module": "sniffio._impl",
+          "name": "AsyncLibraryNotFoundError",
+          "path": "sniffio/_impl.py",
+          "rank_sha256": "29c083979aa9fdcd946053d6e9b9e1c8269f1770bdc6561c464546eba5bfd707"
+        },
+        {
+          "kind": "module",
+          "line": 0,
+          "module": "sniffio",
+          "name": "sniffio",
+          "path": "sniffio/__init__.py",
+          "rank_sha256": "007a242c6f64c29cc4c621d13adeb4a3d5e37f19cdb656009ecb41d4803e3aa7"
+        }
+      ],
+      "upstream_tree": "6f9466da03a7626892f10653e4b9b72254e67ada",
+      "url": "https://github.com/python-trio/sniffio.git"
+    },
+    {
+      "domain": "INI parsing",
+      "id": "iniconfig",
+      "python_files_sha256": {
+        "src/iniconfig/__init__.py": "96b5cc5a1526b8e0d0c50cd9b70a122029d8623fdb3ca7a1eef111fceaafc312",
+        "src/iniconfig/_parse.py": "15824a78105b52aa9ed414ce6ad073967c73be7ea5ae9d991a0df97a6e0cc2e1",
+        "src/iniconfig/exceptions.py": "9a2a50fda3310fd0af4af156375a135d8e10b919ca00c6757f7b027668c34d4d",
+        "testing/conftest.py": "ceae34cc6fdff2b86faafe4a9ee85a502b0da7ec7e62a279f69a6e77d33e5dc2",
+        "testing/test_iniconfig.py": "004ef1d95bb7ae546ffc284dc3f33492f20278bd7811d396a5b73079172de117",
+        "testing/typing/check_get.py": "520fb388f8b33829bfc9e14d3e9049a546be92f432745ead6bd0dbd7d0eb701c"
+      },
+      "roots": [
+        "src/iniconfig"
+      ],
+      "sha": "2502e28b194aa08825b2d52b7b089b3cd77df04f",
+      "sites": [
+        {
+          "kind": "function",
+          "line": 158,
+          "module": "iniconfig._parse",
+          "name": "iscommentline",
+          "path": "src/iniconfig/_parse.py",
+          "rank_sha256": "1e9d2f70452a8a1d3da9d083ec59abc3b19331d2165623bfe0e519e5fd4ac093"
+        },
+        {
+          "kind": "class",
+          "line": 11,
+          "module": "iniconfig._parse",
+          "name": "ParsedLine",
+          "path": "src/iniconfig/_parse.py",
+          "rank_sha256": "085edf7f8d1580733e0fe3d47992501574fb78ebac9dd4f2088994b82dfd9217"
+        },
+        {
+          "kind": "module",
+          "line": 0,
+          "module": "iniconfig",
+          "name": "iniconfig",
+          "path": "src/iniconfig/__init__.py",
+          "rank_sha256": "0704c1e25d1f09c32e52b06cbf2a7c1c8f551502ba45139633c201827eafe53e"
+        }
+      ],
+      "upstream_tree": "abb7fcd6e968490b477fb20834247bd9cb4dadb5",
+      "url": "https://github.com/pytest-dev/iniconfig.git"
+    },
+    {
+      "domain": "test execution control",
+      "id": "pytest-repeat",
+      "python_files_sha256": {
+        "pytest_repeat.py": "5c036fe25988d88cabeff1cc1a2e3f1c11ab4663bf8db5059e7b24f34e8b60aa",
+        "setup.py": "ac19910e59bfdc9172563379a3c1a6fe535ea6b5dd7eb836396bc9f07ebc5032",
+        "test_repeat.py": "9ba6d58f67d33e1eec2d533fdee85c0b60da9608ce316658bf6aa04af435e0b4"
+      },
+      "roots": [
+        "pytest_repeat.py"
+      ],
+      "sha": "1b6c199f87fd547e50d7214923f84624b7cff6c2",
+      "sites": [
+        {
+          "kind": "function",
+          "line": 27,
+          "module": "pytest_repeat",
+          "name": "pytest_configure",
+          "path": "pytest_repeat.py",
+          "rank_sha256": "b4e374e14181f5b8f97acc13565d101c389df2933b2c6c60f23f056b59d1b3bd"
+        },
+        {
+          "kind": "class",
+          "line": 33,
+          "module": "pytest_repeat",
+          "name": "UnexpectedError",
+          "path": "pytest_repeat.py",
+          "rank_sha256": "9e61bfc71ba236a246df33cd09a03bdee3eb09463a65d3af1480776b50db9954"
+        },
+        {
+          "kind": "module",
+          "line": 0,
+          "module": "pytest_repeat",
+          "name": "pytest_repeat",
+          "path": "pytest_repeat.py",
+          "rank_sha256": "c997f18f8c8a88646070a2f2ce1bd3d73747d81072a546be25efdba35a26a27a"
+        }
+      ],
+      "upstream_tree": "8a468f97942bc2eb74d2b347ae5ed2c619478d05",
+      "url": "https://github.com/pytest-dev/pytest-repeat.git"
+    },
+    {
+      "domain": "TLS trust data",
+      "id": "certifi",
+      "python_files_sha256": {
+        "certifi/__init__.py": "6c069810be5831ee48e99eb0fbd79c06b51803771f48d7ccd28f9c0c32270e86",
+        "certifi/__main__.py": "c410688fdd394d45812d118034e71fee88ba7beddd30fe1c1281bd3b232cd758",
+        "certifi/core.py": "5c55f2727746e697f7edac9e17c377d8752e0da7ecca191531b3b80403d61dad",
+        "certifi/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "certifi/tests/test_certify.py": "7c179d1edf37f7e912b133663735fb46c6338d5d0e5f8915d11c3bc287d227b8",
+        "setup.py": "5cb6c5d1b80469d0e2c9079039a59e1b4d0a9c4bc8b58c43c3f7cc3259ffca22"
+      },
+      "roots": [
+        "certifi"
+      ],
+      "sha": "ca446ca404ff3b962a0193f36e03d1eabb231968",
+      "sites": [
+        {
+          "kind": "function",
+          "line": 10,
+          "module": "certifi.core",
+          "name": "exit_cacert_ctx",
+          "path": "certifi/core.py",
+          "rank_sha256": "9c349f7079382ae55d601a81b589c13d88f3d9df381c94ce98d0bc272613b0a9"
+        },
+        {
+          "kind": "module",
+          "line": 0,
+          "module": "certifi.__main__",
+          "name": "certifi.__main__",
+          "path": "certifi/__main__.py",
+          "rank_sha256": "3085ca8d8077dc6c6e37a3efa4c41f2a091df976ecb6b7c0105b9971062da19c"
+        }
+      ],
+      "upstream_tree": "4f393242fd84f94e879f2dd61404941301578923",
+      "url": "https://github.com/certifi/python-certifi.git"
+    },
+    {
+      "domain": "package taxonomy",
+      "id": "trove-classifiers",
+      "python_files_sha256": {
+        "bin/sort.py": "a8ac3cd5bc44bc2af9b5a69bcca1d3f76ca56e2e44a21773c172b7481cff90c6",
+        "setup.py": "c8c90c46bdd63d1ce49a50b48fbd51f95f85eefe31beb38728bdf42c63794ecc",
+        "src/trove_classifiers/__init__.py": "d305cc4cc3a6d96cb4b181fa6a6912e9d1d3c63d5c8d02d9db0a26a5c4716057",
+        "src/trove_classifiers/__main__.py": "e1ea5b022575ec6e6bd86f283f63b8a2ba96e55fbd32f576a7023b9e26f94856",
+        "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tests/lib/__init__.py": "00e148d2d3e5b7bf05058da8c006cf81aa4669008ff4bd127a71c7a41821aba6",
+        "tests/lib/__main__.py": "5e32d434f35e6014500fcd7c6a6df7ceac3007acf22e13e4d0ede167cb0a6441",
+        "tests/test_classifiers.py": "b5681db19e7896613316f4ec0ff32d9dbb2b50c1b83bb89eb0f384f120a21319",
+        "tests/test_cli.py": "9be3e3c239d998351d3ff6f4b7f5f7bab05acc979180168517bd12a6f74c9e39"
+      },
+      "roots": [
+        "src/trove_classifiers"
+      ],
+      "sha": "bc832553ebe6114e7682f09bc59bda6552da37cd",
+      "sites": [
+        {
+          "kind": "function",
+          "line": 4,
+          "module": "trove_classifiers.__main__",
+          "name": "cli",
+          "path": "src/trove_classifiers/__main__.py",
+          "rank_sha256": "18290d317f1c26a11e523c4f47b5cc9249e71e2f73df825c86fbb8ed6482fb47"
+        },
+        {
+          "kind": "module",
+          "line": 0,
+          "module": "trove_classifiers",
+          "name": "trove_classifiers",
+          "path": "src/trove_classifiers/__init__.py",
+          "rank_sha256": "b988980b7651de8f716148d893836926334d1ba95d9a5a1e71115fea74a39e9b"
+        }
+      ],
+      "upstream_tree": "527413ff089622e8f92270ab616010419b477110",
+      "url": "https://github.com/pypa/trove-classifiers.git"
+    }
+  ],
+  "stratum": "mutation"
+}

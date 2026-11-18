@@ -1,0 +1,87 @@
+{
+  "augmentation": "Conjunctive and repair baselines include an explicit copied original real module as fallback (no fabricated function bodies). Report these as augmented mutation, not unmodified upstream or natural evidence. Rename/arity/module move baselines retain upstream Python bytes.",
+  "controls": [
+    "compatible",
+    "unrelated",
+    "coordinated"
+  ],
+  "detector_commit": "94a7417a1ed6907e3cb3f39d30b8df59de5cf77c",
+  "development_only": true,
+  "families": {
+    "class": [
+      "rename"
+    ],
+    "function": [
+      "rename",
+      "delete",
+      "arity",
+      "conjunctive",
+      "fix_by_third",
+      "five_mix",
+      "open_dynamic",
+      "open_wildcard"
+    ],
+    "module": [
+      "move_module"
+    ]
+  },
+  "limits": {
+    "controls_per_scenario": 3,
+    "per_kind_per_repository": 1
+  },
+  "mode_labels": "Pairwise unions attributable deltas from every clean pair; combined and plan use full native integration. Tips must have empty target-relative M3 deltas. Minimal attribution uses the same diagnostic in full and leave-one-out states. Unsupported, ambiguous, incomplete and environment failures unlabelled.",
+  "oracle": "Pyright 1.1.407, S17 CONFIG/M3 identities unchanged; full production/test plus mutation scope; isolated pinned dependencies without installed selected-repository packages",
+  "publication": "Mutation only; D-Ev1 private/local per-case evidence and sanitized external archive; compact selection/freeze/aggregate committed; no release gate.",
+  "repositories": [
+    {
+      "domain": "async runtime detection",
+      "id": "sniffio",
+      "roots": [
+        "sniffio"
+      ],
+      "sha": "22387baf7d5417842c0c2030ef860cae7c8f3a7a",
+      "url": "https://github.com/python-trio/sniffio.git"
+    },
+    {
+      "domain": "INI parsing",
+      "id": "iniconfig",
+      "roots": [
+        "src/iniconfig"
+      ],
+      "sha": "2502e28b194aa08825b2d52b7b089b3cd77df04f",
+      "url": "https://github.com/pytest-dev/iniconfig.git"
+    },
+    {
+      "domain": "test execution control",
+      "id": "pytest-repeat",
+      "roots": [
+        "pytest_repeat.py"
+      ],
+      "sha": "1b6c199f87fd547e50d7214923f84624b7cff6c2",
+      "url": "https://github.com/pytest-dev/pytest-repeat.git"
+    },
+    {
+      "domain": "TLS trust data",
+      "id": "certifi",
+      "roots": [
+        "certifi"
+      ],
+      "sha": "ca446ca404ff3b962a0193f36e03d1eabb231968",
+      "url": "https://github.com/certifi/python-certifi.git"
+    },
+    {
+      "domain": "package taxonomy",
+      "id": "trove-classifiers",
+      "roots": [
+        "src/trove_classifiers"
+      ],
+      "sha": "bc832553ebe6114e7682f09bc59bda6552da37cd",
+      "url": "https://github.com/pypa/trove-classifiers.git"
+    }
+  ],
+  "repository_rule": "First three: latest timestamp (SHA tie-break) S17 eligible recorded merge with native tree equal to recorded tree, from already accepted development evidence. Two additions: the fixed dependency-light certifi and trove-classifiers candidates inspected for stdlib-oriented production/test imports, pinned at existing public clone HEADs before any mutation build. No repository substitution after this policy. Candidate shortcodes was inspected but not selected; no builds or labels informed that choice.",
+  "seed": "mut-v05-v1",
+  "site_rule": "Public undecorated direct module-level synchronous functions without varargs/kwargs, public undecorated direct classes with a simple nonvariadic constructor or no explicit constructor, and production Python modules; exclude tests and ambiguous duplicate names. SHA256 UTF8 seed|URL|SHA|kind|path|name, no newline; ascending digest then path/name. First one per kind per repository. No oracle or detector outcomes enter selection; retain all failures without replacement.",
+  "stratum": "mutation",
+  "version": 1
+}

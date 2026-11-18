@@ -203,6 +203,8 @@ def analyze(repo, branches, base=None, src=None, textual=True, target=None, cach
     summaries = {}
     roots_by_base = {}
     parents = git.direct_parents(repo, shas) if base_sha is None else {}
+    bases = git.pair_bases(repo, shas)
+    merges = git.pair_merges(repo, shas) if textual else None
     for (a, asha), (b, bsha) in itertools.combinations(zip(branches, shas), 2):
         a_parents = parents.get(asha, ())
         b_parents = parents.get(bsha, ())
@@ -211,7 +213,9 @@ def analyze(repo, branches, base=None, src=None, textual=True, target=None, cach
         elif len(a_parents) == len(b_parents) == 1 and a_parents == b_parents:
             common = a_parents[0]
         else:
-            common = git.merge_base(repo, asha, bsha)
+            common = bases.unique(asha, bsha)
+            if common is None:
+                common = git.merge_base(repo, asha, bsha)
         if common is None:
             raise git.GitError(f'no merge base for {a} and {b}')
         if base_sha and (not git.is_ancestor(repo, common, asha)
@@ -240,8 +244,7 @@ def analyze(repo, branches, base=None, src=None, textual=True, target=None, cach
 
         left = get_summary(a, asha)
         right = get_summary(b, bsha)
-        conflicts = git.merge_tree_conflicts(
-            repo, asha, bsha) if textual else []
+        conflicts = merges.conflicts(asha, bsha) if textual else []
         ctx = PairContext(
             repo,
             common,

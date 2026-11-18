@@ -121,6 +121,48 @@ Historical bounds come from upstream tagged source/manuals and release notes; li
 
 ## T23 and T24 preparation
 
+### Final4 review decisions (Polaris, 2026-11-18)
+
+Vega's [code review](../reviews/v0.5-t22-code-vega.md) accepted the unique-base
+proof and ordered fallback, subject to additional evidence and resource guards.
+The final4 implementation and validation follow these decisions:
+
+- Capability detection creates a disposable bare repository outside the user's
+  repository. A deterministic three-commit history provides one clean pair and
+  one conflicted pair. The complete batch records, including tree IDs, status and
+  paths, must equal both scalar results. Repository redirection and user Git
+  configuration are removed from the scratch environment. The user's effective
+  configuration is checked separately for external drivers, filters and promisor
+  fetches; those cases retain serial execution. Probe results live for one run.
+- The first speculative chunk contains at most **16 pairs**, subsequent chunks
+  at most **256**. A failed chunk disables batching for the rest of the run;
+  discarded results are replayed only at the original serial evaluation point.
+  Speculative merges may create **unreachable Git objects for later pairs** even
+  if analysis exits early. These objects are prunable; HEAD, index, refs, config,
+  logs and working-tree bytes/modes remain protected. The smaller first chunk
+  bounds this side effect for early failures but does not eliminate it.
+- Each batch has a **64 MiB stdout cap**. Capture drains input/output without
+  holding an unbounded response, kills and reaps an over-cap process, discards
+  the entire chunk and selects serial replay. Unexpected stderr does the same.
+- When available, commit-graph fanout metadata provides a cheap commit count.
+  A count above 20,000 skips the ancestry attempt, including split graphs. This
+  is conservative: a graph covering more than the selected tips need disables
+  only an optimization. Missing, unreadable or inconclusive metadata does not
+  establish a count. Without usable metadata, a large history can still pay up
+  to the one-second capture deadline plus bounded parsing/construction overhead
+  before scalar fallback. The capture remains capped at 4 MiB/20,000 nodes and
+  construction at one second. Measurements include a history above the bound,
+  with and without a commit graph.
+- `git.pair_merges()` and `git.pair_bases()` are the engine-facing factories;
+  the unused version argument is removed. Git 2.38 capability fallback remains
+  behavior-based. Its acceptance policy is **byte parity only**, without a speed
+  promise.
+- `tests/test_t22_batching.py` adds deterministic native-Git oracles, executable
+  fault shims, chunk-boundary/fallback controls, all ancestry bounds, metadata
+  guards, SHA-256 and child/pipe cleanup checks. Small 4–5-branch measurements
+  include the scratch probe and ancestry guard subprocesses, not just merges in
+  the user's repository. All original S14 budgets remain binding.
+
 **T23 — run-wide trials.** Give `AnalysisRun` a single trial executor/statistics object shared by combined culprit search, repaired-by-third search and planner states. Freeze the unit before adding fields: recommend one candidate integrated-state evaluation, with actual new integrations and whole-state cache hits counted separately; distinguish partial prefix reuse in `integrate._memo` from a fully cached trial. Count a request once at that boundary, not once in both planner and combined; do not infer totals from cache sizes or empty bound flags. Start with `limit: null` unless a run-wide budget is actually enforced before work. If a budget is enforced, unchecked work must retain bounded coverage and honest culprit exactness. T23 is deliberately additive: update offline schemas and have Deneb refresh the authorized goldens after T22 parity, not during this freeze.
 
 **T24 — blocked-plan RSS.** Keep every accepted S14 per-cell p95/RSS budget on its original fixture/interpreter, and establish a separate, predeclared blocked-fixture baseline before changing caches. Add (a) 21 safe branches, including seven disjoint edits to one shared file, followed by eight independently API-breaking branches and one conflicting edit to that shared file: nine blocked branches exercise the remaining-branch shortcut, while seven same-path candidate culprits exercise the candidate cap; and (b) 22 safe branches followed by eight independently API-breaking branches: eight remaining enables the existing size-2/3 group search (28+56 groups) instead of bypassing it at >8. Include many first-party target references and distinct source blobs so `AnalysisRun.indexes`, adapter module/parse caches and planner `states` actually accumulate. Leave search limits unchanged and assert findings, coverage hits and read-only state.

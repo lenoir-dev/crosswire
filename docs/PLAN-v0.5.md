@@ -341,3 +341,43 @@ cutoff, and no checker or detector runs before checkpoint (2). From now on:
 same endpoint-class rules; every exception inside a repository's walk becomes that repository's
 `acquisition-incomplete` with the traceback class journalled, never a cohort stop (only global ceilings stop the
 cohort); and `metadata.json` is written incrementally per repository.
+
+## Amendment P8 — T22 acceptance and the S14 outcome (Polaris, 2026-11-19; revised after Vega's final4 check)
+
+**T22 is accepted** on the evidence in [t22.md](validation/t22.md) and in
+[Vega's final4 diff-check](reviews/v0.5-t22-code-vega.md#final4-diff-check-task-v05-t22-final4--vega-2026-11-19).
+Byte parity passed on the pinned T21 replay (334 fixtures, 43,726 records) and on Git 2.38. The warm p95
+pairwise/combined ratio is 0.541× and 0.556×, against a target of ≤ 2×. The S14 per-cell gate failed. It is
+resolved as follows, and no ceiling is changed:
+
+- **D-T22a, time (4 cells).** In each of the four cells the paired pre-T22 p95 passed, so the noise elsewhere in
+  the matrix does not explain them.
+  - Three of them (1,000/10 combined warm, 1,000/30 combined warm, 10,000/10 plan warm) are combined/plan cells,
+    where the T22 code path does not run. I read them as host variance: the last-attempt median is below the
+    ceiling, one sample of five exceeds it, and the fixed R3 control drifted by +14.9 %.
+  - The fourth, **1,000/5/pairwise/warm**, is on the T22 path. It is **unattributed and possibly T22 cost**: the
+    capability probe costs about five subprocesses, while 5 tips save at most 10 serial merges (Vega's N2). It is
+    on the watch list, and T22b addresses it.
+  - None of the four is waived. All stay in the record.
+- **D-T22b, RSS (5 cells).** The repeated +0.50–0.66 MiB over pre-T22 in those cells is a fixed footprint of the
+  T22 code. It is not specific to the batching path, because combined cells gain the same amount. It exceeds the
+  ceiling by at most 0.39 MiB. I accept it as a declared cost, and the 0.5 release notes state it with the
+  measured values. The ceilings stay as accepted. The allowance for 0.5a is **ceiling + 0.5 MiB** in any cell;
+  growth beyond that needs its own decision.
+- **D-T22c, release gate.** The full S14 matrix runs once more on the frozen tree that will be tagged as 0.5.0.
+  It uses the 54 cells, the ceilings and the S14 rerun rule (rerun only failing cells, three attempts at most,
+  last attempt counts). An unchanged-v0.4 control runs paired in the same session.
+  - A time breach that remains after the reruns blocks the release. It is published as host drift instead only
+    if all three hold in that session: the control also breaches the cell, the candidate p95 ≤ 1.05× the
+    control's p95, and the candidate p50 ≤ 1.05× the control's p50.
+  - An RSS breach beyond the D-T22b allowance blocks the release.
+  - Every attempt of every rerun cell is published. A cell that passes only on a later attempt is reported as
+    such.
+- **T22b (new, after BF1, before T23).**
+  - Batching applies only above a pair-count threshold, chosen from measurements so that it removes the probe's
+    cost at small branch counts.
+  - Vega's N1 test pins are tightened: an exact commit-graph count, plus pinning of the 64 MiB constant.
+  - Measured on 1,000/5/pairwise/warm and the 4/5-tip shapes. T21 byte parity is required.
+  - The order of 0.5a becomes T22 → BF1 → T22b → T23 → T24 → T21d → freeze → S14 (D-T22c) → S18 → release.
+
+T22 is committed alone; BF1 follows as its own commit after its replay.
